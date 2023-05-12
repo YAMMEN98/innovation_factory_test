@@ -7,4 +7,5 @@ abstract class AppFontSize {
   static  double fontSize16 = 16.0.sp;
   static  double fontSize18 = 18.0.sp;
   static  double fontSize24 = 24.0.sp;
+  static  double fontSize30 = 30.0.sp;
 }

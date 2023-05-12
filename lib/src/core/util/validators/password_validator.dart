@@ -6,7 +6,7 @@ import 'base_validator.dart';
 class PasswordValidator extends BaseValidator {
   bool? isFromVerificationPage;
   bool? message;
-  List<PasswordValidType> typeValid = [];
+  List<PasswordValidType> typeValids = [];
 
   PasswordValidator({this.isFromVerificationPage});
 
@@ -15,28 +15,28 @@ class PasswordValidator extends BaseValidator {
     if (isFromVerificationPage != null && isFromVerificationPage!) return '*';
     String message = "";
     if (context != null) {
-      for (var element in typeValid) {
+      typeValids.forEach((element) {
         switch (element) {
-          case PasswordValidType.passwordIsEmpty:
+          case PasswordValidType.password_is_empty:
             message = message + S.of(context).password_is_empty;
             break;
-          case PasswordValidType.passwordShouldContainAtLast8Characters:
+          case PasswordValidType.password_should_contain_at_least_8_charachters:
             message = message + S.of(context).password_should_contain_at_least_8_characters;
             break;
-          case PasswordValidType.passwordShouldContainAtLeastOneLowercaseLetter:
+          case PasswordValidType.password_should_contain_at_least_one_lowercase_letter:
             message = message + S.of(context).password_should_contain_at_least_one_lowercase_letter;
             break;
-          case PasswordValidType.passwordShouldContainAtLeastOneNumber:
+          case PasswordValidType.password_should_contain_at_least_one_number:
             message = message + S.of(context).password_should_contain_at_least_one_number;
             break;
-          case PasswordValidType.passwordShouldContainAtLeastOneSymbol:
+          case PasswordValidType.password_should_contain_at_least_one_symobol:
             message = message + S.of(context).password_should_contain_at_least_one_symbol;
             break;
-          case PasswordValidType.passwordShouldContainAtLeastOneUppercaseLetter:
+          case PasswordValidType.password_should_contain_at_least_one_upercase_letter:
             message = message + S.of(context).password_should_contain_at_least_one_uppercase_letter;
             break;
         }
-      }
+      });
     }
 
     return message == "" ? S.of(context!).weak_password_message : message;
@@ -44,43 +44,41 @@ class PasswordValidator extends BaseValidator {
 
   @override
   bool validate(String value) {
-    typeValid.clear();
+    typeValids.clear();
     if (value.isEmpty) {
-      typeValid.add(PasswordValidType.passwordIsEmpty);
+      this.typeValids.add(PasswordValidType.password_is_empty);
       return false;
     }
     // if (!RegExp("(?=.*^[\u0600-\u06FF])").hasMatch(value.trim())) this.typeValids.add(PasswordValidType.password_should_contain_at_least_one_lowercase_letter);
 
-    if (value.length < 8) typeValid.add(PasswordValidType.passwordShouldContainAtLast8Characters);
+    if (value.length < 8) this.typeValids.add(PasswordValidType.password_should_contain_at_least_8_charachters);
     if (!RegExp("(.*([\u0621-\u064A])+.*)").hasMatch(value.trim())) {
-      if (!RegExp("(?=.*[a-z])").hasMatch(value.trim())) typeValid.add(PasswordValidType.passwordShouldContainAtLeastOneLowercaseLetter);
-      if (!RegExp("(?=.*[A-Z])").hasMatch(value.trim())) typeValid.add(PasswordValidType.passwordShouldContainAtLeastOneUppercaseLetter);
+      if (!RegExp("(?=.*[a-z])").hasMatch(value.trim())) this.typeValids.add(PasswordValidType.password_should_contain_at_least_one_lowercase_letter);
+      if (!RegExp("(?=.*[A-Z])").hasMatch(value.trim())) this.typeValids.add(PasswordValidType.password_should_contain_at_least_one_upercase_letter);
     }
-    if (!RegExp("(?=.*([0-9]|[\u0660-\u0669]))").hasMatch(value.trim())) {
-      typeValid.add(PasswordValidType.passwordShouldContainAtLeastOneNumber);
-    }
+    if (!RegExp("(?=.*([0-9]|[\u0660-\u0669]))").hasMatch(value.trim()))
+      this.typeValids.add(PasswordValidType.password_should_contain_at_least_one_number);
 
-    bool isSpectral = false;
-    for (int i = 0; i < value.split('').length; i++) {
+    bool isSpectal = false;
+    for (int i = 0; i < value.split('').length; i++)
       if (!RegExp(".*([0-9A-Z\u0660-\u0669a-z\u0621-\u064A])").hasMatch(value.split('')[i])) {
-        isSpectral = true;
+        isSpectal = true;
 
         break;
       }
-    }
-    if (!isSpectral) {
-      typeValid.add(PasswordValidType.passwordShouldContainAtLeastOneSymbol);
+    if (!isSpectal) {
+      this.typeValids.add(PasswordValidType.password_should_contain_at_least_one_symobol);
     }
 
-    return typeValid.isEmpty;
+    return typeValids.isEmpty;
   }
 }
 
 enum PasswordValidType {
-  passwordIsEmpty,
-  passwordShouldContainAtLast8Characters,
-  passwordShouldContainAtLeastOneLowercaseLetter,
-  passwordShouldContainAtLeastOneNumber,
-  passwordShouldContainAtLeastOneSymbol,
-  passwordShouldContainAtLeastOneUppercaseLetter
+  password_is_empty,
+  password_should_contain_at_least_8_charachters,
+  password_should_contain_at_least_one_lowercase_letter,
+  password_should_contain_at_least_one_number,
+  password_should_contain_at_least_one_symobol,
+  password_should_contain_at_least_one_upercase_letter
 }

@@ -62,7 +62,7 @@ class _BackgroundPageState extends State<BackgroundPage> {
           Scaffold(
             key: widget.scaffoldKey,
             backgroundColor: Colors.transparent,
-            resizeToAvoidBottomInset: false,
+            resizeToAvoidBottomInset: true,
             onDrawerChanged: (isOpened) {
               if (!isOpened) {
                 if (!isCallFromDrawer) {

@@ -89,6 +89,9 @@ dependencies:
   # Device Preview
   device_preview: ^1.1.0
 
+  # Pin Code Text Field
+  pin_code_fields: ^7.4.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

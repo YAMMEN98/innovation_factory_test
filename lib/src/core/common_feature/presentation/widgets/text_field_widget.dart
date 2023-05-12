@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TextFieldWidget extends StatefulWidget {
   final TextEditingController? controller;
+  final bool? isPassword;
   final TextStyle? textStyle;
   final String? hintText;
   final TextStyle? hintStyle;
@@ -26,6 +27,7 @@ class TextFieldWidget extends StatefulWidget {
   const TextFieldWidget({
     Key? key,
     this.controller,
+    this.isPassword,
     this.textStyle,
     this.hintText,
     this.hintStyle,
@@ -59,6 +61,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
     return SizedBox(
       height: widget.height?.h,
       child: TextFormField(
+        obscureText: widget.isPassword??false,
         controller: widget.controller,
         onChanged: widget.onChanged,
         validator: widget.validator,
@@ -68,8 +71,6 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
         focusNode: widget.focusNode,
         style: widget.textStyle ?? textStyle,
         inputFormatters: widget.inputFormatters,
-        maxLines: widget.maxLines??1,
-
         decoration: InputDecoration(
           contentPadding: widget.contentPadding,
           hintText: widget.hintText,

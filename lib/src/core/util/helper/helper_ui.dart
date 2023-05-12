@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:innovation_factory_test/src/core/common_feature/presentation/widgets/app_snack_bar.dart';
+import 'package:innovation_factory_test/src/core/styles/app_colors.dart';
 import 'package:intl/intl.dart';
 
 class HelperUi {
@@ -36,19 +37,25 @@ class HelperUi {
       context: context,
       useSafeArea: true,
       barrierDismissible: barrierDismissible,
-      builder: (ctx) => Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: backgroundColor ?? Theme.of(context).dialogBackgroundColor,
-            ),
-            margin: margin ?? EdgeInsets.symmetric(horizontal: 100.w),
-            child: child,
+      builder: (ctx) => Container(
+        margin: margin ?? EdgeInsets.symmetric(horizontal: 30.w,),
+
+        child: Scaffold(
+          backgroundColor: AppColors.transparent,
+          body: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: backgroundColor ?? Theme.of(context).dialogBackgroundColor,
+                ),
+                child: child,
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }

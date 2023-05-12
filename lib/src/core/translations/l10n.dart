@@ -100,60 +100,60 @@ class S {
     );
   }
 
-  /// `Password is empty\n`
+  /// `. Password is empty\n`
   String get password_is_empty {
     return Intl.message(
-      'Password is empty\n',
+      '. Password is empty\n',
       name: 'password_is_empty',
       desc: '',
       args: [],
     );
   }
 
-  /// `Password should contain at least 8 characters\n`
+  /// `. Password should contain at least 8 characters\n`
   String get password_should_contain_at_least_8_characters {
     return Intl.message(
-      'Password should contain at least 8 characters\n',
+      '. Password should contain at least 8 characters\n',
       name: 'password_should_contain_at_least_8_characters',
       desc: '',
       args: [],
     );
   }
 
-  /// `Password should contain at least one lowercase letter\n`
+  /// `. Password should contain at least one lowercase letter\n`
   String get password_should_contain_at_least_one_lowercase_letter {
     return Intl.message(
-      'Password should contain at least one lowercase letter\n',
+      '. Password should contain at least one lowercase letter\n',
       name: 'password_should_contain_at_least_one_lowercase_letter',
       desc: '',
       args: [],
     );
   }
 
-  /// `Password should contain at least one uppercase letter\n`
+  /// `. Password should contain at least one uppercase letter\n`
   String get password_should_contain_at_least_one_uppercase_letter {
     return Intl.message(
-      'Password should contain at least one uppercase letter\n',
+      '. Password should contain at least one uppercase letter\n',
       name: 'password_should_contain_at_least_one_uppercase_letter',
       desc: '',
       args: [],
     );
   }
 
-  /// `Password should contain at least one number\n`
+  /// `. Password should contain at least one number\n`
   String get password_should_contain_at_least_one_number {
     return Intl.message(
-      'Password should contain at least one number\n',
+      '. Password should contain at least one number\n',
       name: 'password_should_contain_at_least_one_number',
       desc: '',
       args: [],
     );
   }
 
-  /// `Password should contain at least one symbol\n`
+  /// `. Password should contain at least one symbol\n`
   String get password_should_contain_at_least_one_symbol {
     return Intl.message(
-      'Password should contain at least one symbol\n',
+      '. Password should contain at least one symbol\n',
       name: 'password_should_contain_at_least_one_symbol',
       desc: '',
       args: [],
@@ -275,6 +275,96 @@ class S {
     return Intl.message(
       'Create Account',
       name: 'create_account',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Register`
+  String get register {
+    return Intl.message(
+      'Register',
+      name: 'register',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Register For New User`
+  String get register_for_new_user {
+    return Intl.message(
+      'Register For New User',
+      name: 'register_for_new_user',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Full Name`
+  String get full_name {
+    return Intl.message(
+      'Full Name',
+      name: 'full_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm Password`
+  String get confirm_password {
+    return Intl.message(
+      'Confirm Password',
+      name: 'confirm_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `I Agree To The Terms Of Service And Privacy Policy`
+  String get i_agree_terms_and_conditions {
+    return Intl.message(
+      'I Agree To The Terms Of Service And Privacy Policy',
+      name: 'i_agree_terms_and_conditions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Already Have An Account? `
+  String get already_have_an_account {
+    return Intl.message(
+      'Already Have An Account? ',
+      name: 'already_have_an_account',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Validate`
+  String get validate {
+    return Intl.message(
+      'Validate',
+      name: 'validate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Verify Code`
+  String get verify_code {
+    return Intl.message(
+      'Verify Code',
+      name: 'verify_code',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We sent an OTP code on your Email.`
+  String get we_sent_an_otp {
+    return Intl.message(
+      'We sent an OTP code on your Email.',
+      name: 'we_sent_an_otp',
       desc: '',
       args: [],
     );

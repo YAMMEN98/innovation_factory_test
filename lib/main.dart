@@ -9,6 +9,7 @@ import 'package:innovation_factory_test/src/core/translations/l10n.dart';
 import 'package:innovation_factory_test/src/core/util/helper/helper.dart';
 import 'package:innovation_factory_test/src/core/util/injections.dart';
 import 'package:innovation_factory_test/src/core/util/router.dart';
+import 'package:innovation_factory_test/src/features/auth/presentation/pages/register_page.dart';
 import 'package:innovation_factory_test/src/features/auth/presentation/pages/login_page.dart';
 import 'package:innovation_factory_test/src/features/intro/presentation/pages/intro_page.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +25,7 @@ void main() async {
   await initInjections();
   AppSnackBar.init();
   runApp( DevicePreview(
-    enabled: !kReleaseMode,
+    enabled: kReleaseMode,
     builder: (context) => App(), // Wrap your app
   ),);
 
@@ -86,14 +87,14 @@ class _AppState extends State<App> with WidgetsBindingObserver {
       builder: (context , child) {
         return MaterialApp(
           // Device Preview
-          useInheritedMediaQuery: true,
-          locale: DevicePreview.locale(context),
-          builder: DevicePreview.appBuilder,
+          // useInheritedMediaQuery: true,
+          // locale: DevicePreview.locale(context),
+          // builder: DevicePreview.appBuilder,
 
 
           // Real Device
-          // useInheritedMediaQuery: false,
-          // locale: locale,
+          useInheritedMediaQuery: false,
+          locale: locale,
 
           title: 'Clinic',
           scaffoldMessengerKey: snackbarKey,
@@ -116,7 +117,7 @@ class _AppState extends State<App> with WidgetsBindingObserver {
           home: child,
         );
       },
-      child: const LoginPage(),
+      child: const RegisterPage(),
     );
 
 

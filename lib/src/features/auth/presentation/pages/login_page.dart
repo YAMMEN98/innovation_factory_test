@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -44,95 +45,97 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return BackgroundPage(
       topSafeArea: true,
-      child: Container(
-        padding:
-            EdgeInsets.only(left: 21.w, right: 16.w, top: 50.h, bottom: 33.h),
-        margin: EdgeInsets.symmetric(
-          horizontal: 30.w,
-          vertical: kToolbarHeight,
-        ),
-        decoration: BoxDecoration(
-          color: AppColors.white,
-          borderRadius: BorderRadius.circular(20),
-        ),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              // User Placeholder Image
-              Center(
-                child: SvgPicture.asset(
-                  Helper.getSvgPath("user_placeholder_image.svg"),
-                  width: 50.sp,
-                  height: 50.sp,
+      child: SingleChildScrollView(
+        child: Container(
+          padding:
+              EdgeInsets.only(left: 21.w, right: 16.w, top: 50.h, bottom: 33.h),
+          margin: EdgeInsets.symmetric(
+            horizontal: 30.w,
+            vertical: kToolbarHeight,
+          ),
+          decoration: BoxDecoration(
+            color: AppColors.white,
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: Form(
+            key: _formKey,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                // User Placeholder Image
+                Center(
+                  child: SvgPicture.asset(
+                    Helper.getSvgPath("user_placeholder_image.svg"),
+                    width: 50.sp,
+                    height: 50.sp,
+                  ),
                 ),
-              ),
 
-              // Space
-              SizedBox(
-                height: 20.h,
-              ),
-
-              // Login Title
-              Text(
-                S.of(context).login_to_existing_user,
-                style: Theme.of(context).textTheme.headlineMedium!.copyWith(
-                      fontWeight: FontWeight.w600,
-                      color: AppColors.primaryColor,
-                    ),
-                textAlign: TextAlign.center,
-              ),
-
-              // Space
-              SizedBox(
-                height: 40.h,
-              ),
-
-              // Email Text Field
-              _buildEmailTextField(),
-
-              // Space
-              SizedBox(
-                height: 12.h,
-              ),
-
-              // Password Text Field
-              _buildPasswordTextField(),
-
-              // Space
-              SizedBox(
-                height: 22.h,
-              ),
-
-              // Remember Me And Forget Password
-              _buildRememberMeAndForgetPassword(),
-
-              // Space
-              SizedBox(
-                height: 42.h,
-              ),
-
-              // Login Button
-              Center(
-                child: ButtonWidget(
-                  text: S.of(context).login,
-                  verticalPadding: 10.h,
-                  horizontalPadding: 30.w,
-                  shadowColor: AppColors.primaryColor.withOpacity(0.5),
-                  elevation: 20,
+                // Space
+                SizedBox(
+                  height: 20.h,
                 ),
-              ),
 
-              // Space
-              SizedBox(
-                height: 30.h,
-              ),
+                // Login Title
+                Text(
+                  S.of(context).login_to_existing_user,
+                  style: Theme.of(context).textTheme.headlineMedium!.copyWith(
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.primaryColor,
+                      ),
+                  textAlign: TextAlign.center,
+                ),
 
-              // Don't Have an Account And Create Account
-              _buildDoNotHaveAnAccountAndCreateAccount(),
-            ],
+                // Space
+                SizedBox(
+                  height: 40.h,
+                ),
+
+                // Email Text Field
+                _buildEmailTextField(),
+
+                // Space
+                SizedBox(
+                  height: 12.h,
+                ),
+
+                // Password Text Field
+                _buildPasswordTextField(),
+
+                // Space
+                SizedBox(
+                  height: 22.h,
+                ),
+
+                // Remember Me And Forget Password
+                _buildRememberMeAndForgetPassword(),
+
+                // Space
+                SizedBox(
+                  height: 42.h,
+                ),
+
+                // Login Button
+                Center(
+                  child: ButtonWidget(
+                    text: S.of(context).login,
+                    verticalPadding: 10.h,
+                    horizontalPadding: 30.w,
+                    shadowColor: AppColors.primaryColor.withOpacity(0.3),
+                    elevation: 20,
+                  ),
+                ),
+
+                // Space
+                SizedBox(
+                  height: 30.h,
+                ),
+
+                // Don't Have an Account And Create Account
+                _buildDoNotHaveAnAccountAndCreateAccount(),
+              ],
+            ),
           ),
         ),
       ),
@@ -263,18 +266,24 @@ class _LoginPageState extends State<LoginPage> {
         text: TextSpan(children: [
           // Don't Have An Account Title
           TextSpan(
-              text: S.of(context).do_not_have_an_account,
-              style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                    fontWeight: FontWeight.w600,
-                  )),
+            text: S.of(context).do_not_have_an_account,
+            style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                  fontWeight: FontWeight.w600,
+                ),
+          ),
 
           // Create Account Title
           TextSpan(
-              text: S.of(context).create_account,
-              style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.primaryColor,
-                  )),
+            text: S.of(context).create_account,
+            style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                  fontWeight: FontWeight.w600,
+                  color: AppColors.primaryColor,
+                ),
+            recognizer: TapGestureRecognizer()
+              ..onTap = () {
+                Navigator.pushReplacementNamed(context, "/register_page");
+              },
+          ),
         ]),
       ),
     );
