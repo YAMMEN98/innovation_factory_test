@@ -1,8 +1,11 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:innovation_factory_test/src/core/common_feature/presentation/pages/background_page.dart';
+import 'package:innovation_factory_test/src/core/common_feature/presentation/widgets/app_loader.dart';
+import 'package:innovation_factory_test/src/core/common_feature/presentation/widgets/app_snack_bar.dart';
 import 'package:innovation_factory_test/src/core/common_feature/presentation/widgets/button_widget.dart';
 import 'package:innovation_factory_test/src/core/common_feature/presentation/widgets/checkbox_widget.dart';
 import 'package:innovation_factory_test/src/core/common_feature/presentation/widgets/text_field_widget.dart';
@@ -10,10 +13,14 @@ import 'package:innovation_factory_test/src/core/styles/app_colors.dart';
 import 'package:innovation_factory_test/src/core/translations/l10n.dart';
 import 'package:innovation_factory_test/src/core/util/constant/app_constants.dart';
 import 'package:innovation_factory_test/src/core/util/helper/helper.dart';
+import 'package:innovation_factory_test/src/core/util/helper/helper_ui.dart';
 import 'package:innovation_factory_test/src/core/util/validators/base_validator.dart';
 import 'package:innovation_factory_test/src/core/util/validators/email_validator1.dart';
 import 'package:innovation_factory_test/src/core/util/validators/password_validator.dart';
 import 'package:innovation_factory_test/src/core/util/validators/required_validator.dart';
+import 'package:innovation_factory_test/src/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:innovation_factory_test/src/features/auth/presentation/widgets/pin_code_text_field_widget.dart';
+import 'package:innovation_factory_test/src/features/auth/presentation/widgets/verification_code_widget.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -23,6 +30,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final AuthBloc _bloc = AuthBloc();
+
   // Email
   final TextEditingController _emailController = TextEditingController();
   bool _emailValidator = true;
@@ -117,14 +126,60 @@ class _LoginPageState extends State<LoginPage> {
                 ),
 
                 // Login Button
-                Center(
-                  child: ButtonWidget(
-                    text: S.of(context).login,
-                    verticalPadding: 10.h,
-                    horizontalPadding: 30.w,
-                    shadowColor: AppColors.primaryColor.withOpacity(0.3),
-                    elevation: 20,
-                  ),
+                BlocConsumer<AuthBloc, AuthState>(
+                  bloc: _bloc,
+                  listener: (context, state) {
+                    if (state is ErrorLoginState) {
+                      HelperUi.showSnackBar(context, state.errorMsg,
+                          type: ToastTypeEnum.error);
+                    } else if (state is SuccessLoginState) {
+                      showVerificationCodeDialog(state.userId);
+                    }
+                  },
+                  builder: (context, state) {
+                    if (state is LoadingLoginState) {
+                      return AppLoader();
+                    }
+
+                    return Center(
+                      child: ButtonWidget(
+                        text: S.of(context).login,
+                        verticalPadding: 10.h,
+                        horizontalPadding: 30.w,
+                        shadowColor: AppColors.primaryColor.withOpacity(0.3),
+                        elevation: 20,
+                        onPressed: () {
+                          if (_formKey.currentState!.validate()) {
+                            login();
+                            // pinController = TextEditingController();
+                            // HelperUi.showCustomDialog(
+                            //   context,
+                            //   GeneralDialogWidget(
+                            //     contentPadding: EdgeInsets.only(
+                            //       top: 30.h,
+                            //       bottom: 21.h,
+                            //       left: 21.w,
+                            //       right: 21.w
+                            //     ),
+                            //     title: S.of(context).verify_code,
+                            //     subtitle: S.of(context).we_sent_an_otp,
+                            //     content: _buildPinCodeTextField(),
+                            //     primaryButtonName:
+                            //         S.of(context).validate,
+                            //     icon: SvgPicture.asset(
+                            //       Helper.getSvgPath("verification_code_icon.svg"),
+                            //       width: 80.h,
+                            //       height: 80.h,
+                            //     ),
+                            //     callback: () {},
+                            //
+                            //   ),
+                            // );
+                          }
+                        },
+                      ),
+                    );
+                  },
                 ),
 
                 // Space
@@ -164,6 +219,7 @@ class _LoginPageState extends State<LoginPage> {
         TextFieldWidget(
           controller: _emailController,
           hintText: emailHint,
+          keyboardType: TextInputType.emailAddress,
           validator: (value) {
             return BaseValidator.validateValue(
               context,
@@ -199,6 +255,7 @@ class _LoginPageState extends State<LoginPage> {
         TextFieldWidget(
           controller: _passwordController,
           hintText: passwordHint,
+          isPassword: true,
           validator: (value) {
             return BaseValidator.validateValue(
               context,
@@ -285,6 +342,35 @@ class _LoginPageState extends State<LoginPage> {
               },
           ),
         ]),
+      ),
+    );
+  }
+
+  // Login Method
+  void login() {
+    // Close Keyboard
+    FocusScope.of(context).unfocus();
+
+    String email = _emailController.text.trim();
+    String password = _passwordController.text.trim();
+
+    _bloc.add(
+      OnLoggingInEvent(
+        email,
+        password,
+      ),
+    );
+  }
+
+  // Verification Code Dialog
+  void showVerificationCodeDialog(int userId) {
+    HelperUi.showCustomDialog(
+      context,
+      VerificationCodeWidget(
+        userId: userId,
+        contentPadding:
+            EdgeInsets.only(top: 30.h, bottom: 21.h, left: 21.w, right: 21.w),
+        callback: () {},
       ),
     );
   }

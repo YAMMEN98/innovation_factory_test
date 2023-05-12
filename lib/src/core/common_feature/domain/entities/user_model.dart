@@ -4,32 +4,72 @@ part 'user_model.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class UserModel {
-  final int? id;
-  final String? username;
-  final String? lastName;
-  final String? firstName;
-  final String? email;
+  final int id;
+  @JsonKey(name: "firstName")
+  final String firstName;
+
+  @JsonKey(name: "lastName")
+  final String lastName;
+  final String email;
   final String? emailVerifiedAt;
-  final String? phoneNumber;
-  final String? createdAt;
-  final String? updatedAt;
+  final String phone;
+  final String? image;
+  final String? displayName;
+  final String? dob;
+  final String? nationality;
+  final String gender;
+  final String? address;
 
-  String? token;
+  @JsonKey(name: "isAdmin")
+  final int isAdmin;
 
-  UserModel({
-    this.username,
-    this.lastName,
-    this.firstName,
-    this.email,
-    this.id,
-    this.phoneNumber,
-    this.createdAt,
-    this.updatedAt,
-    this.token,
-    this.emailVerifiedAt,
-  });
+  @JsonKey(name: "isSubscribed")
+  final int isSubscribed;
+  final String referCode;
+  final String? notificationType;
+  final String contactEmail;
+  final int referUser;
+  final String lastPublicKey;
+  final int balance;
+  final int referGift;
+  final int cashGift;
+  final int creditNote;
+  final List<dynamic> referCashback;
+  final List<dynamic> giftCashback;
+  final List<dynamic> creditNoteCashback;
+  final List<dynamic> plans;
 
   factory UserModel.fromJson(json) => _$UserModelFromJson(json);
+
+  UserModel({
+    required this.id,
+    required this.firstName,
+    required this.lastName,
+    required this.email,
+    required this.emailVerifiedAt,
+    required this.phone,
+    required this.image,
+    required this.displayName,
+    required this.dob,
+    required this.nationality,
+    required this.gender,
+    required this.address,
+    required this.isAdmin,
+    required this.isSubscribed,
+    required this.referCode,
+    required this.notificationType,
+    required this.contactEmail,
+    required this.referUser,
+    required this.lastPublicKey,
+    required this.balance,
+    required this.referGift,
+    required this.cashGift,
+    required this.creditNote,
+    required this.referCashback,
+    required this.giftCashback,
+    required this.creditNoteCashback,
+    required this.plans,
+  });
 
   toJson() => _$UserModelToJson(this);
 

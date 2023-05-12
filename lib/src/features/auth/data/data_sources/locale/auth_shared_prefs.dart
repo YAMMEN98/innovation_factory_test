@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:innovation_factory_test/src/core/common_feature/domain/entities/user_model.dart';
 import 'package:innovation_factory_test/src/core/util/constant/app_constants.dart';
 import 'package:innovation_factory_test/src/core/util/constant/local_storage_constants.dart';
@@ -9,15 +11,16 @@ class AuthSharedPrefs {
   AuthSharedPrefs(this._preferences);
 
   /// __________ User Model __________ ///
-  UserModel getUser() {
-    return UserModel(token: token);
+  UserModel? getUser() {
+    String? data =   _preferences.getString(userKey);
+    if(data == null){
+      return null;
+    }
+    return UserModel.fromJson(json.decode(data));
   }
 
   Future<void> saveUser(UserModel user) async {
-
-    if (user.token != null) {
-      saveToken(user.token!);
-    }
+    await _preferences.setString(userKey, json.encode(user.toJson()));
   }
 
   Future<void> deleteUser() async {

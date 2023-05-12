@@ -4,13 +4,25 @@ abstract class AuthEvent {
   const AuthEvent();
 }
 
-/// Login event
+// On Login In Event
 class OnLoggingInEvent extends AuthEvent {
-  // Data from verification capture
-  final Map jsonData;
-  final String emailOrPhoneNumber;
+  final String email;
   final String password;
 
-  OnLoggingInEvent(this.jsonData, this.emailOrPhoneNumber, this.password);
+  OnLoggingInEvent(this.email, this.password);
 }
 
+// On Verification Account
+class OnVerificationEvent extends AuthEvent {
+  final int userId;
+  final int otp;
+  final String app;
+  final String deviceType;
+
+  OnVerificationEvent({
+    required this.userId,
+    required this.otp,
+    required this.app,
+    required this.deviceType,
+  });
+}

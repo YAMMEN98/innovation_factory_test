@@ -3,22 +3,19 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:innovation_factory_test/src/core/common_feature/presentation/pages/background_page.dart';
 import 'package:innovation_factory_test/src/core/common_feature/presentation/widgets/button_widget.dart';
 import 'package:innovation_factory_test/src/core/common_feature/presentation/widgets/checkbox_widget.dart';
-import 'package:innovation_factory_test/src/core/common_feature/presentation/widgets/general_dialog_widget.dart';
 import 'package:innovation_factory_test/src/core/common_feature/presentation/widgets/text_field_widget.dart';
 import 'package:innovation_factory_test/src/core/styles/app_colors.dart';
 import 'package:innovation_factory_test/src/core/translations/l10n.dart';
 import 'package:innovation_factory_test/src/core/util/constant/app_constants.dart';
-import 'package:innovation_factory_test/src/core/util/helper/helper.dart';
-import 'package:innovation_factory_test/src/core/util/helper/helper_ui.dart';
 import 'package:innovation_factory_test/src/core/util/validators/base_validator.dart';
 import 'package:innovation_factory_test/src/core/util/validators/email_validator1.dart';
 import 'package:innovation_factory_test/src/core/util/validators/match_validator.dart';
 import 'package:innovation_factory_test/src/core/util/validators/password_validator.dart';
 import 'package:innovation_factory_test/src/core/util/validators/required_validator.dart';
+import 'package:innovation_factory_test/src/features/auth/presentation/widgets/pin_code_text_field_widget.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -51,9 +48,6 @@ class _RegisterPageState extends State<RegisterPage> {
 
   bool _isAgreeChecked = false;
 
-  // Verification code dialog
-   TextEditingController pinController = TextEditingController();
-  bool _isValidPin = true;
 
   @override
   void initState() {
@@ -144,33 +138,8 @@ class _RegisterPageState extends State<RegisterPage> {
                     shadowColor: AppColors.primaryColor.withOpacity(0.3),
                     elevation: 20,
                     onPressed: () {
-                      if(_formKey.currentState!.validate() && _isAgreeChecked){
-
-                      }
-                      // pinController = TextEditingController();
-                      // HelperUi.showCustomDialog(
-                      //   context,
-                      //   GeneralDialogWidget(
-                      //     contentPadding: EdgeInsets.only(
-                      //       top: 30.h,
-                      //       bottom: 21.h,
-                      //       left: 21.w,
-                      //       right: 21.w
-                      //     ),
-                      //     title: S.of(context).verify_code,
-                      //     subtitle: S.of(context).we_sent_an_otp,
-                      //     content: _buildPinCodeTextField(),
-                      //     primaryButtonName:
-                      //         S.of(context).validate,
-                      //     icon: SvgPicture.asset(
-                      //       Helper.getSvgPath("verification_code_icon.svg"),
-                      //       width: 80.h,
-                      //       height: 80.h,
-                      //     ),
-                      //     callback: () {},
-                      //
-                      //   ),
-                      // );
+                      if (_formKey.currentState!.validate() &&
+                          _isAgreeChecked) {}
                     },
                   ),
                 ),
@@ -344,35 +313,33 @@ class _RegisterPageState extends State<RegisterPage> {
       runSpacing: 5,
       children: [
         // Remember Me
-        Flexible(
-          child: Row(
-            children: [
-              // Remember Me
-              CustomCheckboxWidget(
-                isChecked: _isAgreeChecked,
-                onChanged: (value) {
-                  setState(() {
-                    _isAgreeChecked = value;
-                  });
-                },
-              ),
+        Row(
+          children: [
+            // Remember Me
+            CustomCheckboxWidget(
+              isChecked: _isAgreeChecked,
+              onChanged: (value) {
+                setState(() {
+                  _isAgreeChecked = value;
+                });
+              },
+            ),
 
-              // Space
-              SizedBox(
-                width: 14.w,
-              ),
+            // Space
+            SizedBox(
+              width: 14.w,
+            ),
 
-              Flexible(
-                child: Text(
-                  S.of(context).i_agree_terms_and_conditions,
-                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                        fontWeight: FontWeight.w400,
-                        color: AppColors.grayColor,
-                      ),
-                ),
-              )
-            ],
-          ),
+            Flexible(
+              child: Text(
+                S.of(context).i_agree_terms_and_conditions,
+                style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                      fontWeight: FontWeight.w400,
+                      color: AppColors.grayColor,
+                    ),
+              ),
+            )
+          ],
         ),
 
         // Forget Password
@@ -417,78 +384,6 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  Widget _buildPinCodeTextField() {
-    return Column(
-      children: [
-        PinCodeTextField(
+  // Verification Content
 
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          appContext: context,
-          length: 6,
-          obscureText: false,
-          textStyle: Theme.of(context).textTheme.headlineMedium!.copyWith(
-            color: AppColors.grayColor,
-            fontWeight: FontWeight.w500,
-          ),
-          //AppStyle.regular(size: 14).copyWith(
-          //                           color: AppColors.white,
-          //                         )
-          keyboardType: TextInputType.number,
-          inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-          animationType: AnimationType.fade,
-          validator: (value) {
-            return BaseValidator.validateValue(
-              context,
-              value!,
-              [
-                RequiredValidator(),
-              ],
-              true,
-            );
-          },
-
-          backgroundColor: AppColors.transparent,
-          pinTheme: PinTheme(
-            shape: PinCodeFieldShape.box,
-            borderRadius: BorderRadius.circular(5),
-            activeFillColor: AppColors.transparent,
-            inactiveColor: AppColors.borderColor,
-            inactiveFillColor: AppColors.transparent,
-            selectedFillColor: AppColors.transparent,
-            selectedColor: AppColors.borderColor,
-            activeColor: AppColors.borderColor,
-            borderWidth: 1,
-          ),
-          animationDuration: const Duration(milliseconds: 300),
-          enableActiveFill: true,
-
-          controller: pinController,
-          onCompleted: (v) {
-            if (kDebugMode) {
-              print("Completed");
-            }
-          },
-          onChanged: (value) {
-            setState(() {
-              if (value.isNotEmpty && value.length == 6) {
-                _isValidPin = true;
-              }else{
-                _isValidPin = false;
-              }
-            });
-          },
-          beforeTextPaste: (text) {
-            if (kDebugMode) {
-              print("Allowing to paste $text");
-            }
-            return true;
-          },
-        ),
-
-        SizedBox(
-         height: 10.h,
-        )
-      ],
-    );
-  }
 }

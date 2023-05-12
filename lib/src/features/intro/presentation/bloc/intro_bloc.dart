@@ -13,22 +13,22 @@ class IntroBloc extends Bloc<IntroEvent, IntroState> {
   IntroBloc() : super(IntroInitial()) {
     loginUseCase = sl<LoginUseCase>();
 
-    on<OnGettingDataEvent>(_onLoggingIn);
+    // on<OnGettingDataEvent>(_onLoggingIn);
   }
 
   /// Login event
-  _onLoggingIn(OnGettingDataEvent event, Emitter<IntroState> emitter) async {
-    emitter(LoadingGetDataState());
-
-    final result = await loginUseCase.call(
-      LoginParams(
-        mobileNumber: "",
-      ),
-    );
-    result.fold((l) {
-      emitter(ErrorGetDataState(l.errorMessage));
-    }, (r) {
-      emitter(SuccessGetDataState());
-    });
-  }
+  // _onLoggingIn(OnGettingDataEvent event, Emitter<IntroState> emitter) async {
+  //   emitter(LoadingGetDataState());
+  //
+  //   final result = await loginUseCase.call(
+  //     LoginParams(
+  //       mobileNumber: "",
+  //     ),
+  //   );
+  //   result.fold((l) {
+  //     emitter(ErrorGetDataState(l.errorMessage));
+  //   }, (r) {
+  //     emitter(SuccessGetDataState());
+  //   });
+  // }
 }

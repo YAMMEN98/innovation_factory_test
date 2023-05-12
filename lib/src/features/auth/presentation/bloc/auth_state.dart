@@ -8,17 +8,41 @@ class AuthInitial extends AuthState {}
 
 /// --------------------Start Login-------------------- ///
 
-/// Loading login state
+/// Loading Login State
 class LoadingLoginState extends AuthState {}
 
-/// Error login state
+/// Error Login State
 class ErrorLoginState extends AuthState {
   final String errorMsg;
 
   ErrorLoginState(this.errorMsg);
 }
 
-/// Success login state
-class SuccessLoginState extends AuthState {}
+/// Success Login State
+class SuccessLoginState extends AuthState {
+  final int userId;
+  final String registeredId;
+
+  SuccessLoginState({required this.userId, required this.registeredId});
+}
 
 /// --------------------End Login-------------------- ///
+
+
+/// --------------------Start Verification Account-------------------- ///
+
+/// Loading Verification Code State
+class LoadingVerificationCodeState extends AuthState {}
+
+/// Error Verification Code State
+class ErrorVerificationCodeState extends AuthState {
+  final String errorMsg;
+
+  ErrorVerificationCodeState(this.errorMsg);
+}
+
+/// Success Verification Code State
+class SuccessVerificationCodeState extends AuthState {
+}
+
+/// --------------------End Verification Account-------------------- ///

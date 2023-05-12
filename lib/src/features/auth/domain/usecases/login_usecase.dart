@@ -1,16 +1,16 @@
+import 'package:dartz/dartz.dart';
 import 'package:innovation_factory_test/src/core/network/error/failures.dart';
 import 'package:innovation_factory_test/src/core/util/usecases/usecase.dart';
+import 'package:innovation_factory_test/src/features/auth/domain/entities/auth_response_model.dart';
 import 'package:innovation_factory_test/src/features/auth/domain/repositories/auth_repository.dart';
-import 'package:dartz/dartz.dart';
 
-
-class LoginUseCase extends UseCase<String, LoginParams> {
+class LoginUseCase extends UseCase<AuthResponseModel, LoginParams> {
   final AuthRepository repository;
 
   LoginUseCase(this.repository);
 
   @override
-  Future<Either<Failure, String>> call(LoginParams params) async {
+  Future<Either<Failure, AuthResponseModel>> call(LoginParams params) async {
     final result = await repository.login(params);
     return result.fold((l) {
       return Left(l);
@@ -22,19 +22,22 @@ class LoginUseCase extends UseCase<String, LoginParams> {
 
 class LoginParams {
   LoginParams({
-    required this.mobileNumber,
+    required this.email,
+    required this.password,
   });
 
-  late final String mobileNumber;
-
+  late final String email;
+  late final String password;
 
   LoginParams.fromJson(Map<String, dynamic> json) {
-    mobileNumber = json['mobileNumber'];
+    email = json['email'];
+    password = json['password'];
   }
 
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
-    data['mobileNumber'] = mobileNumber;
+    data['email'] = email;
+    data['password'] = password;
     return data..removeWhere((key, value) => value == null);
   }
 }
