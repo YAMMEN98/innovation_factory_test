@@ -1,0 +1,26 @@
+{
+  "arabic": "العربية",
+  "english": "English",
+  "login_to_existing_user": "Login to Existing User",
+  "password_does_not_match": "Password does not match",
+  "weak_password_message": "The password is weak",
+  "password_is_empty": "Password is empty\n",
+  "password_should_contain_at_least_8_characters": "Password should contain at least 8 characters\n",
+  "password_should_contain_at_least_one_lowercase_letter": "Password should contain at least one lowercase letter\n",
+  "password_should_contain_at_least_one_uppercase_letter": "Password should contain at least one uppercase letter\n",
+  "password_should_contain_at_least_one_number": "Password should contain at least one number\n",
+  "password_should_contain_at_least_one_symbol": "Password should contain at least one symbol\n",
+  "incorrect_phone_number": "Incorrect Phone Number",
+  "required_field": "Required Field",
+  "internal_server_error": "Internal Server Error",
+  "server_error": "Server Error",
+  "invalid_email_address": "Invalid email address entered. Please check the email address and try again.",
+  "email": "Email",
+  "password": "Password",
+  "remember_login_info": "Remember Login Info",
+  "forget_password": "Forget Password?",
+  "login": "Login",
+  "do_not_have_an_account": "Don't Have An Account? ",
+  "create_account": "Create Account"
+
+}
