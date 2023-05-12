@@ -41,7 +41,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -55,13 +54,13 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            RaisedButton(
+            ElevatedButton(
               onPressed: () {
                 Flushbar(
                   flushbarPosition: FlushbarPosition.TOP,
                   backgroundColor: Colors.red,
-                  duration: Duration(seconds: 3),
-                  titleText: Text(
+                  duration: const Duration(seconds: 3),
+                  titleText: const Text(
                     "Oops, No Internet Connection",
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
@@ -69,16 +68,16 @@ class _MyHomePageState extends State<MyHomePage> {
                         color: Colors.white,
                         fontFamily: "ShadowsIntoLightTwo"),
                   ),
-                  messageText: Text(
+                  messageText: const Text(
                     "Make sure wifi or cellular data is turned on and then try again.",
                     style: TextStyle(
                         fontSize: 16.0,
                         color: Colors.white,
                         fontFamily: "ShadowsIntoLightTwo"),
                   ),
-                )..show(context);
+                ).show(context);
               },
-              child: Text("Show Flushbar"),
+              child: const Text("Show Flushbar"),
             ),
           ],
         ),
