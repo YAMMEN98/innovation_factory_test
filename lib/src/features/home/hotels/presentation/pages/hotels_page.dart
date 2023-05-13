@@ -39,11 +39,6 @@ class _HotelsPageState extends State<HotelsPage> with TickerProviderStateMixin {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            // Space
-            SizedBox(
-              height: 20.h,
-            ),
-
             // Filter
             FilterWidget(
               hasHotelsFilter: true,
@@ -51,7 +46,18 @@ class _HotelsPageState extends State<HotelsPage> with TickerProviderStateMixin {
               hasCheckIn: true,
               hasCheckOut: true,
               hasGuests: true,
-              searchCallback: () {},
+              searchCallback: (flyingFrom,
+                  flyingTo,
+                  departure,
+                  travelers,
+                  returnValue,
+                  whereAreYouGoing,
+                  checkIn,
+                  checkOut,
+                  guest,
+                  pickupLocation,
+                  dropOffLocation,
+                  finalDestination) {},
             ),
 
             // Space

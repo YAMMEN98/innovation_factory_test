@@ -33,7 +33,20 @@ class FilterWidget extends StatefulWidget {
   final bool hasFinalDestination;
   final bool isDifferentReturn;
 
-  final Function() searchCallback;
+  final Function(
+    String flyingFrom,
+    String flyingTo,
+    String departure,
+    String travelers,
+    String returnValue,
+    String whereAreYouGoing,
+    String checkIn,
+    String checkOut,
+    String guest,
+    String pickupLocation,
+    String dropOffLocation,
+    String finalDestination,
+  ) searchCallback;
 
   const FilterWidget({
     Key? key,
@@ -61,6 +74,23 @@ class FilterWidget extends StatefulWidget {
 }
 
 class _FilterWidgetState extends State<FilterWidget> {
+  final TextEditingController flyingFromController = TextEditingController();
+  final TextEditingController flyingToController = TextEditingController();
+  final TextEditingController departureController = TextEditingController();
+  final TextEditingController travelersController = TextEditingController();
+  final TextEditingController returnController = TextEditingController();
+  final TextEditingController whereAreYouGoingController =
+      TextEditingController();
+  final TextEditingController checkInController = TextEditingController();
+  final TextEditingController checkOutController = TextEditingController();
+  final TextEditingController guestsController = TextEditingController();
+  final TextEditingController pickupLocationController =
+      TextEditingController();
+  final TextEditingController dropOffLocationController =
+      TextEditingController();
+  final TextEditingController finalDestinationController =
+      TextEditingController();
+
   bool viewMore = false;
 
   @override
@@ -204,6 +234,7 @@ class _FilterWidgetState extends State<FilterWidget> {
             height: 2.h,
           ),
           TextFieldWidget(
+            controller: departureController,
             enabled: false,
             hintText: HelperUi.formatNamedDate(DateTime.now()),
             isUnderLineBorder: true,
@@ -241,6 +272,7 @@ class _FilterWidgetState extends State<FilterWidget> {
             height: 2.h,
           ),
           TextFieldWidget(
+            controller: returnController,
             enabled: false,
             isUnderLineBorder: true,
             hintText: HelperUi.formatNamedDate(DateTime.now()),
@@ -259,41 +291,6 @@ class _FilterWidgetState extends State<FilterWidget> {
           ),
         ],
       ),
-    );
-  }
-
-  // Final Destination Filter
-  Widget _buildFinalDestinationFilter1() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Text(
-          S.of(context).final_destination,
-          style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                fontWeight: FontWeight.w500,
-              ),
-        ),
-        SizedBox(
-          height: 2.h,
-        ),
-        TextFieldWidget(
-          enabled: false,
-          hintText: "Ras Al-Khaima (RAK)",
-          isUnderLineBorder: true,
-          textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
-                fontWeight: FontWeight.w500,
-              ),
-          contentPadding: EdgeInsets.zero,
-          prefixIcon: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 5.w),
-            child: SvgPicture.asset(
-              Helper.getSvgPath("calendar.svg"),
-              width: 13.w,
-              height: 13.w,
-            ),
-          ),
-        ),
-      ],
     );
   }
 
@@ -317,6 +314,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                   height: 2.h,
                 ),
                 TextFieldWidget(
+                  controller: flyingFromController,
                   hintText: "Dubai (DXB)",
                   isUnderLineBorder: true,
                   textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
@@ -359,6 +357,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                   height: 2.h,
                 ),
                 TextFieldWidget(
+                  controller: flyingToController,
                   isUnderLineBorder: true,
                   hintText: "Sharjah (SHJ)",
                   textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
@@ -402,6 +401,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                   height: 2.h,
                 ),
                 TextFieldWidget(
+                  controller: pickupLocationController,
                   hintText: "Dubai (DXB)",
                   isUnderLineBorder: true,
                   textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
@@ -443,6 +443,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                   height: 2.h,
                 ),
                 TextFieldWidget(
+                  controller: dropOffLocationController,
                   isUnderLineBorder: true,
                   hintText: "Sharjah (SHJ)",
                   textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
@@ -471,7 +472,38 @@ class _FilterWidgetState extends State<FilterWidget> {
       if (widget.hasCarRentalFilter) ...{
         if (widget.isDifferentReturn) ...{
           if (widget.hasFinalDestination) ...{
-            _buildFinalDestinationFilter1(),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Text(
+                  S.of(context).final_destination,
+                  style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                        fontWeight: FontWeight.w500,
+                      ),
+                ),
+                SizedBox(
+                  height: 2.h,
+                ),
+                TextFieldWidget(
+                  controller: finalDestinationController,
+                  enabled: false,
+                  hintText: "Ras Al-Khaima (RAK)",
+                  isUnderLineBorder: true,
+                  textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
+                        fontWeight: FontWeight.w500,
+                      ),
+                  contentPadding: EdgeInsets.zero,
+                  prefixIcon: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 5.w),
+                    child: SvgPicture.asset(
+                      Helper.getSvgPath("calendar.svg"),
+                      width: 13.w,
+                      height: 13.w,
+                    ),
+                  ),
+                ),
+              ],
+            ),
             if (viewMore) ...{
               // Space
               SizedBox(
@@ -553,6 +585,7 @@ class _FilterWidgetState extends State<FilterWidget> {
             height: 2.h,
           ),
           TextFieldWidget(
+            controller: travelersController,
             enabled: false,
             hintText: S.of(context).travelers_hint,
             isUnderLineBorder: true,
@@ -595,6 +628,7 @@ class _FilterWidgetState extends State<FilterWidget> {
               height: 2.h,
             ),
             TextFieldWidget(
+              controller: whereAreYouGoingController,
               enabled: false,
               hintText: S.of(context).search_for_place,
               isUnderLineBorder: true,
@@ -642,6 +676,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                   height: 2.h,
                 ),
                 TextFieldWidget(
+                  controller: checkInController,
                   hintText: HelperUi.formatNamedDate(DateTime.now()),
                   isUnderLineBorder: true,
                   textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
@@ -684,6 +719,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                   height: 2.h,
                 ),
                 TextFieldWidget(
+                  controller: checkOutController,
                   isUnderLineBorder: true,
                   hintText: HelperUi.formatNamedDate(DateTime.now()),
                   textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
@@ -723,6 +759,7 @@ class _FilterWidgetState extends State<FilterWidget> {
             height: 2.h,
           ),
           TextFieldWidget(
+            controller: guestsController,
             enabled: false,
             hintText: S.of(context).travelers_hint,
             isUnderLineBorder: true,

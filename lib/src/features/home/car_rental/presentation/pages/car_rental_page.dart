@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:innovation_factory_test/src/core/common_feature/presentation/pages/background_page.dart';
-import 'package:innovation_factory_test/src/core/common_feature/presentation/widgets/app_loader.dart';
 import 'package:innovation_factory_test/src/core/common_feature/presentation/widgets/switch_widget.dart';
 import 'package:innovation_factory_test/src/core/styles/app_colors.dart';
 import 'package:innovation_factory_test/src/core/translations/l10n.dart';
@@ -28,7 +27,6 @@ class _CarRentalPageState extends State<CarRentalPage>
 
   ScrollController scrollController = ScrollController();
   late TabController tabController;
-
 
   // Is Different Return
   bool isDifferentReturn = true;
@@ -58,87 +56,79 @@ class _CarRentalPageState extends State<CarRentalPage>
             // CarRental Type
             Center(
                 child: BlocBuilder<FilterCubit, FilterState>(
-                  bloc: _filterCubit,
-                  builder: (context, state) {
-                    return Row(
-                      mainAxisAlignment: _filterCubit.selectedCarTripType == 1?
-                      MainAxisAlignment.spaceBetween:MainAxisAlignment.center,
-                      children: [
-                        Flexible(
-                          child: SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: Row(
-                              children: [
-
-                                SizedBox(
-                                  width: 10.w,
-                                ),
-
-                                // One Way
-                                SelectButtonWidget(
-                                  title: S.of(context).one_way,
-                                  isSelected: _filterCubit.selectedCarTripType == 0,
-                                  onTap: () {
-                                    _filterCubit.changeCarRentalType(0);
-                                  },
-                                ),
-
-                                SizedBox(
-                                  width: 10.w,
-                                ),
-
-                                // Rounded Trip
-                                SelectButtonWidget(
-                                  title: S.of(context).round_trip,
-                                  isSelected: _filterCubit.selectedCarTripType == 1,
-                                  onTap: () {
-                                    _filterCubit.changeCarRentalType(1);
-                                  },
-                                ),
-
-                              ],
+              bloc: _filterCubit,
+              builder: (context, state) {
+                return Row(
+                  mainAxisAlignment: _filterCubit.selectedCarTripType == 1
+                      ? MainAxisAlignment.spaceBetween
+                      : MainAxisAlignment.center,
+                  children: [
+                    Flexible(
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: [
+                            SizedBox(
+                              width: 10.w,
                             ),
-                          ),
+
+                            // One Way
+                            SelectButtonWidget(
+                              title: S.of(context).one_way,
+                              isSelected: _filterCubit.selectedCarTripType == 0,
+                              onTap: () {
+                                _filterCubit.changeCarRentalType(0);
+                              },
+                            ),
+
+                            SizedBox(
+                              width: 10.w,
+                            ),
+
+                            // Rounded Trip
+                            SelectButtonWidget(
+                              title: S.of(context).round_trip,
+                              isSelected: _filterCubit.selectedCarTripType == 1,
+                              onTap: () {
+                                _filterCubit.changeCarRentalType(1);
+                              },
+                            ),
+                          ],
                         ),
-
-
-                        if(_filterCubit.selectedCarTripType == 1)...{
-                          SizedBox(
-                            width: 10.w,
+                      ),
+                    ),
+                    if (_filterCubit.selectedCarTripType == 1) ...{
+                      SizedBox(
+                        width: 10.w,
+                      ),
+                      Row(
+                        children: [
+                          SwitchWidget(
+                            value: _filterCubit.isDifferentReturn,
+                            callback: (value) {
+                              _filterCubit.changeIsDifferentReturn(value);
+                            },
                           ),
-
-                          Row(
-                            children: [
-                              SwitchWidget(
-                                value: _filterCubit.isDifferentReturn,
-                                callback: (value){
-                                  _filterCubit.changeIsDifferentReturn(value);
-                                },
-                              ),
-
-                              SizedBox(
-                                width: 5.w,
-                              ),
-
-                              Text(
-                                S.of(context).different_return,
-                                style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                          SizedBox(
+                            width: 5.w,
+                          ),
+                          Text(
+                            S.of(context).different_return,
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleSmall!
+                                .copyWith(
                                   fontWeight: FontWeight.w400,
                                   color: AppColors.grayColor,
                                 ),
-                              ),
-
-                            ],
                           ),
-
-
-
-                        }
-                      ],
-                    );
-                  },
-                )
-            ),
+                        ],
+                      ),
+                    }
+                  ],
+                );
+              },
+            )),
 
             // Space
             SizedBox(
@@ -157,7 +147,18 @@ class _CarRentalPageState extends State<CarRentalPage>
                   hasReturn: _filterCubit.selectedCarTripType != 0,
                   hasFinalDestination: _filterCubit.selectedCarTripType == 1,
                   isDifferentReturn: _filterCubit.isDifferentReturn,
-                  searchCallback: () {},
+                  searchCallback: (flyingFrom,
+                      flyingTo,
+                      departure,
+                      travelers,
+                      returnValue,
+                      whereAreYouGoing,
+                      checkIn,
+                      checkOut,
+                      guest,
+                      pickupLocation,
+                      dropOffLocation,
+                      finalDestination) {},
                 );
               },
             ),
