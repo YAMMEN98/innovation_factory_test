@@ -7,6 +7,7 @@ import 'package:innovation_factory_test/src/core/styles/app_colors.dart';
 import 'package:innovation_factory_test/src/core/translations/l10n.dart';
 import 'package:innovation_factory_test/src/features/home/flights/presentation/bloc/flights_bloc.dart';
 import 'package:innovation_factory_test/src/features/home/flights/presentation/widgets/select_button_widget.dart';
+import 'package:innovation_factory_test/src/features/home/general/presentation/widgets/best_packages/best_packages_widget.dart';
 import 'package:innovation_factory_test/src/features/home/general/presentation/widgets/best_places/best_places_widget.dart';
 import 'package:innovation_factory_test/src/features/home/general/presentation/widgets/filter_widget.dart';
 import 'package:innovation_factory_test/src/features/home/general/presentation/widgets/limited_offers/limited_offers_widget.dart';
@@ -149,6 +150,15 @@ class _FlightsPageState extends State<FlightsPage>
 
             // Best Places
             BestPlacesWidget(),
+
+
+            // Space
+            SizedBox(
+              height: 20.h,
+            ),
+
+            // Best Packages
+            BestPackagesWidget(),
           ],
         ),
       ),

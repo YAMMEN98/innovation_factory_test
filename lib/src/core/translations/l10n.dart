@@ -619,6 +619,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Best Packages`
+  String get best_packages {
+    return Intl.message(
+      'Best Packages',
+      name: 'best_packages',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `People`
+  String get people {
+    return Intl.message(
+      'People',
+      name: 'people',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

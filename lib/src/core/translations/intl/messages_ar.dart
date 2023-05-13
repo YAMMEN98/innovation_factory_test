@@ -25,6 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "already_have_an_account":
             MessageLookupByLibrary.simpleMessage("هل لديك حساب؟ "),
         "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
+        "best_packages": MessageLookupByLibrary.simpleMessage("أفضل الحزم"),
         "best_place": MessageLookupByLibrary.simpleMessage("أفضل الأماكن"),
         "book_now": MessageLookupByLibrary.simpleMessage("حجز الآن"),
         "business": MessageLookupByLibrary.simpleMessage("عمل"),
@@ -76,6 +77,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "password_should_contain_at_least_one_uppercase_letter":
             MessageLookupByLibrary.simpleMessage(
                 ". يجب أن تحتوي كلمة المرور على حرف واحد كبير على الأقل\n"),
+        "people": MessageLookupByLibrary.simpleMessage("الناس"),
         "phone": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
         "register": MessageLookupByLibrary.simpleMessage("التسجيل"),
         "register_for_new_user":

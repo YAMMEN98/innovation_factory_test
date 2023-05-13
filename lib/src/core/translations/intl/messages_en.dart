@@ -25,6 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "already_have_an_account":
             MessageLookupByLibrary.simpleMessage("Already Have An Account? "),
         "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
+        "best_packages": MessageLookupByLibrary.simpleMessage("Best Packages"),
         "best_place": MessageLookupByLibrary.simpleMessage("Best Places"),
         "book_now": MessageLookupByLibrary.simpleMessage("Book Now"),
         "business": MessageLookupByLibrary.simpleMessage("Business"),
@@ -80,6 +81,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "password_should_contain_at_least_one_uppercase_letter":
             MessageLookupByLibrary.simpleMessage(
                 ". Password should contain at least one uppercase letter\n"),
+        "people": MessageLookupByLibrary.simpleMessage("People"),
         "phone": MessageLookupByLibrary.simpleMessage("Phone Number"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
         "register_for_new_user":

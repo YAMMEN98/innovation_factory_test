@@ -54,7 +54,7 @@ class _BestPlaceCardWidgetState extends State<BestPlaceCardWidget> {
                     ],
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
-                    stops: const [0.7, 0.9],
+                    stops: const [0.6, 0.9],
                   ),
                 ),
               ),
