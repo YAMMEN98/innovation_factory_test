@@ -30,11 +30,9 @@ class RateNumberWidget extends StatelessWidget {
           SvgPicture.asset(
             Helper.getSvgPath("star.svg"),
           ),
-
           SizedBox(
             width: 5.w,
           ),
-
           Text(
             rateTitle,
             style: Theme.of(context).textTheme.titleSmall!.copyWith(

@@ -3,7 +3,6 @@ import 'package:innovation_factory_test/src/core/util/injections.dart';
 import 'package:innovation_factory_test/src/features/home/general/domain/usecases/home_usecase.dart';
 
 part 'home_event.dart';
-
 part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
@@ -16,13 +15,10 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 
   /// Home event
-  _onLoggingIn(OnRequestingHomeEvent event,
-      Emitter<HomeState> emitter) async {
+  _onLoggingIn(OnRequestingHomeEvent event, Emitter<HomeState> emitter) async {
     emitter(LoadingDataState());
 
-    final result = await homeUseCase.call(
-      HomeParams()
-    );
+    final result = await homeUseCase.call(HomeParams());
     result.fold((l) {
       emitter(ErrorDataState(l.errorMessage));
     }, (r) {

@@ -17,11 +17,7 @@ class FlightsRepositoryImpl extends FlightsRepository {
   Future<Either<Failure, String>> flights(FlightsParams params) async {
     try {
       final result = await flightsApi.flights(params);
-      return result.fold((l) {
-        return Left(ServerFailure(l.errorMessage, null));
-      }, (r) {
-        return Right(r);
-      });
+      return Right("");
     } on ServerException catch (e) {
       return Left(ServerFailure(e.message, e.statusCode));
     }

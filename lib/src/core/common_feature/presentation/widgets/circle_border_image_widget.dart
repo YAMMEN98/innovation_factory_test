@@ -4,11 +4,13 @@ import 'package:innovation_factory_test/src/core/styles/app_colors.dart';
 
 class CircleBorderImageWidget extends StatelessWidget {
   final String image;
-  const CircleBorderImageWidget({Key? key, required this.image}) : super(key: key);
+
+  const CircleBorderImageWidget({Key? key, required this.image})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
+    return Container(
       width: 45.sp,
       height: 45.sp,
       decoration: BoxDecoration(
@@ -19,13 +21,13 @@ class CircleBorderImageWidget extends StatelessWidget {
         ),
         boxShadow: [
           BoxShadow(
-            color: AppColors.shadowColor,
-            spreadRadius: 3,
-            blurRadius: 10,
-            offset: Offset(0, 10)
-          ),
+              color: AppColors.shadowColor,
+              spreadRadius: 3,
+              blurRadius: 10,
+              offset: Offset(0, 10)),
         ],
-      ),      child: CircleAvatar(
+      ),
+      child: CircleAvatar(
         backgroundImage: AssetImage(
           image,
         ),

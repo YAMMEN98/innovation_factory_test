@@ -28,7 +28,6 @@ class SuccessLoginState extends AuthState {
 
 /// --------------------End Login-------------------- ///
 
-
 /// --------------------Start Verification Account-------------------- ///
 
 /// Loading Verification Code State
@@ -42,11 +41,9 @@ class ErrorVerificationCodeState extends AuthState {
 }
 
 /// Success Verification Code State
-class SuccessVerificationCodeState extends AuthState {
-}
+class SuccessVerificationCodeState extends AuthState {}
 
 /// --------------------End Verification Account-------------------- ///
-
 
 /// --------------------Start Register-------------------- ///
 

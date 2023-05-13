@@ -639,6 +639,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Search for place and proprieties`
+  String get search_for_place {
+    return Intl.message(
+      'Search for place and proprieties',
+      name: 'search_for_place',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Check In`
+  String get check_in {
+    return Intl.message(
+      'Check In',
+      name: 'check_in',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Check Out`
+  String get check_out {
+    return Intl.message(
+      'Check Out',
+      name: 'check_out',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Guests`
+  String get guests {
+    return Intl.message(
+      'Guests',
+      name: 'guests',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

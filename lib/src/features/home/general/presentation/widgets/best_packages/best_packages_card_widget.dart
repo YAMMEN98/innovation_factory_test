@@ -36,7 +36,7 @@ class _BestPackageCardWidgetState extends State<BestPackageCardWidget> {
                   color: AppColors.shadowColor,
                   spreadRadius: 3,
                   blurRadius: 15,
-                  offset: Offset(0, 15),
+                  offset: Offset(0, 10),
                 ),
               ],
             ),
@@ -109,7 +109,6 @@ class _BestPackageCardWidgetState extends State<BestPackageCardWidget> {
                             ),
                           ],
                         ),
-
                         Container(
                           padding: EdgeInsets.symmetric(
                             horizontal: 10.w,
@@ -128,10 +127,13 @@ class _BestPackageCardWidgetState extends State<BestPackageCardWidget> {
                           ),
                           child: Text(
                             "\$2,400",
-                            style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                              fontWeight: FontWeight.w600,
-                              color: AppColors.white,
-                            ),
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleLarge!
+                                .copyWith(
+                                  fontWeight: FontWeight.w600,
+                                  color: AppColors.white,
+                                ),
                           ),
                         )
                       ],

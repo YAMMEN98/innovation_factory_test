@@ -6,12 +6,11 @@ import 'package:innovation_factory_test/src/core/network/error/failures.dart';
 import 'package:innovation_factory_test/src/features/home/general/data/data_sources/remote/general_home_api.dart';
 import 'package:innovation_factory_test/src/features/home/general/domain/usecases/home_usecase.dart';
 
-class HomeApi extends GeneralHomeApi{
+class HomeApi extends GeneralHomeApi {
   HomeApi(super.dio);
 
   /// Home method
-  Future<Either<Failure, String>> home(
-  HomeParams params) async {
+  Future<Either<Failure, String>> home(HomeParams params) async {
     try {
       final result = (await dio.get("")).data;
       return Right("");

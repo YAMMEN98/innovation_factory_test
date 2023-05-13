@@ -1,9 +1,6 @@
-
-
 import 'package:json_annotation/json_annotation.dart';
 
 part 'auth_response_model.g.dart';
-
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class AuthResponseModel {
@@ -11,11 +8,11 @@ class AuthResponseModel {
     required this.userId,
     required this.registeredEmail,
   });
+
   late final int userId;
   late final String registeredEmail;
 
-  factory AuthResponseModel.fromJson(json) =>
-      _$AuthResponseModelFromJson(json);
+  factory AuthResponseModel.fromJson(json) => _$AuthResponseModelFromJson(json);
 
   toJson() => _$AuthResponseModelToJson(this);
 

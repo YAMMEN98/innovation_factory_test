@@ -27,44 +27,37 @@ class _LimitedOffersWidgetState extends State<LimitedOffersWidget> {
               child: Text(
                 S.of(context).limited_offers,
                 style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                  fontWeight: FontWeight.w700,
-                ),
+                      fontWeight: FontWeight.w700,
+                    ),
               ),
             ),
-
             SizedBox(
               width: HelperUi.getHorizontalSpace(),
             ),
-
             Text(
               S.of(context).view_all,
               style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                fontWeight: FontWeight.w600,
-                color: AppColors.primaryColor,
-              ),
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.primaryColor,
+                  ),
             ),
-
-
           ],
         ),
-
 
         // List Of Offers
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
-            children: offers.map((e) {
-              return Padding(
-                padding:  EdgeInsets.symmetric(
-                  horizontal: HelperUi.getHorizontalSpace(),
-                  vertical: 20.h,
-                ),
-                child: LimitedOfferCardWidget(),
-              );
-            }).toList()
-          ),
+              children: offers.map((e) {
+            return Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: HelperUi.getHorizontalSpace(),
+                vertical: 20.h,
+              ),
+              child: LimitedOfferCardWidget(),
+            );
+          }).toList()),
         )
-
       ],
     );
   }

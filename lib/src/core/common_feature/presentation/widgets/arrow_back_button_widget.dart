@@ -3,19 +3,19 @@
  * Connection email: yamen.abd98@gmail.com
 */
 
-
 import 'package:flutter/material.dart';
 
 class ArrowBackButtonWidget extends StatelessWidget {
   final Function()? callback;
-  const ArrowBackButtonWidget({Key? key,  this.callback}) : super(key: key);
+
+  const ArrowBackButtonWidget({Key? key, this.callback}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: IconButton(
-        onPressed: (){
+        onPressed: () {
           callback?.call();
           Navigator.pop(context);
         },

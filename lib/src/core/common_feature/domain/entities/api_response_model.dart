@@ -15,7 +15,7 @@ class ApiResponse<T> {
     return ApiResponse<T>(
       status: json['status'],
       message: json['message'],
-      data: json['data']==null ? null: tFromJson(json['data']),
+      data: json['data'] == null ? null : tFromJson(json['data']),
     );
   }
 
@@ -29,8 +29,8 @@ class ApiResponse<T> {
     }
     if (other is ApiResponse) {
       return other.status == status &&
-          other.message == message &&
-          other.data is List
+              other.message == message &&
+              other.data is List
           ? listEquals(other.data, data as List)
           : other.data == data;
     }

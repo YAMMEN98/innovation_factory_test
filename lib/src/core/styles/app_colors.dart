@@ -12,7 +12,7 @@ class AppColors {
   static const borderColor = Color(0xFFE6F2F7);
   static const darkFontColor = Color(0xFF031017);
   static const tagColor = Color(0xFFF2FBFF);
-  static  Color shadowColor = primaryColor.withOpacity(0.2);
+  static Color shadowColor = primaryColor.withOpacity(0.2);
   static const transparent = Colors.transparent;
 
 // static const lightGreen = Color(0xFF7EE8B8);

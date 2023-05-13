@@ -1,13 +1,13 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:innovation_factory_test/main.dart';
-import 'package:innovation_factory_test/src/core/network/dio_network.dart';
 import 'package:innovation_factory_test/src/core/network/logger_interceptor.dart';
 import 'package:innovation_factory_test/src/core/util/constant/network_constant.dart';
 import 'package:innovation_factory_test/src/core/util/log/app_logger.dart';
-import 'package:innovation_factory_test/src/core/util/log/log_controller.dart';
 import 'package:innovation_factory_test/src/features/auth/auth_injections.dart';
 import 'package:innovation_factory_test/src/features/home/flights/flights_injections.dart';
+import 'package:innovation_factory_test/src/features/home/general/home_injections.dart';
+import 'package:innovation_factory_test/src/features/home/hotels/hotels_injections.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../common_feature/app_injections.dart';
@@ -16,12 +16,13 @@ final sl = GetIt.instance;
 
 Future<void> initInjections() async {
   // sl.registerLazySingleton<LogController>(() => LogController());
-
+  await initCoreInjections();
   await initSharedPrefsInjections();
   await initAppInjections();
   await initAuthInjections();
-  await initCoreInjections();
+  await initHomeInjections();
   await initFlightsInjections();
+  await initHotelsInjections();
 }
 
 initSharedPrefsInjections() async {

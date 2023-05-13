@@ -52,7 +52,7 @@ class _BackgroundPageState extends State<BackgroundPage> {
       child: Stack(
         fit: StackFit.expand,
         children: [
-          if(widget.isImage)...{
+          if (widget.isImage) ...{
             SvgPicture.asset(
               Helper.getSvgPath(
                 "login_background.svg",
@@ -61,7 +61,6 @@ class _BackgroundPageState extends State<BackgroundPage> {
               height: 100,
             ),
           },
-
           Scaffold(
             key: widget.scaffoldKey,
             backgroundColor: Colors.transparent,

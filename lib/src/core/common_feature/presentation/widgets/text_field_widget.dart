@@ -1,7 +1,7 @@
-import 'package:innovation_factory_test/src/core/styles/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:innovation_factory_test/src/core/styles/app_colors.dart';
 
 class TextFieldWidget extends StatefulWidget {
   final TextEditingController? controller;
@@ -26,7 +26,6 @@ class TextFieldWidget extends StatefulWidget {
   final bool isUnderLineBorder;
   final bool enabled;
 
-
   const TextFieldWidget({
     Key? key,
     this.controller,
@@ -49,7 +48,7 @@ class TextFieldWidget extends StatefulWidget {
     this.height,
     this.prefixIcon,
     this.isUnderLineBorder = false,
-    this.enabled = false,
+    this.enabled = true,
   }) : super(key: key);
 
   @override
@@ -68,11 +67,12 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
       height: widget.height?.h,
       child: TextFormField(
         enabled: widget.enabled,
-        obscureText: widget.isPassword??false,
+        obscureText: widget.isPassword ?? false,
         controller: widget.controller,
         onChanged: widget.onChanged,
         validator: widget.validator,
-        autovalidateMode: widget.autoValidateMode?? AutovalidateMode.onUserInteraction ,
+        autovalidateMode:
+            widget.autoValidateMode ?? AutovalidateMode.onUserInteraction,
         keyboardType: widget.keyboardType,
         textInputAction: widget.textInputAction,
         focusNode: widget.focusNode,
@@ -83,55 +83,60 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
           prefixIconConstraints: BoxConstraints(),
           contentPadding: widget.contentPadding,
           hintText: widget.hintText,
-          hintStyle: widget.hintStyle??hintStyle,
-          border: widget.isUnderLineBorder?
-          UnderlineInputBorder(
-            borderSide: BorderSide(
-              color: widget.borderColor ?? defaultColor,
-              width: widget.borderWidth ?? defaultBorderWidth,
-            ),
-          ):
-
-          OutlineInputBorder(
-            borderRadius: BorderRadius.circular(widget.borderRadius ?? defaultBorderRadius),
-            borderSide: BorderSide(
-              color: widget.borderColor ?? defaultColor,
-              width: widget.borderWidth ?? defaultBorderWidth,
-            ),
-          ),
-          enabledBorder: widget.isUnderLineBorder?
-          UnderlineInputBorder(
-            borderSide: BorderSide(
-              color: widget.borderColor ?? defaultColor,
-              width: widget.borderWidth ?? defaultBorderWidth,
-            ),
-          ):OutlineInputBorder(
-            borderRadius: BorderRadius.circular(widget.borderRadius ?? defaultBorderRadius),
-            borderSide: BorderSide(
-              color: widget.borderColor ?? defaultColor,
-              width: widget.borderWidth ?? defaultBorderWidth,
-            ),
-          ),
+          hintStyle: widget.hintStyle ?? hintStyle,
+          border: widget.isUnderLineBorder
+              ? UnderlineInputBorder(
+                  borderSide: BorderSide(
+                    color: widget.borderColor ?? defaultColor,
+                    width: widget.borderWidth ?? defaultBorderWidth,
+                  ),
+                )
+              : OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(
+                      widget.borderRadius ?? defaultBorderRadius),
+                  borderSide: BorderSide(
+                    color: widget.borderColor ?? defaultColor,
+                    width: widget.borderWidth ?? defaultBorderWidth,
+                  ),
+                ),
+          enabledBorder: widget.isUnderLineBorder
+              ? UnderlineInputBorder(
+                  borderSide: BorderSide(
+                    color: widget.borderColor ?? defaultColor,
+                    width: widget.borderWidth ?? defaultBorderWidth,
+                  ),
+                )
+              : OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(
+                      widget.borderRadius ?? defaultBorderRadius),
+                  borderSide: BorderSide(
+                    color: widget.borderColor ?? defaultColor,
+                    width: widget.borderWidth ?? defaultBorderWidth,
+                  ),
+                ),
           errorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(widget.borderRadius ?? defaultBorderRadius),
+            borderRadius: BorderRadius.circular(
+                widget.borderRadius ?? defaultBorderRadius),
             borderSide: BorderSide(
               color: AppColors.red,
               width: 2,
             ),
           ),
-          focusedBorder: widget.isUnderLineBorder?
-          UnderlineInputBorder(
-            borderSide: BorderSide(
-              color: widget.borderColor ?? defaultColor,
-              width: widget.borderWidth ?? defaultBorderWidth,
-            ),
-          ):OutlineInputBorder(
-            borderRadius: BorderRadius.circular(widget.borderRadius ?? defaultBorderRadius),
-            borderSide: BorderSide(
-              color: widget.borderColor ?? defaultColor,
-              width: widget.borderWidth ?? defaultBorderWidth,
-            ),
-          ),
+          focusedBorder: widget.isUnderLineBorder
+              ? UnderlineInputBorder(
+                  borderSide: BorderSide(
+                    color: widget.borderColor ?? defaultColor,
+                    width: widget.borderWidth ?? defaultBorderWidth,
+                  ),
+                )
+              : OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(
+                      widget.borderRadius ?? defaultBorderRadius),
+                  borderSide: BorderSide(
+                    color: widget.borderColor ?? defaultColor,
+                    width: widget.borderWidth ?? defaultBorderWidth,
+                  ),
+                ),
         ),
       ),
     );

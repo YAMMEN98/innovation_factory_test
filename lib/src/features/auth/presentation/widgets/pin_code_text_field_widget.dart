@@ -9,7 +9,10 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 class PinCodeTextFieldWidget extends StatefulWidget {
   final TextEditingController pinCodeController;
   final Function(String value) onChange;
-  const PinCodeTextFieldWidget({Key? key, required this.pinCodeController, required this.onChange}) : super(key: key);
+
+  const PinCodeTextFieldWidget(
+      {Key? key, required this.pinCodeController, required this.onChange})
+      : super(key: key);
 
   @override
   State<PinCodeTextFieldWidget> createState() => _PinCodeTextFieldWidgetState();
@@ -70,7 +73,6 @@ class _PinCodeTextFieldWidgetState extends State<PinCodeTextFieldWidget> {
       },
       onChanged: (value) {
         widget.onChange.call(value);
-
       },
       beforeTextPaste: (text) {
         if (kDebugMode) {

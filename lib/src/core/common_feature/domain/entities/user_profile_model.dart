@@ -39,7 +39,6 @@ class UserProfileModel {
   final List<dynamic> creditNoteCashback;
   final List<dynamic> plans;
 
-
   UserProfileModel({
     required this.id,
     required this.firstName,

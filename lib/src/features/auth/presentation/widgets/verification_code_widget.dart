@@ -19,7 +19,13 @@ class VerificationCodeWidget extends StatefulWidget {
   final EdgeInsets contentPadding;
   final bool isRememberMe;
 
-  const VerificationCodeWidget({Key? key, required this.contentPadding, this.callback, required this.userId, required this.isRememberMe}) : super(key: key);
+  const VerificationCodeWidget(
+      {Key? key,
+      required this.contentPadding,
+      this.callback,
+      required this.userId,
+      required this.isRememberMe})
+      : super(key: key);
 
   @override
   State<VerificationCodeWidget> createState() => _VerificationCodeWidgetState();
@@ -74,8 +80,8 @@ class _VerificationCodeWidgetState extends State<VerificationCodeWidget> {
                 Text(
                   S.of(context).we_sent_an_otp,
                   style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                    fontWeight: FontWeight.w500,
-                  ),
+                        fontWeight: FontWeight.w500,
+                      ),
                   textAlign: TextAlign.center,
                 ),
 
@@ -105,43 +111,47 @@ class _VerificationCodeWidgetState extends State<VerificationCodeWidget> {
 
                 // Validate Button
                 Center(
-                  child: BlocConsumer<AuthBloc, AuthState>(
-                    bloc: _bloc,
-                    listener: (context, state) {
-                      if(state is ErrorVerificationCodeState){
-                        HelperUi.showSnackBar(context, state.errorMsg, type: ToastTypeEnum.error);
-                      }else if(state is SuccessVerificationCodeState){
-                        Navigator.pushNamedAndRemoveUntil(context, "/home_page", (route) => false);
-                        HelperUi.showSnackBar(context, S.of(context).welcome_on_app, type: ToastTypeEnum.success);
-                      }
-                    },
-                    builder: (context, state) {
-                      if(state is LoadingVerificationCodeState){
-                        return AppLoader();
-                      }
-                      return ButtonWidget(
-                        horizontalPadding: 20.w,
-                        text: S.of(context).validate,
-                        textStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                          fontWeight: FontWeight.w600,
-                          color: AppColors.white,
-                        ),
-                        onPressed: () async {
-                          if(_isValidPin){
-                            _bloc.add(OnVerificationEvent(
-                              userId: widget.userId,
-                              otp: int.tryParse(pinCodeController.text.trim())??0,
-                              deviceType: Helper.getDeviceType().name,
-                              app: Helper.getAppName(),
-                              isRememberMe: widget.isRememberMe,
-
-                            ));
-                          }
-                        },
-                      );
-                    },
-                  )
-                ),
+                    child: BlocConsumer<AuthBloc, AuthState>(
+                  bloc: _bloc,
+                  listener: (context, state) {
+                    if (state is ErrorVerificationCodeState) {
+                      HelperUi.showSnackBar(context, state.errorMsg,
+                          type: ToastTypeEnum.error);
+                    } else if (state is SuccessVerificationCodeState) {
+                      Navigator.pushNamedAndRemoveUntil(
+                          context, "/home_page", (route) => false);
+                      HelperUi.showSnackBar(
+                          context, S.of(context).welcome_on_app,
+                          type: ToastTypeEnum.success);
+                    }
+                  },
+                  builder: (context, state) {
+                    if (state is LoadingVerificationCodeState) {
+                      return AppLoader();
+                    }
+                    return ButtonWidget(
+                      horizontalPadding: 20.w,
+                      text: S.of(context).validate,
+                      textStyle:
+                          Theme.of(context).textTheme.bodyLarge!.copyWith(
+                                fontWeight: FontWeight.w600,
+                                color: AppColors.white,
+                              ),
+                      onPressed: () async {
+                        if (_isValidPin) {
+                          _bloc.add(OnVerificationEvent(
+                            userId: widget.userId,
+                            otp: int.tryParse(pinCodeController.text.trim()) ??
+                                0,
+                            deviceType: Helper.getDeviceType().name,
+                            app: Helper.getAppName(),
+                            isRememberMe: widget.isRememberMe,
+                          ));
+                        }
+                      },
+                    );
+                  },
+                )),
               ],
             ),
           ),

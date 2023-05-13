@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:innovation_factory_test/main.dart';
 import 'package:innovation_factory_test/src/core/styles/app_colors.dart';
 
 class TagWidget extends StatelessWidget {
   final String title;
+
   const TagWidget({Key? key, required this.title}) : super(key: key);
 
   @override
@@ -21,9 +21,9 @@ class TagWidget extends StatelessWidget {
       child: Text(
         title,
         style: Theme.of(context).textTheme.titleSmall!.copyWith(
-          fontWeight: FontWeight.w600,
-          color: AppColors.primaryColor,
-        ),
+              fontWeight: FontWeight.w600,
+              color: AppColors.primaryColor,
+            ),
       ),
     );
   }

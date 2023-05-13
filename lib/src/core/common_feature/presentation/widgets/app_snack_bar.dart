@@ -1,11 +1,9 @@
-
-import 'package:innovation_factory_test/src/core/styles/app_colors.dart';
-import 'package:innovation_factory_test/src/core/util/helper/helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_flushbar/flutter_flushbar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
+import 'package:innovation_factory_test/src/core/styles/app_colors.dart';
+import 'package:innovation_factory_test/src/core/util/helper/helper.dart';
 
 enum ToastTypeEnum { info, success, error }
 
@@ -18,7 +16,8 @@ class AppSnackBar {
     snackBar = Flushbar();
   }
 
-  static void show(BuildContext context, String text, ToastTypeEnum type) async{
+  static void show(
+      BuildContext context, String text, ToastTypeEnum type) async {
     Color backgroundColor;
     switch (type) {
       case ToastTypeEnum.success:
@@ -32,7 +31,7 @@ class AppSnackBar {
     }
 
     snackBar.dismiss();
-    snackBar =  Flushbar(
+    snackBar = Flushbar(
       duration: const Duration(seconds: 4),
       message: text,
       messageColor: AppColors.white,
@@ -40,30 +39,37 @@ class AppSnackBar {
       borderRadius: BorderRadius.circular(15),
       icon: type == ToastTypeEnum.success
           ? SvgPicture.asset(
-        Helper.getSvgPath("check.svg"),
-        height:15.h,
-        width: 15.h,
-      )
+              Helper.getSvgPath("check.svg"),
+              height: 15.h,
+              width: 15.h,
+            )
           : SvgPicture.asset(
-        Helper.getSvgPath("alert.svg"),
-        height: 15.h,
-        width: 15.h,
-      ),
+              Helper.getSvgPath("alert.svg"),
+              height: 15.h,
+              width: 15.h,
+            ),
       flushbarStyle: FlushbarStyle.FLOATING,
       flushbarPosition: FlushbarPosition.TOP,
-      margin: EdgeInsets.symmetric(horizontal:  15.h, vertical: 15.h,),
+      margin: EdgeInsets.symmetric(
+        horizontal: 15.h,
+        vertical: 15.h,
+      ),
     );
     snackBar.show(context);
   }
 
-  static void showWithUndo(String text, ToastTypeEnum type, Function undoCallback, Function deleteCallback, BuildContext context) {
+  static void showWithUndo(String text, ToastTypeEnum type,
+      Function undoCallback, Function deleteCallback, BuildContext context) {
     Color backgroundColor = const Color(0xFFF05454);
     late Flushbar flush;
     flush = Flushbar(
       duration: const Duration(seconds: 4),
       messageText: Text(
         text,
-        style: TextStyle(color: Colors.white, fontSize: 12.h,),
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 12.h,
+        ),
       ),
       backgroundColor: backgroundColor,
       flushbarPosition: FlushbarPosition.BOTTOM,
@@ -73,9 +79,9 @@ class AppSnackBar {
       mainButton: TextButton(
         child: Text(
           "Back",
-          style:  Theme.of(context).textTheme.subtitle2!.copyWith(
-            fontWeight: FontWeight.normal,
-          ),
+          style: Theme.of(context).textTheme.subtitle2!.copyWith(
+                fontWeight: FontWeight.normal,
+              ),
         ),
         onPressed: () {
           flush.dismiss();

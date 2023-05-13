@@ -21,19 +21,30 @@ class PasswordValidator extends BaseValidator {
             message = message + S.of(context).password_is_empty;
             break;
           case PasswordValidType.password_should_contain_at_least_8_charachters:
-            message = message + S.of(context).password_should_contain_at_least_8_characters;
+            message = message +
+                S.of(context).password_should_contain_at_least_8_characters;
             break;
-          case PasswordValidType.password_should_contain_at_least_one_lowercase_letter:
-            message = message + S.of(context).password_should_contain_at_least_one_lowercase_letter;
+          case PasswordValidType
+              .password_should_contain_at_least_one_lowercase_letter:
+            message = message +
+                S
+                    .of(context)
+                    .password_should_contain_at_least_one_lowercase_letter;
             break;
           case PasswordValidType.password_should_contain_at_least_one_number:
-            message = message + S.of(context).password_should_contain_at_least_one_number;
+            message = message +
+                S.of(context).password_should_contain_at_least_one_number;
             break;
           case PasswordValidType.password_should_contain_at_least_one_symobol:
-            message = message + S.of(context).password_should_contain_at_least_one_symbol;
+            message = message +
+                S.of(context).password_should_contain_at_least_one_symbol;
             break;
-          case PasswordValidType.password_should_contain_at_least_one_upercase_letter:
-            message = message + S.of(context).password_should_contain_at_least_one_uppercase_letter;
+          case PasswordValidType
+              .password_should_contain_at_least_one_upercase_letter:
+            message = message +
+                S
+                    .of(context)
+                    .password_should_contain_at_least_one_uppercase_letter;
             break;
         }
       });
@@ -51,23 +62,34 @@ class PasswordValidator extends BaseValidator {
     }
     // if (!RegExp("(?=.*^[\u0600-\u06FF])").hasMatch(value.trim())) this.typeValids.add(PasswordValidType.password_should_contain_at_least_one_lowercase_letter);
 
-    if (value.length < 8) this.typeValids.add(PasswordValidType.password_should_contain_at_least_8_charachters);
+    if (value.length < 8)
+      this.typeValids.add(
+          PasswordValidType.password_should_contain_at_least_8_charachters);
     if (!RegExp("(.*([\u0621-\u064A])+.*)").hasMatch(value.trim())) {
-      if (!RegExp("(?=.*[a-z])").hasMatch(value.trim())) this.typeValids.add(PasswordValidType.password_should_contain_at_least_one_lowercase_letter);
-      if (!RegExp("(?=.*[A-Z])").hasMatch(value.trim())) this.typeValids.add(PasswordValidType.password_should_contain_at_least_one_upercase_letter);
+      if (!RegExp("(?=.*[a-z])").hasMatch(value.trim()))
+        this.typeValids.add(PasswordValidType
+            .password_should_contain_at_least_one_lowercase_letter);
+      if (!RegExp("(?=.*[A-Z])").hasMatch(value.trim()))
+        this.typeValids.add(PasswordValidType
+            .password_should_contain_at_least_one_upercase_letter);
     }
     if (!RegExp("(?=.*([0-9]|[\u0660-\u0669]))").hasMatch(value.trim()))
-      this.typeValids.add(PasswordValidType.password_should_contain_at_least_one_number);
+      this
+          .typeValids
+          .add(PasswordValidType.password_should_contain_at_least_one_number);
 
     bool isSpectal = false;
     for (int i = 0; i < value.split('').length; i++)
-      if (!RegExp(".*([0-9A-Z\u0660-\u0669a-z\u0621-\u064A])").hasMatch(value.split('')[i])) {
+      if (!RegExp(".*([0-9A-Z\u0660-\u0669a-z\u0621-\u064A])")
+          .hasMatch(value.split('')[i])) {
         isSpectal = true;
 
         break;
       }
     if (!isSpectal) {
-      this.typeValids.add(PasswordValidType.password_should_contain_at_least_one_symobol);
+      this
+          .typeValids
+          .add(PasswordValidType.password_should_contain_at_least_one_symobol);
     }
 
     return typeValids.isEmpty;

@@ -5,10 +5,8 @@ abstract class FlightsEvent {
 }
 
 // Change Selected Flight Type
-class OnChangingSelectedFlightTypeEvent extends FlightsEvent{
+class OnChangingSelectedFlightTypeEvent extends FlightsEvent {
   final int selectedFlightTypeIndex;
 
   OnChangingSelectedFlightTypeEvent(this.selectedFlightTypeIndex);
-
 }
-

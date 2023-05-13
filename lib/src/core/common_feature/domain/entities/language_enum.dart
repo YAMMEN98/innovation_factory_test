@@ -1,4 +1,3 @@
-
 import 'package:innovation_factory_test/main.dart';
 import 'package:innovation_factory_test/src/core/translations/l10n.dart';
 

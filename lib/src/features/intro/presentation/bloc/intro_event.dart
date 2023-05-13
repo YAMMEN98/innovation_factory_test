@@ -4,6 +4,4 @@ part of 'intro_bloc.dart';
 abstract class IntroEvent {}
 
 // Check User Event
-class OnCheckUserEvent extends IntroEvent {
-}
-
+class OnCheckUserEvent extends IntroEvent {}

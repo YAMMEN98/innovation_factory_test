@@ -41,7 +41,7 @@
   "one_way": "One Way",
   "round_trip": "Round Trip",
   "business": "Business",
-  "flying_from":"Flying From",
+  "flying_from": "Flying From",
   "flying_to": "Flying To",
   "departure": "Departure",
   "return_flying": "Return",
@@ -57,6 +57,9 @@
   "book_now": "Book Now",
   "best_place": "Best Places",
   "best_packages": "Best Packages",
-  "people": "People"
-
+  "people": "People",
+  "search_for_place": "Search for place and proprieties",
+  "check_in": "Check In",
+  "check_out": "Check Out",
+  "guests": "Guests"
 }

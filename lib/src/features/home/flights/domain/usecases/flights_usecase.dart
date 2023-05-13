@@ -6,7 +6,7 @@ import 'package:innovation_factory_test/src/features/home/flights/domain/reposit
 class FlightsUseCase extends UseCase<String, FlightsParams> {
   final FlightsRepository repository;
 
-FlightsUseCase(this.repository);
+  FlightsUseCase(this.repository);
 
   @override
   Future<Either<Failure, String>> call(FlightsParams params) async {

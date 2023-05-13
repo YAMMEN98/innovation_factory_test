@@ -4,11 +4,10 @@ abstract class FlightsState {
   const FlightsState();
 }
 
-class FlightsInitial extends FlightsState {
-}
+class FlightsInitial extends FlightsState {}
 
 // Chang Selected flight Type
-class ChangeSelectedFlightState extends FlightsState{
+class ChangeSelectedFlightState extends FlightsState {
   final int selectedFlightTypeIndex;
 
   ChangeSelectedFlightState(this.selectedFlightTypeIndex);

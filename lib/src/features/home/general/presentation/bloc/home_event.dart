@@ -5,6 +5,4 @@ abstract class HomeEvent {
 }
 
 /// Home event
-class OnRequestingHomeEvent extends HomeEvent {
-}
-
+class OnRequestingHomeEvent extends HomeEvent {}

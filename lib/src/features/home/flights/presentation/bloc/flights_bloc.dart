@@ -3,7 +3,6 @@ import 'package:innovation_factory_test/src/core/util/injections.dart';
 import 'package:innovation_factory_test/src/features/home/flights/domain/usecases/flights_usecase.dart';
 
 part 'flights_event.dart';
-
 part 'flights_state.dart';
 
 class FlightsBloc extends Bloc<FlightsEvent, FlightsState> {

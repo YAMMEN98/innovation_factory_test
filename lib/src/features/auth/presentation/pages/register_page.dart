@@ -43,7 +43,6 @@ class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController _phoneController = TextEditingController();
   bool _phoneValidator = true;
 
-
   // Password
   final TextEditingController _passwordController = TextEditingController();
   bool _passwordValidator = true;
@@ -114,7 +113,6 @@ class _RegisterPageState extends State<RegisterPage> {
                 SizedBox(
                   height: 12.h,
                 ),
-
 
                 // Phone Text Field
                 _buildPhoneTextField(),
@@ -484,7 +482,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
     _bloc.add(
       OnRegisteringEvent(
-       firstName: firstName,
+        firstName: firstName,
         lastName: lastName,
         email: email,
         password: password,

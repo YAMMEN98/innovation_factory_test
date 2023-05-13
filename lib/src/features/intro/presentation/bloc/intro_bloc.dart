@@ -5,7 +5,6 @@ import 'package:innovation_factory_test/src/core/util/injections.dart';
 import 'package:innovation_factory_test/src/features/auth/data/data_sources/locale/auth_shared_prefs.dart';
 
 part 'intro_event.dart';
-
 part 'intro_state.dart';
 
 class IntroBloc extends Bloc<IntroEvent, IntroState> {

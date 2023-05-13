@@ -1,5 +1,5 @@
-import 'package:innovation_factory_test/src/core/translations/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:innovation_factory_test/src/core/translations/l10n.dart';
 
 import 'base_validator.dart';
 

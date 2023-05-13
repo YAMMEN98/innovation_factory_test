@@ -2,7 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:innovation_factory_test/main.dart';
 import 'package:innovation_factory_test/src/core/common_feature/domain/entities/api_response_model.dart';
 import 'package:innovation_factory_test/src/core/common_feature/domain/entities/user_model.dart';
-import 'package:innovation_factory_test/src/core/common_feature/domain/entities/user_profile_model.dart';
 import 'package:innovation_factory_test/src/core/network/error/dio_error_handler.dart';
 import 'package:innovation_factory_test/src/core/network/error/exceptions.dart';
 import 'package:innovation_factory_test/src/core/translations/l10n.dart';
@@ -76,7 +75,7 @@ class AuthApi extends GeneralAuthApi {
         data: params.toJson(),
       ));
       ApiResponse<AuthResponseModel> response =
-      ApiResponse.fromJson(result.data, AuthResponseModel.fromJson);
+          ApiResponse.fromJson(result.data, AuthResponseModel.fromJson);
       if (response.status == null || response.status == false) {
         throw ServerException(
             response.message ?? S.of(navigatorKey.currentContext!).server_error,
@@ -91,5 +90,4 @@ class AuthApi extends GeneralAuthApi {
       throw ServerException(e.toString(), null);
     }
   }
-
 }

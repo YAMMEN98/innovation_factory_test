@@ -38,12 +38,12 @@ class _IntroPageState extends State<IntroPage> {
     super.initState();
   }
 
-
   @override
   void dispose() {
     _bloc.close();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

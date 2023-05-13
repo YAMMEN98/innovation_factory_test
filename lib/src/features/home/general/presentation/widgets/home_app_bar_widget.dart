@@ -123,8 +123,6 @@ class _HomeAppBarWidgetState extends State<HomeAppBarWidget> {
                   height: 15.w,
                 ),
               ),
-
-
             ],
           )
         ],

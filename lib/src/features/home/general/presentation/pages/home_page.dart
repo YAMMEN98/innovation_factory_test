@@ -8,6 +8,7 @@ import 'package:innovation_factory_test/src/core/util/helper/helper.dart';
 import 'package:innovation_factory_test/src/features/home/flights/presentation/pages/flights_page.dart';
 import 'package:innovation_factory_test/src/features/home/general/presentation/widgets/home_app_bar_widget.dart';
 import 'package:innovation_factory_test/src/features/home/general/presentation/widgets/home_tab_bar_widget.dart';
+import 'package:innovation_factory_test/src/features/home/hotels/presentation/pages/hotels_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -18,7 +19,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   ScrollController scrollController = ScrollController();
-  late TabController tabController ;
+  late TabController tabController;
+
   @override
   void initState() {
     tabController = TabController(length: 3, vsync: this);
@@ -39,7 +41,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             // Where next title
             SliverToBoxAdapter(
               child: Container(
-
                 height: 188.h,
                 decoration: BoxDecoration(
                   color: AppColors.primaryColor,
@@ -65,11 +66,13 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                           // Where next title
                           Text(
                             S.of(context).where_next,
-                            style:
-                            Theme.of(context).textTheme.headlineLarge!.copyWith(
-                              fontWeight: FontWeight.w700,
-                              color: AppColors.white,
-                            ),
+                            style: Theme.of(context)
+                                .textTheme
+                                .headlineLarge!
+                                .copyWith(
+                                  fontWeight: FontWeight.w700,
+                                  color: AppColors.white,
+                                ),
                           ),
 
                           // Tab Bar
@@ -90,15 +93,11 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           physics: NeverScrollableScrollPhysics(),
           children: [
             FlightsPage(),
-
-            Text("2"),
-
+            HotelsPage(),
             Text("3"),
-
-
           ],
         ),
       ),
- );
+    );
   }
 }

@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:innovation_factory_test/src/core/common_feature/data/data_sources/app_shared_prefs.dart';
 import 'package:innovation_factory_test/src/core/common_feature/domain/entities/app_enum.dart';
@@ -30,30 +29,27 @@ class Helper {
     return {}..removeWhere((key, value) => value == null);
   }
 
-
   // Get Is Dark Theme Or Not
   static bool isDarkTheme() {
     return sl<AppSharedPrefs>().getIsDarkTheme();
   }
 
-
   // Get App Name
-  static String getAppName()  {
+  static String getAppName() {
     return "mobile";
   }
 
   // Get App Name
-  static AppEnum getDeviceType()  {
+  static AppEnum getDeviceType() {
     if (Platform.isAndroid || Platform.isIOS) {
       return AppEnum.mobile;
     } else if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
-      if(kIsWeb){
+      if (kIsWeb) {
         return AppEnum.web;
-      }else{
+      } else {
         return AppEnum.desktop;
       }
     }
     return AppEnum.mobile;
   }
-
 }

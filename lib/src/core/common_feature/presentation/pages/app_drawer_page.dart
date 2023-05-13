@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class AppDrawerPage extends StatefulWidget {
   const AppDrawerPage({Key? key}) : super(key: key);
 
@@ -8,8 +7,7 @@ class AppDrawerPage extends StatefulWidget {
   State<AppDrawerPage> createState() => _AppDrawerPageState();
 }
 
-class _AppDrawerPageState extends State<AppDrawerPage>  {
-
+class _AppDrawerPageState extends State<AppDrawerPage> {
   @override
   void initState() {
     super.initState();

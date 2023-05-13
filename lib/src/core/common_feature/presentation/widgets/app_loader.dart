@@ -1,6 +1,6 @@
-import 'package:innovation_factory_test/src/core/styles/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:innovation_factory_test/src/core/styles/app_colors.dart';
 
 class AppLoader extends StatelessWidget {
   const AppLoader({
@@ -15,7 +15,9 @@ class AppLoader extends StatelessWidget {
           child: SpinKitFadingCircle(
             itemBuilder: (BuildContext context, int index) {
               return DecoratedBox(
-                decoration: BoxDecoration(color: AppColors.primaryColor, borderRadius: BorderRadius.circular(25)),
+                decoration: BoxDecoration(
+                    color: AppColors.primaryColor,
+                    borderRadius: BorderRadius.circular(25)),
               );
             },
           )),

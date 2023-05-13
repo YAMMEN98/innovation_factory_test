@@ -27,7 +27,7 @@ class _LimitedOfferCardWidgetState extends State<LimitedOfferCardWidget> {
             color: AppColors.shadowColor,
             spreadRadius: 3,
             blurRadius: 15,
-            offset: Offset(0, 15),
+            offset: Offset(0, 10),
           ),
         ],
       ),

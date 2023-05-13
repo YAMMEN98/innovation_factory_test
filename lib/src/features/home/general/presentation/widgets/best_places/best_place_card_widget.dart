@@ -14,12 +14,12 @@ class BestPlaceCardWidget extends StatefulWidget {
 
 class _BestPlaceCardWidgetState extends State<BestPlaceCardWidget> {
   bool isFavorite = false;
+
   @override
   Widget build(BuildContext context) {
     return Container(
       width: 150.w,
       height: 200.h,
-
       decoration: BoxDecoration(
         color: Theme.of(context).scaffoldBackgroundColor,
         borderRadius: BorderRadius.circular(20.sp),
@@ -28,7 +28,7 @@ class _BestPlaceCardWidgetState extends State<BestPlaceCardWidget> {
             color: AppColors.shadowColor,
             spreadRadius: 3,
             blurRadius: 15,
-            offset: Offset(0, 15),
+            offset: Offset(0, 10),
           ),
         ],
       ),
@@ -85,9 +85,9 @@ class _BestPlaceCardWidgetState extends State<BestPlaceCardWidget> {
                       // Favorite
                       CircleAvatar(
                         radius: 15,
-                        backgroundColor: isFavorite?
-                        AppColors.white:
-                        AppColors.transparent,
+                        backgroundColor: isFavorite
+                            ? AppColors.white
+                            : AppColors.transparent,
                         child: FavoriteButton(
                           iconSize: 20.sp,
                           isFavorite: isFavorite,
@@ -99,47 +99,45 @@ class _BestPlaceCardWidgetState extends State<BestPlaceCardWidget> {
                           },
                         ),
                       ),
-
                     ],
                   ),
-
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Text(
                         "Burj Khalifa",
                         style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                          fontWeight: FontWeight.w700,
-                          color: AppColors.white,
-                        ),
-                      ),
-
-                      SizedBox(
-                        height: 3.h,
-                      ),
-
-                      RichText(text: TextSpan(
-                        children: [
-                          TextSpan(
-                            text: "\$238 ",
-                            style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                               fontWeight: FontWeight.w700,
                               color: AppColors.white,
                             ),
+                      ),
+                      SizedBox(
+                        height: 3.h,
+                      ),
+                      RichText(
+                        text: TextSpan(children: [
+                          TextSpan(
+                            text: "\$238 ",
+                            style:
+                                Theme.of(context).textTheme.bodyLarge!.copyWith(
+                                      fontWeight: FontWeight.w700,
+                                      color: AppColors.white,
+                                    ),
                           ),
-
                           TextSpan(
                             text: "/ Per person",
-                            style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                              fontWeight: FontWeight.w500,
-                              color: AppColors.white,
-                            ),
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleSmall!
+                                .copyWith(
+                                  fontWeight: FontWeight.w500,
+                                  color: AppColors.white,
+                                ),
                           ),
-                        ]
-                      ),)
+                        ]),
+                      )
                     ],
                   ),
-
                 ],
               ),
             ),

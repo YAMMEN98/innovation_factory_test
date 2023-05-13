@@ -22,15 +22,15 @@ class _ActionButtonWidgetState extends State<ActionButtonWidget> {
         padding: EdgeInsets.all(13.sp),
         decoration: BoxDecoration(
           color: AppColors.white,
-            borderRadius: BorderRadius.circular(15.sp),
-            boxShadow: [
-              BoxShadow(
-                  color: AppColors.shadowColor,
-                  spreadRadius: 3,
-                  blurRadius: 10,
-                  offset: Offset(0, 5),
-              ),
-            ],
+          borderRadius: BorderRadius.circular(15.sp),
+          boxShadow: [
+            BoxShadow(
+              color: AppColors.shadowColor,
+              spreadRadius: 3,
+              blurRadius: 10,
+              offset: Offset(0, 5),
+            ),
+          ],
         ),
         child: widget.child,
       ),

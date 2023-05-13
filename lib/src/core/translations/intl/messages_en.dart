@@ -30,6 +30,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "book_now": MessageLookupByLibrary.simpleMessage("Book Now"),
         "business": MessageLookupByLibrary.simpleMessage("Business"),
         "car_rental": MessageLookupByLibrary.simpleMessage("Car Rental"),
+        "check_in": MessageLookupByLibrary.simpleMessage("Check In"),
+        "check_out": MessageLookupByLibrary.simpleMessage("Check Out"),
         "code": MessageLookupByLibrary.simpleMessage("Code"),
         "confirm_password":
             MessageLookupByLibrary.simpleMessage("Confirm Password"),
@@ -46,6 +48,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "forget_password":
             MessageLookupByLibrary.simpleMessage("Forget Password?"),
         "full_name": MessageLookupByLibrary.simpleMessage("Full Name"),
+        "guests": MessageLookupByLibrary.simpleMessage("Guests"),
         "hotels": MessageLookupByLibrary.simpleMessage("Hotels"),
         "i_agree_terms_and_conditions": MessageLookupByLibrary.simpleMessage(
             "I Agree To The Terms Of Service And Privacy Policy"),
@@ -93,6 +96,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "return_flying": MessageLookupByLibrary.simpleMessage("Return"),
         "round_trip": MessageLookupByLibrary.simpleMessage("Round Trip"),
         "search": MessageLookupByLibrary.simpleMessage("Search"),
+        "search_for_place": MessageLookupByLibrary.simpleMessage(
+            "Search for place and proprieties"),
         "server_error": MessageLookupByLibrary.simpleMessage("Server Error"),
         "share": MessageLookupByLibrary.simpleMessage("Share"),
         "travelers": MessageLookupByLibrary.simpleMessage("Travelers"),

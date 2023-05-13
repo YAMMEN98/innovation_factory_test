@@ -1,6 +1,6 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:innovation_factory_test/src/core/styles/app_colors.dart';
-import 'package:flutter/material.dart';
 
 class ButtonWidget extends StatefulWidget {
   final String text;
@@ -42,45 +42,41 @@ class _ButtonWidgetState extends State<ButtonWidget> {
         );
 
     return ElevatedButton(
-      onPressed: widget.onPressed??(){},
+      onPressed: widget.onPressed ?? () {},
       style: ElevatedButton.styleFrom(
-        elevation: widget.elevation??0,
+        elevation: widget.elevation ?? 0,
         padding: EdgeInsets.symmetric(
-          horizontal: widget.horizontalPadding??15,
-          vertical: widget.verticalPadding??15,
+          horizontal: widget.horizontalPadding ?? 15,
+          vertical: widget.verticalPadding ?? 15,
         ),
         backgroundColor: widget.backgroundColor ?? AppColors.primaryColor,
         shape: RoundedRectangleBorder(
-          side: widget.borderColor!=null?
-          BorderSide(
-            color: widget.borderColor!,
-          ):const BorderSide(
-            color: AppColors.transparent,
-          ),
+          side: widget.borderColor != null
+              ? BorderSide(
+                  color: widget.borderColor!,
+                )
+              : const BorderSide(
+                  color: AppColors.transparent,
+                ),
           borderRadius: BorderRadius.circular(
             widget.radius ?? 30,
           ),
         ),
-        shadowColor: widget.shadowColor??AppColors.lightGrayColor,
-
+        shadowColor: widget.shadowColor ?? AppColors.lightGrayColor,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-
-          if(widget.icon!=null)...{
+          if (widget.icon != null) ...{
             widget.icon!,
-
             SizedBox(
               width: 5.w,
             ),
           },
-
           Text(
             widget.text,
             style: widget.textStyle ?? textStyle,
           ),
-
         ],
       ),
     );

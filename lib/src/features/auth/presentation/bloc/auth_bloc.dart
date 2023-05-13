@@ -6,7 +6,6 @@ import 'package:innovation_factory_test/src/features/auth/domain/usecases/regist
 import 'package:innovation_factory_test/src/features/auth/domain/usecases/verification_code_usecase.dart';
 
 part 'auth_event.dart';
-
 part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {

@@ -5,8 +5,6 @@ class HomeSharedPrefs {
 
   HomeSharedPrefs(this._preferences);
 
-
-
   /// __________ Clear Storage __________ ///
   Future<bool> clearAllLocalData() async {
     return true;

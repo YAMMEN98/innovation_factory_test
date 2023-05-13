@@ -30,6 +30,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "book_now": MessageLookupByLibrary.simpleMessage("حجز الآن"),
         "business": MessageLookupByLibrary.simpleMessage("عمل"),
         "car_rental": MessageLookupByLibrary.simpleMessage("تأجير السيارات"),
+        "check_in": MessageLookupByLibrary.simpleMessage("تسجيل الوصول"),
+        "check_out": MessageLookupByLibrary.simpleMessage("تسجيل المغادرة"),
         "code": MessageLookupByLibrary.simpleMessage("الرمز"),
         "confirm_password":
             MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور"),
@@ -43,6 +45,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "forget_password":
             MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور؟"),
         "full_name": MessageLookupByLibrary.simpleMessage("الاسم الكامل"),
+        "guests": MessageLookupByLibrary.simpleMessage("الضيوف"),
         "hotels": MessageLookupByLibrary.simpleMessage("الفنادق"),
         "i_agree_terms_and_conditions": MessageLookupByLibrary.simpleMessage(
             "أوافق على شروط الخدمة وسياسة الخصوصية"),

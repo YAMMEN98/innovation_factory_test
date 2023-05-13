@@ -34,8 +34,8 @@ class RegisterParams {
   late final String lastName;
   late final String email;
   late final String phone;
-  late  final String password;
-  late  final String referUser;
+  late final String password;
+  late final String referUser;
 
   RegisterParams.fromJson(Map<String, dynamic> json) {
     email = json['firstName'];

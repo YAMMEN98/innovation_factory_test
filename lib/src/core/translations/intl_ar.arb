@@ -44,7 +44,7 @@
   "flight_from": "الطيران من",
   "fly_to": "Flying to",
   "departure": "المغادرة",
-  "return_flying": "العودة" ,
+  "return_flying": "العودة",
   "travelers": "المسافرون",
   "travelers_hint": "2 بالغون 3 أطفال",
   "view_more": "عرض المزيد",
@@ -57,8 +57,9 @@
   "book_now": "حجز الآن",
   "best_place": "أفضل الأماكن",
   "best_packages": "أفضل الحزم",
-  "people": "الناس"
-
-
-
+  "people": "الناس",
+  "search_for place": "البحث عن مكان وخصائص",
+  "check_in": "تسجيل الوصول",
+  "check_out": "تسجيل المغادرة",
+  "guests": "الضيوف"
 }

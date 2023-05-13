@@ -38,8 +38,10 @@ class HelperUi {
       useSafeArea: true,
       barrierDismissible: barrierDismissible,
       builder: (ctx) => Container(
-        margin: margin ?? EdgeInsets.symmetric(horizontal: 30.w,),
-
+        margin: margin ??
+            EdgeInsets.symmetric(
+              horizontal: 30.w,
+            ),
         child: Scaffold(
           backgroundColor: AppColors.transparent,
           body: Column(
@@ -49,7 +51,8 @@ class HelperUi {
               Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  color: backgroundColor ?? Theme.of(context).dialogBackgroundColor,
+                  color: backgroundColor ??
+                      Theme.of(context).dialogBackgroundColor,
                 ),
                 child: child,
               ),
@@ -61,9 +64,8 @@ class HelperUi {
   }
 
   // Format Date as 18 Apr 2023
-  static String formatNamedDate(DateTime dateTime){
+  static String formatNamedDate(DateTime dateTime) {
     String formattedDate = DateFormat('dd MMM yyyy').format(dateTime);
     return formattedDate;
-
   }
 }

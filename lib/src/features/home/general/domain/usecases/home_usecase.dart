@@ -6,7 +6,7 @@ import 'package:innovation_factory_test/src/features/home/general/domain/reposit
 class HomeUseCase extends UseCase<String, HomeParams> {
   final HomeRepository repository;
 
-HomeUseCase(this.repository);
+  HomeUseCase(this.repository);
 
   @override
   Future<Either<Failure, String>> call(HomeParams params) async {

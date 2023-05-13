@@ -1,11 +1,9 @@
-import 'package:innovation_factory_test/src/core/translations/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:innovation_factory_test/src/core/translations/l10n.dart';
 
 import 'base_validator.dart';
 
-
 class PhoneNumberValidator extends BaseValidator {
-
   @override
   String getMessage(BuildContext? context) {
     return S.of(context!).incorrect_phone_number;

@@ -70,7 +70,6 @@ final ThemeData appTheme = ThemeData(
       fontWeight: FontWeight.normal,
     ),
   ),
-
 );
 
 /// Dark theme

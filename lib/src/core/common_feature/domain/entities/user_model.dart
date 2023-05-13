@@ -7,10 +7,9 @@ part 'user_model.g.dart';
 @JsonSerializable(fieldRename: FieldRename.snake)
 class UserModel {
   final UserProfileModel user;
-    final String token;
-    @JsonKey(name: "privateKey")
-    final String privateKey;
-
+  final String token;
+  @JsonKey(name: "privateKey")
+  final String privateKey;
 
   UserModel({
     required this.user,
@@ -25,5 +24,4 @@ class UserModel {
   static List<UserModel> fromJsonList(List json) {
     return json.map((e) => UserModel.fromJson(e)).toList();
   }
-
 }

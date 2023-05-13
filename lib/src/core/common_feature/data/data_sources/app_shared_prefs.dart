@@ -6,7 +6,6 @@ class AppSharedPrefs {
 
   AppSharedPrefs(this._preferences);
 
-
   /// __________ Language __________ ///
   String? getLang() {
     return _preferences.getString(lang);
@@ -15,7 +14,6 @@ class AppSharedPrefs {
   void setLang(String local) {
     _preferences.setString(lang, local);
   }
-
 
   /// __________ Dark Theme __________ ///
   bool getIsDarkTheme() {

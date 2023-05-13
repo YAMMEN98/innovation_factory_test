@@ -14,7 +14,6 @@ void initRootLogger() {
   }
   hierarchicalLoggingEnabled = true;
 
-
   Logger.root.onRecord.listen((record) {
     if (!kDebugMode) {
       return;

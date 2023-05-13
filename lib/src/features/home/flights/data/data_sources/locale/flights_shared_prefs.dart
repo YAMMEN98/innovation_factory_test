@@ -5,8 +5,6 @@ class FlightsSharedPrefs {
 
   FlightsSharedPrefs(this._preferences);
 
-
-
   /// __________ Clear Storage __________ ///
   Future<bool> clearAllLocalData() async {
     return true;

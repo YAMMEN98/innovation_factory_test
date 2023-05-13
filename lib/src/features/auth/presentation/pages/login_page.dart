@@ -16,10 +16,8 @@ import 'package:innovation_factory_test/src/core/util/helper/helper.dart';
 import 'package:innovation_factory_test/src/core/util/helper/helper_ui.dart';
 import 'package:innovation_factory_test/src/core/util/validators/base_validator.dart';
 import 'package:innovation_factory_test/src/core/util/validators/email_validator1.dart';
-import 'package:innovation_factory_test/src/core/util/validators/password_validator.dart';
 import 'package:innovation_factory_test/src/core/util/validators/required_validator.dart';
 import 'package:innovation_factory_test/src/features/auth/presentation/bloc/auth_bloc.dart';
-import 'package:innovation_factory_test/src/features/auth/presentation/widgets/pin_code_text_field_widget.dart';
 import 'package:innovation_factory_test/src/features/auth/presentation/widgets/verification_code_widget.dart';
 
 class LoginPage extends StatefulWidget {
@@ -237,7 +235,7 @@ class _LoginPageState extends State<LoginPage> {
             return BaseValidator.validateValue(
               context,
               value!,
-              [RequiredValidator(), PasswordValidator()],
+              [RequiredValidator()],
               _passwordValidator,
             );
           },
