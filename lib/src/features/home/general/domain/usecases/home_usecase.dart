@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:innovation_factory_test/src/core/network/error/failures.dart';
 import 'package:innovation_factory_test/src/core/util/usecases/usecase.dart';
-import 'package:innovation_factory_test/src/features/home/domain/repositories/home_repository.dart';
+import 'package:innovation_factory_test/src/features/home/general/domain/repositories/home_repository.dart';
 
 class HomeUseCase extends UseCase<String, HomeParams> {
   final HomeRepository repository;

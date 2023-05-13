@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:innovation_factory_test/src/core/util/injections.dart';
-import 'package:innovation_factory_test/src/features/home/domain/usecases/home_usecase.dart';
+import 'package:innovation_factory_test/src/features/home/general/domain/usecases/home_usecase.dart';
 
 part 'home_event.dart';
 

@@ -21,13 +21,12 @@ class _HomeTabBarWidgetState extends State<HomeTabBarWidget> {
   @override
   void initState() {
     widget.tabController.addListener(() {
-    setState(() {
-
-    });
+      setState(() {});
     });
 
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -53,7 +52,9 @@ class _HomeTabBarWidgetState extends State<HomeTabBarWidget> {
             title: S.of(context).flights,
             icon: SvgPicture.asset(
               Helper.getSvgPath("flights.svg"),
-              color: widget.tabController.index ==0?AppColors.primaryColor:AppColors.lightGrayColor,
+              color: widget.tabController.index == 0
+                  ? AppColors.primaryColor
+                  : AppColors.lightGrayColor,
             ),
             index: 0,
           ),
@@ -63,8 +64,9 @@ class _HomeTabBarWidgetState extends State<HomeTabBarWidget> {
             title: S.of(context).hotels,
             icon: SvgPicture.asset(
               Helper.getSvgPath("hotels.svg"),
-              color: widget.tabController.index ==1?AppColors.primaryColor:AppColors.lightGrayColor,
-
+              color: widget.tabController.index == 1
+                  ? AppColors.primaryColor
+                  : AppColors.lightGrayColor,
             ),
             index: 1,
           ),
@@ -74,8 +76,9 @@ class _HomeTabBarWidgetState extends State<HomeTabBarWidget> {
             title: S.of(context).car_rental,
             icon: SvgPicture.asset(
               Helper.getSvgPath("car_rental.svg"),
-              color: widget.tabController.index ==2?AppColors.primaryColor:AppColors.lightGrayColor,
-
+              color: widget.tabController.index == 2
+                  ? AppColors.primaryColor
+                  : AppColors.lightGrayColor,
             ),
             index: 2,
           ),
