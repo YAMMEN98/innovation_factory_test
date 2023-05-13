@@ -30,6 +30,12 @@
   "already_have_an_account": "Already Have An Account? ",
   "validate": "Validate",
   "verify_code": "Verify Code",
-  "we_sent_an_otp": "We sent an OTP code on your Email."
-
+  "we_sent_an_otp": "We sent an OTP code on your Email.",
+  "phone": "Phone Number",
+  "welcome_on_app": "Hello In Your App",
+  "welcome": "Welcome",
+  "where_next": "Where’s your\nnext destination?",
+  "flights": "Flights",
+  "hotels": "Hotels",
+  "car_rental": "Car Rental"
 }

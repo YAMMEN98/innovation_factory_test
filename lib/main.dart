@@ -31,9 +31,6 @@ void main() async {
 
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
-
-  await Helper.getDeviceInfo();
-  print(1);
 }
 
 class App extends StatefulWidget {
@@ -120,7 +117,7 @@ class _AppState extends State<App> with WidgetsBindingObserver {
           home: child,
         );
       },
-      child: const RegisterPage(),
+      child: const IntroPage(),
     );
 
 

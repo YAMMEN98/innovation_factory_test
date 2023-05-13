@@ -18,12 +18,14 @@ class OnVerificationEvent extends AuthEvent {
   final int otp;
   final String app;
   final String deviceType;
+  final bool isRememberMe;
 
   OnVerificationEvent({
     required this.userId,
     required this.otp,
     required this.app,
     required this.deviceType,
+    required this.isRememberMe,
   });
 }
 

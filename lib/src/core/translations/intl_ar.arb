@@ -30,5 +30,12 @@
   "already_have_an_account": "هل لديك حساب؟ ",
   "validate": "التحقق",
   "verify_code": "رمز التحقق",
-  "we_sent_an_otp": "لقد أرسلنا رمز OTP على بريدك الإلكتروني."
+  "we_sent_an_otp": "لقد أرسلنا رمز OTP على بريدك الإلكتروني.",
+  "phone": "رقم الهاتف",
+  "welcome_on_app": "مرحباً بك في تطبيقك",
+  "welcome": "أهلا بك",
+  "where_next": "أين\nوجهتك التالية؟",
+  "flights": "الرحلات الجوية",
+  "hotels": "الفنادق",
+  "car_rental": "تأجير السيارات"
 }

@@ -8,7 +8,7 @@ class AppTextStyle {
 
   static TextStyle textStyleBlack12 = TextStyle(
     fontSize: AppFontSize.fontSize12,
-    color: AppColors.black,
+    color: AppColors.darkFontColor,
   );
 
   static TextStyle textStyleBlack13 = TextStyle(
@@ -25,22 +25,27 @@ class AppTextStyle {
 
   static TextStyle textStyleBlack16 = TextStyle(
     fontSize: AppFontSize.fontSize16,
-    color: AppColors.black,
+    color: AppColors.darkFontColor
   );
 
   static TextStyle textStyleBlack18 = TextStyle(
     fontSize: AppFontSize.fontSize18,
-    color: AppColors.black,
+    color: AppColors.darkFontColor,
+  );
+
+  static TextStyle textStyleBlack20 = TextStyle(
+    fontSize: AppFontSize.fontSize20,
+    color: AppColors.darkFontColor,
   );
 
   static TextStyle textStyleBlack24 = TextStyle(
     fontSize: AppFontSize.fontSize24,
-    color: AppColors.black,
+    color: AppColors.darkFontColor,
   );
 
   static TextStyle textStyleBlack30 = TextStyle(
     fontSize: AppFontSize.fontSize30,
-    color: AppColors.black,
+    color: AppColors.darkFontColor,
   );
 
   // ----------White----------//
@@ -71,6 +76,11 @@ class AppTextStyle {
 
   static TextStyle textStyleWhite18 = TextStyle(
     fontSize: AppFontSize.fontSize18,
+    color: AppColors.white,
+  );
+
+  static TextStyle textStyleWhite20 = TextStyle(
+    fontSize: AppFontSize.fontSize20,
     color: AppColors.white,
   );
 

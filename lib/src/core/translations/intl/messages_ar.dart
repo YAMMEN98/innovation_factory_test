@@ -25,6 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "already_have_an_account":
             MessageLookupByLibrary.simpleMessage("هل لديك حساب؟ "),
         "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
+        "car_rental": MessageLookupByLibrary.simpleMessage("تأجير السيارات"),
         "confirm_password":
             MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور"),
         "create_account": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
@@ -32,9 +33,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
         "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
         "english": MessageLookupByLibrary.simpleMessage("English"),
+        "flights": MessageLookupByLibrary.simpleMessage("الرحلات الجوية"),
         "forget_password":
             MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور؟"),
         "full_name": MessageLookupByLibrary.simpleMessage("الاسم الكامل"),
+        "hotels": MessageLookupByLibrary.simpleMessage("الفنادق"),
         "i_agree_terms_and_conditions": MessageLookupByLibrary.simpleMessage(
             "أوافق على شروط الخدمة وسياسة الخصوصية"),
         "incorrect_phone_number":
@@ -66,6 +69,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "password_should_contain_at_least_one_uppercase_letter":
             MessageLookupByLibrary.simpleMessage(
                 ". يجب أن تحتوي كلمة المرور على حرف واحد كبير على الأقل\n"),
+        "phone": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
         "register": MessageLookupByLibrary.simpleMessage("التسجيل"),
         "register_for_new_user":
             MessageLookupByLibrary.simpleMessage("التسجيل لمستخدم جديد"),
@@ -78,6 +82,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "we_sent_an_otp": MessageLookupByLibrary.simpleMessage(
             "لقد أرسلنا رمز OTP على بريدك الإلكتروني."),
         "weak_password_message":
-            MessageLookupByLibrary.simpleMessage("كلمة المرور ضعيفة")
+            MessageLookupByLibrary.simpleMessage("كلمة المرور ضعيفة"),
+        "welcome": MessageLookupByLibrary.simpleMessage("أهلا بك"),
+        "welcome_on_app":
+            MessageLookupByLibrary.simpleMessage("مرحباً بك في تطبيقك"),
+        "where_next":
+            MessageLookupByLibrary.simpleMessage("أين\nوجهتك التالية؟")
       };
 }

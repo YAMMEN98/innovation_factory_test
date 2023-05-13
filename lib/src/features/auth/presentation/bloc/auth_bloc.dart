@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:innovation_factory_test/src/core/util/injections.dart';
+import 'package:innovation_factory_test/src/features/auth/data/data_sources/locale/auth_shared_prefs.dart';
 import 'package:innovation_factory_test/src/features/auth/domain/usecases/login_usecase.dart';
 import 'package:innovation_factory_test/src/features/auth/domain/usecases/register_usecase.dart';
 import 'package:innovation_factory_test/src/features/auth/domain/usecases/verification_code_usecase.dart';
@@ -59,6 +60,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     result.fold((l) {
       emitter(ErrorVerificationCodeState(l.errorMessage));
     }, (r) {
+      if (event.isRememberMe) {
+        // Save User Information On Local Storage
+        sl<AuthSharedPrefs>().saveUser(r);
+      }
+
       emitter(SuccessVerificationCodeState());
     });
   }

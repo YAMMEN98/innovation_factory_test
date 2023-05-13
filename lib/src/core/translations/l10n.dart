@@ -369,6 +369,76 @@ class S {
       args: [],
     );
   }
+
+  /// `Phone Number`
+  String get phone {
+    return Intl.message(
+      'Phone Number',
+      name: 'phone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hello In Your App`
+  String get welcome_on_app {
+    return Intl.message(
+      'Hello In Your App',
+      name: 'welcome_on_app',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Welcome`
+  String get welcome {
+    return Intl.message(
+      'Welcome',
+      name: 'welcome',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Where’s your\nnext destination?`
+  String get where_next {
+    return Intl.message(
+      'Where’s your\nnext destination?',
+      name: 'where_next',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Flights`
+  String get flights {
+    return Intl.message(
+      'Flights',
+      name: 'flights',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hotels`
+  String get hotels {
+    return Intl.message(
+      'Hotels',
+      name: 'hotels',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Car Rental`
+  String get car_rental {
+    return Intl.message(
+      'Car Rental',
+      name: 'car_rental',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

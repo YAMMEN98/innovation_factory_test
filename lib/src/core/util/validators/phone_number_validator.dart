@@ -5,10 +5,6 @@ import 'base_validator.dart';
 
 
 class PhoneNumberValidator extends BaseValidator {
-  String  phoneNumber;
-
-  PhoneNumberValidator({required this.phoneNumber, });
-
 
   @override
   String getMessage(BuildContext? context) {

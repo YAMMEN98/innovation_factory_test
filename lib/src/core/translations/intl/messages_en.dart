@@ -25,6 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "already_have_an_account":
             MessageLookupByLibrary.simpleMessage("Already Have An Account? "),
         "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
+        "car_rental": MessageLookupByLibrary.simpleMessage("Car Rental"),
         "confirm_password":
             MessageLookupByLibrary.simpleMessage("Confirm Password"),
         "create_account":
@@ -33,9 +34,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Don\'t Have An Account? "),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "english": MessageLookupByLibrary.simpleMessage("English"),
+        "flights": MessageLookupByLibrary.simpleMessage("Flights"),
         "forget_password":
             MessageLookupByLibrary.simpleMessage("Forget Password?"),
         "full_name": MessageLookupByLibrary.simpleMessage("Full Name"),
+        "hotels": MessageLookupByLibrary.simpleMessage("Hotels"),
         "i_agree_terms_and_conditions": MessageLookupByLibrary.simpleMessage(
             "I Agree To The Terms Of Service And Privacy Policy"),
         "incorrect_phone_number":
@@ -67,6 +70,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "password_should_contain_at_least_one_uppercase_letter":
             MessageLookupByLibrary.simpleMessage(
                 ". Password should contain at least one uppercase letter\n"),
+        "phone": MessageLookupByLibrary.simpleMessage("Phone Number"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
         "register_for_new_user":
             MessageLookupByLibrary.simpleMessage("Register For New User"),
@@ -80,6 +84,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "we_sent_an_otp": MessageLookupByLibrary.simpleMessage(
             "We sent an OTP code on your Email."),
         "weak_password_message":
-            MessageLookupByLibrary.simpleMessage("The password is weak")
+            MessageLookupByLibrary.simpleMessage("The password is weak"),
+        "welcome": MessageLookupByLibrary.simpleMessage("Welcome"),
+        "welcome_on_app":
+            MessageLookupByLibrary.simpleMessage("Hello In Your App"),
+        "where_next": MessageLookupByLibrary.simpleMessage(
+            "Where’s your\nnext destination?")
       };
 }

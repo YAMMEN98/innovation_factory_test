@@ -4,3 +4,4 @@ const String quickToken = "quickToken";
 const String theme = "theme";
 const String lang = "lang";
 const String userKey = "userKey";
+const String rememberMeKey = "rememberMeKey";

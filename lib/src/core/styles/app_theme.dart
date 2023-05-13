@@ -12,10 +12,10 @@ final ThemeData appTheme = ThemeData(
     color: AppColors.white,
     elevation: 2,
     toolbarTextStyle: TextTheme(
-      titleLarge: AppTextStyle.textStyleBlack16,
-    ).bodyLarge,
+      titleLarge: AppTextStyle.textStyleBlack14,
+    ).titleLarge,
     titleTextStyle: TextTheme(
-      titleLarge: AppTextStyle.textStyleBlack16,
+      titleLarge: AppTextStyle.textStyleBlack14,
     ).titleLarge,
     systemOverlayStyle: SystemUiOverlayStyle.light,
   ),
@@ -25,6 +25,7 @@ final ThemeData appTheme = ThemeData(
   textTheme: TextTheme(
     headlineLarge: AppTextStyle.textStyleBlack30,
     headlineMedium: AppTextStyle.textStyleBlack24,
+    headlineSmall: AppTextStyle.textStyleBlack20,
     titleLarge: AppTextStyle.textStyleBlack14,
     titleMedium: AppTextStyle.textStyleBlack13,
     titleSmall: AppTextStyle.textStyleBlack12,
@@ -69,6 +70,7 @@ final ThemeData appTheme = ThemeData(
       fontWeight: FontWeight.normal,
     ),
   ),
+
 );
 
 /// Dark theme
@@ -78,10 +80,10 @@ final ThemeData darkAppTheme = ThemeData(
     color: AppColors.grayColor,
     elevation: 0,
     toolbarTextStyle: TextTheme(
-      titleLarge: AppTextStyle.textStyleWhite16,
+      titleLarge: AppTextStyle.textStyleWhite14,
     ).bodyLarge,
     titleTextStyle: TextTheme(
-      titleLarge: AppTextStyle.textStyleWhite16,
+      titleLarge: AppTextStyle.textStyleWhite14,
     ).titleLarge,
     systemOverlayStyle: SystemUiOverlayStyle.light,
   ),
@@ -89,7 +91,9 @@ final ThemeData darkAppTheme = ThemeData(
   scaffoldBackgroundColor: AppColors.grayColor,
   iconTheme: const IconThemeData(color: AppColors.white, size: 25),
   textTheme: TextTheme(
+    headlineLarge: AppTextStyle.textStyleWhite30,
     headlineMedium: AppTextStyle.textStyleBlack24,
+    headlineSmall: AppTextStyle.textStyleBlack20,
     titleLarge: AppTextStyle.textStyleBlack14,
     titleMedium: AppTextStyle.textStyleBlack13,
     titleSmall: AppTextStyle.textStyleBlack12,

@@ -7,17 +7,11 @@ class IntroInitial extends IntroState {}
 
 /// --------------------Start Get Data-------------------- ///
 
-/// Loading login state
-class LoadingGetDataState extends IntroState {}
+// Success Check User Status
+class SuccessCheckUserStatusState extends IntroState {
+  final bool isLoggedIn;
 
-/// Error login state
-class ErrorGetDataState extends IntroState {
-  final String errorMsg;
-
-  ErrorGetDataState(this.errorMsg);
+  SuccessCheckUserStatusState(this.isLoggedIn);
 }
-
-/// Success login state
-class SuccessGetDataState extends IntroState {}
 
 /// --------------------End GetData-------------------- ///

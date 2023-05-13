@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:innovation_factory_test/main.dart';
 import 'package:innovation_factory_test/src/core/common_feature/domain/entities/api_response_model.dart';
 import 'package:innovation_factory_test/src/core/common_feature/domain/entities/user_model.dart';
+import 'package:innovation_factory_test/src/core/common_feature/domain/entities/user_profile_model.dart';
 import 'package:innovation_factory_test/src/core/network/error/dio_error_handler.dart';
 import 'package:innovation_factory_test/src/core/network/error/exceptions.dart';
 import 'package:innovation_factory_test/src/core/translations/l10n.dart';
@@ -15,6 +16,7 @@ class AuthApi extends GeneralAuthApi {
   AuthApi(super.dio);
 
   // Login Api Method
+  @override
   Future<ApiResponse<AuthResponseModel>> login(LoginParams params) async {
     try {
       final result = (await dio.post(
@@ -39,6 +41,7 @@ class AuthApi extends GeneralAuthApi {
   }
 
   // Verification Code Api Method
+  @override
   Future<ApiResponse<UserModel>> verificationCode(
       VerificationCodeParams params) async {
     try {
@@ -65,6 +68,7 @@ class AuthApi extends GeneralAuthApi {
   }
 
   // Register Api Method
+  @override
   Future<ApiResponse<AuthResponseModel>> register(RegisterParams params) async {
     try {
       final result = (await dio.post(

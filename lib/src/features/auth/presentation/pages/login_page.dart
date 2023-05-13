@@ -54,6 +54,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return BackgroundPage(
       topSafeArea: true,
+      isImage: true,
       child: SingleChildScrollView(
         child: Container(
           padding:
@@ -146,7 +147,7 @@ class _LoginPageState extends State<LoginPage> {
                         text: S.of(context).login,
                         verticalPadding: 10.h,
                         horizontalPadding: 30.w,
-                        shadowColor: AppColors.primaryColor.withOpacity(0.3),
+                        shadowColor: AppColors.shadowColor,
                         elevation: 20,
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
@@ -347,6 +348,7 @@ class _LoginPageState extends State<LoginPage> {
         contentPadding:
             EdgeInsets.only(top: 30.h, bottom: 21.h, left: 21.w, right: 21.w),
         callback: () {},
+        isRememberMe: _isRememberMeChecked,
       ),
     );
   }

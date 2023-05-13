@@ -3,6 +3,7 @@ import 'package:innovation_factory_test/src/features/auth/presentation/pages/log
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:innovation_factory_test/src/features/auth/presentation/pages/register_page.dart';
+import 'package:innovation_factory_test/src/features/home/presentation/pages/home_page.dart';
 
 class AppRouter {
   static String currentRoute = "/";
@@ -21,6 +22,13 @@ class AppRouter {
         return CupertinoPageRoute(
           settings: RouteSettings(name: settings.name),
           builder: (_) => const RegisterPage(),
+        );
+
+
+      case '/home_page':
+        return CupertinoPageRoute(
+          settings: RouteSettings(name: settings.name),
+          builder: (_) => const HomePage(),
         );
 
 

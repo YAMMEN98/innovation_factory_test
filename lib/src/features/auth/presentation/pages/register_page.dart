@@ -16,6 +16,7 @@ import 'package:innovation_factory_test/src/core/util/validators/base_validator.
 import 'package:innovation_factory_test/src/core/util/validators/email_validator1.dart';
 import 'package:innovation_factory_test/src/core/util/validators/match_validator.dart';
 import 'package:innovation_factory_test/src/core/util/validators/password_validator.dart';
+import 'package:innovation_factory_test/src/core/util/validators/phone_number_validator.dart';
 import 'package:innovation_factory_test/src/core/util/validators/required_validator.dart';
 import 'package:innovation_factory_test/src/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:innovation_factory_test/src/features/auth/presentation/widgets/verification_code_widget.dart';
@@ -37,6 +38,11 @@ class _RegisterPageState extends State<RegisterPage> {
   // Email
   final TextEditingController _emailController = TextEditingController();
   bool _emailValidator = true;
+
+  // Email
+  final TextEditingController _phoneController = TextEditingController();
+  bool _phoneValidator = true;
+
 
   // Password
   final TextEditingController _passwordController = TextEditingController();
@@ -61,6 +67,7 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return BackgroundPage(
       topSafeArea: true,
+      isImage: true,
       child: SingleChildScrollView(
         child: Container(
           padding:
@@ -102,6 +109,15 @@ class _RegisterPageState extends State<RegisterPage> {
 
                 // Email Text Field
                 _buildEmailTextField(),
+
+                // Space
+                SizedBox(
+                  height: 12.h,
+                ),
+
+
+                // Phone Text Field
+                _buildPhoneTextField(),
 
                 // Space
                 SizedBox(
@@ -153,7 +169,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         text: S.of(context).register,
                         verticalPadding: 10.h,
                         horizontalPadding: 30.w,
-                        shadowColor: AppColors.primaryColor.withOpacity(0.3),
+                        shadowColor: AppColors.shadowColor,
                         elevation: 20,
                         onPressed: () {
                           if (_formKey.currentState!.validate() &&
@@ -202,7 +218,6 @@ class _RegisterPageState extends State<RegisterPage> {
 
         TextFieldWidget(
           controller: _fullNameController,
-          hintText: emailHint,
           validator: (value) {
             return BaseValidator.validateValue(
               context,
@@ -245,6 +260,41 @@ class _RegisterPageState extends State<RegisterPage> {
               value!,
               [RequiredValidator(), EmailValidator()],
               _emailValidator,
+            );
+          },
+        ),
+      ],
+    );
+  }
+
+  // Phone Text Filed Widget
+  Widget _buildPhoneTextField() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        // Email title
+        Text(
+          "${S.of(context).phone} *",
+          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                fontWeight: FontWeight.w500,
+              ),
+          textAlign: TextAlign.start,
+        ),
+
+        // Space
+        SizedBox(
+          height: 8.h,
+        ),
+
+        TextFieldWidget(
+          controller: _phoneController,
+          keyboardType: TextInputType.phone,
+          validator: (value) {
+            return BaseValidator.validateValue(
+              context,
+              value!,
+              [RequiredValidator(), PhoneNumberValidator()],
+              _phoneValidator,
             );
           },
         ),
@@ -415,6 +465,7 @@ class _RegisterPageState extends State<RegisterPage> {
         contentPadding:
             EdgeInsets.only(top: 30.h, bottom: 21.h, left: 21.w, right: 21.w),
         callback: () {},
+        isRememberMe: true,
       ),
     );
   }
@@ -424,14 +475,21 @@ class _RegisterPageState extends State<RegisterPage> {
     // Close Keyboard
     FocusScope.of(context).unfocus();
 
-    String fullName = _emailController.text.trim();
+    String fullName = _fullNameController.text.trim();
+    String firstName = fullName.split(" ").first;
+    String lastName = fullName.split(" ").sublist(1).join(" ");
     String email = _emailController.text.trim();
+    String phone = _phoneController.text.trim();
     String password = _passwordController.text.trim();
 
     _bloc.add(
-      OnLoggingInEvent(
-        email,
-        password,
+      OnRegisteringEvent(
+       firstName: firstName,
+        lastName: lastName,
+        email: email,
+        password: password,
+        phone: phone,
+        referUser: "",
       ),
     );
   }

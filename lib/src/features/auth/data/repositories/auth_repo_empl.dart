@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:innovation_factory_test/src/core/common_feature/domain/entities/user_model.dart';
+import 'package:innovation_factory_test/src/core/common_feature/domain/entities/user_profile_model.dart';
 import 'package:innovation_factory_test/src/core/network/error/exceptions.dart';
 import 'package:innovation_factory_test/src/core/network/error/failures.dart';
 import 'package:innovation_factory_test/src/core/util/injections.dart';
@@ -35,10 +36,6 @@ class AuthRepositoryImpl extends AuthRepository {
       VerificationCodeParams params) async {
     try {
       final result = await authApi.verificationCode(params);
-
-      // Save User Information On Local Storage
-      sl<AuthSharedPrefs>().saveUser(result.data!);
-
       return Right(result.data!);
     } on ServerException catch (e) {
       return Left(ServerFailure(e.message, e.statusCode));

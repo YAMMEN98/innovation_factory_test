@@ -20,7 +20,7 @@ class BackgroundPage extends StatefulWidget {
   const BackgroundPage({
     required this.child,
     this.withDrawer = false,
-    this.isImage = true,
+    this.isImage = false,
     this.drawerCallBack,
     this.scaffoldKey,
     Key? key,
@@ -52,13 +52,16 @@ class _BackgroundPageState extends State<BackgroundPage> {
       child: Stack(
         fit: StackFit.expand,
         children: [
-          SvgPicture.asset(
-            Helper.getSvgPath(
-              "login_background.svg",
+          if(widget.isImage)...{
+            SvgPicture.asset(
+              Helper.getSvgPath(
+                "login_background.svg",
+              ),
+              width: 100,
+              height: 100,
             ),
-            width: 100,
-            height: 100,
-          ),
+          },
+
           Scaffold(
             key: widget.scaffoldKey,
             backgroundColor: Colors.transparent,
