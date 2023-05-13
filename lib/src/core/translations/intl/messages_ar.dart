@@ -25,10 +25,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "already_have_an_account":
             MessageLookupByLibrary.simpleMessage("هل لديك حساب؟ "),
         "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
+        "best_place": MessageLookupByLibrary.simpleMessage("أفضل الأماكن"),
+        "book_now": MessageLookupByLibrary.simpleMessage("حجز الآن"),
+        "business": MessageLookupByLibrary.simpleMessage("عمل"),
         "car_rental": MessageLookupByLibrary.simpleMessage("تأجير السيارات"),
+        "code": MessageLookupByLibrary.simpleMessage("الرمز"),
         "confirm_password":
             MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور"),
         "create_account": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
+        "departure": MessageLookupByLibrary.simpleMessage("المغادرة"),
         "do_not_have_an_account":
             MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
         "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
@@ -46,9 +51,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("خطأ في الخادم الداخلي"),
         "invalid_email_address": MessageLookupByLibrary.simpleMessage(
             "تم إدخال عنوان بريد إلكتروني غير صالح. يرجى التحقق من عنوان البريد الإلكتروني وحاول مرة أخرى."),
+        "limited_offers": MessageLookupByLibrary.simpleMessage("عروض محدودة"),
         "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "login_to_existing_user": MessageLookupByLibrary.simpleMessage(
             "تسجيل الدخول إلى المستخدم الحالي"),
+        "one_way": MessageLookupByLibrary.simpleMessage("اتجاه واحد"),
         "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
         "password_does_not_match":
             MessageLookupByLibrary.simpleMessage("كلمة السر غير متطابقة"),
@@ -76,9 +83,20 @@ class MessageLookup extends MessageLookupByLibrary {
         "remember_login_info":
             MessageLookupByLibrary.simpleMessage("تذكر معلومات تسجيل الدخول"),
         "required_field": MessageLookupByLibrary.simpleMessage("الحقل مطلوب"),
+        "return_flying": MessageLookupByLibrary.simpleMessage("العودة"),
+        "round_trip":
+            MessageLookupByLibrary.simpleMessage("رحلة ذهابًا وإيابًا"),
+        "search": MessageLookupByLibrary.simpleMessage("بحث"),
         "server_error": MessageLookupByLibrary.simpleMessage("خطأ في الخادم"),
+        "share": MessageLookupByLibrary.simpleMessage("مشاركة"),
+        "travelers": MessageLookupByLibrary.simpleMessage("المسافرون"),
+        "travelers_hint":
+            MessageLookupByLibrary.simpleMessage("2 بالغون 3 أطفال"),
         "validate": MessageLookupByLibrary.simpleMessage("التحقق"),
         "verify_code": MessageLookupByLibrary.simpleMessage("رمز التحقق"),
+        "view_all": MessageLookupByLibrary.simpleMessage("عرض الكل"),
+        "view_less": MessageLookupByLibrary.simpleMessage("عرض أقل"),
+        "view_more": MessageLookupByLibrary.simpleMessage("عرض المزيد"),
         "we_sent_an_otp": MessageLookupByLibrary.simpleMessage(
             "لقد أرسلنا رمز OTP على بريدك الإلكتروني."),
         "weak_password_message":

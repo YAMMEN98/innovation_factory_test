@@ -22,6 +22,9 @@ class TextFieldWidget extends StatefulWidget {
   final int? maxLines;
   final EdgeInsets? contentPadding;
   final double? height;
+  final Widget? prefixIcon;
+  final bool isUnderLineBorder;
+  final bool enabled;
 
 
   const TextFieldWidget({
@@ -44,6 +47,9 @@ class TextFieldWidget extends StatefulWidget {
     this.maxLines,
     this.contentPadding,
     this.height,
+    this.prefixIcon,
+    this.isUnderLineBorder = false,
+    this.enabled = false,
   }) : super(key: key);
 
   @override
@@ -61,6 +67,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
     return SizedBox(
       height: widget.height?.h,
       child: TextFormField(
+        enabled: widget.enabled,
         obscureText: widget.isPassword??false,
         controller: widget.controller,
         onChanged: widget.onChanged,
@@ -72,17 +79,33 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
         style: widget.textStyle ?? textStyle,
         inputFormatters: widget.inputFormatters,
         decoration: InputDecoration(
+          prefixIcon: widget.prefixIcon,
+          prefixIconConstraints: BoxConstraints(),
           contentPadding: widget.contentPadding,
           hintText: widget.hintText,
           hintStyle: widget.hintStyle??hintStyle,
-          border: OutlineInputBorder(
+          border: widget.isUnderLineBorder?
+          UnderlineInputBorder(
+            borderSide: BorderSide(
+              color: widget.borderColor ?? defaultColor,
+              width: widget.borderWidth ?? defaultBorderWidth,
+            ),
+          ):
+
+          OutlineInputBorder(
             borderRadius: BorderRadius.circular(widget.borderRadius ?? defaultBorderRadius),
             borderSide: BorderSide(
               color: widget.borderColor ?? defaultColor,
               width: widget.borderWidth ?? defaultBorderWidth,
             ),
           ),
-          enabledBorder: OutlineInputBorder(
+          enabledBorder: widget.isUnderLineBorder?
+          UnderlineInputBorder(
+            borderSide: BorderSide(
+              color: widget.borderColor ?? defaultColor,
+              width: widget.borderWidth ?? defaultBorderWidth,
+            ),
+          ):OutlineInputBorder(
             borderRadius: BorderRadius.circular(widget.borderRadius ?? defaultBorderRadius),
             borderSide: BorderSide(
               color: widget.borderColor ?? defaultColor,
@@ -96,7 +119,13 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
               width: 2,
             ),
           ),
-          focusedBorder: OutlineInputBorder(
+          focusedBorder: widget.isUnderLineBorder?
+          UnderlineInputBorder(
+            borderSide: BorderSide(
+              color: widget.borderColor ?? defaultColor,
+              width: widget.borderWidth ?? defaultBorderWidth,
+            ),
+          ):OutlineInputBorder(
             borderRadius: BorderRadius.circular(widget.borderRadius ?? defaultBorderRadius),
             borderSide: BorderSide(
               color: widget.borderColor ?? defaultColor,

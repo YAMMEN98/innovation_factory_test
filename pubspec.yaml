@@ -95,6 +95,13 @@ dependencies:
 
   # Device Information
   device_info_plus: ^9.0.0
+
+  # Start Rating
+  flutter_rating_bar: ^4.0.1
+
+  # Favorite Icon
+  favorite_button: ^0.0.4
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

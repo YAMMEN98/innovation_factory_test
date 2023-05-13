@@ -37,5 +37,25 @@
   "where_next": "أين\nوجهتك التالية؟",
   "flights": "الرحلات الجوية",
   "hotels": "الفنادق",
-  "car_rental": "تأجير السيارات"
+  "car_rental": "تأجير السيارات",
+  "one_way": "اتجاه واحد",
+  "round_trip": "رحلة ذهابًا وإيابًا",
+  "business": "عمل",
+  "flight_from": "الطيران من",
+  "fly_to": "Flying to",
+  "departure": "المغادرة",
+  "return_flying": "العودة" ,
+  "travelers": "المسافرون",
+  "travelers_hint": "2 بالغون 3 أطفال",
+  "view_more": "عرض المزيد",
+  "view_less": "عرض أقل",
+  "search": "بحث",
+  "limited_offers": "عروض محدودة",
+  "view_all": "عرض الكل",
+  "code": "الرمز",
+  "share": "مشاركة",
+  "book_now": "حجز الآن",
+  "best_place": "أفضل الأماكن"
+
+
 }

@@ -28,79 +28,77 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return BackgroundPage(
-        child: CustomScrollView(
-      slivers: [
-        // App Bar
-        SliverToBoxAdapter(
-          child: HomeAppBarWidget(),
-        ),
-
-        // Where next title
-        SliverToBoxAdapter(
-          child: Container(
-
-            height: 188.h,
-            decoration: BoxDecoration(
-              color: AppColors.primaryColor,
+      child: NestedScrollView(
+        headerSliverBuilder: (context, innerBoxIsScrolled) {
+          return [
+            // App Bar
+            SliverToBoxAdapter(
+              child: HomeAppBarWidget(),
             ),
-            child: Stack(
-              fit: StackFit.expand,
-              children: [
-                // Image
-                SvgPicture.asset(
-                  Helper.getSvgPath("home_header_image.svg"),
+
+            // Where next title
+            SliverToBoxAdapter(
+              child: Container(
+
+                height: 188.h,
+                decoration: BoxDecoration(
+                  color: AppColors.primaryColor,
                 ),
+                child: Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    // Image
+                    SvgPicture.asset(
+                      Helper.getSvgPath("home_header_image.svg"),
+                    ),
 
-                Padding(
-                  padding: EdgeInsets.only(
-                    top: 30.h,
-                    left: 30.w,
-                    right: 30.w,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      // Where next title
-                      Text(
-                        S.of(context).where_next,
-                        style:
+                    Padding(
+                      padding: EdgeInsets.only(
+                        top: 30.h,
+                        left: 30.w,
+                        right: 30.w,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          // Where next title
+                          Text(
+                            S.of(context).where_next,
+                            style:
                             Theme.of(context).textTheme.headlineLarge!.copyWith(
-                                  fontWeight: FontWeight.w700,
-                                  color: AppColors.white,
-                                ),
-                      ),
+                              fontWeight: FontWeight.w700,
+                              color: AppColors.white,
+                            ),
+                          ),
 
-                      // Tab Bar
-                      HomeTabBarWidget(
-                        tabController: tabController,
+                          // Tab Bar
+                          HomeTabBarWidget(
+                            tabController: tabController,
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                )
-              ],
+                    )
+                  ],
+                ),
+              ),
             ),
-          ),
+          ];
+        },
+        body: TabBarView(
+          controller: tabController,
+          physics: NeverScrollableScrollPhysics(),
+          children: [
+            FlightsPage(),
+
+            Text("2"),
+
+            Text("3"),
+
+
+          ],
         ),
-
-        // Page View
-        SliverFillRemaining(
-          child: TabBarView(
-            controller: tabController,
-            children: [
-              FlightsPage(),
-
-              Text("2"),
-
-              Text("3"),
-
-
-            ],
-          ),
-        )
-
-        
-      ],
-    ));
+      ),
+ );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:innovation_factory_test/src/core/styles/app_colors.dart';
 import 'package:flutter/material.dart';
 
@@ -12,6 +13,7 @@ class ButtonWidget extends StatefulWidget {
   final double? elevation;
   final Color? borderColor;
   final Color? shadowColor;
+  final Widget? icon;
 
   const ButtonWidget({
     Key? key,
@@ -25,6 +27,7 @@ class ButtonWidget extends StatefulWidget {
     this.elevation,
     this.borderColor,
     this.shadowColor,
+    this.icon,
   }) : super(key: key);
 
   @override
@@ -61,9 +64,24 @@ class _ButtonWidgetState extends State<ButtonWidget> {
         shadowColor: widget.shadowColor??AppColors.lightGrayColor,
 
       ),
-      child: Text(
-        widget.text,
-        style: widget.textStyle ?? textStyle,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+
+          if(widget.icon!=null)...{
+            widget.icon!,
+
+            SizedBox(
+              width: 5.w,
+            ),
+          },
+
+          Text(
+            widget.text,
+            style: widget.textStyle ?? textStyle,
+          ),
+
+        ],
       ),
     );
   }

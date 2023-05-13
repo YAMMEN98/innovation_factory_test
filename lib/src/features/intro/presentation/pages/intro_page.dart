@@ -19,7 +19,7 @@ class _IntroPageState extends State<IntroPage> {
     _bloc = IntroBloc();
 
     Future.delayed(
-      Duration(seconds: 2),
+      Duration(seconds: 0),
       () {
         _bloc.add(OnCheckUserEvent());
 

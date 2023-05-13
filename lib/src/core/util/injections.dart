@@ -7,6 +7,7 @@ import 'package:innovation_factory_test/src/core/util/constant/network_constant.
 import 'package:innovation_factory_test/src/core/util/log/app_logger.dart';
 import 'package:innovation_factory_test/src/core/util/log/log_controller.dart';
 import 'package:innovation_factory_test/src/features/auth/auth_injections.dart';
+import 'package:innovation_factory_test/src/features/home/flights/flights_injections.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../common_feature/app_injections.dart';
@@ -20,6 +21,7 @@ Future<void> initInjections() async {
   await initAppInjections();
   await initAuthInjections();
   await initCoreInjections();
+  await initFlightsInjections();
 }
 
 initSharedPrefsInjections() async {

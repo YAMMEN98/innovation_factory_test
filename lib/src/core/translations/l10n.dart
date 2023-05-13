@@ -400,10 +400,10 @@ class S {
     );
   }
 
-  /// `Where’s your\nnext destination?`
+  /// `Where’s Your\nNext Destination?`
   String get where_next {
     return Intl.message(
-      'Where’s your\nnext destination?',
+      'Where’s Your\nNext Destination?',
       name: 'where_next',
       desc: '',
       args: [],
@@ -435,6 +435,186 @@ class S {
     return Intl.message(
       'Car Rental',
       name: 'car_rental',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `One Way`
+  String get one_way {
+    return Intl.message(
+      'One Way',
+      name: 'one_way',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Round Trip`
+  String get round_trip {
+    return Intl.message(
+      'Round Trip',
+      name: 'round_trip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Business`
+  String get business {
+    return Intl.message(
+      'Business',
+      name: 'business',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Flying From`
+  String get flying_from {
+    return Intl.message(
+      'Flying From',
+      name: 'flying_from',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Flying To`
+  String get flying_to {
+    return Intl.message(
+      'Flying To',
+      name: 'flying_to',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Departure`
+  String get departure {
+    return Intl.message(
+      'Departure',
+      name: 'departure',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Return`
+  String get return_flying {
+    return Intl.message(
+      'Return',
+      name: 'return_flying',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Travelers`
+  String get travelers {
+    return Intl.message(
+      'Travelers',
+      name: 'travelers',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `2 Adults, 3Children`
+  String get travelers_hint {
+    return Intl.message(
+      '2 Adults, 3Children',
+      name: 'travelers_hint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `View More`
+  String get view_more {
+    return Intl.message(
+      'View More',
+      name: 'view_more',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `View Less`
+  String get view_less {
+    return Intl.message(
+      'View Less',
+      name: 'view_less',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search`
+  String get search {
+    return Intl.message(
+      'Search',
+      name: 'search',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Limited Offers`
+  String get limited_offers {
+    return Intl.message(
+      'Limited Offers',
+      name: 'limited_offers',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `View All`
+  String get view_all {
+    return Intl.message(
+      'View All',
+      name: 'view_all',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Code`
+  String get code {
+    return Intl.message(
+      'Code',
+      name: 'code',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Share`
+  String get share {
+    return Intl.message(
+      'Share',
+      name: 'share',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Book Now`
+  String get book_now {
+    return Intl.message(
+      'Book Now',
+      name: 'book_now',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Best Places`
+  String get best_place {
+    return Intl.message(
+      'Best Places',
+      name: 'best_place',
       desc: '',
       args: [],
     );

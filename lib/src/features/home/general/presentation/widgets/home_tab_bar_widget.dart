@@ -31,7 +31,7 @@ class _HomeTabBarWidgetState extends State<HomeTabBarWidget> {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(
-        top: 10.sp,
+        top: 12.sp,
       ),
       decoration: BoxDecoration(
           color: AppColors.white,
@@ -44,7 +44,10 @@ class _HomeTabBarWidgetState extends State<HomeTabBarWidget> {
         labelStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
               fontWeight: FontWeight.w500,
             ),
-        labelColor: AppColors.primaryColor,
+        labelColor: Theme.of(context).textTheme.bodyLarge!.color,
+        labelPadding: EdgeInsets.only(
+          bottom: 10.h,
+        ),
         controller: widget.tabController,
         tabs: [
           // Flights

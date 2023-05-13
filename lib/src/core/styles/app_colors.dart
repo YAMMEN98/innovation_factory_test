@@ -11,6 +11,7 @@ class AppColors {
   static const green = Color(0xFF21C479);
   static const borderColor = Color(0xFFE6F2F7);
   static const darkFontColor = Color(0xFF031017);
+  static const tagColor = Color(0xFFF2FBFF);
   static  Color shadowColor = primaryColor.withOpacity(0.2);
   static const transparent = Colors.transparent;
 

@@ -59,4 +59,11 @@ class HelperUi {
       ),
     );
   }
+
+  // Format Date as 18 Apr 2023
+  static String formatNamedDate(DateTime dateTime){
+    String formattedDate = DateFormat('dd MMM yyyy').format(dateTime);
+    return formattedDate;
+
+  }
 }

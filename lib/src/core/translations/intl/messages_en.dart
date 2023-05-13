@@ -25,16 +25,23 @@ class MessageLookup extends MessageLookupByLibrary {
         "already_have_an_account":
             MessageLookupByLibrary.simpleMessage("Already Have An Account? "),
         "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
+        "best_place": MessageLookupByLibrary.simpleMessage("Best Places"),
+        "book_now": MessageLookupByLibrary.simpleMessage("Book Now"),
+        "business": MessageLookupByLibrary.simpleMessage("Business"),
         "car_rental": MessageLookupByLibrary.simpleMessage("Car Rental"),
+        "code": MessageLookupByLibrary.simpleMessage("Code"),
         "confirm_password":
             MessageLookupByLibrary.simpleMessage("Confirm Password"),
         "create_account":
             MessageLookupByLibrary.simpleMessage("Create Account"),
+        "departure": MessageLookupByLibrary.simpleMessage("Departure"),
         "do_not_have_an_account":
             MessageLookupByLibrary.simpleMessage("Don\'t Have An Account? "),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "english": MessageLookupByLibrary.simpleMessage("English"),
         "flights": MessageLookupByLibrary.simpleMessage("Flights"),
+        "flying_from": MessageLookupByLibrary.simpleMessage("Flying From"),
+        "flying_to": MessageLookupByLibrary.simpleMessage("Flying To"),
         "forget_password":
             MessageLookupByLibrary.simpleMessage("Forget Password?"),
         "full_name": MessageLookupByLibrary.simpleMessage("Full Name"),
@@ -47,9 +54,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Internal Server Error"),
         "invalid_email_address": MessageLookupByLibrary.simpleMessage(
             "Invalid email address entered. Please check the email address and try again."),
+        "limited_offers":
+            MessageLookupByLibrary.simpleMessage("Limited Offers"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "login_to_existing_user":
             MessageLookupByLibrary.simpleMessage("Login to Existing User"),
+        "one_way": MessageLookupByLibrary.simpleMessage("One Way"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "password_does_not_match":
             MessageLookupByLibrary.simpleMessage("Password does not match"),
@@ -78,9 +88,19 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Remember Login Info"),
         "required_field":
             MessageLookupByLibrary.simpleMessage("Required Field"),
+        "return_flying": MessageLookupByLibrary.simpleMessage("Return"),
+        "round_trip": MessageLookupByLibrary.simpleMessage("Round Trip"),
+        "search": MessageLookupByLibrary.simpleMessage("Search"),
         "server_error": MessageLookupByLibrary.simpleMessage("Server Error"),
+        "share": MessageLookupByLibrary.simpleMessage("Share"),
+        "travelers": MessageLookupByLibrary.simpleMessage("Travelers"),
+        "travelers_hint":
+            MessageLookupByLibrary.simpleMessage("2 Adults, 3Children"),
         "validate": MessageLookupByLibrary.simpleMessage("Validate"),
         "verify_code": MessageLookupByLibrary.simpleMessage("Verify Code"),
+        "view_all": MessageLookupByLibrary.simpleMessage("View All"),
+        "view_less": MessageLookupByLibrary.simpleMessage("View Less"),
+        "view_more": MessageLookupByLibrary.simpleMessage("View More"),
         "we_sent_an_otp": MessageLookupByLibrary.simpleMessage(
             "We sent an OTP code on your Email."),
         "weak_password_message":
@@ -89,6 +109,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "welcome_on_app":
             MessageLookupByLibrary.simpleMessage("Hello In Your App"),
         "where_next": MessageLookupByLibrary.simpleMessage(
-            "Where’s your\nnext destination?")
+            "Where’s Your\nNext Destination?")
       };
 }
