@@ -38,10 +38,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "create_account":
             MessageLookupByLibrary.simpleMessage("Create Account"),
         "departure": MessageLookupByLibrary.simpleMessage("Departure"),
+        "different_return":
+            MessageLookupByLibrary.simpleMessage("Different\nReturn"),
         "do_not_have_an_account":
             MessageLookupByLibrary.simpleMessage("Don\'t Have An Account? "),
+        "drop_off_location":
+            MessageLookupByLibrary.simpleMessage("Drop-off Location"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "english": MessageLookupByLibrary.simpleMessage("English"),
+        "final_destination":
+            MessageLookupByLibrary.simpleMessage("Final Destination"),
         "flights": MessageLookupByLibrary.simpleMessage("Flights"),
         "flying_from": MessageLookupByLibrary.simpleMessage("Flying From"),
         "flying_to": MessageLookupByLibrary.simpleMessage("Flying To"),
@@ -86,6 +92,8 @@ class MessageLookup extends MessageLookupByLibrary {
                 ". Password should contain at least one uppercase letter\n"),
         "people": MessageLookupByLibrary.simpleMessage("People"),
         "phone": MessageLookupByLibrary.simpleMessage("Phone Number"),
+        "pick_uo_location":
+            MessageLookupByLibrary.simpleMessage("Pickup Location"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
         "register_for_new_user":
             MessageLookupByLibrary.simpleMessage("Register For New User"),

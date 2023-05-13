@@ -30,7 +30,7 @@ class _SelectButtonWidgetState extends State<SelectButtonWidget> {
         widget.onTap?.call();
       },
       child: Container(
-        height: 40.h,
+        height: 37.h,
         padding: EdgeInsets.symmetric(
           horizontal: 15.w,
           vertical: 10.h,

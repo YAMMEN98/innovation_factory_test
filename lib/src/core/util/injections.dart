@@ -5,6 +5,7 @@ import 'package:innovation_factory_test/src/core/network/logger_interceptor.dart
 import 'package:innovation_factory_test/src/core/util/constant/network_constant.dart';
 import 'package:innovation_factory_test/src/core/util/log/app_logger.dart';
 import 'package:innovation_factory_test/src/features/auth/auth_injections.dart';
+import 'package:innovation_factory_test/src/features/home/car_rental/car_rental_injections.dart';
 import 'package:innovation_factory_test/src/features/home/flights/flights_injections.dart';
 import 'package:innovation_factory_test/src/features/home/general/home_injections.dart';
 import 'package:innovation_factory_test/src/features/home/hotels/hotels_injections.dart';
@@ -23,6 +24,7 @@ Future<void> initInjections() async {
   await initHomeInjections();
   await initFlightsInjections();
   await initHotelsInjections();
+  await initCarRentalInjections();
 }
 
 initSharedPrefsInjections() async {

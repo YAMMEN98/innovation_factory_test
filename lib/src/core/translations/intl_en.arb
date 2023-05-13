@@ -61,5 +61,10 @@
   "search_for_place": "Search for place and proprieties",
   "check_in": "Check In",
   "check_out": "Check Out",
-  "guests": "Guests"
+  "guests": "Guests",
+  "pick_uo_location": "Pickup Location",
+  "drop_off_location": "Drop-off Location",
+  "final_destination": "Final Destination",
+  "different_return": "Different\nReturn"
+
 }

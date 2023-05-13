@@ -27,6 +27,12 @@ class FilterWidget extends StatefulWidget {
   final bool hasCheckOut;
   final bool hasGuests;
 
+  // Variable Of Car Rental Filter
+  final bool hasPickupLocation;
+  final bool hasDropOffLocation;
+  final bool hasFinalDestination;
+  final bool isDifferentReturn;
+
   final Function() searchCallback;
 
   const FilterWidget({
@@ -43,6 +49,10 @@ class FilterWidget extends StatefulWidget {
     this.hasCheckIn = false,
     this.hasCheckOut = false,
     this.hasGuests = false,
+    this.hasPickupLocation = false,
+    this.hasDropOffLocation = false,
+    this.hasFinalDestination = false,
+    this.isDifferentReturn = true,
     required this.searchCallback,
   }) : super(key: key);
 
@@ -62,15 +72,48 @@ class _FilterWidgetState extends State<FilterWidget> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        // Filters For Flights
-        if (widget.hasFlyingFilter) ...{
-          _buildFlightsFilter(),
-        },
+        // Flying From/To
+        _build_FlyingFromToFilter(),
 
-        // Filters For Hotels
-        if (widget.hasHotelsFilter) ...{
-          _buildHotelsFilter(),
-        },
+        // Pickup/Drop-Off Location
+        _buildPickupDropOffFilter(),
+
+        // Space
+        SizedBox(
+          height: 15.h,
+        ),
+
+        // Final Destination
+        Column(
+          children: _buildFinalDestinationFilter(),
+        ),
+
+        // Departure And Return
+        _buildDepartureAndReturnFilter(),
+
+        // Space
+        SizedBox(
+          height: 15.h,
+        ),
+
+        // Travelers
+        _buildTravelersFilter(),
+
+        // Where Are You Going
+        Column(
+          children: _buildWhereAreYouFilter(),
+        ),
+
+        // Check In/Out
+        _buildCheckInCheckOutFilter(),
+
+        // Space
+        SizedBox(
+          height: 15.h,
+        ),
+
+        // Guests
+        _buildGuestsFilter(),
 
         // View more/less
         if (viewMore) ...{
@@ -145,237 +188,400 @@ class _FilterWidgetState extends State<FilterWidget> {
     );
   }
 
-  // Flights Filter
-  Widget _buildFlightsFilter() {
+  // Departure Filter
+  Widget _buildDepartureFilter() {
+    return Expanded(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Text(
+            S.of(context).departure,
+            style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                  fontWeight: FontWeight.w500,
+                ),
+          ),
+          SizedBox(
+            height: 2.h,
+          ),
+          TextFieldWidget(
+            enabled: false,
+            hintText: HelperUi.formatNamedDate(DateTime.now()),
+            isUnderLineBorder: true,
+            textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
+                  fontWeight: FontWeight.w500,
+                ),
+            contentPadding: EdgeInsets.zero,
+            prefixIcon: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 5.w),
+              child: SvgPicture.asset(
+                Helper.getSvgPath("calendar.svg"),
+                width: 13.w,
+                height: 13.w,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  // Return Filter
+  Widget _buildReturnFilter() {
+    return Expanded(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Text(
+            S.of(context).return_flying,
+            style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                  fontWeight: FontWeight.w500,
+                ),
+          ),
+          SizedBox(
+            height: 2.h,
+          ),
+          TextFieldWidget(
+            enabled: false,
+            isUnderLineBorder: true,
+            hintText: HelperUi.formatNamedDate(DateTime.now()),
+            textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
+                  fontWeight: FontWeight.w500,
+                ),
+            contentPadding: EdgeInsets.zero,
+            prefixIcon: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 5.w),
+              child: SvgPicture.asset(
+                Helper.getSvgPath("calendar.svg"),
+                width: 13.w,
+                height: 13.w,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  // Final Destination Filter
+  Widget _buildFinalDestinationFilter1() {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        // Flying From/To
-        Row(
-          children: [
-            // Flying From
-            if (widget.hasFlyingFrom) ...{
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Text(
-                      S.of(context).flying_from,
-                      style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                            fontWeight: FontWeight.w500,
-                          ),
-                    ),
-                    SizedBox(
-                      height: 2.h,
-                    ),
-                    TextFieldWidget(
-                      hintText: "Dubai (DXB)",
-                      isUnderLineBorder: true,
-                      textStyle:
-                          Theme.of(context).textTheme.titleLarge!.copyWith(
-                                fontWeight: FontWeight.w500,
-                              ),
-                      contentPadding: EdgeInsets.zero,
-                      prefixIcon: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 5.w),
-                        child: Icon(
-                          Icons.flight_takeoff_outlined,
-                          color: AppColors.primaryColor,
-                          size: 20.sp,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+        Text(
+          S.of(context).final_destination,
+          style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                fontWeight: FontWeight.w500,
               ),
-            },
-
-            // Flying To
-            if (widget.haseFlyingTo) ...{
-              // Space
-              SizedBox(
-                width: 10.w,
-              ),
-
-              // Flying To
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Text(
-                      S.of(context).flying_to,
-                      style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                            fontWeight: FontWeight.w500,
-                          ),
-                    ),
-                    SizedBox(
-                      height: 2.h,
-                    ),
-                    TextFieldWidget(
-                      isUnderLineBorder: true,
-                      hintText: "Sharjah (SHJ)",
-                      textStyle:
-                          Theme.of(context).textTheme.titleLarge!.copyWith(
-                                fontWeight: FontWeight.w500,
-                              ),
-                      contentPadding: EdgeInsets.zero,
-                      prefixIcon: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 5.w),
-                        child: Icon(
-                          Icons.flight_land_outlined,
-                          color: AppColors.primaryColor,
-                          size: 20.sp,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            }
-          ],
         ),
-
-        // Space
         SizedBox(
-          height: 15.h,
+          height: 2.h,
         ),
+        TextFieldWidget(
+          enabled: false,
+          hintText: "Ras Al-Khaima (RAK)",
+          isUnderLineBorder: true,
+          textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
+                fontWeight: FontWeight.w500,
+              ),
+          contentPadding: EdgeInsets.zero,
+          prefixIcon: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 5.w),
+            child: SvgPicture.asset(
+              Helper.getSvgPath("calendar.svg"),
+              width: 13.w,
+              height: 13.w,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
 
-        // Departure And Return
-        Row(
-          children: [
-            // Departure
-            if (widget.hasDeparture) ...{
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Text(
-                      S.of(context).departure,
-                      style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                            fontWeight: FontWeight.w500,
-                          ),
-                    ),
-                    SizedBox(
-                      height: 2.h,
-                    ),
-                    TextFieldWidget(
-                      enabled: false,
-                      hintText: HelperUi.formatNamedDate(DateTime.now()),
-                      isUnderLineBorder: true,
-                      textStyle:
-                          Theme.of(context).textTheme.titleLarge!.copyWith(
-                                fontWeight: FontWeight.w500,
-                              ),
-                      contentPadding: EdgeInsets.zero,
-                      prefixIcon: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 5.w),
-                        child: SvgPicture.asset(
-                          Helper.getSvgPath("calendar.svg"),
-                          width: 13.w,
-                          height: 13.w,
-                        ),
+  // Flying From/To Filter
+  Widget _build_FlyingFromToFilter() {
+    return Row(
+      children: [
+        // Flying From
+        if (widget.hasFlyingFrom) ...{
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Text(
+                  S.of(context).flying_from,
+                  style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                        fontWeight: FontWeight.w500,
                       ),
-                    ),
-                  ],
                 ),
-              ),
-            },
-
-            if (widget.hasReturn) ...{
-              // Space
-              SizedBox(
-                width: 10.w,
-              ),
-
-              // Return
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Text(
-                      S.of(context).return_flying,
-                      style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                            fontWeight: FontWeight.w500,
-                          ),
-                    ),
-                    SizedBox(
-                      height: 2.h,
-                    ),
-                    TextFieldWidget(
-                      enabled: false,
-                      isUnderLineBorder: true,
-                      hintText: HelperUi.formatNamedDate(DateTime.now()),
-                      textStyle:
-                          Theme.of(context).textTheme.titleLarge!.copyWith(
-                                fontWeight: FontWeight.w500,
-                              ),
-                      contentPadding: EdgeInsets.zero,
-                      prefixIcon: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 5.w),
-                        child: SvgPicture.asset(
-                          Helper.getSvgPath("calendar.svg"),
-                          width: 13.w,
-                          height: 13.w,
-                        ),
+                SizedBox(
+                  height: 2.h,
+                ),
+                TextFieldWidget(
+                  hintText: "Dubai (DXB)",
+                  isUnderLineBorder: true,
+                  textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
+                        fontWeight: FontWeight.w500,
                       ),
-                    ),
-                  ],
-                ),
-              ),
-            }
-          ],
-        ),
-
-        // Space
-        SizedBox(
-          height: 15.h,
-        ),
-
-        // Travelers
-        if (widget.hasTravelers && viewMore) ...{
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Text(
-                S.of(context).travelers,
-                style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                      fontWeight: FontWeight.w500,
-                    ),
-              ),
-              SizedBox(
-                height: 2.h,
-              ),
-              TextFieldWidget(
-                enabled: false,
-                hintText: S.of(context).travelers_hint,
-                isUnderLineBorder: true,
-                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
-                      fontWeight: FontWeight.w500,
-                    ),
-                contentPadding: EdgeInsets.zero,
-                prefixIcon: Padding(
+                  contentPadding: EdgeInsets.zero,
+                  prefixIcon: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 5.w),
                     child: Icon(
-                      Icons.people,
-                      size: 20.sp,
+                      Icons.flight_takeoff_outlined,
                       color: AppColors.primaryColor,
-                    )),
-              ),
+                      size: 20.sp,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        },
+
+        // Flying To
+        if (widget.haseFlyingTo) ...{
+          // Space
+          SizedBox(
+            width: 10.w,
+          ),
+
+          // Flying To
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Text(
+                  S.of(context).flying_to,
+                  style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                        fontWeight: FontWeight.w500,
+                      ),
+                ),
+                SizedBox(
+                  height: 2.h,
+                ),
+                TextFieldWidget(
+                  isUnderLineBorder: true,
+                  hintText: "Sharjah (SHJ)",
+                  textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
+                        fontWeight: FontWeight.w500,
+                      ),
+                  contentPadding: EdgeInsets.zero,
+                  prefixIcon: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 5.w),
+                    child: Icon(
+                      Icons.flight_land_outlined,
+                      color: AppColors.primaryColor,
+                      size: 20.sp,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        }
+      ],
+    );
+  }
+
+  // Pickup Drop Off Filter
+  Widget _buildPickupDropOffFilter() {
+    return Row(
+      children: [
+        // Pickup Location
+        if (widget.hasPickupLocation) ...{
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Text(
+                  S.of(context).pick_uo_location,
+                  style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                        fontWeight: FontWeight.w500,
+                      ),
+                ),
+                SizedBox(
+                  height: 2.h,
+                ),
+                TextFieldWidget(
+                  hintText: "Dubai (DXB)",
+                  isUnderLineBorder: true,
+                  textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
+                        fontWeight: FontWeight.w500,
+                      ),
+                  contentPadding: EdgeInsets.zero,
+                  prefixIcon: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 5.w),
+                    child: Image.asset(
+                      Helper.getImagePath("car.png"),
+                      width: 13.w,
+                      height: 13.w,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        },
+
+        // Drop Off Location
+        if (widget.hasDropOffLocation) ...{
+          // Space
+          SizedBox(
+            width: 10.w,
+          ),
+
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Text(
+                  S.of(context).flying_to,
+                  style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                        fontWeight: FontWeight.w500,
+                      ),
+                ),
+                SizedBox(
+                  height: 2.h,
+                ),
+                TextFieldWidget(
+                  isUnderLineBorder: true,
+                  hintText: "Sharjah (SHJ)",
+                  textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
+                        fontWeight: FontWeight.w500,
+                      ),
+                  contentPadding: EdgeInsets.zero,
+                  prefixIcon: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 5.w),
+                    child: Icon(
+                      Icons.flight_land_outlined,
+                      color: AppColors.primaryColor,
+                      size: 20.sp,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        }
+      ],
+    );
+  }
+
+  List<Widget> _buildFinalDestinationFilter() {
+    return <Widget>[
+      if (widget.hasCarRentalFilter) ...{
+        if (widget.isDifferentReturn) ...{
+          if (widget.hasFinalDestination) ...{
+            _buildFinalDestinationFilter1(),
+            if (viewMore) ...{
               // Space
               SizedBox(
                 height: 15.h,
               ),
-            ],
-          ),
+            }
+          },
+        },
+      },
+    ];
+  }
+
+  Widget _buildDepartureAndReturnFilter() {
+    return Row(
+      children: [
+        // Departure
+        if (widget.hasCarRentalFilter) ...{
+          if (widget.isDifferentReturn) ...{
+            // On Way Selected
+            if (!widget.hasFinalDestination) ...{
+              if (widget.hasDeparture) ...{
+                _buildDepartureFilter(),
+              },
+            } else ...{
+              if (widget.hasDeparture && viewMore) ...{
+                _buildDepartureFilter(),
+              },
+            },
+          } else ...{
+            if (widget.hasDeparture) ...{
+              _buildDepartureFilter(),
+            },
+          },
+        } else ...{
+          if (widget.hasDeparture) ...{
+            _buildDepartureFilter(),
+          },
+        },
+
+        if (widget.hasCarRentalFilter) ...{
+          if (widget.isDifferentReturn) ...{
+            // On Way Selected
+            if (!widget.hasFinalDestination) ...{
+              if (widget.hasReturn) ...{
+                _buildReturnFilter(),
+              },
+            } else ...{
+              if (widget.hasReturn && viewMore) ...{
+                _buildReturnFilter(),
+              },
+            },
+          } else ...{
+            if (widget.hasReturn) ...{
+              _buildReturnFilter(),
+            },
+          }
+        } else ...{
+          if (widget.hasReturn) ...{
+            _buildReturnFilter(),
+          },
         },
       ],
     );
   }
 
-  // Hotels Filter
-  Widget _buildHotelsFilter() {
-    return Column(
-      children: [
-        // Where Are You Going
+  // Build Travelers Filter
+  Widget _buildTravelersFilter() {
+    if (widget.hasTravelers && viewMore) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Text(
+            S.of(context).travelers,
+            style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                  fontWeight: FontWeight.w500,
+                ),
+          ),
+          SizedBox(
+            height: 2.h,
+          ),
+          TextFieldWidget(
+            enabled: false,
+            hintText: S.of(context).travelers_hint,
+            isUnderLineBorder: true,
+            textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
+                  fontWeight: FontWeight.w500,
+                ),
+            contentPadding: EdgeInsets.zero,
+            prefixIcon: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 5.w),
+                child: Icon(
+                  Icons.people,
+                  size: 20.sp,
+                  color: AppColors.primaryColor,
+                )),
+          ),
+          // Space
+          SizedBox(
+            height: 15.h,
+          ),
+        ],
+      );
+    }
+    return SizedBox();
+  }
+
+  // Build Where Are You Filter
+  List<Widget> _buildWhereAreYouFilter() {
+    if (widget.hasWhereAreYouGoing) {
+      return <Widget>[
         Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -411,135 +617,134 @@ class _FilterWidgetState extends State<FilterWidget> {
         SizedBox(
           height: 15.h,
         ),
+      ];
+    }
+    return [];
+  }
 
-        // Check In/Out
-        Row(
-          children: [
-            // Check In
-            if (widget.hasCheckIn) ...{
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Text(
-                      S.of(context).check_in,
-                      style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                            fontWeight: FontWeight.w500,
-                          ),
-                    ),
-                    SizedBox(
-                      height: 2.h,
-                    ),
-                    TextFieldWidget(
-                      hintText: HelperUi.formatNamedDate(DateTime.now()),
-                      isUnderLineBorder: true,
-                      textStyle:
-                          Theme.of(context).textTheme.titleLarge!.copyWith(
-                                fontWeight: FontWeight.w500,
-                              ),
-                      contentPadding: EdgeInsets.zero,
-                      prefixIcon: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 5.w),
-                        child: SvgPicture.asset(
-                          Helper.getSvgPath("calendar.svg"),
-                          width: 13.w,
-                          height: 13.w,
-                        ),
+  // Build Check In And Check OutFilter
+  Widget _buildCheckInCheckOutFilter() {
+    return Row(
+      children: [
+        // Check In
+        if (widget.hasCheckIn) ...{
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Text(
+                  S.of(context).check_in,
+                  style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                        fontWeight: FontWeight.w500,
                       ),
-                    ),
-                  ],
                 ),
-              ),
-            },
-
-            // Check Out
-            if (widget.hasCheckOut) ...{
-              // Space
-              SizedBox(
-                width: 10.w,
-              ),
-
-              // Check Out
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Text(
-                      S.of(context).check_out,
-                      style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                            fontWeight: FontWeight.w500,
-                          ),
-                    ),
-                    SizedBox(
-                      height: 2.h,
-                    ),
-                    TextFieldWidget(
-                      isUnderLineBorder: true,
-                      hintText: HelperUi.formatNamedDate(DateTime.now()),
-                      textStyle:
-                          Theme.of(context).textTheme.titleLarge!.copyWith(
-                                fontWeight: FontWeight.w500,
-                              ),
-                      contentPadding: EdgeInsets.zero,
-                      prefixIcon: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 5.w),
-                        child: SvgPicture.asset(
-                          Helper.getSvgPath("calendar.svg"),
-                          width: 13.w,
-                          height: 13.w,
-                        ),
+                SizedBox(
+                  height: 2.h,
+                ),
+                TextFieldWidget(
+                  hintText: HelperUi.formatNamedDate(DateTime.now()),
+                  isUnderLineBorder: true,
+                  textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
+                        fontWeight: FontWeight.w500,
                       ),
-                    ),
-                  ],
-                ),
-              ),
-            }
-          ],
-        ),
-
-        // Space
-        SizedBox(
-          height: 15.h,
-        ),
-
-        // Travelers
-        if (widget.hasGuests && viewMore) ...{
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Text(
-                S.of(context).guests,
-                style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                      fontWeight: FontWeight.w500,
-                    ),
-              ),
-              SizedBox(
-                height: 2.h,
-              ),
-              TextFieldWidget(
-                enabled: false,
-                hintText: S.of(context).travelers_hint,
-                isUnderLineBorder: true,
-                textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
-                      fontWeight: FontWeight.w500,
-                    ),
-                contentPadding: EdgeInsets.zero,
-                prefixIcon: Padding(
+                  contentPadding: EdgeInsets.zero,
+                  prefixIcon: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 5.w),
-                    child: Icon(
-                      Icons.people,
-                      size: 20.sp,
-                      color: AppColors.primaryColor,
-                    )),
-              ),
-              // Space
-              SizedBox(
-                height: 15.h,
-              ),
-            ],
+                    child: SvgPicture.asset(
+                      Helper.getSvgPath("calendar.svg"),
+                      width: 13.w,
+                      height: 13.w,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         },
+
+        // Check Out
+        if (widget.hasCheckOut) ...{
+          // Space
+          SizedBox(
+            width: 10.w,
+          ),
+
+          // Check Out
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Text(
+                  S.of(context).check_out,
+                  style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                        fontWeight: FontWeight.w500,
+                      ),
+                ),
+                SizedBox(
+                  height: 2.h,
+                ),
+                TextFieldWidget(
+                  isUnderLineBorder: true,
+                  hintText: HelperUi.formatNamedDate(DateTime.now()),
+                  textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
+                        fontWeight: FontWeight.w500,
+                      ),
+                  contentPadding: EdgeInsets.zero,
+                  prefixIcon: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 5.w),
+                    child: SvgPicture.asset(
+                      Helper.getSvgPath("calendar.svg"),
+                      width: 13.w,
+                      height: 13.w,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        }
       ],
     );
+  }
+
+  // Build Guests Filter
+  Widget _buildGuestsFilter() {
+    if (widget.hasGuests && viewMore) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Text(
+            S.of(context).guests,
+            style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                  fontWeight: FontWeight.w500,
+                ),
+          ),
+          SizedBox(
+            height: 2.h,
+          ),
+          TextFieldWidget(
+            enabled: false,
+            hintText: S.of(context).travelers_hint,
+            isUnderLineBorder: true,
+            textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
+                  fontWeight: FontWeight.w500,
+                ),
+            contentPadding: EdgeInsets.zero,
+            prefixIcon: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 5.w),
+                child: Icon(
+                  Icons.people,
+                  size: 20.sp,
+                  color: AppColors.primaryColor,
+                )),
+          ),
+          // Space
+          SizedBox(
+            height: 15.h,
+          ),
+        ],
+      );
+    }
+    return SizedBox();
   }
 }

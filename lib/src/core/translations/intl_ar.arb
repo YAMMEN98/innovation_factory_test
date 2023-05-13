@@ -61,5 +61,9 @@
   "search_for place": "البحث عن مكان وخصائص",
   "check_in": "تسجيل الوصول",
   "check_out": "تسجيل المغادرة",
-  "guests": "الضيوف"
+  "guests": "الضيوف",
+  "pick_uo_location": "موقع الالتقاء",
+  "drop_off_location": "موقع التسليم" ,
+  "final_destination": "الوجهة النهائية" ,
+  "different_return": "عودة\nمختلف"
 }

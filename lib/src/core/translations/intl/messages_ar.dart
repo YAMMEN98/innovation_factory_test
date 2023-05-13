@@ -37,10 +37,15 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور"),
         "create_account": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
         "departure": MessageLookupByLibrary.simpleMessage("المغادرة"),
+        "different_return": MessageLookupByLibrary.simpleMessage("عودة\nمختلف"),
         "do_not_have_an_account":
             MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
+        "drop_off_location":
+            MessageLookupByLibrary.simpleMessage("موقع التسليم"),
         "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
         "english": MessageLookupByLibrary.simpleMessage("English"),
+        "final_destination":
+            MessageLookupByLibrary.simpleMessage("الوجهة النهائية"),
         "flights": MessageLookupByLibrary.simpleMessage("الرحلات الجوية"),
         "forget_password":
             MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور؟"),
@@ -82,6 +87,8 @@ class MessageLookup extends MessageLookupByLibrary {
                 ". يجب أن تحتوي كلمة المرور على حرف واحد كبير على الأقل\n"),
         "people": MessageLookupByLibrary.simpleMessage("الناس"),
         "phone": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
+        "pick_uo_location":
+            MessageLookupByLibrary.simpleMessage("موقع الالتقاء"),
         "register": MessageLookupByLibrary.simpleMessage("التسجيل"),
         "register_for_new_user":
             MessageLookupByLibrary.simpleMessage("التسجيل لمستخدم جديد"),

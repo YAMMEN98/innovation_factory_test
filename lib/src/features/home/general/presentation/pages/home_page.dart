@@ -5,6 +5,7 @@ import 'package:innovation_factory_test/src/core/common_feature/presentation/pag
 import 'package:innovation_factory_test/src/core/styles/app_colors.dart';
 import 'package:innovation_factory_test/src/core/translations/l10n.dart';
 import 'package:innovation_factory_test/src/core/util/helper/helper.dart';
+import 'package:innovation_factory_test/src/features/home/car_rental/presentation/pages/car_rental_page.dart';
 import 'package:innovation_factory_test/src/features/home/flights/presentation/pages/flights_page.dart';
 import 'package:innovation_factory_test/src/features/home/general/presentation/widgets/home_app_bar_widget.dart';
 import 'package:innovation_factory_test/src/features/home/general/presentation/widgets/home_tab_bar_widget.dart';
@@ -92,9 +93,14 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           controller: tabController,
           physics: NeverScrollableScrollPhysics(),
           children: [
+            // Flights Page
             FlightsPage(),
+
+            // Hotels Page
             HotelsPage(),
-            Text("3"),
+
+            // Car Rental Page
+            CarRentalPage(),
           ],
         ),
       ),

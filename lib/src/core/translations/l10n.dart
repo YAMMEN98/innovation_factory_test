@@ -679,6 +679,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Pickup Location`
+  String get pick_uo_location {
+    return Intl.message(
+      'Pickup Location',
+      name: 'pick_uo_location',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Drop-off Location`
+  String get drop_off_location {
+    return Intl.message(
+      'Drop-off Location',
+      name: 'drop_off_location',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Final Destination`
+  String get final_destination {
+    return Intl.message(
+      'Final Destination',
+      name: 'final_destination',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Different\nReturn`
+  String get different_return {
+    return Intl.message(
+      'Different\nReturn',
+      name: 'different_return',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
