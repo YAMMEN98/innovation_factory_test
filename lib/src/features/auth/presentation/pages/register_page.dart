@@ -1,22 +1,24 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:innovation_factory_test/src/core/common_feature/presentation/pages/background_page.dart';
+import 'package:innovation_factory_test/src/core/common_feature/presentation/widgets/app_loader.dart';
+import 'package:innovation_factory_test/src/core/common_feature/presentation/widgets/app_snack_bar.dart';
 import 'package:innovation_factory_test/src/core/common_feature/presentation/widgets/button_widget.dart';
 import 'package:innovation_factory_test/src/core/common_feature/presentation/widgets/checkbox_widget.dart';
 import 'package:innovation_factory_test/src/core/common_feature/presentation/widgets/text_field_widget.dart';
 import 'package:innovation_factory_test/src/core/styles/app_colors.dart';
 import 'package:innovation_factory_test/src/core/translations/l10n.dart';
 import 'package:innovation_factory_test/src/core/util/constant/app_constants.dart';
+import 'package:innovation_factory_test/src/core/util/helper/helper_ui.dart';
 import 'package:innovation_factory_test/src/core/util/validators/base_validator.dart';
 import 'package:innovation_factory_test/src/core/util/validators/email_validator1.dart';
 import 'package:innovation_factory_test/src/core/util/validators/match_validator.dart';
 import 'package:innovation_factory_test/src/core/util/validators/password_validator.dart';
 import 'package:innovation_factory_test/src/core/util/validators/required_validator.dart';
-import 'package:innovation_factory_test/src/features/auth/presentation/widgets/pin_code_text_field_widget.dart';
-import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:innovation_factory_test/src/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:innovation_factory_test/src/features/auth/presentation/widgets/verification_code_widget.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -26,6 +28,8 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  final AuthBloc _bloc = AuthBloc();
+
   // Full Name
   final TextEditingController _fullNameController = TextEditingController();
   bool _fullNameValidator = true;
@@ -47,7 +51,6 @@ class _RegisterPageState extends State<RegisterPage> {
   final _formKey = GlobalKey<FormState>();
 
   bool _isAgreeChecked = false;
-
 
   @override
   void initState() {
@@ -131,15 +134,34 @@ class _RegisterPageState extends State<RegisterPage> {
 
                 // Register Button
                 Center(
-                  child: ButtonWidget(
-                    text: S.of(context).register,
-                    verticalPadding: 10.h,
-                    horizontalPadding: 30.w,
-                    shadowColor: AppColors.primaryColor.withOpacity(0.3),
-                    elevation: 20,
-                    onPressed: () {
-                      if (_formKey.currentState!.validate() &&
-                          _isAgreeChecked) {}
+                  child: BlocConsumer<AuthBloc, AuthState>(
+                    bloc: _bloc,
+                    listener: (context, state) {
+                      if (state is ErrorRegisterState) {
+                        HelperUi.showSnackBar(context, state.errorMsg,
+                            type: ToastTypeEnum.error);
+                      } else if (state is SuccessRegisterState) {
+                        showVerificationCodeDialog(state.userId);
+                      }
+                    },
+                    builder: (context, state) {
+                      if (state is LoadingRegisterState) {
+                        return const AppLoader();
+                      }
+
+                      return ButtonWidget(
+                        text: S.of(context).register,
+                        verticalPadding: 10.h,
+                        horizontalPadding: 30.w,
+                        shadowColor: AppColors.primaryColor.withOpacity(0.3),
+                        elevation: 20,
+                        onPressed: () {
+                          if (_formKey.currentState!.validate() &&
+                              _isAgreeChecked) {
+                            register();
+                          }
+                        },
+                      );
                     },
                   ),
                 ),
@@ -149,7 +171,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   height: 30.h,
                 ),
 
-                // already Have An Account And Login
+                // Already Have An Account And Login
                 _buildAlreadyHaveAnAccountAndLogin(),
               ],
             ),
@@ -354,12 +376,12 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  // already Have An Account And Login
+  // Already Have An Account And Login
   Widget _buildAlreadyHaveAnAccountAndLogin() {
     return Center(
       child: RichText(
         text: TextSpan(children: [
-          // Don't Have An Account Title
+          // Already Have An Account
           TextSpan(
             text: S.of(context).already_have_an_account,
             style: Theme.of(context).textTheme.titleLarge!.copyWith(
@@ -367,7 +389,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
           ),
 
-          // Create Account Title
+          // Login
           TextSpan(
             text: S.of(context).login,
             style: Theme.of(context).textTheme.titleLarge!.copyWith(
@@ -384,6 +406,33 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  // Verification Content
+  // Verification Code Dialog
+  void showVerificationCodeDialog(int userId) {
+    HelperUi.showCustomDialog(
+      context,
+      VerificationCodeWidget(
+        userId: userId,
+        contentPadding:
+            EdgeInsets.only(top: 30.h, bottom: 21.h, left: 21.w, right: 21.w),
+        callback: () {},
+      ),
+    );
+  }
 
+  // Register
+  void register() {
+    // Close Keyboard
+    FocusScope.of(context).unfocus();
+
+    String fullName = _emailController.text.trim();
+    String email = _emailController.text.trim();
+    String password = _passwordController.text.trim();
+
+    _bloc.add(
+      OnLoggingInEvent(
+        email,
+        password,
+      ),
+    );
+  }
 }

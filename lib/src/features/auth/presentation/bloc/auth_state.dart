@@ -46,3 +46,26 @@ class SuccessVerificationCodeState extends AuthState {
 }
 
 /// --------------------End Verification Account-------------------- ///
+
+
+/// --------------------Start Register-------------------- ///
+
+/// Loading Register State
+class LoadingRegisterState extends AuthState {}
+
+/// Error Register State
+class ErrorRegisterState extends AuthState {
+  final String errorMsg;
+
+  ErrorRegisterState(this.errorMsg);
+}
+
+/// Success Register State
+class SuccessRegisterState extends AuthState {
+  final int userId;
+  final String registeredId;
+
+  SuccessRegisterState({required this.userId, required this.registeredId});
+}
+
+/// --------------------End Register-------------------- ///

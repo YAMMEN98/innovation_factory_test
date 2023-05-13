@@ -93,6 +93,8 @@ dependencies:
   # Pin Code Text Field
   pin_code_fields: ^7.4.0
 
+  # Device Information
+  device_info_plus: ^9.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

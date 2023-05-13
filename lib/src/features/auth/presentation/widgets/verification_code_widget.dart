@@ -124,7 +124,7 @@ class _VerificationCodeWidgetState extends State<VerificationCodeWidget> {
                           fontWeight: FontWeight.w600,
                           color: AppColors.white,
                         ),
-                        onPressed: () {
+                        onPressed: () async {
                           if(_isValidPin){
                             _bloc.add(OnVerificationEvent(
                               userId: widget.userId,

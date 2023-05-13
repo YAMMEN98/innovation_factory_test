@@ -26,3 +26,22 @@ class OnVerificationEvent extends AuthEvent {
     required this.deviceType,
   });
 }
+
+// On Register Event
+class OnRegisteringEvent extends AuthEvent {
+  final String firstName;
+  final String lastName;
+  final String email;
+  final String phone;
+  final String password;
+  final String referUser;
+
+  OnRegisteringEvent({
+    required this.firstName,
+    required this.lastName,
+    required this.email,
+    required this.phone,
+    required this.password,
+    required this.referUser,
+  });
+}

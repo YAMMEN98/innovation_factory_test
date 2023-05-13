@@ -126,23 +126,23 @@ class _LoginPageState extends State<LoginPage> {
                 ),
 
                 // Login Button
-                BlocConsumer<AuthBloc, AuthState>(
-                  bloc: _bloc,
-                  listener: (context, state) {
-                    if (state is ErrorLoginState) {
-                      HelperUi.showSnackBar(context, state.errorMsg,
-                          type: ToastTypeEnum.error);
-                    } else if (state is SuccessLoginState) {
-                      showVerificationCodeDialog(state.userId);
-                    }
-                  },
-                  builder: (context, state) {
-                    if (state is LoadingLoginState) {
-                      return AppLoader();
-                    }
+                Center(
+                  child: BlocConsumer<AuthBloc, AuthState>(
+                    bloc: _bloc,
+                    listener: (context, state) {
+                      if (state is ErrorLoginState) {
+                        HelperUi.showSnackBar(context, state.errorMsg,
+                            type: ToastTypeEnum.error);
+                      } else if (state is SuccessLoginState) {
+                        showVerificationCodeDialog(state.userId);
+                      }
+                    },
+                    builder: (context, state) {
+                      if (state is LoadingLoginState) {
+                        return AppLoader();
+                      }
 
-                    return Center(
-                      child: ButtonWidget(
+                      return ButtonWidget(
                         text: S.of(context).login,
                         verticalPadding: 10.h,
                         horizontalPadding: 30.w,
@@ -151,35 +151,11 @@ class _LoginPageState extends State<LoginPage> {
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
                             login();
-                            // pinController = TextEditingController();
-                            // HelperUi.showCustomDialog(
-                            //   context,
-                            //   GeneralDialogWidget(
-                            //     contentPadding: EdgeInsets.only(
-                            //       top: 30.h,
-                            //       bottom: 21.h,
-                            //       left: 21.w,
-                            //       right: 21.w
-                            //     ),
-                            //     title: S.of(context).verify_code,
-                            //     subtitle: S.of(context).we_sent_an_otp,
-                            //     content: _buildPinCodeTextField(),
-                            //     primaryButtonName:
-                            //         S.of(context).validate,
-                            //     icon: SvgPicture.asset(
-                            //       Helper.getSvgPath("verification_code_icon.svg"),
-                            //       width: 80.h,
-                            //       height: 80.h,
-                            //     ),
-                            //     callback: () {},
-                            //
-                            //   ),
-                            // );
                           }
                         },
-                      ),
-                    );
-                  },
+                      );
+                    },
+                  ),
                 ),
 
                 // Space

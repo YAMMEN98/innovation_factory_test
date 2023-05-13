@@ -6,6 +6,7 @@ import 'package:innovation_factory_test/src/core/util/injections.dart';
 import 'package:innovation_factory_test/src/features/auth/domain/entities/auth_response_model.dart';
 import 'package:innovation_factory_test/src/features/auth/domain/repositories/auth_repository.dart';
 import 'package:innovation_factory_test/src/features/auth/domain/usecases/login_usecase.dart';
+import 'package:innovation_factory_test/src/features/auth/domain/usecases/register_usecase.dart';
 import 'package:innovation_factory_test/src/features/auth/domain/usecases/verification_code_usecase.dart';
 
 import '../data_sources/locale/auth_shared_prefs.dart';
@@ -37,6 +38,19 @@ class AuthRepositoryImpl extends AuthRepository {
 
       // Save User Information On Local Storage
       sl<AuthSharedPrefs>().saveUser(result.data!);
+
+      return Right(result.data!);
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.message, e.statusCode));
+    }
+  }
+
+  /// Register Method Repository
+  @override
+  Future<Either<Failure, AuthResponseModel>> register(
+      RegisterParams params) async {
+    try {
+      final result = await authApi.register(params);
 
       return Right(result.data!);
     } on ServerException catch (e) {

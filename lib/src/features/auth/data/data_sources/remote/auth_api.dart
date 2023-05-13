@@ -8,6 +8,7 @@ import 'package:innovation_factory_test/src/core/translations/l10n.dart';
 import 'package:innovation_factory_test/src/features/auth/data/data_sources/remote/general_auth_api.dart';
 import 'package:innovation_factory_test/src/features/auth/domain/entities/auth_response_model.dart';
 import 'package:innovation_factory_test/src/features/auth/domain/usecases/login_usecase.dart';
+import 'package:innovation_factory_test/src/features/auth/domain/usecases/register_usecase.dart';
 import 'package:innovation_factory_test/src/features/auth/domain/usecases/verification_code_usecase.dart';
 
 class AuthApi extends GeneralAuthApi {
@@ -62,4 +63,29 @@ class AuthApi extends GeneralAuthApi {
       throw ServerException(e.toString(), null);
     }
   }
+
+  // Register Api Method
+  Future<ApiResponse<AuthResponseModel>> register(RegisterParams params) async {
+    try {
+      final result = (await dio.post(
+        "register",
+        data: params.toJson(),
+      ));
+      ApiResponse<AuthResponseModel> response =
+      ApiResponse.fromJson(result.data, AuthResponseModel.fromJson);
+      if (response.status == null || response.status == false) {
+        throw ServerException(
+            response.message ?? S.of(navigatorKey.currentContext!).server_error,
+            result.statusCode);
+      }
+      return response;
+    } on DioError catch (e) {
+      throw ServerException(handleDioError(e), e.response?.statusCode);
+    } on ServerException {
+      rethrow;
+    } catch (e) {
+      throw ServerException(e.toString(), null);
+    }
+  }
+
 }
