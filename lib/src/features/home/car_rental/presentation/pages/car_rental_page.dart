@@ -41,158 +41,163 @@ class _CarRentalPageState extends State<CarRentalPage>
   @override
   Widget build(BuildContext context) {
     return BackgroundPage(
-        child: Padding(
-      padding: EdgeInsets.symmetric(
-        horizontal: 30.w,
-      ),
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            // Space
-            SizedBox(
-              height: 20.h,
-            ),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              // Space
+              SizedBox(
+                height: 20.h,
+              ),
 
-            // CarRental Type
-            Center(
-                child: BlocBuilder<FilterCubit, FilterState>(
-              bloc: _filterCubit,
-              builder: (context, state) {
-                return Row(
-                  mainAxisAlignment: _filterCubit.selectedCarTripType == 1
-                      ? MainAxisAlignment.spaceBetween
-                      : MainAxisAlignment.center,
-                  children: [
-                    Flexible(
-                      child: SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: [
-                            SizedBox(
-                              width: 10.w,
-                            ),
-
-                            // One Way
-                            SelectButtonWidget(
-                              title: S.of(context).one_way,
-                              isSelected: _filterCubit.selectedCarTripType == 0,
-                              onTap: () {
-                                _filterCubit.changeCarRentalType(0);
-                              },
-                            ),
-
-                            SizedBox(
-                              width: 10.w,
-                            ),
-
-                            // Rounded Trip
-                            SelectButtonWidget(
-                              title: S.of(context).round_trip,
-                              isSelected: _filterCubit.selectedCarTripType == 1,
-                              onTap: () {
-                                _filterCubit.changeCarRentalType(1);
-                              },
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    if (_filterCubit.selectedCarTripType == 1) ...{
-                      SizedBox(
-                        width: 10.w,
-                      ),
-                      Row(
-                        children: [
-                          SwitchWidget(
-                            value: _filterCubit.isDifferentReturn,
-                            callback: (value) {
-                              _filterCubit.changeIsDifferentReturn(value);
-                            },
-                          ),
-                          SizedBox(
-                            width: 5.w,
-                          ),
-                          Text(
-                            S.of(context).different_return,
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleSmall!
-                                .copyWith(
-                                  fontWeight: FontWeight.w400,
-                                  color: AppColors.grayColor,
+              // CarRental Type
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 30.w,
+                ),
+                child: Center(
+                    child: BlocBuilder<FilterCubit, FilterState>(
+                  bloc: _filterCubit,
+                  builder: (context, state) {
+                    return Row(
+                      mainAxisAlignment: _filterCubit.selectedCarTripType == 1
+                          ? MainAxisAlignment.spaceBetween
+                          : MainAxisAlignment.center,
+                      children: [
+                        Flexible(
+                          child: SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Row(
+                              children: [
+                                SizedBox(
+                                  width: 10.w,
                                 ),
+
+                                // One Way
+                                SelectButtonWidget(
+                                  title: S.of(context).one_way,
+                                  isSelected: _filterCubit.selectedCarTripType == 0,
+                                  onTap: () {
+                                    _filterCubit.changeCarRentalType(0);
+                                  },
+                                ),
+
+                                SizedBox(
+                                  width: 10.w,
+                                ),
+
+                                // Rounded Trip
+                                SelectButtonWidget(
+                                  title: S.of(context).round_trip,
+                                  isSelected: _filterCubit.selectedCarTripType == 1,
+                                  onTap: () {
+                                    _filterCubit.changeCarRentalType(1);
+                                  },
+                                ),
+                              ],
+                            ),
                           ),
-                        ],
-                      ),
-                    }
-                  ],
-                );
-              },
-            )),
-
-            // Space
-            SizedBox(
-              height: 20.h,
-            ),
-
-            // Filter
-            BlocBuilder<FilterCubit, FilterState>(
-              bloc: _filterCubit,
-              builder: (context, state) {
-                return FilterWidget(
-                  hasCarRentalFilter: true,
-                  hasPickupLocation: true,
-                  hasDropOffLocation: true,
-                  hasDeparture: true,
-                  hasReturn: _filterCubit.selectedCarTripType != 0,
-                  hasFinalDestination: _filterCubit.selectedCarTripType == 1,
-                  isDifferentReturn: _filterCubit.isDifferentReturn,
-                  searchCallback: ({
-                    required String checkIn,
-                    required String checkOut,
-                    required String departure,
-                    required String dropOffLocation,
-                    required String finalDestination,
-                    required String flyingFrom,
-                    required String flyingTo,
-                    required String guests,
-                    required String pickupLocation,
-                    required String returnValue,
-                    required String travelers,
-                    required String whereAreYouGoing,
-                  }) {
-                    Navigator.pushNamed(context, "/search_flights_page");
+                        ),
+                        if (_filterCubit.selectedCarTripType == 1) ...{
+                          SizedBox(
+                            width: 10.w,
+                          ),
+                          Row(
+                            children: [
+                              SwitchWidget(
+                                value: _filterCubit.isDifferentReturn,
+                                callback: (value) {
+                                  _filterCubit.changeIsDifferentReturn(value);
+                                },
+                              ),
+                              SizedBox(
+                                width: 5.w,
+                              ),
+                              Text(
+                                S.of(context).different_return,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleSmall!
+                                    .copyWith(
+                                      fontWeight: FontWeight.w400,
+                                      color: AppColors.grayColor,
+                                    ),
+                              ),
+                            ],
+                          ),
+                        }
+                      ],
+                    );
                   },
-                );
-              },
-            ),
+                )),
+              ),
 
-            // Space
-            SizedBox(
-              height: 20.h,
-            ),
+              // Space
+              SizedBox(
+                height: 20.h,
+              ),
 
-            // Limited Offers
-            LimitedOffersWidget(),
+              // Filter
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 30.w,
+                ),
+                child: BlocBuilder<FilterCubit, FilterState>(
+                  bloc: _filterCubit,
+                  builder: (context, state) {
+                    return FilterWidget(
+                      hasCarRentalFilter: true,
+                      hasPickupLocation: true,
+                      hasDropOffLocation: true,
+                      hasDeparture: true,
+                      hasReturn: _filterCubit.selectedCarTripType != 0,
+                      hasFinalDestination: _filterCubit.selectedCarTripType == 1,
+                      isDifferentReturn: _filterCubit.isDifferentReturn,
+                      searchCallback: ({
+                        required String checkIn,
+                        required String checkOut,
+                        required String departure,
+                        required String dropOffLocation,
+                        required String finalDestination,
+                        required String flyingFrom,
+                        required String flyingTo,
+                        required String guests,
+                        required String pickupLocation,
+                        required String returnValue,
+                        required String travelers,
+                        required String whereAreYouGoing,
+                      }) {
+                        Navigator.pushNamed(context, "/search_flights_page");
+                      },
+                    );
+                  },
+                ),
+              ),
 
-            // Space
-            SizedBox(
-              height: 20.h,
-            ),
+              // Space
+              SizedBox(
+                height: 20.h,
+              ),
 
-            // Best Places
-            BestPlacesWidget(),
+              // Limited Offers
+              LimitedOffersWidget(),
 
-            // Space
-            SizedBox(
-              height: 20.h,
-            ),
+              // Space
+              SizedBox(
+                height: 20.h,
+              ),
 
-            // Best Packages
-            BestPackagesWidget(),
-          ],
-        ),
-      ),
-    ));
+              // Best Places
+              BestPlacesWidget(),
+
+              // Space
+              SizedBox(
+                height: 20.h,
+              ),
+
+              // Best Packages
+              BestPackagesWidget(),
+            ],
+          ),
+        ));
   }
 }

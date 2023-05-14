@@ -15,35 +15,40 @@ class BestPlacesWidget extends StatefulWidget {
 }
 
 class _BestPlacesWidgetState extends State<BestPlacesWidget> {
-  List<String> bestPlaces = ["1", "2"];
+  List<String> bestPlaces = ["1", "2", "3"];
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         // Best Places Title
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Flexible(
-              child: Text(
-                S.of(context).best_place,
-                style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                      fontWeight: FontWeight.w700,
+        Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: 30.w,
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Flexible(
+                child: Text(
+                  S.of(context).best_place,
+                  style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                        fontWeight: FontWeight.w700,
+                      ),
+                ),
+              ),
+              SizedBox(
+                width: HelperUi.getHorizontalSpace(),
+              ),
+              Text(
+                S.of(context).view_all,
+                style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.primaryColor,
                     ),
               ),
-            ),
-            SizedBox(
-              width: HelperUi.getHorizontalSpace(),
-            ),
-            Text(
-              S.of(context).view_all,
-              style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.primaryColor,
-                  ),
-            ),
-          ],
+            ],
+          ),
         ),
 
         // List Of Offers

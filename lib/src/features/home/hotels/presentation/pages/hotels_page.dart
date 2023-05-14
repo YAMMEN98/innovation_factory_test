@@ -32,64 +32,64 @@ class _HotelsPageState extends State<HotelsPage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return BackgroundPage(
-        child: Padding(
-      padding: EdgeInsets.symmetric(
-        horizontal: 30.w,
-      ),
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            // Filter
-            FilterWidget(
-              hasHotelsFilter: true,
-              hasWhereAreYouGoing: true,
-              hasCheckIn: true,
-              hasCheckOut: true,
-              hasGuests: true,
-              searchCallback: ({
-                required String checkIn,
-                required String checkOut,
-                required String departure,
-                required String dropOffLocation,
-                required String finalDestination,
-                required String flyingFrom,
-                required String flyingTo,
-                required String guests,
-                required String pickupLocation,
-                required String returnValue,
-                required String travelers,
-                required String whereAreYouGoing,
-              }) {
-                Navigator.pushNamed(context, "/search_flights_page");
-              },
-            ),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              // Filter
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 30.w,
+                ),
+                child: FilterWidget(
+                  hasHotelsFilter: true,
+                  hasWhereAreYouGoing: true,
+                  hasCheckIn: true,
+                  hasCheckOut: true,
+                  hasGuests: true,
+                  searchCallback: ({
+                    required String checkIn,
+                    required String checkOut,
+                    required String departure,
+                    required String dropOffLocation,
+                    required String finalDestination,
+                    required String flyingFrom,
+                    required String flyingTo,
+                    required String guests,
+                    required String pickupLocation,
+                    required String returnValue,
+                    required String travelers,
+                    required String whereAreYouGoing,
+                  }) {
+                    Navigator.pushNamed(context, "/search_flights_page");
+                  },
+                ),
+              ),
 
-            // Space
-            SizedBox(
-              height: 20.h,
-            ),
+              // Space
+              SizedBox(
+                height: 20.h,
+              ),
 
-            // Limited Offers
-            LimitedOffersWidget(),
+              // Limited Offers
+              LimitedOffersWidget(),
 
-            // Space
-            SizedBox(
-              height: 20.h,
-            ),
+              // Space
+              SizedBox(
+                height: 20.h,
+              ),
 
-            // Best Places
-            BestPlacesWidget(),
+              // Best Places
+              BestPlacesWidget(),
 
-            // Space
-            SizedBox(
-              height: 20.h,
-            ),
+              // Space
+              SizedBox(
+                height: 20.h,
+              ),
 
-            // Best Packages
-            BestPackagesWidget(),
-          ],
-        ),
-      ),
-    ));
+              // Best Packages
+              BestPackagesWidget(),
+            ],
+          ),
+        ));
   }
 }
