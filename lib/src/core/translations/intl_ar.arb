@@ -73,5 +73,10 @@
   "travel_time": "وقت الرحلة",
   "arrival_at_destination": "الوصول إلى الوجهة",
   "select_flight": "اختيار الرحلة",
-  "confirm": "تأكيد"
+  "confirm": "تأكيد",
+  "available": "متاحة",
+  "adults": "الكبار",
+  "children": "الأطفال",
+  "h": "س",
+  "m": "د"
 }

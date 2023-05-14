@@ -9,11 +9,16 @@ class PlaneObserverWidget extends StatefulWidget {
   final DateTime startDateTrip;
   final DateTime endDateTrip;
   final DateTime dateNowPlane; // Must Date Plane in DateTime.now
+  final String flyingFrom;
+  final String flyingTo;
 
-  PlaneObserverWidget(
-      {required this.startDateTrip,
-      required this.endDateTrip,
-      required this.dateNowPlane});
+  PlaneObserverWidget({
+    required this.startDateTrip,
+    required this.endDateTrip,
+    required this.dateNowPlane,
+    required this.flyingFrom,
+    required this.flyingTo,
+  });
 
   @override
   State<PlaneObserverWidget> createState() => _PlaneObserverWidgetState();
@@ -46,21 +51,21 @@ class _PlaneObserverWidgetState extends State<PlaneObserverWidget> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "DXB",
+                  widget.flyingFrom,
                   style: Theme.of(context).textTheme.titleLarge!.copyWith(
                         fontWeight: FontWeight.w500,
                         color: AppColors.darkFontColor,
                       ),
                 ),
                 Text(
-                  "KHI",
+                  "-",
                   style: Theme.of(context).textTheme.titleLarge!.copyWith(
                         fontWeight: FontWeight.w500,
                         color: AppColors.darkFontColor,
                       ),
                 ),
                 Text(
-                  "LHI",
+                  widget.flyingTo,
                   style: Theme.of(context).textTheme.titleLarge!.copyWith(
                         fontWeight: FontWeight.w500,
                         color: AppColors.darkFontColor,
@@ -106,7 +111,7 @@ class _PlaneObserverWidgetState extends State<PlaneObserverWidget> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  HelperUi.formatTimes(widget.endDateTrip),
+                  HelperUi.formatTimes(widget.startDateTrip),
                   style: Theme.of(context).textTheme.titleLarge!.copyWith(
                         fontWeight: FontWeight.w500,
                         color: AppColors.grayColor,
@@ -132,7 +137,7 @@ class _PlaneObserverWidgetState extends State<PlaneObserverWidget> {
                   ],
                 ),
                 Text(
-                  HelperUi.formatTimes(widget.startDateTrip),
+                  HelperUi.formatTimes(widget.endDateTrip),
                   style: Theme.of(context).textTheme.titleLarge!.copyWith(
                         fontWeight: FontWeight.w500,
                         color: AppColors.grayColor,
@@ -178,7 +183,7 @@ class _PlaneObserverWidgetState extends State<PlaneObserverWidget> {
   //Widgets
   Widget _buildPlaneWidget() {
     return SvgPicture.asset(
-      Helper.getSvgPath("plane.svg"),
+      Helper.getSvgPath("plane_2.svg"),
       width: 25.sp,
       height: 25.sp,
     );
@@ -187,7 +192,7 @@ class _PlaneObserverWidgetState extends State<PlaneObserverWidget> {
   Widget _buildLineWidget(int num) {
     return Row(
       children: [
-        for (int i = 0; i < num; i++) ...{
+        for (int i = 0; i < 10; i++) ...{
           Expanded(
             child: Container(
               width: 8.sp,

@@ -799,6 +799,56 @@ class S {
       args: [],
     );
   }
+
+  /// `Available`
+  String get available {
+    return Intl.message(
+      'Available',
+      name: 'available',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Adults`
+  String get adults {
+    return Intl.message(
+      'Adults',
+      name: 'adults',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Children`
+  String get children {
+    return Intl.message(
+      'Children',
+      name: 'children',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `h`
+  String get h {
+    return Intl.message(
+      'h',
+      name: 'h',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `m`
+  String get m {
+    return Intl.message(
+      'm',
+      name: 'm',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

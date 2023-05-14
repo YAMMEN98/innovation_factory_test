@@ -22,9 +22,11 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "adults": MessageLookupByLibrary.simpleMessage("الكبار"),
         "already_have_an_account":
             MessageLookupByLibrary.simpleMessage("هل لديك حساب؟ "),
         "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
+        "available": MessageLookupByLibrary.simpleMessage("متاحة"),
         "best_packages": MessageLookupByLibrary.simpleMessage("أفضل الحزم"),
         "best_place": MessageLookupByLibrary.simpleMessage("أفضل الأماكن"),
         "book_now": MessageLookupByLibrary.simpleMessage("حجز الآن"),
@@ -33,6 +35,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "cheap_price": MessageLookupByLibrary.simpleMessage("سعر رخيص"),
         "check_in": MessageLookupByLibrary.simpleMessage("تسجيل الوصول"),
         "check_out": MessageLookupByLibrary.simpleMessage("تسجيل المغادرة"),
+        "children": MessageLookupByLibrary.simpleMessage("الأطفال"),
         "code": MessageLookupByLibrary.simpleMessage("الرمز"),
         "confirm": MessageLookupByLibrary.simpleMessage("تأكيد"),
         "confirm_password":
@@ -53,6 +56,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور؟"),
         "full_name": MessageLookupByLibrary.simpleMessage("الاسم الكامل"),
         "guests": MessageLookupByLibrary.simpleMessage("الضيوف"),
+        "h": MessageLookupByLibrary.simpleMessage("س"),
         "hide_details": MessageLookupByLibrary.simpleMessage("إخفاء التفاصيل"),
         "hotels": MessageLookupByLibrary.simpleMessage("الفنادق"),
         "i_agree_terms_and_conditions": MessageLookupByLibrary.simpleMessage(
@@ -67,6 +71,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "login_to_existing_user": MessageLookupByLibrary.simpleMessage(
             "تسجيل الدخول إلى المستخدم الحالي"),
+        "m": MessageLookupByLibrary.simpleMessage("د"),
         "one_way": MessageLookupByLibrary.simpleMessage("اتجاه واحد"),
         "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
         "password_does_not_match":

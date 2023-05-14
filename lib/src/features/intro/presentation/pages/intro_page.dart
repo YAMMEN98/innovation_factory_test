@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:innovation_factory_test/src/core/util/helper/helper.dart';
+import 'package:innovation_factory_test/src/core/util/router.dart';
 import 'package:innovation_factory_test/src/features/intro/presentation/bloc/intro_bloc.dart';
 
 class IntroPage extends StatefulWidget {
@@ -26,9 +27,9 @@ class _IntroPageState extends State<IntroPage> {
         _bloc.stream.listen((state) {
           if (state is SuccessCheckUserStatusState) {
             if (state.isLoggedIn) {
-              Navigator.pushReplacementNamed(context, "/home_page");
+              Navigator.pushReplacementNamed(context, AppPageRouteName.home.name);
             } else {
-              Navigator.pushReplacementNamed(context, "/login_page");
+              Navigator.pushReplacementNamed(context, AppPageRouteName.login.name);
             }
           }
         });

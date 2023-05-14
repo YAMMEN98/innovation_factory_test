@@ -6,10 +6,15 @@ import 'package:innovation_factory_test/src/core/styles/app_colors.dart';
 import 'package:innovation_factory_test/src/core/translations/l10n.dart';
 import 'package:innovation_factory_test/src/core/util/helper/helper.dart';
 import 'package:innovation_factory_test/src/core/util/helper/helper_ui.dart';
+import 'package:innovation_factory_test/src/features/home/flights/domain/entities/tour_model.dart';
+import 'package:innovation_factory_test/src/features/home/flights/domain/entities/tour_segement_model.dart';
 import 'package:innovation_factory_test/src/features/home/general/presentation/widgets/tag_widget.dart';
 
 class FlightDetailsWidget extends StatefulWidget {
-  const FlightDetailsWidget({Key? key}) : super(key: key);
+  final List<TourModel> tourModel;
+
+  const FlightDetailsWidget({Key? key, required this.tourModel})
+      : super(key: key);
 
   @override
   State<FlightDetailsWidget> createState() => _FlightDetailsWidgetState();
@@ -64,31 +69,39 @@ class _FlightDetailsWidgetState extends State<FlightDetailsWidget> {
         ),
 
         // From Trip Time Details
-        _buildTripTimeDetails(),
+        Column(
+          children: widget.tourModel.map((e) {
+            return Column(
+              children: [
+                _buildTripTimeDetails(e.tourSegments.first),
 
-        // Time
-        TagWidget(
-          title: "3h 50m layover - Jinnah International (KHI)",
-          textWeight: FontWeight.w500,
-          textColor: AppColors.darkFontColor,
-          padding: EdgeInsets.symmetric(
-            horizontal: 15.sp,
-            vertical: 12.5.sp,
-          ),
-          icon: Icon(
-            Icons.access_time_outlined,
-            size: 20.sp,
-            color: AppColors.primaryColor,
-          ),
-          iconSpace: 9.sp,
+                // Time
+                TagWidget(
+                  title: "3h 50m layover - Jinnah International (KHI)",
+                  textWeight: FontWeight.w500,
+                  textColor: AppColors.darkFontColor,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 15.sp,
+                    vertical: 12.5.sp,
+                  ),
+                  icon: Icon(
+                    Icons.access_time_outlined,
+                    size: 20.sp,
+                    color: AppColors.primaryColor,
+                  ),
+                  iconSpace: 9.sp,
+                ),
+
+                SizedBox(
+                  height: 20.sp,
+                ),
+              ],
+            );
+          }).toList(),
         ),
 
-        SizedBox(
-          height: 20.sp,
-        ),
-
-        // To Trip Time Details
-        _buildTripTimeDetails(),
+        // // To Trip Time Details
+        // _buildTripTimeDetails(),
 
         SizedBox(
           height: 20.sp,
@@ -160,7 +173,7 @@ class _FlightDetailsWidgetState extends State<FlightDetailsWidget> {
   }
 
   // Trip Time Details
-  _buildTripTimeDetails() {
+  _buildTripTimeDetails(TourSegmentModel tourSegmentModel) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -194,19 +207,24 @@ class _FlightDetailsWidgetState extends State<FlightDetailsWidget> {
                   RichText(
                     text: TextSpan(children: [
                       TextSpan(
-                          text: "09:35 Lahore",
+                          text: "${HelperUi.formatTimes(
+                            DateTime.parse(
+                              tourSegmentModel.departureDateTime,
+                            ),
+                          )} ",
                           style:
                               Theme.of(context).textTheme.titleSmall!.copyWith(
                                     fontWeight: FontWeight.w600,
                                     color: AppColors.darkFontColor,
                                   )),
                       TextSpan(
-                          text: " Allama Iqbal International (LHE)",
-                          style:
-                              Theme.of(context).textTheme.titleSmall!.copyWith(
-                                    fontWeight: FontWeight.w400,
-                                    color: AppColors.darkFontColor,
-                                  )),
+                        text:
+                            " ${tourSegmentModel.airlineName} (${tourSegmentModel.airlineCode})",
+                        style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                              fontWeight: FontWeight.w400,
+                              color: AppColors.darkFontColor,
+                            ),
+                      ),
                     ]),
                   ),
 
@@ -266,7 +284,7 @@ class _FlightDetailsWidgetState extends State<FlightDetailsWidget> {
                                         ),
                                   ),
                                   TextSpan(
-                                    text: "1h 45m",
+                                    text: _getTravelTime(int.tryParse(tourSegmentModel.journeyDuration)??0),
                                     style: Theme.of(context)
                                         .textTheme
                                         .titleSmall!
@@ -292,14 +310,19 @@ class _FlightDetailsWidgetState extends State<FlightDetailsWidget> {
                   RichText(
                     text: TextSpan(children: [
                       TextSpan(
-                          text: "12:45 Karachi",
+                          text: "${HelperUi.formatTimes(
+                            DateTime.parse(
+                              tourSegmentModel.arrivalDateTime,
+                            ),
+                          )} ",
                           style:
                               Theme.of(context).textTheme.titleSmall!.copyWith(
                                     fontWeight: FontWeight.w600,
                                     color: AppColors.darkFontColor,
                                   )),
                       TextSpan(
-                          text: " Jinnah International (KHI)",
+                          text: " (${tourSegmentModel.arrivalAirportCode})",
+
                           style:
                               Theme.of(context).textTheme.titleSmall!.copyWith(
                                     fontWeight: FontWeight.w400,
@@ -374,5 +397,12 @@ class _FlightDetailsWidgetState extends State<FlightDetailsWidget> {
       width: 25.sp,
       height: 25.sp,
     );
+  }
+
+  _getTravelTime(int durationInMinutes) {
+    int hours = durationInMinutes ~/ 60;
+    int minutes = durationInMinutes % 60;
+
+    return "$hours${S.of(context).h} $minutes${S.of(context).m}";
   }
 }

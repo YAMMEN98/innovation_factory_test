@@ -2,14 +2,29 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:innovation_factory_test/src/core/styles/app_colors.dart';
+import 'package:innovation_factory_test/src/core/translations/l10n.dart';
 import 'package:innovation_factory_test/src/core/util/helper/helper.dart';
 import 'package:innovation_factory_test/src/core/util/helper/helper_ui.dart';
 
 class SearchFlightsAppBarWidget extends StatefulWidget {
+  final String flyingFrom;
+  final String flyingTo;
+  final String departureDate;
+  final String returnDate;
+  final String adults;
+  final String children;
   final Color? backgroundColor;
 
-  const SearchFlightsAppBarWidget({Key? key, this.backgroundColor})
-      : super(key: key);
+  const SearchFlightsAppBarWidget({
+    Key? key,
+    this.backgroundColor,
+    required this.flyingFrom,
+    required this.flyingTo,
+    required this.departureDate,
+    required this.returnDate,
+    required this.adults,
+    required this.children,
+  }) : super(key: key);
 
   @override
   State<SearchFlightsAppBarWidget> createState() =>
@@ -70,7 +85,7 @@ class _SearchFlightsAppBarWidgetState extends State<SearchFlightsAppBarWidget> {
                             children: [
                               // From
                               Text(
-                                "DXB",
+                                widget.flyingFrom,
                                 style: Theme.of(context)
                                     .textTheme
                                     .headlineMedium!
@@ -96,7 +111,7 @@ class _SearchFlightsAppBarWidgetState extends State<SearchFlightsAppBarWidget> {
 
                               // To
                               Text(
-                                "LHE",
+                                widget.flyingTo,
                                 style: Theme.of(context)
                                     .textTheme
                                     .headlineMedium!
@@ -118,7 +133,9 @@ class _SearchFlightsAppBarWidgetState extends State<SearchFlightsAppBarWidget> {
                             children: [
                               // From Date
                               Text(
-                                HelperUi.formatNamedDateE(DateTime.now()),
+                                HelperUi.formatNamedDateE(
+                                  DateTime.parse(widget.departureDate),
+                                ),
                                 style: Theme.of(context)
                                     .textTheme
                                     .bodyMedium!
@@ -146,7 +163,9 @@ class _SearchFlightsAppBarWidgetState extends State<SearchFlightsAppBarWidget> {
 
                               // To Date
                               Text(
-                                HelperUi.formatNamedDateE(DateTime.now()),
+                                HelperUi.formatNamedDateE(
+                                  DateTime.parse(widget.returnDate),
+                                ),
                                 style: Theme.of(context)
                                     .textTheme
                                     .bodyMedium!
@@ -181,7 +200,7 @@ class _SearchFlightsAppBarWidgetState extends State<SearchFlightsAppBarWidget> {
                               ),
 
                               Text(
-                                "2 Adults, 3 Children",
+                                "${widget.adults} ${S.of(context).adults}, ${widget.children} ${S.of(context).children}",
                                 style: Theme.of(context)
                                     .textTheme
                                     .titleLarge!

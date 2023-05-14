@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:innovation_factory_test/src/core/common_feature/presentation/pages/background_page.dart';
+import 'package:innovation_factory_test/src/core/util/router.dart';
 import 'package:innovation_factory_test/src/features/home/general/presentation/widgets/best_packages/best_packages_widget.dart';
 import 'package:innovation_factory_test/src/features/home/general/presentation/widgets/best_places/best_places_widget.dart';
 import 'package:innovation_factory_test/src/features/home/general/presentation/widgets/filter_widget.dart';
@@ -60,7 +61,7 @@ class _HotelsPageState extends State<HotelsPage> with TickerProviderStateMixin {
                     required String travelers,
                     required String whereAreYouGoing,
                   }) {
-                    Navigator.pushNamed(context, "/search_flights_page");
+                    Navigator.pushNamed(context, AppPageRouteName.searchFlights.name,);
                   },
                 ),
               ),

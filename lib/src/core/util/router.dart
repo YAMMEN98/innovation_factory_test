@@ -3,15 +3,34 @@ import 'package:flutter/material.dart';
 import 'package:innovation_factory_test/src/features/auth/presentation/pages/login_page.dart';
 import 'package:innovation_factory_test/src/features/auth/presentation/pages/register_page.dart';
 import 'package:innovation_factory_test/src/features/home/general/presentation/pages/home_page.dart';
+import 'package:innovation_factory_test/src/features/search_flights/domain/entities/filtering_flights_page_params.dart';
 import 'package:innovation_factory_test/src/features/search_flights/presentation/pages/search_flights_page.dart';
 
-enum PageRouteName{
-  login,
-  register,
-  home,
-  search_flights
-}
+enum AppPageRouteName { login, register, home, searchFlights }
 
+extension PageRouteNameExtension on AppPageRouteName {
+  String get name {
+    switch (this) {
+      case AppPageRouteName.login:
+        return "/login_page";
+
+      case AppPageRouteName.register:
+        return "/register_page";
+
+      case AppPageRouteName.home:
+        return "/home_page";
+
+      case AppPageRouteName.home:
+        return "/home_page";
+
+      case AppPageRouteName.searchFlights:
+        return "/search_flights_page";
+
+      default:
+        return "/login_page";
+    }
+  }
+}
 
 class AppRouter {
   static String currentRoute = "/";
@@ -33,18 +52,24 @@ class AppRouter {
           builder: (_) => const RegisterPage(),
         );
 
-    // Home Page
+      // Home Page
       case '/home_page':
         return CupertinoPageRoute(
           settings: RouteSettings(name: settings.name),
           builder: (_) => const HomePage(),
         );
 
-    // Search Flights Page
+      // Search Flights Page
       case '/search_flights_page':
         return CupertinoPageRoute(
           settings: RouteSettings(name: settings.name),
-          builder: (_) => const SearchFlightsPage(),
+          builder: (_) {
+            final FilteringFlightsPageParams pageParams =
+                settings.arguments as FilteringFlightsPageParams;
+            return SearchFlightsPage(
+              params: pageParams,
+            );
+          },
         );
 
       default:

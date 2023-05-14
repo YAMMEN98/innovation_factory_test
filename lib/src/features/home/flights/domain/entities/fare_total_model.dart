@@ -5,15 +5,15 @@ part 'fare_total_model.g.dart';
 @JsonSerializable(fieldRename: FieldRename.pascal)
 class FareTotalModel {
   FareTotalModel({
-    required this.Basic,
-    required this.ServiceTax,
-    required this.TotalTax,
-    required this.Total,
+    required this.basic,
+    required this.serviceTax,
+    required this.totalTax,
+    required this.total,
   });
-  late final String Basic;
-  late final String ServiceTax;
-  late final String TotalTax;
-  late final String Total;
+  late final String basic;
+  late final String serviceTax;
+  late final String totalTax;
+  late final String total;
 
 
   factory FareTotalModel.fromJson(json) => _$FareTotalModelFromJson(json);

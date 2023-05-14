@@ -7,13 +7,13 @@ part of 'tour_model.dart';
 // **************************************************************************
 
 TourModel _$TourModelFromJson(Map<String, dynamic> json) => TourModel(
-      TotalStops: json['TotalStops'] as int,
+      totalStops: json['TotalStops'] as int,
       tourSegments: (json['tourSegments'] as List<dynamic>)
           .map((e) => TourSegmentModel.fromJson(e))
           .toList(),
     );
 
 Map<String, dynamic> _$TourModelToJson(TourModel instance) => <String, dynamic>{
-      'TotalStops': instance.TotalStops,
+      'TotalStops': instance.totalStops,
       'tourSegments': instance.tourSegments,
     };

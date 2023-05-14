@@ -6,13 +6,16 @@ import 'package:innovation_factory_test/src/core/common_feature/presentation/wid
 import 'package:innovation_factory_test/src/core/styles/app_colors.dart';
 import 'package:innovation_factory_test/src/core/translations/l10n.dart';
 import 'package:innovation_factory_test/src/core/util/helper/helper.dart';
+import 'package:innovation_factory_test/src/features/home/flights/domain/entities/flight_model.dart';
 import 'package:innovation_factory_test/src/features/home/general/presentation/widgets/tag_widget.dart';
 import 'package:innovation_factory_test/src/features/search_flights/presentation/widgets/flight_details_widget.dart';
 
 import 'plane_observer_widget.dart';
 
 class CardTripWidget extends StatefulWidget {
-  CardTripWidget();
+  final FlightModel flightModel;
+
+  const CardTripWidget({super.key, required this.flightModel});
 
   @override
   State<CardTripWidget> createState() => _CardTripWidgetState();
@@ -111,9 +114,13 @@ class _CardTripWidgetState extends State<CardTripWidget>
           ),
         ),
 
+        SizedBox(
+          width: 5.sp,
+        ),
+
         AutoSizeText(
-          "\$520.32",
-          style: Theme.of(context).textTheme.displayMedium!.copyWith(
+          widget.flightModel.fareTotal.basic,
+          style: Theme.of(context).textTheme.headlineMedium!.copyWith(
                 fontWeight: FontWeight.w600,
                 color: AppColors.primaryColor,
               ),
@@ -147,9 +154,14 @@ class _CardTripWidgetState extends State<CardTripWidget>
         ),
 
         PlaneObserverWidget(
-          startDateTrip: DateTime.utc(2023, 4, 10, 2, 30, 10),
-          dateNowPlane: DateTime.utc(2023, 4, 10, 5, 25, 10),
-          endDateTrip: DateTime.utc(2023, 4, 10, 8, 00, 10),
+          startDateTrip: DateTime.parse(widget
+              .flightModel.tours.first.tourSegments.first.departureDateTime),
+          dateNowPlane: DateTime.now().copyWith(month: 5, day: 20, year: 2023),
+          endDateTrip: DateTime.parse(
+            widget.flightModel.tours.last.tourSegments.first.departureDateTime,
+          ),
+          flyingFrom: "DXB",
+          flyingTo: "IST",
         ),
 
         SizedBox(
@@ -221,7 +233,9 @@ class _CardTripWidgetState extends State<CardTripWidget>
       ),
 
       // Tab Page View
-      FlightDetailsWidget(),
+      FlightDetailsWidget(
+        tourModel: widget.flightModel.tours,
+      ),
 
       if (isShowDetails) ...{
         SizedBox(

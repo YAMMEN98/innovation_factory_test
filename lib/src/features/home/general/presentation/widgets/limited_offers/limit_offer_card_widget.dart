@@ -88,7 +88,11 @@ class _LimitedOfferCardWidgetState extends State<LimitedOfferCardWidget> {
                   children: [
                     // Code
                     Flexible(
-                      child: Row(
+                      child: Wrap(
+                        crossAxisAlignment: WrapCrossAlignment.center,
+                        alignment: WrapAlignment.center,
+                        runSpacing: 5.sp,
+
                         children: [
                           // Code
                           Text(

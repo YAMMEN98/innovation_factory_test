@@ -7,12 +7,14 @@ import 'package:innovation_factory_test/src/core/common_feature/presentation/wid
 import 'package:innovation_factory_test/src/core/styles/app_colors.dart';
 import 'package:innovation_factory_test/src/core/translations/l10n.dart';
 import 'package:innovation_factory_test/src/core/util/helper/helper_ui.dart';
+import 'package:innovation_factory_test/src/core/util/router.dart';
 import 'package:innovation_factory_test/src/features/home/flights/presentation/bloc/flights_bloc.dart';
 import 'package:innovation_factory_test/src/features/home/general/presentation/widgets/best_packages/best_packages_widget.dart';
 import 'package:innovation_factory_test/src/features/home/general/presentation/widgets/best_places/best_places_widget.dart';
 import 'package:innovation_factory_test/src/features/home/general/presentation/widgets/filter_widget.dart';
 import 'package:innovation_factory_test/src/features/home/general/presentation/widgets/limited_offers/limited_offers_widget.dart';
 import 'package:innovation_factory_test/src/features/home/general/presentation/widgets/select_button_widget.dart';
+import 'package:innovation_factory_test/src/features/search_flights/domain/entities/filtering_flights_page_params.dart';
 
 class FlightsPage extends StatefulWidget {
   const FlightsPage({Key? key}) : super(key: key);
@@ -158,10 +160,10 @@ class _FlightsPageState extends State<FlightsPage>
                         type: "Return",
                         classString: "Economy",
                         adults: 1,
-                        childes: 1,
+                        children: 1,
                         infants: 1,
                         departureDate: departure,
-                        returnDate: "2023-05-22",
+                        returnDate: returnValue,
                         airportOriginCode: "DXB",
                         airportDestinationCode: "IST",
                       ),
@@ -176,8 +178,12 @@ class _FlightsPageState extends State<FlightsPage>
                     state.errorMessage,
                     type: ToastTypeEnum.error,
                   );
-                }else if (state is SuccessFilteringFlightsState){
-                  Navigator.pushNamed(context, "/search_flights_page");
+                } else if (state is SuccessFilteringFlightsState) {
+                  Navigator.pushNamed(
+                    context,
+                    AppPageRouteName.searchFlights.name,
+                    arguments: state.pageParams,
+                  );
                 }
               },
             ),

@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:innovation_factory_test/src/core/util/injections.dart';
 import 'package:innovation_factory_test/src/features/home/flights/domain/entities/filtering_flights_response_model.dart';
 import 'package:innovation_factory_test/src/features/home/flights/domain/usecases/filtering_flights_usecase.dart';
+import 'package:innovation_factory_test/src/features/search_flights/domain/entities/filtering_flights_page_params.dart';
 
 part 'flights_event.dart';
 
@@ -32,7 +33,7 @@ class FlightsBloc extends Bloc<FlightsEvent, FlightsState> {
       type: event.type,
       classString: event.classString,
       adults: event.adults,
-      childes: event.childes,
+      childes: event.children,
       infants: event.infants,
       tours: [
         ToursParams(
@@ -47,7 +48,20 @@ class FlightsBloc extends Bloc<FlightsEvent, FlightsState> {
     result.fold((l) {
       emitter(FailureFilteringFlightsState(l.errorMessage));
     }, (r) {
-      emitter(SuccessFilteringFlightsState(r));
+      emitter(
+        SuccessFilteringFlightsState(
+          r,
+          FilteringFlightsPageParams(
+            flights: r.flights,
+            returnDate: event.returnDate,
+            departureDate: event.departureDate,
+            flyingFrom: event.airportOriginCode,
+            flyingTo: event.airportDestinationCode,
+            children: event.children.toString(),
+            adults: event.adults.toString(),
+          ),
+        ),
+      );
     });
   }
 }

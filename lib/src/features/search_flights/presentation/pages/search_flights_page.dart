@@ -7,12 +7,15 @@ import 'package:innovation_factory_test/src/core/styles/app_colors.dart';
 import 'package:innovation_factory_test/src/core/translations/l10n.dart';
 import 'package:innovation_factory_test/src/core/util/helper/helper.dart';
 import 'package:innovation_factory_test/src/features/home/general/presentation/widgets/select_button_widget.dart';
+import 'package:innovation_factory_test/src/features/search_flights/domain/entities/filtering_flights_page_params.dart';
 import 'package:innovation_factory_test/src/features/search_flights/presentation/bloc/search_flights_bloc.dart';
 import 'package:innovation_factory_test/src/features/search_flights/presentation/widgets/search_flights_app_bar_widget.dart';
 import 'package:innovation_factory_test/src/features/search_flights/presentation/widgets/trip_card_widget.dart';
 
 class SearchFlightsPage extends StatefulWidget {
-  const SearchFlightsPage({Key? key}) : super(key: key);
+  final FilteringFlightsPageParams params;
+
+  const SearchFlightsPage({Key? key, required this.params}) : super(key: key);
 
   @override
   State<SearchFlightsPage> createState() => _SearchFlightsPageState();
@@ -41,7 +44,14 @@ class _SearchFlightsPageState extends State<SearchFlightsPage>
         child: Column(
           children: [
             // Search Flights App Bar
-            SearchFlightsAppBarWidget(),
+            SearchFlightsAppBarWidget(
+              flyingFrom: widget.params.flyingFrom,
+              flyingTo: widget.params.flyingTo,
+              departureDate: widget.params.departureDate,
+              returnDate: widget.params.returnDate,
+              adults: widget.params.adults,
+              children: widget.params.children,
+            ),
 
             // Available Flights And Filters
             Expanded(
@@ -64,7 +74,7 @@ class _SearchFlightsPageState extends State<SearchFlightsPage>
                         Row(
                           children: [
                             Text(
-                              "69 Flights",
+                              "${widget.params.flights.length} ${S.of(context).flights}",
                               style: Theme.of(context)
                                   .textTheme
                                   .bodyMedium!
@@ -73,7 +83,7 @@ class _SearchFlightsPageState extends State<SearchFlightsPage>
                                   ),
                             ),
                             Text(
-                              " Available",
+                              " ${S.of(context).available}",
                               style: Theme.of(context)
                                   .textTheme
                                   .bodyMedium!
@@ -89,11 +99,12 @@ class _SearchFlightsPageState extends State<SearchFlightsPage>
                           onTap: () {},
                           child: SvgPicture.asset(
                             Helper.getSvgPath("filter.svg"),
-                            width: 20.w,
-                            height: 20.w,
+                            width: 15.w,
+                            height: 15.w,
                           ),
                           backgroundColor: AppColors.primaryColor,
                           borderRadius: 100,
+                          padding: EdgeInsets.all(8.sp),
                         ),
                       ],
                     ),
@@ -152,7 +163,6 @@ class _SearchFlightsPageState extends State<SearchFlightsPage>
                     height: 20.sp,
                   ),
 
-
                   // Flight Observer
                   Expanded(
                     child: ListView.separated(
@@ -161,14 +171,16 @@ class _SearchFlightsPageState extends State<SearchFlightsPage>
                         vertical: 10.h,
                       ),
                       itemBuilder: (context, index) {
-                        return CardTripWidget();
+                        return CardTripWidget(
+                          flightModel: widget.params.flights[index],
+                        );
                       },
                       separatorBuilder: (context, index) {
                         return SizedBox(
                           height: 20.sp,
                         );
                       },
-                      itemCount: 10,
+                      itemCount: widget.params.flights.length,
                     ),
                   )
                 ],

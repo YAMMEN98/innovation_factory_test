@@ -6,12 +6,12 @@ part 'tour_model.g.dart';
 @JsonSerializable(fieldRename: FieldRename.snake)
 class TourModel {
   TourModel({
-    required this.TotalStops,
+    required this.totalStops,
     required this.tourSegments,
   });
 
   @JsonKey(name: "TotalStops")
-   final int TotalStops;
+   final int totalStops;
 
   @JsonKey(name: "tourSegments")
   final List<TourSegmentModel> tourSegments;

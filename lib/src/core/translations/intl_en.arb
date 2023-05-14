@@ -73,6 +73,11 @@
   "travel_time": "Travel Time",
   "arrived_at_destination": "Arrived At Destination",
   "select_flight": "Select Flight",
-  "confirm": "Confirm"
+  "confirm": "Confirm",
+  "available": "Available",
+  "adults": "Adults",
+  "children": "Children",
+  "h": "h",
+  "m": "m"
 
 }

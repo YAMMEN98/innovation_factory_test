@@ -22,8 +22,9 @@ class LoadingFilteringFlightsState extends FlightsState{}
 // Loading Filtering Flights State
 class SuccessFilteringFlightsState extends FlightsState{
   final FilteringFlightsResponseModel FlightsModel;
+  final FilteringFlightsPageParams pageParams;
 
-  SuccessFilteringFlightsState(this.FlightsModel);
+  SuccessFilteringFlightsState(this.FlightsModel, this.pageParams);
 }
 
 // Loading Filtering Flights State

@@ -16,7 +16,7 @@ class OnFilteringFlightsEvent extends FlightsEvent {
   final String type;
   final String classString;
   final int adults;
-  final int childes;
+  final int children;
   final int infants;
   final String departureDate;
   final String returnDate;
@@ -27,7 +27,7 @@ class OnFilteringFlightsEvent extends FlightsEvent {
     required this.type,
     required this.classString,
     required this.adults,
-    required this.childes,
+    required this.children,
     required this.infants,
     required this.departureDate,
     required this.returnDate,

@@ -22,11 +22,13 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "adults": MessageLookupByLibrary.simpleMessage("Adults"),
         "already_have_an_account":
             MessageLookupByLibrary.simpleMessage("Already Have An Account? "),
         "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
         "arrived_at_destination":
             MessageLookupByLibrary.simpleMessage("Arrived At Destination"),
+        "available": MessageLookupByLibrary.simpleMessage("Available"),
         "best_packages": MessageLookupByLibrary.simpleMessage("Best Packages"),
         "best_place": MessageLookupByLibrary.simpleMessage("Best Places"),
         "book_now": MessageLookupByLibrary.simpleMessage("Book Now"),
@@ -35,6 +37,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "cheap_price": MessageLookupByLibrary.simpleMessage("Cheap Price"),
         "check_in": MessageLookupByLibrary.simpleMessage("Check In"),
         "check_out": MessageLookupByLibrary.simpleMessage("Check Out"),
+        "children": MessageLookupByLibrary.simpleMessage("Children"),
         "code": MessageLookupByLibrary.simpleMessage("Code"),
         "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
         "confirm_password":
@@ -59,6 +62,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Forget Password?"),
         "full_name": MessageLookupByLibrary.simpleMessage("Full Name"),
         "guests": MessageLookupByLibrary.simpleMessage("Guests"),
+        "h": MessageLookupByLibrary.simpleMessage("h"),
         "hide_details": MessageLookupByLibrary.simpleMessage("Hide Details"),
         "hotels": MessageLookupByLibrary.simpleMessage("Hotels"),
         "i_agree_terms_and_conditions": MessageLookupByLibrary.simpleMessage(
@@ -74,6 +78,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "login_to_existing_user":
             MessageLookupByLibrary.simpleMessage("Login to Existing User"),
+        "m": MessageLookupByLibrary.simpleMessage("m"),
         "one_way": MessageLookupByLibrary.simpleMessage("One Way"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "password_does_not_match":

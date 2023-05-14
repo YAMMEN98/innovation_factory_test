@@ -14,6 +14,7 @@ import 'package:innovation_factory_test/src/core/translations/l10n.dart';
 import 'package:innovation_factory_test/src/core/util/constant/app_constants.dart';
 import 'package:innovation_factory_test/src/core/util/helper/helper.dart';
 import 'package:innovation_factory_test/src/core/util/helper/helper_ui.dart';
+import 'package:innovation_factory_test/src/core/util/router.dart';
 import 'package:innovation_factory_test/src/core/util/validators/base_validator.dart';
 import 'package:innovation_factory_test/src/core/util/validators/email_validator1.dart';
 import 'package:innovation_factory_test/src/core/util/validators/required_validator.dart';
@@ -313,7 +314,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
             recognizer: TapGestureRecognizer()
               ..onTap = () {
-                Navigator.pushReplacementNamed(context, "/register_page");
+                Navigator.pushReplacementNamed(context, AppPageRouteName.register.name,);
               },
           ),
         ]),

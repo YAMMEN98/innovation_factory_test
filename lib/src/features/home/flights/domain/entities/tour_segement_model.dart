@@ -5,51 +5,51 @@ part 'tour_segement_model.g.dart';
 @JsonSerializable(fieldRename: FieldRename.pascal)
 class TourSegmentModel {
   TourSegmentModel({
-    required this.SeatsRemaining,
-    required this.FlightNumber,
-    required this.AirlineCode,
-    required this.AirlineName,
-    required this.DepartureAirportCode,
-    required this.DepartureDateTime,
-    required this.ArrivalAirportCode,
-    required this.ArrivalDateTime,
-    required this.CabinClassCode,
-    required this.JourneyDuration,
-    required this.CabinClassText,
+    required this.seatsRemaining,
+    required this.flightNumber,
+    required this.airlineCode,
+    required this.airlineName,
+    required this.departureAirportCode,
+    required this.departureDateTime,
+    required this.arrivalAirportCode,
+    required this.arrivalDateTime,
+    required this.cabinClassCode,
+    required this.journeyDuration,
+    required this.cabinClassText,
   });
 
   // @JsonKey(name: "SeatsRemaining")
-   final int SeatsRemaining;
+   final int seatsRemaining;
 
   // @JsonKey(name: "FlightNumber")
-  final String FlightNumber;
+  final String flightNumber;
 
   // @JsonKey(name: "AirlineCode")
-  final String AirlineCode;
+  final String airlineCode;
 
   // @JsonKey(name: "AirlineName")
-  final String AirlineName;
+  final String airlineName;
 
   // @JsonKey(name: "DepartureAirportCode")
-  final String DepartureAirportCode;
+  final String departureAirportCode;
 
   // @JsonKey(name: "DepartureDateTime")
-  final String DepartureDateTime;
+  final String departureDateTime;
 
   // @JsonKey(name: "ArrivalAirportCode")
-  final String ArrivalAirportCode;
+  final String arrivalAirportCode;
 
   // @JsonKey(name: "ArrivalDateTime")
-  final String ArrivalDateTime;
+  final String arrivalDateTime;
 
   // @JsonKey(name: "CabinClassCode")
-  final String CabinClassCode;
+  final String cabinClassCode;
 
   // @JsonKey(name: "JourneyDuration")
-  final String JourneyDuration;
+  final String journeyDuration;
 
   // @JsonKey(name: "CabinClassText")
-  final String CabinClassText;
+  final String cabinClassText;
 
   factory TourSegmentModel.fromJson(json) => _$TourSegmentModelFromJson(json);
 

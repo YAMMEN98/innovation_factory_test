@@ -21,9 +21,9 @@ class FilteringFlightsResponseModel {
    @JsonKey(name: "filterCategories")
    final FilterCategoryModel filterCategories;
 
-  factory FilteringFlightsResponseModel.fromJson(json) => _$SearchingFlightsResponseModelFromJson(json);
+  factory FilteringFlightsResponseModel.fromJson(json) => _$FilteringFlightsResponseModelFromJson(json);
 
-  toJson() => _$SearchingFlightsResponseModelToJson(this);
+  toJson() => _$FilteringFlightsResponseModelToJson(this);
 
   static List<FilteringFlightsResponseModel> fromJsonList(List json) {
     return json.map((e) => FilteringFlightsResponseModel.fromJson(e)).toList();

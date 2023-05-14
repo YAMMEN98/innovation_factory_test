@@ -7,8 +7,9 @@ class ActionButtonWidget extends StatefulWidget {
   final Widget child;
   final Color? backgroundColor;
   final double? borderRadius;
+  final EdgeInsets? padding;
 
-  const ActionButtonWidget({Key? key, required this.onTap, required this.child, this.backgroundColor, this.borderRadius})
+  const ActionButtonWidget({Key? key, required this.onTap, required this.child, this.backgroundColor, this.borderRadius, this.padding})
       : super(key: key);
 
   @override
@@ -21,7 +22,7 @@ class _ActionButtonWidgetState extends State<ActionButtonWidget> {
     return GestureDetector(
       onTap: widget.onTap,
       child: Container(
-        padding: EdgeInsets.all(13.sp),
+        padding: widget.padding??EdgeInsets.all(13.sp),
         decoration: BoxDecoration(
           color: widget.backgroundColor??AppColors.white,
           borderRadius: BorderRadius.circular(widget.borderRadius??15.sp),

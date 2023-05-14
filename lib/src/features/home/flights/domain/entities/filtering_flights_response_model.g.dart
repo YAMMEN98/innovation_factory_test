@@ -6,7 +6,7 @@ part of 'filtering_flights_response_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-FilteringFlightsResponseModel _$SearchingFlightsResponseModelFromJson(
+FilteringFlightsResponseModel _$FilteringFlightsResponseModelFromJson(
         Map<String, dynamic> json) =>
     FilteringFlightsResponseModel(
       sessionId: json['session_id'] as String,
@@ -18,7 +18,7 @@ FilteringFlightsResponseModel _$SearchingFlightsResponseModelFromJson(
       filterCategories: FilterCategoryModel.fromJson(json['filterCategories']),
     );
 
-Map<String, dynamic> _$SearchingFlightsResponseModelToJson(
+Map<String, dynamic> _$FilteringFlightsResponseModelToJson(
         FilteringFlightsResponseModel instance) =>
     <String, dynamic>{
       'session_id': instance.sessionId,

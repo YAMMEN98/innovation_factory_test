@@ -5,6 +5,7 @@ import 'package:innovation_factory_test/src/core/common_feature/presentation/pag
 import 'package:innovation_factory_test/src/core/common_feature/presentation/widgets/switch_widget.dart';
 import 'package:innovation_factory_test/src/core/styles/app_colors.dart';
 import 'package:innovation_factory_test/src/core/translations/l10n.dart';
+import 'package:innovation_factory_test/src/core/util/router.dart';
 import 'package:innovation_factory_test/src/features/home/car_rental/presentation/bloc/car_rental_bloc.dart';
 import 'package:innovation_factory_test/src/features/home/car_rental/presentation/bloc/filter_cubit/filter_cubit.dart';
 import 'package:innovation_factory_test/src/features/home/general/presentation/widgets/best_packages/best_packages_widget.dart';
@@ -166,7 +167,7 @@ class _CarRentalPageState extends State<CarRentalPage>
                         required String travelers,
                         required String whereAreYouGoing,
                       }) {
-                        Navigator.pushNamed(context, "/search_flights_page");
+                        Navigator.pushNamed(context, AppPageRouteName.searchFlights.name,);
                       },
                     );
                   },
