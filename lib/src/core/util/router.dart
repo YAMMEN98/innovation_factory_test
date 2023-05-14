@@ -5,6 +5,14 @@ import 'package:innovation_factory_test/src/features/auth/presentation/pages/reg
 import 'package:innovation_factory_test/src/features/home/general/presentation/pages/home_page.dart';
 import 'package:innovation_factory_test/src/features/search_flights/presentation/pages/search_flights_page.dart';
 
+enum PageRouteName{
+  login,
+  register,
+  home,
+  search_flights
+}
+
+
 class AppRouter {
   static String currentRoute = "/";
 

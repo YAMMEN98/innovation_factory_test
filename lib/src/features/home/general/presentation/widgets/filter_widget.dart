@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:innovation_factory_test/src/core/common_feature/presentation/widgets/app_loader.dart';
 import 'package:innovation_factory_test/src/core/common_feature/presentation/widgets/button_widget.dart';
 import 'package:innovation_factory_test/src/core/common_feature/presentation/widgets/text_field_widget.dart';
 import 'package:innovation_factory_test/src/core/styles/app_colors.dart';
@@ -32,6 +33,7 @@ class FilterWidget extends StatefulWidget {
   final bool hasDropOffLocation;
   final bool hasFinalDestination;
   final bool isDifferentReturn;
+  final bool isLoading;
 
   final Function({
     required String flyingFrom,
@@ -66,6 +68,7 @@ class FilterWidget extends StatefulWidget {
     this.hasDropOffLocation = false,
     this.hasFinalDestination = false,
     this.isDifferentReturn = true,
+    this.isLoading = false,
     required this.searchCallback,
   }) : super(key: key);
 
@@ -152,21 +155,25 @@ class _FilterWidgetState extends State<FilterWidget> {
 
         // View more/less
         if (viewMore) ...{
-          ButtonWidget(
-            onPressed: () {
-              _callbackSearch();
-            },
-            text: S.of(context).search,
-            textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                  fontWeight: FontWeight.w600,
-                  color: AppColors.white,
-                ),
-            icon: Icon(
-              Icons.search,
-              size: 20.sp,
-              color: AppColors.white,
+          if(widget.isLoading)...{
+            AppLoader()
+          }else...{
+            ButtonWidget(
+              onPressed: () {
+                _callbackSearch();
+              },
+              text: S.of(context).search,
+              textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                fontWeight: FontWeight.w600,
+                color: AppColors.white,
+              ),
+              icon: Icon(
+                Icons.search,
+                size: 20.sp,
+                color: AppColors.white,
+              ),
             ),
-          ),
+          },
 
           SizedBox(
             height: 15.h,
@@ -873,13 +880,13 @@ class _FilterWidgetState extends State<FilterWidget> {
   void _callbackSearch() {
     final String flyingFrom = _flyingFromController.text.trim();
     final String flyingTo = _flyingToController.text.trim();
-    final String departure = _departureController.text.trim();
-    final String travelers = _travelersController.text.trim();
-    final String returnValue = _returnController.text.trim();
+    final String departure = HelperUi.formatToStandardDate(HelperUi.formatNameStringToDate(_departureController.text.trim())) ;
+    final String travelers = _travelersController.text.trim().isEmpty?"0":_travelersController.text.trim();
+    final String returnValue = HelperUi.formatToStandardDate(HelperUi.formatNameStringToDate(_returnController.text.trim())) ;
     final String whereAreYouGoing = _whereAreYouGoingController.text.trim();
-    final String checkIn = _checkInController.text.trim();
-    final String checkOut = _checkOutController.text.trim();
-    final String guests = _guestsController.text.trim();
+    final String checkIn = HelperUi.formatToStandardDate(HelperUi.formatNameStringToDate(_checkInController.text.trim())) ;
+    final String checkOut = HelperUi.formatToStandardDate(HelperUi.formatNameStringToDate(_checkOutController.text.trim())) ;
+    final String guests = _guestsController.text.trim().isEmpty?"0":_guestsController.text.trim();
     final String pickupLocation = _pickupLocationController.text.trim();
     final String dropOffLocation = _dropOffLocationController.text.trim();
     final String finalDestination = _finalDestinationController.text.trim();
