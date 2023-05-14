@@ -3,14 +3,15 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:innovation_factory_test/src/core/common_feature/data/data_sources/app_shared_prefs.dart';
 import 'package:innovation_factory_test/src/core/common_feature/domain/entities/app_enum.dart';
+import 'package:innovation_factory_test/src/core/common_feature/domain/entities/language_enum.dart';
 import 'package:innovation_factory_test/src/core/util/injections.dart';
 
 class Helper {
   /// Get language
-  static String getLang() {
-    String? lang;
+  static LanguageEnum getLang() {
+    LanguageEnum? lang;
     lang = sl<AppSharedPrefs>().getLang();
-    lang = lang ?? "en";
+    lang = lang ?? LanguageEnum.en;
     return lang;
   }
 

@@ -65,6 +65,9 @@ class _FlightsPageState extends State<FlightsPage>
               builder: (context, state) {
                 if (state is ChangeSelectedFlightState) {
                   return SingleChildScrollView(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 5.sp,
+                    ),
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: [

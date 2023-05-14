@@ -11,6 +11,7 @@ class PlaneObserverWidget extends StatefulWidget {
   final DateTime dateNowPlane; // Must Date Plane in DateTime.now
   final String flyingFrom;
   final String flyingTo;
+  final String travelDuration;
 
   PlaneObserverWidget({
     required this.startDateTrip,
@@ -18,6 +19,7 @@ class PlaneObserverWidget extends StatefulWidget {
     required this.dateNowPlane,
     required this.flyingFrom,
     required this.flyingTo,
+    required this.travelDuration,
   });
 
   @override
@@ -128,7 +130,7 @@ class _PlaneObserverWidgetState extends State<PlaneObserverWidget> {
                       width: 3.sp,
                     ),
                     Text(
-                      "${widget.dateNowPlane.difference(widget.startDateTrip).inHours}h ${widget.dateNowPlane.difference(widget.startDateTrip).inMinutes - (widget.dateNowPlane.difference(widget.startDateTrip).inHours * 60)}m",
+                      HelperUi.getTravelTime(context, int.tryParse(widget.travelDuration)??0),
                       style: Theme.of(context).textTheme.titleLarge!.copyWith(
                             fontWeight: FontWeight.w500,
                             color: AppColors.grayColor,
@@ -183,9 +185,9 @@ class _PlaneObserverWidgetState extends State<PlaneObserverWidget> {
   //Widgets
   Widget _buildPlaneWidget() {
     return SvgPicture.asset(
-      Helper.getSvgPath("plane_2.svg"),
-      width: 25.sp,
-      height: 25.sp,
+      Helper.getSvgPath("plane_3.svg"),
+      width: 15.sp,
+      height: 15.sp,
     );
   }
 

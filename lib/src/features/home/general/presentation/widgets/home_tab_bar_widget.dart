@@ -47,6 +47,8 @@ class _HomeTabBarWidgetState extends State<HomeTabBarWidget> {
         labelColor: Theme.of(context).textTheme.bodyLarge!.color,
         labelPadding: EdgeInsets.only(
           bottom: 10.h,
+          left: 5.sp,
+          right: 5.sp,
         ),
         controller: widget.tabController,
         tabs: [
@@ -102,6 +104,7 @@ class _HomeTabBarWidgetState extends State<HomeTabBarWidget> {
     return Tab(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           // Icon or Child
           icon,
@@ -111,8 +114,13 @@ class _HomeTabBarWidgetState extends State<HomeTabBarWidget> {
             width: 7.w,
           ),
 
-          Text(
-            title,
+          Flexible(
+            child: Text(
+              title,
+              maxLines: 2,
+              softWrap: true,
+              overflow: TextOverflow.ellipsis,
+            ),
           ),
         ],
       ),

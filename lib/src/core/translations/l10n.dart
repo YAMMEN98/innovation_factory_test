@@ -849,6 +849,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Language`
+  String get language {
+    return Intl.message(
+      'Language',
+      name: 'language',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dark Skin`
+  String get dark_skin {
+    return Intl.message(
+      'Dark Skin',
+      name: 'dark_skin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Light Skin`
+  String get light_skin {
+    return Intl.message(
+      'Light Skin',
+      name: 'light_skin',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

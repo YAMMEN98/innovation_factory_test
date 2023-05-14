@@ -284,7 +284,7 @@ class _FlightDetailsWidgetState extends State<FlightDetailsWidget> {
                                         ),
                                   ),
                                   TextSpan(
-                                    text: _getTravelTime(int.tryParse(tourSegmentModel.journeyDuration)??0),
+                                    text: HelperUi.getTravelTime(context, int.tryParse(tourSegmentModel.journeyDuration)??0),
                                     style: Theme.of(context)
                                         .textTheme
                                         .titleSmall!
@@ -399,10 +399,5 @@ class _FlightDetailsWidgetState extends State<FlightDetailsWidget> {
     );
   }
 
-  _getTravelTime(int durationInMinutes) {
-    int hours = durationInMinutes ~/ 60;
-    int minutes = durationInMinutes % 60;
 
-    return "$hours${S.of(context).h} $minutes${S.of(context).m}";
-  }
 }

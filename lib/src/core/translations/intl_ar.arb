@@ -41,8 +41,8 @@
   "one_way": "اتجاه واحد",
   "round_trip": "رحلة ذهابًا وإيابًا",
   "business": "عمل",
-  "flight_from": "الطيران من",
-  "fly_to": "Flying to",
+  "flying_from": "الطيران من",
+  "flying_to": "الطيران إلى",
   "departure": "المغادرة",
   "return_flying": "العودة",
   "travelers": "المسافرون",
@@ -78,5 +78,8 @@
   "adults": "الكبار",
   "children": "الأطفال",
   "h": "س",
-  "m": "د"
+  "m": "د",
+  "language": "اللغة",
+  "dark_skin": "المظهر الليلي",
+  "light_skin": "المظهر النهاري"
 }

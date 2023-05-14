@@ -88,7 +88,6 @@ class _HomeAppBarWidgetState extends State<HomeAppBarWidget> {
                     name,
                     style: Theme.of(context).textTheme.headlineSmall!.copyWith(
                           fontWeight: FontWeight.w600,
-                          color: AppColors.darkFontColor,
                         ),
                   )
                 ],
@@ -116,7 +115,10 @@ class _HomeAppBarWidgetState extends State<HomeAppBarWidget> {
 
               // Drawer
               ActionButtonWidget(
-                onTap: () {},
+                onTap: () {
+                  FocusManager.instance.primaryFocus?.unfocus();
+                  Scaffold.of(context).openDrawer();
+                },
                 child: SvgPicture.asset(
                   Helper.getSvgPath("drawer.svg"),
                   width: 15.sp,

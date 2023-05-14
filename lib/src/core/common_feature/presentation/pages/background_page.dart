@@ -77,7 +77,6 @@ class _BackgroundPageState extends State<BackgroundPage> {
             },
             drawer: widget.withDrawer
                 ? Drawer(
-                    width: 0.7.w,
                     child: AppDrawerPage(),
                   )
                 : null,

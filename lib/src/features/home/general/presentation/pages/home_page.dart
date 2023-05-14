@@ -22,6 +22,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   ScrollController scrollController = ScrollController();
   late TabController tabController;
 
+  // Key for scaffold to open drawer
+  GlobalKey<ScaffoldState> _key = GlobalKey();
+
   @override
   void initState() {
     tabController = TabController(length: 3, vsync: this);
@@ -31,6 +34,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return BackgroundPage(
+      key: _key,
+      withDrawer: true,
       child: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) {
           return [

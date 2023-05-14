@@ -2,7 +2,11 @@ import 'dart:io';
 
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:innovation_factory_test/src/core/common_feature/data/data_sources/app_shared_prefs.dart';
+import 'package:innovation_factory_test/src/core/common_feature/domain/entities/language_enum.dart';
+import 'package:innovation_factory_test/src/core/common_feature/presentation/bloc/language/language_cubit.dart';
+import 'package:innovation_factory_test/src/core/common_feature/presentation/bloc/theme/theme_cubit.dart';
 import 'package:innovation_factory_test/src/core/common_feature/presentation/widgets/app_snack_bar.dart';
 import 'package:innovation_factory_test/src/core/styles/app_theme.dart';
 import 'package:innovation_factory_test/src/core/translations/l10n.dart';
@@ -22,10 +26,9 @@ final navigatorKey = GlobalKey<NavigatorState>();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
   await initInjections();
   AppSnackBar.init();
-  runApp( DevicePreview(
+  runApp(DevicePreview(
     enabled: !kReleaseMode,
     builder: (context) => App(), // Wrap your app
   ),);
@@ -40,91 +43,85 @@ class App extends StatefulWidget {
   @override
   _AppState createState() => _AppState();
 
-  static void setLocale(BuildContext context, String newLocale) {
-    _AppState state = context.findAncestorStateOfType()!;
-    state.setState(() {
-      state.locale = Locale(newLocale);
-    });
-    sl<AppSharedPrefs>().setLang(newLocale);
-  }
 }
 
 
 class _AppState extends State<App> with WidgetsBindingObserver {
-  Locale locale = const Locale("ar");
   final GlobalKey<ScaffoldMessengerState> snackbarKey =
-      GlobalKey<ScaffoldMessengerState>();
+  GlobalKey<ScaffoldMessengerState>();
 
   @override
   void initState() {
     super.initState();
-
-    WidgetsBinding.instance.addObserver(this);
-
-    if (mounted) {
-      String newLocale = Helper.getLang();
-      setState(() {
-        locale = Locale(newLocale);
-      });
-    }
   }
 
   @override
   void dispose() {
-    WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-
     return ScreenUtilInit(
-
-
       useInheritedMediaQuery: true,
-
       designSize: const Size(360, 690),
       minTextAdapt: true,
       splitScreenMode: true,
-      builder: (context , child) {
-        return MaterialApp(
-          // Device Preview
-          // useInheritedMediaQuery: true,
-          // locale: DevicePreview.locale(context),
-          // builder: DevicePreview.appBuilder,
+      builder: (context, child) {
+        return MultiBlocProvider(
+          providers: [
+            BlocProvider<LanguageCubit>(
+              create: (BuildContext context) => LanguageCubit(),
+            ),
 
-
-          // Real Device
-          useInheritedMediaQuery: false,
-          locale: locale,
-
-          title: 'Flights',
-          scaffoldMessengerKey: snackbarKey,
-          onGenerateRoute: AppRouter.generateRoute,
-
-          theme: appTheme,
-          debugShowCheckedModeBanner: false,
-          localizationsDelegates: const [
-            S.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
+            BlocProvider<ThemeCubit>(
+              create: (BuildContext context) => ThemeCubit(),
+            ),
           ],
-          navigatorKey: navigatorKey,
-          supportedLocales: const [
-            Locale("ar"),
-            Locale("en"),
-          ],
+          child: BlocBuilder<LanguageCubit, LanguageEnum>(
+            builder: (context, lang) {
+              return BlocBuilder<ThemeCubit, bool>(
+                builder: (context, isDarkTheme) {
+                  return MaterialApp(
+                    // Device Preview
+                    // useInheritedMediaQuery: true,
+                    // locale: DevicePreview.locale(context),
+                    // builder: DevicePreview.appBuilder,
 
-          home: child,
+
+                    // Real Device
+                    useInheritedMediaQuery: false,
+                    locale: Locale(lang.local),
+
+                    title: 'Flights',
+                    scaffoldMessengerKey: snackbarKey,
+                    onGenerateRoute: AppRouter.generateRoute,
+
+                    theme: isDarkTheme?darkAppTheme:appTheme,
+                    debugShowCheckedModeBanner: false,
+                    localizationsDelegates: const [
+                      S.delegate,
+                      GlobalMaterialLocalizations.delegate,
+                      GlobalWidgetsLocalizations.delegate,
+                      GlobalCupertinoLocalizations.delegate,
+                    ],
+                    navigatorKey: navigatorKey,
+                    supportedLocales: const [
+                      Locale("ar"),
+                      Locale("en"),
+                    ],
+
+                    home: child,
+                  );
+                },
+              );
+            },
+          ),
         );
       },
       child: const IntroPage(),
       // child: const SearchFlightsPage(),
     );
-
-
-
   }
 }
 

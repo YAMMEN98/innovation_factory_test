@@ -78,6 +78,9 @@
   "adults": "Adults",
   "children": "Children",
   "h": "h",
-  "m": "m"
+  "m": "m",
+  "language": "Language",
+  "dark_skin": "Dark Skin",
+  "light_skin": "Light Skin"
 
 }

@@ -89,7 +89,7 @@ final ThemeData darkAppTheme = ThemeData(
     systemOverlayStyle: SystemUiOverlayStyle.light,
   ),
   fontFamily: GoogleFonts.montserrat().fontFamily,
-  scaffoldBackgroundColor: AppColors.grayColor,
+  scaffoldBackgroundColor: AppColors.darkFontColor,
   iconTheme: const IconThemeData(color: AppColors.white, size: 25),
   textTheme: TextTheme(
     headlineLarge: AppTextStyle.textStyleWhite30,

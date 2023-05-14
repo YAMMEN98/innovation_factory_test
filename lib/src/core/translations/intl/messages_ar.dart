@@ -41,6 +41,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirm_password":
             MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور"),
         "create_account": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
+        "dark_skin": MessageLookupByLibrary.simpleMessage("المظهر الليلي"),
         "departure": MessageLookupByLibrary.simpleMessage("المغادرة"),
         "different_return": MessageLookupByLibrary.simpleMessage("عودة\nمختلف"),
         "do_not_have_an_account":
@@ -52,6 +53,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "final_destination":
             MessageLookupByLibrary.simpleMessage("الوجهة النهائية"),
         "flights": MessageLookupByLibrary.simpleMessage("الرحلات الجوية"),
+        "flying_from": MessageLookupByLibrary.simpleMessage("الطيران من"),
+        "flying_to": MessageLookupByLibrary.simpleMessage("الطيران إلى"),
         "forget_password":
             MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور؟"),
         "full_name": MessageLookupByLibrary.simpleMessage("الاسم الكامل"),
@@ -67,6 +70,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("خطأ في الخادم الداخلي"),
         "invalid_email_address": MessageLookupByLibrary.simpleMessage(
             "تم إدخال عنوان بريد إلكتروني غير صالح. يرجى التحقق من عنوان البريد الإلكتروني وحاول مرة أخرى."),
+        "language": MessageLookupByLibrary.simpleMessage("اللغة"),
+        "light_skin": MessageLookupByLibrary.simpleMessage("المظهر النهاري"),
         "limited_offers": MessageLookupByLibrary.simpleMessage("عروض محدودة"),
         "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "login_to_existing_user": MessageLookupByLibrary.simpleMessage(

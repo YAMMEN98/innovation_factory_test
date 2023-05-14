@@ -186,7 +186,12 @@ class _SearchFlightsPageState extends State<SearchFlightsPage>
                 ],
               ),
             ),
+
+            SizedBox(
+              height: 10.sp,
+            ),
           ],
-        ));
+        ),
+    );
   }
 }

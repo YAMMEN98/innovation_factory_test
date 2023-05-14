@@ -44,6 +44,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Confirm Password"),
         "create_account":
             MessageLookupByLibrary.simpleMessage("Create Account"),
+        "dark_skin": MessageLookupByLibrary.simpleMessage("Dark Skin"),
         "departure": MessageLookupByLibrary.simpleMessage("Departure"),
         "different_return":
             MessageLookupByLibrary.simpleMessage("Different\nReturn"),
@@ -73,6 +74,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Internal Server Error"),
         "invalid_email_address": MessageLookupByLibrary.simpleMessage(
             "Invalid email address entered. Please check the email address and try again."),
+        "language": MessageLookupByLibrary.simpleMessage("Language"),
+        "light_skin": MessageLookupByLibrary.simpleMessage("Light Skin"),
         "limited_offers":
             MessageLookupByLibrary.simpleMessage("Limited Offers"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),

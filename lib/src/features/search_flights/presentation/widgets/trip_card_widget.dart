@@ -156,12 +156,16 @@ class _CardTripWidgetState extends State<CardTripWidget>
         PlaneObserverWidget(
           startDateTrip: DateTime.parse(widget
               .flightModel.tours.first.tourSegments.first.departureDateTime),
-          dateNowPlane: DateTime.now().copyWith(month: 5, day: 20, year: 2023),
+          dateNowPlane: DateTime.now(),
           endDateTrip: DateTime.parse(
-            widget.flightModel.tours.last.tourSegments.first.departureDateTime,
+            widget.flightModel.tours.first.tourSegments.first.arrivalDateTime,
           ),
-          flyingFrom: "DXB",
-          flyingTo: "IST",
+          flyingFrom: widget
+              .flightModel.tours.first.tourSegments.first.departureAirportCode,
+          flyingTo: widget
+              .flightModel.tours.first.tourSegments.first.departureAirportCode,
+          travelDuration:
+              widget.flightModel.tours.first.tourSegments.first.journeyDuration,
         ),
 
         SizedBox(
