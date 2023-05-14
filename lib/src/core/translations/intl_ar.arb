@@ -72,6 +72,6 @@
   "hide_details": "إخفاء التفاصيل",
   "travel_time": "وقت الرحلة",
   "arrival_at_destination": "الوصول إلى الوجهة",
-  "select_flight": "اختيار الرحلة"
-
+  "select_flight": "اختيار الرحلة",
+  "confirm": "تأكيد"
 }

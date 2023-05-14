@@ -72,6 +72,7 @@
   "hide_details": "Hide Details",
   "travel_time": "Travel Time",
   "arrived_at_destination": "Arrived At Destination",
-  "select_flight": "Select Flight"
+  "select_flight": "Select Flight",
+  "confirm": "Confirm"
 
 }

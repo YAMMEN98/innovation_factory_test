@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:innovation_factory_test/src/core/common_feature/presentation/widgets/app_snack_bar.dart';
+import 'package:innovation_factory_test/src/core/common_feature/presentation/widgets/date_picker_widget.dart';
 import 'package:innovation_factory_test/src/core/styles/app_colors.dart';
 import 'package:intl/intl.dart';
+import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 class HelperUi {
   /// Get vertical space
@@ -44,19 +46,23 @@ class HelperUi {
             ),
         child: Scaffold(
           backgroundColor: AppColors.transparent,
-          body: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: backgroundColor ??
-                      Theme.of(context).dialogBackgroundColor,
+          body: Center(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: backgroundColor ??
+                        Theme.of(context).dialogBackgroundColor,
+                  ),
+                  child: child,
                 ),
-                child: child,
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
@@ -64,9 +70,25 @@ class HelperUi {
   }
 
   // Format Date as 18 Apr 2023
+  static String formatToStandardDate(DateTime dateTime) {
+    DateFormat format = DateFormat('yyyy-MM-dd');
+    String date = format.format(dateTime);
+    return date;
+  }
+
+
+  // Format Date as 18 Apr 2023
   static String formatNamedDate(DateTime dateTime) {
     String formattedDate = DateFormat('dd MMM yyyy').format(dateTime);
     return formattedDate;
+  }
+
+
+  // Format Date as 18 Apr 2023
+  static DateTime formatNameStringToDate(String dateTimeString) {
+    DateFormat format = DateFormat('dd MMM yyyy');
+    DateTime date = format.parse(dateTimeString);
+    return date;
   }
 
   // Format Date as Sat, 13 Apr
@@ -79,5 +101,31 @@ class HelperUi {
   static String formatTimes(DateTime dateTime) {
     final outputFormat = new DateFormat('hh:mm');
     return outputFormat.format(dateTime);
+  }
+
+  // Show Date Picker
+  static void showDatePicker({
+    required BuildContext context,
+    DateRangePickerSelectionMode? type,
+    DateTime? initialSelectedDate,
+    bool enablePastDates = false,
+    DateTime? minDate,
+    DateTime? maxDate,
+    required Function(DateTime dateTime) callback,
+
+
+  }) {
+    showCustomDialog(
+      context,
+      DatePickerWidget(
+        type: type,
+        initialSelectedDate: initialSelectedDate,
+        enablePastDates: enablePastDates,
+        minDate: minDate,
+        maxDate: maxDate,
+        callback: callback,
+
+      ),
+    );
   }
 }

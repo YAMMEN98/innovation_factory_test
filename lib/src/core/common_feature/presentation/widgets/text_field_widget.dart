@@ -62,7 +62,9 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
     double defaultBorderRadius = 15;
     Color defaultColor = AppColors.borderColor;
     TextStyle hintStyle = Theme.of(context).textTheme.titleLarge!;
-    TextStyle textStyle = Theme.of(context).textTheme.bodyMedium!;
+    TextStyle textStyle = Theme.of(context).textTheme.titleLarge!.copyWith(
+      color: AppColors.darkFontColor,
+    );
     return SizedBox(
       height: widget.height?.h,
       child: TextFormField(

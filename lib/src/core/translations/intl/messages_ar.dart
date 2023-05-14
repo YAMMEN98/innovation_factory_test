@@ -34,6 +34,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "check_in": MessageLookupByLibrary.simpleMessage("تسجيل الوصول"),
         "check_out": MessageLookupByLibrary.simpleMessage("تسجيل المغادرة"),
         "code": MessageLookupByLibrary.simpleMessage("الرمز"),
+        "confirm": MessageLookupByLibrary.simpleMessage("تأكيد"),
         "confirm_password":
             MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور"),
         "create_account": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),

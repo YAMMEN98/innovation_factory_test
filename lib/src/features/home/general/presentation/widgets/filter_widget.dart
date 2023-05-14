@@ -36,16 +36,16 @@ class FilterWidget extends StatefulWidget {
   final Function({
     required String flyingFrom,
     required String flyingTo,
-   required String departure,
-   required String travelers,
-   required String returnValue,
-   required String whereAreYouGoing,
-   required String checkIn,
-   required String checkOut,
-   required String guests,
-   required String pickupLocation,
-   required String dropOffLocation,
-   required String finalDestination,
+    required String departure,
+    required String travelers,
+    required String returnValue,
+    required String whereAreYouGoing,
+    required String checkIn,
+    required String checkOut,
+    required String guests,
+    required String pickupLocation,
+    required String dropOffLocation,
+    required String finalDestination,
   }) searchCallback;
 
   const FilterWidget({
@@ -74,27 +74,31 @@ class FilterWidget extends StatefulWidget {
 }
 
 class _FilterWidgetState extends State<FilterWidget> {
-  final TextEditingController flyingFromController = TextEditingController();
-  final TextEditingController flyingToController = TextEditingController();
-  final TextEditingController departureController = TextEditingController();
-  final TextEditingController travelersController = TextEditingController();
-  final TextEditingController returnController = TextEditingController();
-  final TextEditingController whereAreYouGoingController =
+  final TextEditingController _flyingFromController = TextEditingController();
+  final TextEditingController _flyingToController = TextEditingController();
+  final TextEditingController _departureController = TextEditingController();
+  final TextEditingController _travelersController = TextEditingController();
+  final TextEditingController _returnController = TextEditingController();
+  final TextEditingController _whereAreYouGoingController =
       TextEditingController();
-  final TextEditingController checkInController = TextEditingController();
-  final TextEditingController checkOutController = TextEditingController();
-  final TextEditingController guestsController = TextEditingController();
-  final TextEditingController pickupLocationController =
+  final TextEditingController _checkInController = TextEditingController();
+  final TextEditingController _checkOutController = TextEditingController();
+  final TextEditingController _guestsController = TextEditingController();
+  final TextEditingController _pickupLocationController =
       TextEditingController();
-  final TextEditingController dropOffLocationController =
+  final TextEditingController _dropOffLocationController =
       TextEditingController();
-  final TextEditingController finalDestinationController =
+  final TextEditingController _finalDestinationController =
       TextEditingController();
 
   bool viewMore = false;
 
   @override
   void initState() {
+    _departureController.text = HelperUi.formatNamedDate(DateTime.now());
+    _returnController.text = HelperUi.formatNamedDate(DateTime.now());
+    _checkInController.text = HelperUi.formatNamedDate(DateTime.now());
+    _checkOutController.text = HelperUi.formatNamedDate(DateTime.now());
     super.initState();
   }
 
@@ -237,21 +241,44 @@ class _FilterWidgetState extends State<FilterWidget> {
           SizedBox(
             height: 2.h,
           ),
-          TextFieldWidget(
-            controller: departureController,
-            enabled: false,
-            hintText: HelperUi.formatNamedDate(DateTime.now()),
-            isUnderLineBorder: true,
-            textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
-                  fontWeight: FontWeight.w500,
+          GestureDetector(
+            onTap: () {
+              FocusScope.of(context).unfocus();
+
+              DateTime selectedDateTime = HelperUi.formatNameStringToDate(_departureController.text.trim());
+
+              DateTime? maxDate;
+              if(widget.hasReturn){
+                maxDate = HelperUi.formatNameStringToDate(_returnController.text.trim());
+              }
+
+              HelperUi.showDatePicker(
+                context: context,
+                initialSelectedDate: selectedDateTime,
+                maxDate: maxDate,
+                callback: (DateTime dateTime) {
+                  _departureController.text = HelperUi.formatNamedDate(dateTime);
+
+                  // If There is No Return So Should Equal Or Greater Than Departure
+                  if(!widget.hasReturn){
+                    _returnController.text = HelperUi.formatNamedDate(dateTime);
+                  }
+                  },
+              );
+            },
+            child: TextFieldWidget(
+              controller: _departureController,
+              enabled: false,
+              hintText: HelperUi.formatNamedDate(DateTime.now()),
+              isUnderLineBorder: true,
+              contentPadding: EdgeInsets.zero,
+              prefixIcon: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 5.w),
+                child: SvgPicture.asset(
+                  Helper.getSvgPath("calendar.svg"),
+                  width: 13.sp,
+                  height: 13.sp,
                 ),
-            contentPadding: EdgeInsets.zero,
-            prefixIcon: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 5.w),
-              child: SvgPicture.asset(
-                Helper.getSvgPath("calendar.svg"),
-                width: 13.sp,
-                height: 13.sp,
               ),
             ),
           ),
@@ -275,21 +302,35 @@ class _FilterWidgetState extends State<FilterWidget> {
           SizedBox(
             height: 2.h,
           ),
-          TextFieldWidget(
-            controller: returnController,
-            enabled: false,
-            isUnderLineBorder: true,
-            hintText: HelperUi.formatNamedDate(DateTime.now()),
-            textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
-                  fontWeight: FontWeight.w500,
+          GestureDetector(
+            onTap: () {
+              FocusScope.of(context).unfocus();
+
+              DateTime selectedDateTime = HelperUi.formatNameStringToDate(_returnController.text.trim());
+              DateTime minDate  = HelperUi.formatNameStringToDate(_departureController.text.trim());
+
+              HelperUi.showDatePicker(
+                context: context,
+                initialSelectedDate: selectedDateTime,
+                minDate: minDate,
+                callback: (DateTime dateTime) {
+                  _returnController.text = HelperUi.formatNamedDate(dateTime);
+                },
+              );
+            },
+            child: TextFieldWidget(
+              controller: _returnController,
+              enabled: false,
+              isUnderLineBorder: true,
+              hintText: HelperUi.formatNamedDate(DateTime.now()),
+              contentPadding: EdgeInsets.zero,
+              prefixIcon: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 5.w),
+                child: SvgPicture.asset(
+                  Helper.getSvgPath("calendar.svg"),
+                  width: 13.sp,
+                  height: 13.sp,
                 ),
-            contentPadding: EdgeInsets.zero,
-            prefixIcon: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 5.w),
-              child: SvgPicture.asset(
-                Helper.getSvgPath("calendar.svg"),
-                width: 13.sp,
-                height: 13.sp,
               ),
             ),
           ),
@@ -318,12 +359,10 @@ class _FilterWidgetState extends State<FilterWidget> {
                   height: 2.h,
                 ),
                 TextFieldWidget(
-                  controller: flyingFromController,
+                  controller: _flyingFromController,
                   hintText: "Dubai (DXB)",
                   isUnderLineBorder: true,
-                  textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
-                        fontWeight: FontWeight.w500,
-                      ),
+
                   contentPadding: EdgeInsets.zero,
                   prefixIcon: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 5.w),
@@ -361,12 +400,10 @@ class _FilterWidgetState extends State<FilterWidget> {
                   height: 2.h,
                 ),
                 TextFieldWidget(
-                  controller: flyingToController,
+                  controller: _flyingToController,
                   isUnderLineBorder: true,
                   hintText: "Sharjah (SHJ)",
-                  textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
-                        fontWeight: FontWeight.w500,
-                      ),
+
                   contentPadding: EdgeInsets.zero,
                   prefixIcon: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 5.w),
@@ -405,12 +442,10 @@ class _FilterWidgetState extends State<FilterWidget> {
                   height: 2.h,
                 ),
                 TextFieldWidget(
-                  controller: pickupLocationController,
+                  controller: _pickupLocationController,
                   hintText: "Dubai (DXB)",
                   isUnderLineBorder: true,
-                  textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
-                        fontWeight: FontWeight.w500,
-                      ),
+
                   contentPadding: EdgeInsets.zero,
                   prefixIcon: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 5.w),
@@ -447,12 +482,10 @@ class _FilterWidgetState extends State<FilterWidget> {
                   height: 2.h,
                 ),
                 TextFieldWidget(
-                  controller: dropOffLocationController,
+                  controller: _dropOffLocationController,
                   isUnderLineBorder: true,
                   hintText: "Sharjah (SHJ)",
-                  textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
-                        fontWeight: FontWeight.w500,
-                      ),
+
                   contentPadding: EdgeInsets.zero,
                   prefixIcon: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 5.w),
@@ -489,13 +522,11 @@ class _FilterWidgetState extends State<FilterWidget> {
                   height: 2.h,
                 ),
                 TextFieldWidget(
-                  controller: finalDestinationController,
+                  controller: _finalDestinationController,
                   enabled: false,
                   hintText: "Ras Al-Khaima (RAK)",
                   isUnderLineBorder: true,
-                  textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
-                        fontWeight: FontWeight.w500,
-                      ),
+
                   contentPadding: EdgeInsets.zero,
                   prefixIcon: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 5.w),
@@ -552,20 +583,40 @@ class _FilterWidgetState extends State<FilterWidget> {
             // On Way Selected
             if (!widget.hasFinalDestination) ...{
               if (widget.hasReturn) ...{
+                // Space
+                SizedBox(
+                  width: 10.w,
+                ),
+
                 _buildReturnFilter(),
               },
             } else ...{
               if (widget.hasReturn && viewMore) ...{
+                // Space
+                SizedBox(
+                  width: 10.w,
+                ),
+
                 _buildReturnFilter(),
               },
             },
           } else ...{
             if (widget.hasReturn) ...{
+              // Space
+              SizedBox(
+                width: 10.w,
+              ),
+
               _buildReturnFilter(),
             },
           }
         } else ...{
           if (widget.hasReturn) ...{
+            // Space
+            SizedBox(
+              width: 10.w,
+            ),
+
             _buildReturnFilter(),
           },
         },
@@ -589,13 +640,11 @@ class _FilterWidgetState extends State<FilterWidget> {
             height: 2.h,
           ),
           TextFieldWidget(
-            controller: travelersController,
+            controller: _travelersController,
             enabled: false,
             hintText: S.of(context).travelers_hint,
             isUnderLineBorder: true,
-            textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
-                  fontWeight: FontWeight.w500,
-                ),
+
             contentPadding: EdgeInsets.zero,
             prefixIcon: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 5.w),
@@ -632,13 +681,11 @@ class _FilterWidgetState extends State<FilterWidget> {
               height: 2.h,
             ),
             TextFieldWidget(
-              controller: whereAreYouGoingController,
+              controller: _whereAreYouGoingController,
               enabled: false,
               hintText: S.of(context).search_for_place,
               isUnderLineBorder: true,
-              textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
-                    fontWeight: FontWeight.w500,
-                  ),
+
               contentPadding: EdgeInsets.zero,
               prefixIcon: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 5.w),
@@ -679,20 +726,37 @@ class _FilterWidgetState extends State<FilterWidget> {
                 SizedBox(
                   height: 2.h,
                 ),
-                TextFieldWidget(
-                  controller: checkInController,
-                  hintText: HelperUi.formatNamedDate(DateTime.now()),
-                  isUnderLineBorder: true,
-                  textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
-                        fontWeight: FontWeight.w500,
+                GestureDetector(
+                  onTap: () {
+                    FocusScope.of(context).unfocus();
+
+                    DateTime selectedDateTime = HelperUi.formatNameStringToDate(_checkInController.text.trim());
+                    DateTime maxDate = HelperUi.formatNameStringToDate(_checkOutController.text.trim());
+
+
+                    HelperUi.showDatePicker(
+                      context: context,
+                      initialSelectedDate: selectedDateTime,
+                      maxDate: maxDate,
+                      callback: (DateTime dateTime) {
+                        _checkInController.text = HelperUi.formatNamedDate(dateTime);
+                      },
+                    );
+                  },
+                  child: TextFieldWidget(
+                    controller: _checkInController,
+                    enabled: false,
+                    hintText: HelperUi.formatNamedDate(DateTime.now()),
+                    isUnderLineBorder: true,
+
+                    contentPadding: EdgeInsets.zero,
+                    prefixIcon: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 5.w),
+                      child: SvgPicture.asset(
+                        Helper.getSvgPath("calendar.svg"),
+                        width: 13.sp,
+                        height: 13.sp,
                       ),
-                  contentPadding: EdgeInsets.zero,
-                  prefixIcon: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 5.w),
-                    child: SvgPicture.asset(
-                      Helper.getSvgPath("calendar.svg"),
-                      width: 13.sp,
-                      height: 13.sp,
                     ),
                   ),
                 ),
@@ -722,20 +786,37 @@ class _FilterWidgetState extends State<FilterWidget> {
                 SizedBox(
                   height: 2.h,
                 ),
-                TextFieldWidget(
-                  controller: checkOutController,
-                  isUnderLineBorder: true,
-                  hintText: HelperUi.formatNamedDate(DateTime.now()),
-                  textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
-                        fontWeight: FontWeight.w500,
+                GestureDetector(
+                  onTap: () {
+                    FocusScope.of(context).unfocus();
+
+                    DateTime selectedDateTime = HelperUi.formatNameStringToDate(_checkOutController.text.trim());
+                    DateTime minDate = HelperUi.formatNameStringToDate(_checkInController.text.trim());
+
+
+                    HelperUi.showDatePicker(
+                      context: context,
+                      initialSelectedDate: selectedDateTime,
+                      minDate: minDate,
+                      callback: (DateTime dateTime) {
+                        _checkOutController.text = HelperUi.formatNamedDate(dateTime);
+                      },
+                    );
+                  },
+                  child: TextFieldWidget(
+                    controller: _checkOutController,
+                    enabled: false,
+                    isUnderLineBorder: true,
+                    hintText: HelperUi.formatNamedDate(DateTime.now()),
+
+                    contentPadding: EdgeInsets.zero,
+                    prefixIcon: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 5.w),
+                      child: SvgPicture.asset(
+                        Helper.getSvgPath("calendar.svg"),
+                        width: 13.sp,
+                        height: 13.sp,
                       ),
-                  contentPadding: EdgeInsets.zero,
-                  prefixIcon: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 5.w),
-                    child: SvgPicture.asset(
-                      Helper.getSvgPath("calendar.svg"),
-                      width: 13.sp,
-                      height: 13.sp,
                     ),
                   ),
                 ),
@@ -763,21 +844,19 @@ class _FilterWidgetState extends State<FilterWidget> {
             height: 2.h,
           ),
           TextFieldWidget(
-            controller: guestsController,
+            controller: _guestsController,
             enabled: false,
             hintText: S.of(context).travelers_hint,
             isUnderLineBorder: true,
-            textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
-                  fontWeight: FontWeight.w500,
-                ),
+
             contentPadding: EdgeInsets.zero,
             prefixIcon: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 5.w),
-                child: Icon(
-                  Icons.people,
-                  size: 20.sp,
-                  color: AppColors.primaryColor,
-                ),
+              padding: EdgeInsets.symmetric(horizontal: 5.w),
+              child: Icon(
+                Icons.people,
+                size: 20.sp,
+                color: AppColors.primaryColor,
+              ),
             ),
           ),
           // Space
@@ -792,18 +871,18 @@ class _FilterWidgetState extends State<FilterWidget> {
 
   // Search Callback
   void _callbackSearch() {
-    final String flyingFrom = flyingFromController.text.trim();
-    final String flyingTo = flyingToController.text.trim();
-    final String departure = departureController.text.trim();
-    final String travelers = travelersController.text.trim();
-    final String returnValue = returnController.text.trim();
-    final String whereAreYouGoing = whereAreYouGoingController.text.trim();
-    final String checkIn = checkInController.text.trim();
-    final String checkOut = checkOutController.text.trim();
-    final String guests = guestsController.text.trim();
-    final String pickupLocation = pickupLocationController.text.trim();
-    final String dropOffLocation = dropOffLocationController.text.trim();
-    final String finalDestination = finalDestinationController.text.trim();
+    final String flyingFrom = _flyingFromController.text.trim();
+    final String flyingTo = _flyingToController.text.trim();
+    final String departure = _departureController.text.trim();
+    final String travelers = _travelersController.text.trim();
+    final String returnValue = _returnController.text.trim();
+    final String whereAreYouGoing = _whereAreYouGoingController.text.trim();
+    final String checkIn = _checkInController.text.trim();
+    final String checkOut = _checkOutController.text.trim();
+    final String guests = _guestsController.text.trim();
+    final String pickupLocation = _pickupLocationController.text.trim();
+    final String dropOffLocation = _dropOffLocationController.text.trim();
+    final String finalDestination = _finalDestinationController.text.trim();
     widget.searchCallback.call(
       flyingFrom: flyingFrom,
       flyingTo: flyingTo,
