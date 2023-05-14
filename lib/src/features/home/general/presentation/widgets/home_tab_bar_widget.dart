@@ -55,6 +55,8 @@ class _HomeTabBarWidgetState extends State<HomeTabBarWidget> {
             title: S.of(context).flights,
             icon: SvgPicture.asset(
               Helper.getSvgPath("flights.svg"),
+              width: 15.sp,
+              height: 15.sp,
               color: widget.tabController.index == 0
                   ? AppColors.primaryColor
                   : AppColors.lightGrayColor,
@@ -67,6 +69,8 @@ class _HomeTabBarWidgetState extends State<HomeTabBarWidget> {
             title: S.of(context).hotels,
             icon: SvgPicture.asset(
               Helper.getSvgPath("hotels.svg"),
+              width: 15.sp,
+              height: 15.sp,
               color: widget.tabController.index == 1
                   ? AppColors.primaryColor
                   : AppColors.lightGrayColor,
@@ -79,6 +83,8 @@ class _HomeTabBarWidgetState extends State<HomeTabBarWidget> {
             title: S.of(context).car_rental,
             icon: SvgPicture.asset(
               Helper.getSvgPath("car_rental.svg"),
+              width: 15.sp,
+              height: 15.sp,
               color: widget.tabController.index == 2
                   ? AppColors.primaryColor
                   : AppColors.lightGrayColor,

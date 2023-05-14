@@ -46,8 +46,8 @@ class _ButtonWidgetState extends State<ButtonWidget> {
       style: ElevatedButton.styleFrom(
         elevation: widget.elevation ?? 0,
         padding: EdgeInsets.symmetric(
-          horizontal: widget.horizontalPadding ?? 15,
-          vertical: widget.verticalPadding ?? 15,
+          horizontal: widget.horizontalPadding ?? 15.sp,
+          vertical: widget.verticalPadding ?? 15.sp,
         ),
         backgroundColor: widget.backgroundColor ?? AppColors.primaryColor,
         shape: RoundedRectangleBorder(
@@ -66,6 +66,7 @@ class _ButtonWidgetState extends State<ButtonWidget> {
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
         children: [
           if (widget.icon != null) ...{
             widget.icon!,

@@ -5,8 +5,10 @@ import 'package:innovation_factory_test/src/core/styles/app_colors.dart';
 class ActionButtonWidget extends StatefulWidget {
   final Function() onTap;
   final Widget child;
+  final Color? backgroundColor;
+  final double? borderRadius;
 
-  const ActionButtonWidget({Key? key, required this.onTap, required this.child})
+  const ActionButtonWidget({Key? key, required this.onTap, required this.child, this.backgroundColor, this.borderRadius})
       : super(key: key);
 
   @override
@@ -21,8 +23,8 @@ class _ActionButtonWidgetState extends State<ActionButtonWidget> {
       child: Container(
         padding: EdgeInsets.all(13.sp),
         decoration: BoxDecoration(
-          color: AppColors.white,
-          borderRadius: BorderRadius.circular(15.sp),
+          color: widget.backgroundColor??AppColors.white,
+          borderRadius: BorderRadius.circular(widget.borderRadius??15.sp),
           boxShadow: [
             BoxShadow(
               color: AppColors.shadowColor,

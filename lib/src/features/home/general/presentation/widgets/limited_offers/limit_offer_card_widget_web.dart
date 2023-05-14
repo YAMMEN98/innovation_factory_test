@@ -7,14 +7,14 @@ import 'package:innovation_factory_test/src/core/translations/l10n.dart';
 import 'package:innovation_factory_test/src/core/util/helper/helper.dart';
 import 'package:innovation_factory_test/src/features/home/general/presentation/widgets/tag_widget.dart';
 
-class LimitedOfferCardWidget extends StatefulWidget {
-  const LimitedOfferCardWidget({Key? key}) : super(key: key);
+class LimitedOfferCardWebWidget extends StatefulWidget {
+  const LimitedOfferCardWebWidget({Key? key}) : super(key: key);
 
   @override
-  State<LimitedOfferCardWidget> createState() => _LimitedOfferCardWidgetState();
+  State<LimitedOfferCardWebWidget> createState() => _LimitedOfferCardWebWidgetState();
 }
 
-class _LimitedOfferCardWidgetState extends State<LimitedOfferCardWidget> {
+class _LimitedOfferCardWebWidgetState extends State<LimitedOfferCardWebWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -38,7 +38,7 @@ class _LimitedOfferCardWidgetState extends State<LimitedOfferCardWidget> {
             borderRadius: BorderRadius.circular(20.sp),
             child: Image.asset(
               Helper.getImagePath("offer_example.png"),
-              width: 300.sp,
+              width: 300.w,
               height: 150.h,
               fit: BoxFit.cover,
             ),
@@ -47,7 +47,7 @@ class _LimitedOfferCardWidgetState extends State<LimitedOfferCardWidget> {
           // Content
           Padding(
             padding: EdgeInsets.symmetric(
-              horizontal: 20.w,
+              horizontal: 10.w,
               vertical: 20.h,
             ),
             child: Column(
@@ -83,12 +83,13 @@ class _LimitedOfferCardWidgetState extends State<LimitedOfferCardWidget> {
                 ),
 
                 // Code And Booking
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     // Code
-                    Flexible(
-                      child: Row(
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           // Code
                           Text(
@@ -112,7 +113,6 @@ class _LimitedOfferCardWidgetState extends State<LimitedOfferCardWidget> {
                           ),
                         ],
                       ),
-                    ),
 
                     // Spacing
                     SizedBox(
@@ -150,8 +150,8 @@ class _LimitedOfferCardWidgetState extends State<LimitedOfferCardWidget> {
 
                         ButtonWidget(
                           text: S.of(context).book_now,
-                          horizontalPadding: 10.sp,
-                          verticalPadding: 3.sp,
+                          horizontalPadding: 10,
+                          verticalPadding: 3,
                         )
                       ],
                     )

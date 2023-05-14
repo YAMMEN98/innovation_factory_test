@@ -25,7 +25,7 @@ void main() async {
   await initInjections();
   AppSnackBar.init();
   runApp( DevicePreview(
-    enabled: kReleaseMode,
+    enabled: !kReleaseMode,
     builder: (context) => App(), // Wrap your app
   ),);
 
@@ -80,6 +80,7 @@ class _AppState extends State<App> with WidgetsBindingObserver {
     return ScreenUtilInit(
 
 
+      useInheritedMediaQuery: true,
 
       designSize: const Size(360, 690),
       minTextAdapt: true,

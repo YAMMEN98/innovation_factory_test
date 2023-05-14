@@ -7,27 +7,27 @@ import 'package:innovation_factory_test/src/core/styles/app_colors.dart';
 import 'package:innovation_factory_test/src/core/translations/l10n.dart';
 import 'package:innovation_factory_test/src/core/util/helper/helper.dart';
 
-class BestPackageCardWidget extends StatefulWidget {
-  const BestPackageCardWidget({Key? key}) : super(key: key);
+class BestPackageCardWebWidget extends StatefulWidget {
+  const BestPackageCardWebWidget({Key? key}) : super(key: key);
 
   @override
-  State<BestPackageCardWidget> createState() => _BestPackageCardWidgetState();
+  State<BestPackageCardWebWidget> createState() => _BestPackageCardWebWidgetState();
 }
 
-class _BestPackageCardWidgetState extends State<BestPackageCardWidget> {
+class _BestPackageCardWebWidgetState extends State<BestPackageCardWebWidget> {
   bool isFavorite = false;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 150.sp,
+      width: 250,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           // Image
           Container(
-            width: 150.w,
-            height: 200.h,
+            width: 250,
+            height: 300.h,
             decoration: BoxDecoration(
               color: Theme.of(context).scaffoldBackgroundColor,
               borderRadius: BorderRadius.circular(20.sp),
@@ -46,8 +46,9 @@ class _BestPackageCardWidgetState extends State<BestPackageCardWidget> {
                 children: [
                   Image.asset(
                     Helper.getImagePath("package_image.png"),
-                    fit: BoxFit.fill,
-                    width: 150.sp,
+                    fit: BoxFit.cover,
+                    width: 250,
+                    height: 300.h,
                   ),
 
                   // Shadow
@@ -69,10 +70,10 @@ class _BestPackageCardWidgetState extends State<BestPackageCardWidget> {
 
                   // Rate And Favorite
                   Positioned(
-                    top: 12.h,
-                    left: 15.w,
-                    right: 8.w,
-                    bottom: 15.h,
+                    top: 12,
+                    left: 15,
+                    right: 8,
+                    bottom: 15,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,

@@ -165,7 +165,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
                       return ButtonWidget(
                         text: S.of(context).register,
-                        verticalPadding: 10.h,
+                        verticalPadding: 15.sp,
                         horizontalPadding: 30.w,
                         shadowColor: AppColors.shadowColor,
                         elevation: 20,
@@ -397,7 +397,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
             // Space
             SizedBox(
-              width: 14.w,
+              width: 14,
             ),
 
             Flexible(

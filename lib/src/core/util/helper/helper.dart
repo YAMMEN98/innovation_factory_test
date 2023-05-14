@@ -41,6 +41,10 @@ class Helper {
 
   // Get App Name
   static AppEnum getDeviceType() {
+    if(kIsWeb){
+      return AppEnum.web;
+    }
+
     if (Platform.isAndroid || Platform.isIOS) {
       return AppEnum.mobile;
     } else if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {

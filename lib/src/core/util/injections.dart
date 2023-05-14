@@ -9,6 +9,7 @@ import 'package:innovation_factory_test/src/features/home/car_rental/car_rental_
 import 'package:innovation_factory_test/src/features/home/flights/flights_injections.dart';
 import 'package:innovation_factory_test/src/features/home/general/home_injections.dart';
 import 'package:innovation_factory_test/src/features/home/hotels/hotels_injections.dart';
+import 'package:innovation_factory_test/src/features/search_flights/search_flights_injections.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../common_feature/app_injections.dart';
@@ -25,6 +26,7 @@ Future<void> initInjections() async {
   await initFlightsInjections();
   await initHotelsInjections();
   await initCarRentalInjections();
+  await initSearchFlightsInjections();
 }
 
 initSharedPrefsInjections() async {

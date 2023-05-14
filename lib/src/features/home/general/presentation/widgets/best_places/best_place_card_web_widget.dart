@@ -5,21 +5,21 @@ import 'package:innovation_factory_test/src/core/common_feature/presentation/wid
 import 'package:innovation_factory_test/src/core/styles/app_colors.dart';
 import 'package:innovation_factory_test/src/core/util/helper/helper.dart';
 
-class BestPlaceCardWidget extends StatefulWidget {
-  const BestPlaceCardWidget({Key? key}) : super(key: key);
+class BestPlaceCardWebWidget extends StatefulWidget {
+  const BestPlaceCardWebWidget({Key? key}) : super(key: key);
 
   @override
-  State<BestPlaceCardWidget> createState() => _BestPlaceCardWidgetState();
+  State<BestPlaceCardWebWidget> createState() => _BestPlaceCardWebWidgetState();
 }
 
-class _BestPlaceCardWidgetState extends State<BestPlaceCardWidget> {
+class _BestPlaceCardWebWidgetState extends State<BestPlaceCardWebWidget> {
   bool isFavorite = false;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 150.sp,
-      height: 200.h,
+      width: 250,
+      height: 300.h,
       decoration: BoxDecoration(
         color: Theme.of(context).scaffoldBackgroundColor,
         borderRadius: BorderRadius.circular(20.sp),
@@ -39,8 +39,8 @@ class _BestPlaceCardWidgetState extends State<BestPlaceCardWidget> {
             Image.asset(
               Helper.getImagePath("burj_khalifa.jpeg"),
               fit: BoxFit.cover,
-              width: 150.sp,
-              height: 200.h,
+              width: 250,
+              height: 300.h,
             ),
 
             // Shadow
@@ -62,10 +62,10 @@ class _BestPlaceCardWidgetState extends State<BestPlaceCardWidget> {
 
             // Rate And Favorite
             Positioned(
-              top: 12.h,
-              left: 15.w,
-              right: 8.w,
-              bottom: 15.h,
+              top: 12,
+              left: 15,
+              right: 8,
+              bottom: 15,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.stretch,

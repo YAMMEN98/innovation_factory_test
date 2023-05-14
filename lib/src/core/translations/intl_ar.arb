@@ -65,5 +65,7 @@
   "pick_uo_location": "موقع الالتقاء",
   "drop_off_location": "موقع التسليم" ,
   "final_destination": "الوجهة النهائية" ,
-  "different_return": "عودة\nمختلف"
+  "different_return": "عودة\nمختلف",
+  "cheap_price": "سعر رخيص",
+  "stop_include": "إيقاف التضمين"
 }

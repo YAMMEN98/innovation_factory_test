@@ -68,4 +68,10 @@ class HelperUi {
     String formattedDate = DateFormat('dd MMM yyyy').format(dateTime);
     return formattedDate;
   }
+
+  // Format Date as Sat, 13 Apr
+  static String formatNamedDateE(DateTime dateTime) {
+    DateFormat outputFormat = DateFormat('E, d MMM');
+    return outputFormat.format(dateTime);
+  }
 }

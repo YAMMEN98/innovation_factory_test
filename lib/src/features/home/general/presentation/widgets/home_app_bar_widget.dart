@@ -104,8 +104,8 @@ class _HomeAppBarWidgetState extends State<HomeAppBarWidget> {
                 onTap: () {},
                 child: SvgPicture.asset(
                   Helper.getSvgPath("notifications.svg"),
-                  width: 15.w,
-                  height: 15.w,
+                  width: 15.sp,
+                  height: 15.sp,
                 ),
               ),
 
@@ -119,8 +119,8 @@ class _HomeAppBarWidgetState extends State<HomeAppBarWidget> {
                 onTap: () {},
                 child: SvgPicture.asset(
                   Helper.getSvgPath("drawer.svg"),
-                  width: 15.w,
-                  height: 15.w,
+                  width: 15.sp,
+                  height: 15.sp,
                 ),
               ),
             ],

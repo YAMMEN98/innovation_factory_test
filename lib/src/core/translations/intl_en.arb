@@ -65,6 +65,8 @@
   "pick_uo_location": "Pickup Location",
   "drop_off_location": "Drop-off Location",
   "final_destination": "Final Destination",
-  "different_return": "Different\nReturn"
+  "different_return": "Different\nReturn",
+  "cheap_price": "Cheap Price",
+  "stop_include": "Stop Include"
 
 }

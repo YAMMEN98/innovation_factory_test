@@ -1,9 +1,11 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:innovation_factory_test/src/core/styles/app_colors.dart';
 import 'package:innovation_factory_test/src/core/translations/l10n.dart';
 import 'package:innovation_factory_test/src/core/util/helper/helper_ui.dart';
 import 'package:innovation_factory_test/src/features/home/general/presentation/widgets/limited_offers/limit_offer_card_widget.dart';
+import 'package:innovation_factory_test/src/features/home/general/presentation/widgets/limited_offers/limit_offer_card_widget_web.dart';
 
 class LimitedOffersWidget extends StatefulWidget {
   const LimitedOffersWidget({Key? key}) : super(key: key);
@@ -54,7 +56,7 @@ class _LimitedOffersWidgetState extends State<LimitedOffersWidget> {
                 horizontal: HelperUi.getHorizontalSpace(),
                 vertical: 20.h,
               ),
-              child: LimitedOfferCardWidget(),
+              child: kIsWeb?LimitedOfferCardWebWidget():LimitedOfferCardWidget(),
             );
           }).toList()),
         )

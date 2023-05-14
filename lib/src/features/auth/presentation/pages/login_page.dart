@@ -143,7 +143,7 @@ class _LoginPageState extends State<LoginPage> {
 
                       return ButtonWidget(
                         text: S.of(context).login,
-                        verticalPadding: 10.h,
+                        verticalPadding: 15.sp,
                         horizontalPadding: 30.w,
                         shadowColor: AppColors.shadowColor,
                         elevation: 20,

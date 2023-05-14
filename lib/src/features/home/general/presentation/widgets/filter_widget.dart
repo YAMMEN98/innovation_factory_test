@@ -33,20 +33,20 @@ class FilterWidget extends StatefulWidget {
   final bool hasFinalDestination;
   final bool isDifferentReturn;
 
-  final Function(
-    String flyingFrom,
-    String flyingTo,
-    String departure,
-    String travelers,
-    String returnValue,
-    String whereAreYouGoing,
-    String checkIn,
-    String checkOut,
-    String guest,
-    String pickupLocation,
-    String dropOffLocation,
-    String finalDestination,
-  ) searchCallback;
+  final Function({
+    required String flyingFrom,
+    required String flyingTo,
+   required String departure,
+   required String travelers,
+   required String returnValue,
+   required String whereAreYouGoing,
+   required String checkIn,
+   required String checkOut,
+   required String guests,
+   required String pickupLocation,
+   required String dropOffLocation,
+   required String finalDestination,
+  }) searchCallback;
 
   const FilterWidget({
     Key? key,
@@ -148,6 +148,9 @@ class _FilterWidgetState extends State<FilterWidget> {
         // View more/less
         if (viewMore) ...{
           ButtonWidget(
+            onPressed: () {
+              _callbackSearch();
+            },
             text: S.of(context).search,
             textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
                   fontWeight: FontWeight.w600,
@@ -246,8 +249,8 @@ class _FilterWidgetState extends State<FilterWidget> {
               padding: EdgeInsets.symmetric(horizontal: 5.w),
               child: SvgPicture.asset(
                 Helper.getSvgPath("calendar.svg"),
-                width: 13.w,
-                height: 13.w,
+                width: 13.sp,
+                height: 13.sp,
               ),
             ),
           ),
@@ -284,8 +287,8 @@ class _FilterWidgetState extends State<FilterWidget> {
               padding: EdgeInsets.symmetric(horizontal: 5.w),
               child: SvgPicture.asset(
                 Helper.getSvgPath("calendar.svg"),
-                width: 13.w,
-                height: 13.w,
+                width: 13.sp,
+                height: 13.sp,
               ),
             ),
           ),
@@ -412,8 +415,8 @@ class _FilterWidgetState extends State<FilterWidget> {
                     padding: EdgeInsets.symmetric(horizontal: 5.w),
                     child: Image.asset(
                       Helper.getImagePath("car.png"),
-                      width: 13.w,
-                      height: 13.w,
+                      width: 20.sp,
+                      height: 20.sp,
                     ),
                   ),
                 ),
@@ -452,10 +455,10 @@ class _FilterWidgetState extends State<FilterWidget> {
                   contentPadding: EdgeInsets.zero,
                   prefixIcon: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 5.w),
-                    child: Icon(
-                      Icons.flight_land_outlined,
-                      color: AppColors.primaryColor,
-                      size: 20.sp,
+                    child: Image.asset(
+                      Helper.getImagePath("car.png"),
+                      width: 20.sp,
+                      height: 20.sp,
                     ),
                   ),
                 ),
@@ -497,8 +500,8 @@ class _FilterWidgetState extends State<FilterWidget> {
                     padding: EdgeInsets.symmetric(horizontal: 5.w),
                     child: SvgPicture.asset(
                       Helper.getSvgPath("calendar.svg"),
-                      width: 13.w,
-                      height: 13.w,
+                      width: 13.sp,
+                      height: 13.sp,
                     ),
                   ),
                 ),
@@ -687,8 +690,8 @@ class _FilterWidgetState extends State<FilterWidget> {
                     padding: EdgeInsets.symmetric(horizontal: 5.w),
                     child: SvgPicture.asset(
                       Helper.getSvgPath("calendar.svg"),
-                      width: 13.w,
-                      height: 13.w,
+                      width: 13.sp,
+                      height: 13.sp,
                     ),
                   ),
                 ),
@@ -730,8 +733,8 @@ class _FilterWidgetState extends State<FilterWidget> {
                     padding: EdgeInsets.symmetric(horizontal: 5.w),
                     child: SvgPicture.asset(
                       Helper.getSvgPath("calendar.svg"),
-                      width: 13.w,
-                      height: 13.w,
+                      width: 13.sp,
+                      height: 13.sp,
                     ),
                   ),
                 ),
@@ -773,7 +776,8 @@ class _FilterWidgetState extends State<FilterWidget> {
                   Icons.people,
                   size: 20.sp,
                   color: AppColors.primaryColor,
-                )),
+                ),
+            ),
           ),
           // Space
           SizedBox(
@@ -783,5 +787,35 @@ class _FilterWidgetState extends State<FilterWidget> {
       );
     }
     return SizedBox();
+  }
+
+  // Search Callback
+  void _callbackSearch() {
+    final String flyingFrom = flyingFromController.text.trim();
+    final String flyingTo = flyingToController.text.trim();
+    final String departure = departureController.text.trim();
+    final String travelers = travelersController.text.trim();
+    final String returnValue = returnController.text.trim();
+    final String whereAreYouGoing = whereAreYouGoingController.text.trim();
+    final String checkIn = checkInController.text.trim();
+    final String checkOut = checkOutController.text.trim();
+    final String guests = guestsController.text.trim();
+    final String pickupLocation = pickupLocationController.text.trim();
+    final String dropOffLocation = dropOffLocationController.text.trim();
+    final String finalDestination = finalDestinationController.text.trim();
+    widget.searchCallback.call(
+      flyingFrom: flyingFrom,
+      flyingTo: flyingTo,
+      departure: departure,
+      travelers: travelers,
+      returnValue: returnValue,
+      whereAreYouGoing: whereAreYouGoing,
+      checkIn: checkIn,
+      checkOut: checkOut,
+      guests: guests,
+      pickupLocation: pickupLocation,
+      dropOffLocation: dropOffLocation,
+      finalDestination: finalDestination,
+    );
   }
 }

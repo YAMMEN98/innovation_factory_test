@@ -30,6 +30,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "book_now": MessageLookupByLibrary.simpleMessage("حجز الآن"),
         "business": MessageLookupByLibrary.simpleMessage("عمل"),
         "car_rental": MessageLookupByLibrary.simpleMessage("تأجير السيارات"),
+        "cheap_price": MessageLookupByLibrary.simpleMessage("سعر رخيص"),
         "check_in": MessageLookupByLibrary.simpleMessage("تسجيل الوصول"),
         "check_out": MessageLookupByLibrary.simpleMessage("تسجيل المغادرة"),
         "code": MessageLookupByLibrary.simpleMessage("الرمز"),
@@ -101,6 +102,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "search": MessageLookupByLibrary.simpleMessage("بحث"),
         "server_error": MessageLookupByLibrary.simpleMessage("خطأ في الخادم"),
         "share": MessageLookupByLibrary.simpleMessage("مشاركة"),
+        "stop_include": MessageLookupByLibrary.simpleMessage("إيقاف التضمين"),
         "travelers": MessageLookupByLibrary.simpleMessage("المسافرون"),
         "travelers_hint":
             MessageLookupByLibrary.simpleMessage("2 بالغون 3 أطفال"),

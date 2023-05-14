@@ -30,6 +30,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "book_now": MessageLookupByLibrary.simpleMessage("Book Now"),
         "business": MessageLookupByLibrary.simpleMessage("Business"),
         "car_rental": MessageLookupByLibrary.simpleMessage("Car Rental"),
+        "cheap_price": MessageLookupByLibrary.simpleMessage("Cheap Price"),
         "check_in": MessageLookupByLibrary.simpleMessage("Check In"),
         "check_out": MessageLookupByLibrary.simpleMessage("Check Out"),
         "code": MessageLookupByLibrary.simpleMessage("Code"),
@@ -108,6 +109,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Search for place and proprieties"),
         "server_error": MessageLookupByLibrary.simpleMessage("Server Error"),
         "share": MessageLookupByLibrary.simpleMessage("Share"),
+        "stop_include": MessageLookupByLibrary.simpleMessage("Stop Include"),
         "travelers": MessageLookupByLibrary.simpleMessage("Travelers"),
         "travelers_hint":
             MessageLookupByLibrary.simpleMessage("2 Adults, 3Children"),

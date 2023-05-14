@@ -719,6 +719,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Cheap Price`
+  String get cheap_price {
+    return Intl.message(
+      'Cheap Price',
+      name: 'cheap_price',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Stop Include`
+  String get stop_include {
+    return Intl.message(
+      'Stop Include',
+      name: 'stop_include',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

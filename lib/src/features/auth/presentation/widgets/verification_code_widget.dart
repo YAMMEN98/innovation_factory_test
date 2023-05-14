@@ -130,7 +130,7 @@ class _VerificationCodeWidgetState extends State<VerificationCodeWidget> {
                       return AppLoader();
                     }
                     return ButtonWidget(
-                      horizontalPadding: 20.w,
+                      horizontalPadding: 20.sp,
                       text: S.of(context).validate,
                       textStyle:
                           Theme.of(context).textTheme.bodyLarge!.copyWith(

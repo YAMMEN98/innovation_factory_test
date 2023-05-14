@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             // Where next title
             SliverToBoxAdapter(
               child: Container(
-                height: 188.h,
+                height: 200.h,
                 decoration: BoxDecoration(
                   color: AppColors.primaryColor,
                 ),

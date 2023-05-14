@@ -113,7 +113,7 @@ class _GeneralDialogWidgetState extends State<GeneralDialogWidget> {
                         if (widget.primaryButtonName != null) ...[
                           Flexible(
                             child: ButtonWidget(
-                              horizontalPadding: 20.w,
+                              horizontalPadding: 20.sp,
                               text: widget.primaryButtonName!,
                               textStyle: widget.primaryButtonTextStyle ??
                                   Theme.of(context)
@@ -135,7 +135,7 @@ class _GeneralDialogWidgetState extends State<GeneralDialogWidget> {
                         if (widget.secondaryButtonName != null) ...[
                           Flexible(
                             child: ButtonWidget(
-                              horizontalPadding: 20.w,
+                              horizontalPadding: 20.sp,
                               text: widget.secondaryButtonName!,
                               textStyle: Theme.of(context)
                                   .textTheme
@@ -159,7 +159,7 @@ class _GeneralDialogWidgetState extends State<GeneralDialogWidget> {
                         if (widget.secondaryButtonName != null) ...[
                           Flexible(
                             child: ButtonWidget(
-                              horizontalPadding: 20.w,
+                              horizontalPadding: 20.sp,
                               text: widget.secondaryButtonName!,
                               textStyle: Theme.of(context)
                                   .textTheme
@@ -181,7 +181,7 @@ class _GeneralDialogWidgetState extends State<GeneralDialogWidget> {
                         if (widget.primaryButtonName != null) ...[
                           Flexible(
                             child: ButtonWidget(
-                              horizontalPadding: 20.w,
+                              horizontalPadding: 20.sp,
                               text: widget.primaryButtonName!,
                               textStyle: widget.primaryButtonTextStyle ??
                                   Theme.of(context)
