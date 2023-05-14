@@ -16,6 +16,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:innovation_factory_test/src/features/search_flights/presentation/pages/search_flights_page.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();
 
@@ -97,7 +98,7 @@ class _AppState extends State<App> with WidgetsBindingObserver {
           useInheritedMediaQuery: false,
           locale: locale,
 
-          title: 'Clinic',
+          title: 'Flights',
           scaffoldMessengerKey: snackbarKey,
           onGenerateRoute: AppRouter.generateRoute,
 
@@ -119,6 +120,7 @@ class _AppState extends State<App> with WidgetsBindingObserver {
         );
       },
       child: const IntroPage(),
+      // child: const SearchFlightsPage(),
     );
 
 

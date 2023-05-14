@@ -41,6 +41,13 @@ class AppTextStyle {
     color: AppColors.darkFontColor,
   );
 
+
+  static TextStyle textStyleBlack28 = TextStyle(
+    fontSize: AppFontSize.fontSize28,
+    color: AppColors.darkFontColor,
+  );
+
+
   static TextStyle textStyleBlack30 = TextStyle(
     fontSize: AppFontSize.fontSize30,
     color: AppColors.darkFontColor,
@@ -82,6 +89,11 @@ class AppTextStyle {
 
   static TextStyle textStyleWhite24 = TextStyle(
     fontSize: AppFontSize.fontSize24,
+    color: AppColors.white,
+  );
+
+  static TextStyle textStyleWhite28 = TextStyle(
+    fontSize: AppFontSize.fontSize28,
     color: AppColors.white,
   );
 

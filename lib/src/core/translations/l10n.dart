@@ -739,6 +739,56 @@ class S {
       args: [],
     );
   }
+
+  /// `Show Details`
+  String get show_details {
+    return Intl.message(
+      'Show Details',
+      name: 'show_details',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hide Details`
+  String get hide_details {
+    return Intl.message(
+      'Hide Details',
+      name: 'hide_details',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Travel Time`
+  String get travel_time {
+    return Intl.message(
+      'Travel Time',
+      name: 'travel_time',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Arrived At Destination`
+  String get arrived_at_destination {
+    return Intl.message(
+      'Arrived At Destination',
+      name: 'arrived_at_destination',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Flight`
+  String get select_flight {
+    return Intl.message(
+      'Select Flight',
+      name: 'select_flight',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

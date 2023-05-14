@@ -25,6 +25,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "already_have_an_account":
             MessageLookupByLibrary.simpleMessage("Already Have An Account? "),
         "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
+        "arrived_at_destination":
+            MessageLookupByLibrary.simpleMessage("Arrived At Destination"),
         "best_packages": MessageLookupByLibrary.simpleMessage("Best Packages"),
         "best_place": MessageLookupByLibrary.simpleMessage("Best Places"),
         "book_now": MessageLookupByLibrary.simpleMessage("Book Now"),
@@ -56,6 +58,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Forget Password?"),
         "full_name": MessageLookupByLibrary.simpleMessage("Full Name"),
         "guests": MessageLookupByLibrary.simpleMessage("Guests"),
+        "hide_details": MessageLookupByLibrary.simpleMessage("Hide Details"),
         "hotels": MessageLookupByLibrary.simpleMessage("Hotels"),
         "i_agree_terms_and_conditions": MessageLookupByLibrary.simpleMessage(
             "I Agree To The Terms Of Service And Privacy Policy"),
@@ -107,9 +110,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "search": MessageLookupByLibrary.simpleMessage("Search"),
         "search_for_place": MessageLookupByLibrary.simpleMessage(
             "Search for place and proprieties"),
+        "select_flight": MessageLookupByLibrary.simpleMessage("Select Flight"),
         "server_error": MessageLookupByLibrary.simpleMessage("Server Error"),
         "share": MessageLookupByLibrary.simpleMessage("Share"),
+        "show_details": MessageLookupByLibrary.simpleMessage("Show Details"),
         "stop_include": MessageLookupByLibrary.simpleMessage("Stop Include"),
+        "travel_time": MessageLookupByLibrary.simpleMessage("Travel Time"),
         "travelers": MessageLookupByLibrary.simpleMessage("Travelers"),
         "travelers_hint":
             MessageLookupByLibrary.simpleMessage("2 Adults, 3Children"),

@@ -74,4 +74,10 @@ class HelperUi {
     DateFormat outputFormat = DateFormat('E, d MMM');
     return outputFormat.format(dateTime);
   }
+
+  // Format  as 12:00
+  static String formatTimes(DateTime dateTime) {
+    final outputFormat = new DateFormat('hh:mm');
+    return outputFormat.format(dateTime);
+  }
 }

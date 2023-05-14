@@ -49,7 +49,9 @@ class _SearchFlightsAppBarWidgetState extends State<SearchFlightsAppBarWidget> {
                     IconButton(
                       constraints: BoxConstraints(),
                       padding: EdgeInsets.zero,
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
                       icon: Icon(
                         Icons.arrow_back,
                         size: 20.sp,

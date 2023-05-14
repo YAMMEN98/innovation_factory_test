@@ -51,7 +51,7 @@ class _IntroPageState extends State<IntroPage> {
         child: Padding(
           padding: EdgeInsets.all(15.sp),
           child: SvgPicture.asset(
-            Helper.getSvgPath("flight.svg"),
+            Helper.getSvgPath("plane.svg"),
             width: 100.w,
             height: 100.h,
           ),

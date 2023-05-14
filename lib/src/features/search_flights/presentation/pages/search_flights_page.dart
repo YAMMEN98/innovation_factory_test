@@ -6,13 +6,10 @@ import 'package:innovation_factory_test/src/core/common_feature/presentation/wid
 import 'package:innovation_factory_test/src/core/styles/app_colors.dart';
 import 'package:innovation_factory_test/src/core/translations/l10n.dart';
 import 'package:innovation_factory_test/src/core/util/helper/helper.dart';
-import 'package:innovation_factory_test/src/features/home/general/presentation/widgets/best_packages/best_packages_widget.dart';
-import 'package:innovation_factory_test/src/features/home/general/presentation/widgets/best_places/best_places_widget.dart';
-import 'package:innovation_factory_test/src/features/home/general/presentation/widgets/filter_widget.dart';
-import 'package:innovation_factory_test/src/features/home/general/presentation/widgets/limited_offers/limited_offers_widget.dart';
 import 'package:innovation_factory_test/src/features/home/general/presentation/widgets/select_button_widget.dart';
 import 'package:innovation_factory_test/src/features/search_flights/presentation/bloc/search_flights_bloc.dart';
 import 'package:innovation_factory_test/src/features/search_flights/presentation/widgets/search_flights_app_bar_widget.dart';
+import 'package:innovation_factory_test/src/features/search_flights/presentation/widgets/trip_card_widget.dart';
 
 class SearchFlightsPage extends StatefulWidget {
   const SearchFlightsPage({Key? key}) : super(key: key);
@@ -21,7 +18,8 @@ class SearchFlightsPage extends StatefulWidget {
   State<SearchFlightsPage> createState() => _SearchFlightsPageState();
 }
 
-class _SearchFlightsPageState extends State<SearchFlightsPage> with TickerProviderStateMixin {
+class _SearchFlightsPageState extends State<SearchFlightsPage>
+    with TickerProviderStateMixin {
   SearchFlightsBloc _bloc = SearchFlightsBloc();
 
   ScrollController scrollController = ScrollController();
@@ -39,26 +37,27 @@ class _SearchFlightsPageState extends State<SearchFlightsPage> with TickerProvid
   @override
   Widget build(BuildContext context) {
     return BackgroundPage(
-      topSafeArea: false,
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
+        topSafeArea: false,
+        child: Column(
+          children: [
+            // Search Flights App Bar
+            SearchFlightsAppBarWidget(),
 
-              // Search Flights App Bar
-              SearchFlightsAppBarWidget(),
+            // Available Flights And Filters
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  SizedBox(
+                    height: 20.sp,
+                  ),
 
-
-              // Available Flights And Filters
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 20.w,
-                  vertical: 30.h,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    // Flights Available
-                    Row(
+                  // Flights Available
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 20.w,
+                    ),
+                    child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         // Available Flights
@@ -66,49 +65,50 @@ class _SearchFlightsPageState extends State<SearchFlightsPage> with TickerProvid
                           children: [
                             Text(
                               "69 Flights",
-                              style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                                fontWeight: FontWeight.w600,
-
-                              ),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyMedium!
+                                  .copyWith(
+                                    fontWeight: FontWeight.w600,
+                                  ),
                             ),
-
                             Text(
                               " Available",
-                              style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                                fontWeight: FontWeight.w400,
-
-                              ),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyMedium!
+                                  .copyWith(
+                                    fontWeight: FontWeight.w400,
+                                  ),
                             ),
                           ],
                         ),
 
                         // Filter Button
                         ActionButtonWidget(
-                          onTap: (){},
-                            child: SvgPicture.asset(
-                              Helper.getSvgPath("filter.svg"),
-                              width: 20.w,
-                              height: 20.w,
-                            ),
+                          onTap: () {},
+                          child: SvgPicture.asset(
+                            Helper.getSvgPath("filter.svg"),
+                            width: 20.w,
+                            height: 20.w,
+                          ),
                           backgroundColor: AppColors.primaryColor,
                           borderRadius: 100,
                         ),
-
-
-
-
-
                       ],
                     ),
+                  ),
 
+                  SizedBox(
+                    height: 6.h,
+                  ),
 
-                    SizedBox(
-                      height: 15.h,
+                  // DropDown Button
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 20.w,
                     ),
-
-
-                    // DropDown Button
-                    SingleChildScrollView(
+                    child: SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -145,13 +145,36 @@ class _SearchFlightsPageState extends State<SearchFlightsPage> with TickerProvid
                           ),
                         ],
                       ),
-                    )
-                  ],
-                ),
-              )
+                    ),
+                  ),
 
-            ],
-          ),
+                  SizedBox(
+                    height: 20.sp,
+                  ),
+
+
+                  // Flight Observer
+                  Expanded(
+                    child: ListView.separated(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 20.w,
+                        vertical: 10.h,
+                      ),
+                      itemBuilder: (context, index) {
+                        return CardTripWidget();
+                      },
+                      separatorBuilder: (context, index) {
+                        return SizedBox(
+                          height: 20.sp,
+                        );
+                      },
+                      itemCount: 10,
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ],
         ));
   }
 }

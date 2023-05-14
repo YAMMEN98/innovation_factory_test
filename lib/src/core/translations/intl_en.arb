@@ -67,6 +67,11 @@
   "final_destination": "Final Destination",
   "different_return": "Different\nReturn",
   "cheap_price": "Cheap Price",
-  "stop_include": "Stop Include"
+  "stop_include": "Stop Include",
+  "show_details": "Show Details",
+  "hide_details": "Hide Details",
+  "travel_time": "Travel Time",
+  "arrived_at_destination": "Arrived At Destination",
+  "select_flight": "Select Flight"
 
 }

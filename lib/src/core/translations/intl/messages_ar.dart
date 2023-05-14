@@ -52,6 +52,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور؟"),
         "full_name": MessageLookupByLibrary.simpleMessage("الاسم الكامل"),
         "guests": MessageLookupByLibrary.simpleMessage("الضيوف"),
+        "hide_details": MessageLookupByLibrary.simpleMessage("إخفاء التفاصيل"),
         "hotels": MessageLookupByLibrary.simpleMessage("الفنادق"),
         "i_agree_terms_and_conditions": MessageLookupByLibrary.simpleMessage(
             "أوافق على شروط الخدمة وسياسة الخصوصية"),
@@ -100,9 +101,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "round_trip":
             MessageLookupByLibrary.simpleMessage("رحلة ذهابًا وإيابًا"),
         "search": MessageLookupByLibrary.simpleMessage("بحث"),
+        "select_flight": MessageLookupByLibrary.simpleMessage("اختيار الرحلة"),
         "server_error": MessageLookupByLibrary.simpleMessage("خطأ في الخادم"),
         "share": MessageLookupByLibrary.simpleMessage("مشاركة"),
+        "show_details": MessageLookupByLibrary.simpleMessage("عرض التفاصيل"),
         "stop_include": MessageLookupByLibrary.simpleMessage("إيقاف التضمين"),
+        "travel_time": MessageLookupByLibrary.simpleMessage("وقت الرحلة"),
         "travelers": MessageLookupByLibrary.simpleMessage("المسافرون"),
         "travelers_hint":
             MessageLookupByLibrary.simpleMessage("2 بالغون 3 أطفال"),

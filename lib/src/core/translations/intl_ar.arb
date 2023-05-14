@@ -67,5 +67,11 @@
   "final_destination": "الوجهة النهائية" ,
   "different_return": "عودة\nمختلف",
   "cheap_price": "سعر رخيص",
-  "stop_include": "إيقاف التضمين"
+  "stop_include": "إيقاف التضمين",
+  "show_details": "عرض التفاصيل",
+  "hide_details": "إخفاء التفاصيل",
+  "travel_time": "وقت الرحلة",
+  "arrival_at_destination": "الوصول إلى الوجهة",
+  "select_flight": "اختيار الرحلة"
+
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:innovation_factory_test/src/core/styles/app_text_style.dart';
 
 import 'app_colors.dart';
@@ -19,11 +20,12 @@ final ThemeData appTheme = ThemeData(
     ).titleLarge,
     systemOverlayStyle: SystemUiOverlayStyle.light,
   ),
-  // fontFamily: GoogleFonts.chakraPetch().fontFamily,
+  fontFamily: GoogleFonts.montserrat().fontFamily,
   scaffoldBackgroundColor: AppColors.backgroundColor,
   iconTheme: const IconThemeData(color: AppColors.black, size: 25),
   textTheme: TextTheme(
     headlineLarge: AppTextStyle.textStyleBlack30,
+    displayMedium: AppTextStyle.textStyleBlack28,
     headlineMedium: AppTextStyle.textStyleBlack24,
     headlineSmall: AppTextStyle.textStyleBlack20,
     titleLarge: AppTextStyle.textStyleBlack14,
@@ -86,19 +88,20 @@ final ThemeData darkAppTheme = ThemeData(
     ).titleLarge,
     systemOverlayStyle: SystemUiOverlayStyle.light,
   ),
-  // fontFamily: GoogleFonts.chakraPetch().fontFamily,
+  fontFamily: GoogleFonts.montserrat().fontFamily,
   scaffoldBackgroundColor: AppColors.grayColor,
   iconTheme: const IconThemeData(color: AppColors.white, size: 25),
   textTheme: TextTheme(
     headlineLarge: AppTextStyle.textStyleWhite30,
-    headlineMedium: AppTextStyle.textStyleBlack24,
-    headlineSmall: AppTextStyle.textStyleBlack20,
-    titleLarge: AppTextStyle.textStyleBlack14,
-    titleMedium: AppTextStyle.textStyleBlack13,
-    titleSmall: AppTextStyle.textStyleBlack12,
-    bodyLarge: AppTextStyle.textStyleBlack18,
-    bodyMedium: AppTextStyle.textStyleBlack16,
-    bodySmall: AppTextStyle.textStyleBlack14,
+    displayMedium: AppTextStyle.textStyleWhite28,
+    headlineMedium: AppTextStyle.textStyleWhite24,
+    headlineSmall: AppTextStyle.textStyleWhite20,
+    titleLarge: AppTextStyle.textStyleWhite14,
+    titleMedium: AppTextStyle.textStyleWhite13,
+    titleSmall: AppTextStyle.textStyleWhite12,
+    bodyLarge: AppTextStyle.textStyleWhite18,
+    bodyMedium: AppTextStyle.textStyleWhite16,
+    bodySmall: AppTextStyle.textStyleWhite14,
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
@@ -137,7 +140,7 @@ final ThemeData darkAppTheme = ThemeData(
       borderSide: const BorderSide(color: AppColors.red, width: 1),
     ),
     errorMaxLines: 10,
-    errorStyle: AppTextStyle.textStyleBlack13.copyWith(
+    errorStyle: AppTextStyle.textStyleWhite13.copyWith(
       color: AppColors.red,
       fontWeight: FontWeight.normal,
     ),
