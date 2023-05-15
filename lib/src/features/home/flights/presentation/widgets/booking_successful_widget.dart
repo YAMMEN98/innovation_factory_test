@@ -81,10 +81,11 @@ class _BookingSuccessfulWidgetState extends State<BookingSuccessfulWidget> {
                   height: HelperUi.getVerticalSpace(),
                 ),
 
-                // Validate Button
+                // Done Button
                 Center(
                   child: ButtonWidget(
-                    horizontalPadding: 20.sp,
+                    horizontalPadding: 40.sp,
+                    verticalPadding: 10.sp,
                     text: S.of(context).done,
                     textStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(
                           fontWeight: FontWeight.w600,
