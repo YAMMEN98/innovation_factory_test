@@ -179,6 +179,9 @@ class _PassengerCardWidgetState extends State<PassengerCardWidget> {
                           // Male
                           PopupMenuItem<GenderEnum>(
                             value: GenderEnum.male,
+                            onTap: () {
+                              _genderController.text = S.of(context).male;
+                            },
                             child: Text(
                               GenderEnum.male.name,
                               style: Theme.of(context)
@@ -193,6 +196,9 @@ class _PassengerCardWidgetState extends State<PassengerCardWidget> {
                           // Female
                           PopupMenuItem<GenderEnum>(
                             value: GenderEnum.female,
+                            onTap: () {
+                              _genderController.text = S.of(context).female;
+                            },
                             child: Text(
                               GenderEnum.female.name,
                               style: Theme.of(context)
@@ -209,10 +215,6 @@ class _PassengerCardWidgetState extends State<PassengerCardWidget> {
                         controller: _genderController,
                         enabled: false,
                         hintText: S.of(context).male,
-                        textStyle:
-                            Theme.of(context).textTheme.titleLarge!.copyWith(
-                                  fontWeight: FontWeight.w500,
-                                ),
                         isUnderLineBorder: true,
                         contentPadding: EdgeInsets.zero,
                         suffixIcon: Icon(
