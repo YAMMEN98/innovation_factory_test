@@ -21,22 +21,22 @@ class _IntroPageState extends State<IntroPage> {
     _bloc = IntroBloc();
 
     // Delay For 2 Second and Process
-    // Future.delayed(
-    //   Duration(seconds: 2),
-    //   () {
-    //     _bloc.add(OnCheckUserEvent());
-    //
-    //     _bloc.stream.listen((state) {
-    //       if (state is SuccessCheckUserStatusState) {
-    //         if (state.isLoggedIn) {
-    //           Navigator.pushReplacementNamed(context, AppPageRouteName.home.name);
-    //         } else {
-    //           Navigator.pushReplacementNamed(context, AppPageRouteName.login.name);
-    //         }
-    //       }
-    //     });
-    //   },
-    // );
+    Future.delayed(
+      Duration(seconds: 2),
+      () {
+        _bloc.add(OnCheckUserEvent());
+
+        _bloc.stream.listen((state) {
+          if (state is SuccessCheckUserStatusState) {
+            if (state.isLoggedIn) {
+              Navigator.pushReplacementNamed(context, AppPageRouteName.home.name);
+            } else {
+              Navigator.pushReplacementNamed(context, AppPageRouteName.login.name);
+            }
+          }
+        });
+      },
+    );
 
     super.initState();
   }
