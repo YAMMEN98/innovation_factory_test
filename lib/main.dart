@@ -15,7 +15,6 @@ import 'package:innovation_factory_test/src/core/translations/l10n.dart';
 import 'package:innovation_factory_test/src/core/util/injections.dart';
 import 'package:innovation_factory_test/src/core/util/log/log_controller.dart';
 import 'package:innovation_factory_test/src/core/util/router.dart';
-import 'package:innovation_factory_test/src/features/booking_flight/presentation/pages/flight_booking_page.dart';
 import 'package:innovation_factory_test/src/features/intro/presentation/pages/intro_page.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();
@@ -46,9 +45,6 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> with WidgetsBindingObserver {
-  final GlobalKey<ScaffoldMessengerState> snackbarKey =
-      GlobalKey<ScaffoldMessengerState>();
-
   @override
   void initState() {
     super.initState();
@@ -62,7 +58,6 @@ class _AppState extends State<App> with WidgetsBindingObserver {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      
       useInheritedMediaQuery: true,
       designSize: const Size(360, 690),
       minTextAdapt: true,
@@ -82,19 +77,10 @@ class _AppState extends State<App> with WidgetsBindingObserver {
               return BlocBuilder<ThemeCubit, bool>(
                 builder: (context, isDarkTheme) {
                   return MaterialApp(
-                    // Device Preview
-                    // useInheritedMediaQuery: true,
-                    // locale: DevicePreview.locale(context),
-                    // builder: DevicePreview.appBuilder,
-
-                    // Real Device
                     useInheritedMediaQuery: false,
                     locale: Locale(lang.local),
-
-                    title: 'Flights',
-                    scaffoldMessengerKey: snackbarKey,
+                    title: "Travel App",
                     onGenerateRoute: AppRouter.generateRoute,
-
                     theme: isDarkTheme ? darkAppTheme : appTheme,
                     debugShowCheckedModeBanner: false,
                     localizationsDelegates: const [
@@ -109,7 +95,6 @@ class _AppState extends State<App> with WidgetsBindingObserver {
                       Locale("ar"),
                       Locale("en"),
                     ],
-
                     home: child,
                   );
                 },

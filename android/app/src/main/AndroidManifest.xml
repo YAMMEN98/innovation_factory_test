@@ -1,7 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.innovation_factory_test">
-   <application
-        android:label="innovation_factory_test"
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:label="Travel App"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity
