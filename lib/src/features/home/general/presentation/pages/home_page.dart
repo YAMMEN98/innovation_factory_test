@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           return [
             SliverToBoxAdapter(
               child: SizedBox(
-                height: kToolbarHeight*0.75,
+                height: (kToolbarHeight*0.5),
               ),
             ),
 

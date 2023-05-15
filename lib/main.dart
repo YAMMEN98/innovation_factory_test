@@ -27,7 +27,7 @@ void main() async {
   AppSnackBar.init();
   runApp(
     DevicePreview(
-      enabled: kReleaseMode,
+      enabled: !kReleaseMode,
       builder: (context) => App(), // Wrap your app
     ),
   );
