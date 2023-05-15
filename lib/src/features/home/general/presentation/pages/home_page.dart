@@ -36,9 +36,16 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     return BackgroundPage(
       key: _key,
       withDrawer: true,
+      topSafeArea: false,
       child: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) {
           return [
+            SliverToBoxAdapter(
+              child: SizedBox(
+                height: kToolbarHeight*0.75,
+              ),
+            ),
+
             // App Bar
             SliverToBoxAdapter(
               child: HomeAppBarWidget(),

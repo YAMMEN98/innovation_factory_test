@@ -1,37 +1,36 @@
-import 'dart:io';
-
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:innovation_factory_test/src/core/common_feature/data/data_sources/app_shared_prefs.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:innovation_factory_test/src/core/common_feature/domain/entities/language_enum.dart';
 import 'package:innovation_factory_test/src/core/common_feature/presentation/bloc/language/language_cubit.dart';
 import 'package:innovation_factory_test/src/core/common_feature/presentation/bloc/theme/theme_cubit.dart';
 import 'package:innovation_factory_test/src/core/common_feature/presentation/widgets/app_snack_bar.dart';
 import 'package:innovation_factory_test/src/core/styles/app_theme.dart';
 import 'package:innovation_factory_test/src/core/translations/l10n.dart';
-import 'package:innovation_factory_test/src/core/util/helper/helper.dart';
 import 'package:innovation_factory_test/src/core/util/injections.dart';
+import 'package:innovation_factory_test/src/core/util/log/log_controller.dart';
 import 'package:innovation_factory_test/src/core/util/router.dart';
-import 'package:innovation_factory_test/src/features/auth/presentation/pages/register_page.dart';
-import 'package:innovation_factory_test/src/features/auth/presentation/pages/login_page.dart';
 import 'package:innovation_factory_test/src/features/intro/presentation/pages/intro_page.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:innovation_factory_test/src/features/search_flights/presentation/pages/search_flights_page.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initInjections();
+
+  sl<LogController>().initLog();
+
   AppSnackBar.init();
-  runApp(DevicePreview(
-    enabled: !kReleaseMode,
-    builder: (context) => App(), // Wrap your app
-  ),);
+  runApp(
+    DevicePreview(
+      enabled: kReleaseMode,
+      builder: (context) => App(), // Wrap your app
+    ),
+  );
 
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
@@ -42,13 +41,11 @@ class App extends StatefulWidget {
 
   @override
   _AppState createState() => _AppState();
-
 }
-
 
 class _AppState extends State<App> with WidgetsBindingObserver {
   final GlobalKey<ScaffoldMessengerState> snackbarKey =
-  GlobalKey<ScaffoldMessengerState>();
+      GlobalKey<ScaffoldMessengerState>();
 
   @override
   void initState() {
@@ -63,6 +60,7 @@ class _AppState extends State<App> with WidgetsBindingObserver {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
+      
       useInheritedMediaQuery: true,
       designSize: const Size(360, 690),
       minTextAdapt: true,
@@ -73,7 +71,6 @@ class _AppState extends State<App> with WidgetsBindingObserver {
             BlocProvider<LanguageCubit>(
               create: (BuildContext context) => LanguageCubit(),
             ),
-
             BlocProvider<ThemeCubit>(
               create: (BuildContext context) => ThemeCubit(),
             ),
@@ -88,7 +85,6 @@ class _AppState extends State<App> with WidgetsBindingObserver {
                     // locale: DevicePreview.locale(context),
                     // builder: DevicePreview.appBuilder,
 
-
                     // Real Device
                     useInheritedMediaQuery: false,
                     locale: Locale(lang.local),
@@ -97,7 +93,7 @@ class _AppState extends State<App> with WidgetsBindingObserver {
                     scaffoldMessengerKey: snackbarKey,
                     onGenerateRoute: AppRouter.generateRoute,
 
-                    theme: isDarkTheme?darkAppTheme:appTheme,
+                    theme: isDarkTheme ? darkAppTheme : appTheme,
                     debugShowCheckedModeBanner: false,
                     localizationsDelegates: const [
                       S.delegate,
@@ -124,5 +120,3 @@ class _AppState extends State<App> with WidgetsBindingObserver {
     );
   }
 }
-
-

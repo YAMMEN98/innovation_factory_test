@@ -109,10 +109,8 @@ class _LimitedOfferCardWidgetState extends State<LimitedOfferCardWidget> {
                             width: 5.w,
                           ),
 
-                          Flexible(
-                            child: TagWidget(
-                              title: "X7HJ3",
-                            ),
+                          TagWidget(
+                            title: "X7HJ3",
                           ),
                         ],
                       ),

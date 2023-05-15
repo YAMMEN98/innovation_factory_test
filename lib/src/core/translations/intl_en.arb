@@ -81,6 +81,8 @@
   "m": "m",
   "language": "Language",
   "dark_skin": "Dark Skin",
-  "light_skin": "Light Skin"
+  "light_skin": "Light Skin",
+  "logout": "Logout",
+  "logout_successful": "User has Logged Out Successful"
 
 }

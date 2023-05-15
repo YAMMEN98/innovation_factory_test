@@ -116,7 +116,29 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
                     width: widget.borderWidth ?? defaultBorderWidth,
                   ),
                 ),
-          errorBorder: OutlineInputBorder(
+          errorBorder:   widget.isUnderLineBorder?
+          UnderlineInputBorder(
+            borderSide: BorderSide(
+              color:  AppColors.red,
+              width: widget.borderWidth ?? defaultBorderWidth,
+            ),
+          ):
+          OutlineInputBorder(
+            borderRadius: BorderRadius.circular(
+                widget.borderRadius ?? defaultBorderRadius),
+            borderSide: BorderSide(
+              color: AppColors.red,
+              width: 2,
+            ),
+          ),
+          focusedErrorBorder:  widget.isUnderLineBorder?
+          UnderlineInputBorder(
+            borderSide: BorderSide(
+              color:  AppColors.red,
+              width: widget.borderWidth ?? defaultBorderWidth,
+            ),
+          ):
+          OutlineInputBorder(
             borderRadius: BorderRadius.circular(
                 widget.borderRadius ?? defaultBorderRadius),
             borderSide: BorderSide(

@@ -8,6 +8,8 @@ import 'package:innovation_factory_test/src/core/styles/app_colors.dart';
 import 'package:innovation_factory_test/src/core/translations/l10n.dart';
 import 'package:innovation_factory_test/src/core/util/helper/helper.dart';
 import 'package:innovation_factory_test/src/core/util/helper/helper_ui.dart';
+import 'package:innovation_factory_test/src/core/util/validators/base_validator.dart';
+import 'package:innovation_factory_test/src/core/util/validators/required_validator.dart';
 
 class FilterWidget extends StatefulWidget {
   // Variable To Display Filter of (Flights, Hotels, Car Rental)
@@ -77,10 +79,7 @@ class FilterWidget extends StatefulWidget {
 }
 
 class _FilterWidgetState extends State<FilterWidget> {
-  final TextEditingController _flyingFromController = TextEditingController();
-  final TextEditingController _flyingToController = TextEditingController();
   final TextEditingController _departureController = TextEditingController();
-  final TextEditingController _travelersController = TextEditingController();
   final TextEditingController _returnController = TextEditingController();
   final TextEditingController _whereAreYouGoingController =
       TextEditingController();
@@ -93,6 +92,22 @@ class _FilterWidgetState extends State<FilterWidget> {
       TextEditingController();
   final TextEditingController _finalDestinationController =
       TextEditingController();
+
+  // Flying From
+  final TextEditingController _flyingFromController = TextEditingController();
+  bool _flyingFromValidator = true;
+  final _flyingFromFormKey = GlobalKey<FormState>();
+
+  // Flying To
+  final TextEditingController _flyingToController = TextEditingController();
+  bool _flyingToValidator = true;
+  final _flyingToFormKey = GlobalKey<FormState>();
+
+  // Travelers
+  final TextEditingController _travelersController = TextEditingController();
+  bool _travelersValidator = true;
+  final _travelersFormKey = GlobalKey<FormState>();
+
 
   bool viewMore = false;
 
@@ -160,6 +175,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           }else...{
             ButtonWidget(
               onPressed: () {
+
                 _callbackSearch();
               },
               text: S.of(context).search,
@@ -349,6 +365,7 @@ class _FilterWidgetState extends State<FilterWidget> {
   // Flying From/To Filter
   Widget _build_FlyingFromToFilter() {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // Flying From
         if (widget.hasFlyingFrom) ...{
@@ -365,18 +382,28 @@ class _FilterWidgetState extends State<FilterWidget> {
                 SizedBox(
                   height: 2.h,
                 ),
-                TextFieldWidget(
-                  controller: _flyingFromController,
-                  hintText: "Dubai (DXB)",
-                  isUnderLineBorder: true,
-
-                  contentPadding: EdgeInsets.zero,
-                  prefixIcon: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 5.w),
-                    child: Icon(
-                      Icons.flight_takeoff_outlined,
-                      color: AppColors.primaryColor,
-                      size: 20.sp,
+                Form(
+                  key: _flyingFromFormKey,
+                  child: TextFieldWidget(
+                    controller: _flyingFromController,
+                    validator: (value) {
+                      return BaseValidator.validateValue(
+                        context,
+                        value!,
+                        [RequiredValidator()],
+                        _flyingFromValidator,
+                      );
+                    },
+                    hintText: "Dubai (DXB)",
+                    isUnderLineBorder: true,
+                    contentPadding: EdgeInsets.zero,
+                    prefixIcon: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 5.w),
+                      child: Icon(
+                        Icons.flight_takeoff_outlined,
+                        color: AppColors.primaryColor,
+                        size: 20.sp,
+                      ),
                     ),
                   ),
                 ),
@@ -406,18 +433,29 @@ class _FilterWidgetState extends State<FilterWidget> {
                 SizedBox(
                   height: 2.h,
                 ),
-                TextFieldWidget(
-                  controller: _flyingToController,
-                  isUnderLineBorder: true,
-                  hintText: "Sharjah (SHJ)",
+                Form(
+                  key: _flyingToFormKey,
+                  child: TextFieldWidget(
+                    controller: _flyingToController,
+                    validator: (value) {
+                      return BaseValidator.validateValue(
+                        context,
+                        value!,
+                        [RequiredValidator()],
+                        _flyingFromValidator,
+                      );
+                    },
+                    isUnderLineBorder: true,
+                    hintText: "Sharjah (SHJ)",
 
-                  contentPadding: EdgeInsets.zero,
-                  prefixIcon: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 5.w),
-                    child: Icon(
-                      Icons.flight_land_outlined,
-                      color: AppColors.primaryColor,
-                      size: 20.sp,
+                    contentPadding: EdgeInsets.zero,
+                    prefixIcon: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 5.w),
+                      child: Icon(
+                        Icons.flight_land_outlined,
+                        color: AppColors.primaryColor,
+                        size: 20.sp,
+                      ),
                     ),
                   ),
                 ),
@@ -646,20 +684,31 @@ class _FilterWidgetState extends State<FilterWidget> {
           SizedBox(
             height: 2.h,
           ),
-          TextFieldWidget(
-            controller: _travelersController,
-            enabled: false,
-            hintText: S.of(context).travelers_hint,
-            isUnderLineBorder: true,
+          Form(
+            key: _travelersFormKey,
+            child: TextFieldWidget(
+              validator: (value) {
+                return BaseValidator.validateValue(
+                  context,
+                  value!,
+                  [RequiredValidator()],
+                  _travelersValidator,
+                );
+              },
+              keyboardType: TextInputType.number,
+              controller: _travelersController,
+              hintText: S.of(context).travelers_hint,
+              isUnderLineBorder: true,
 
-            contentPadding: EdgeInsets.zero,
-            prefixIcon: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 5.w),
-                child: Icon(
-                  Icons.people,
-                  size: 20.sp,
-                  color: AppColors.primaryColor,
-                )),
+              contentPadding: EdgeInsets.zero,
+              prefixIcon: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 5.w),
+                  child: Icon(
+                    Icons.people,
+                    size: 20.sp,
+                    color: AppColors.primaryColor,
+                  )),
+            ),
           ),
           // Space
           SizedBox(
@@ -878,6 +927,15 @@ class _FilterWidgetState extends State<FilterWidget> {
 
   // Search Callback
   void _callbackSearch() {
+    if(widget.hasTravelers){
+      if(!_travelersFormKey.currentState!.validate()){
+        return;
+      }
+    }
+
+
+
+
     final String flyingFrom = _flyingFromController.text.trim();
     final String flyingTo = _flyingToController.text.trim();
     final String departure = HelperUi.formatToStandardDate(HelperUi.formatNameStringToDate(_departureController.text.trim())) ;

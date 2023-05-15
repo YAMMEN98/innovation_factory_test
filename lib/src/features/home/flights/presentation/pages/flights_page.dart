@@ -46,10 +46,6 @@ class _FlightsPageState extends State<FlightsPage>
         child: SingleChildScrollView(
       child: Column(
         children: [
-          // Space
-          SizedBox(
-            height: 20.h,
-          ),
 
           // Flight Type
           Padding(
@@ -67,6 +63,7 @@ class _FlightsPageState extends State<FlightsPage>
                   return SingleChildScrollView(
                     padding: EdgeInsets.symmetric(
                       horizontal: 5.sp,
+                      vertical: 20.sp
                     ),
                     scrollDirection: Axis.horizontal,
                     child: Row(
@@ -123,10 +120,7 @@ class _FlightsPageState extends State<FlightsPage>
             )),
           ),
 
-          // Space
-          SizedBox(
-            height: 20.h,
-          ),
+
 
           // Filter
           Padding(
@@ -162,13 +156,13 @@ class _FlightsPageState extends State<FlightsPage>
                       OnFilteringFlightsEvent(
                         type: "Return",
                         classString: "Economy",
-                        adults: 1,
-                        children: 1,
-                        infants: 1,
+                        adults: int.tryParse(travelers)??0,
+                        children: int.tryParse(travelers)??0,
+                        infants: int.tryParse(travelers)??0,
                         departureDate: departure,
                         returnDate: returnValue,
-                        airportOriginCode: "DXB",
-                        airportDestinationCode: "IST",
+                        airportOriginCode: flyingFrom,
+                        airportDestinationCode: flyingTo,
                       ),
                     );
                   },

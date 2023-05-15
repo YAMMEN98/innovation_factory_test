@@ -879,6 +879,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Logout`
+  String get logout {
+    return Intl.message(
+      'Logout',
+      name: 'logout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `User has Logged Out Successful`
+  String get logout_successful {
+    return Intl.message(
+      'User has Logged Out Successful',
+      name: 'logout_successful',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

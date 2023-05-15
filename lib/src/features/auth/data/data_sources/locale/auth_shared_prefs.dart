@@ -23,7 +23,7 @@ class AuthSharedPrefs {
   }
 
   Future<void> deleteUser() async {
-    await _preferences.remove(userKey);
+    await  _preferences.remove(userKey);
   }
 
   /// __________ Logout __________ ///

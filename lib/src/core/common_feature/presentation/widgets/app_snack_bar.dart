@@ -50,9 +50,10 @@ class AppSnackBar {
             ),
       flushbarStyle: FlushbarStyle.FLOATING,
       flushbarPosition: FlushbarPosition.TOP,
-      margin: EdgeInsets.symmetric(
-        horizontal: 15.h,
-        vertical: 15.h,
+      margin: EdgeInsets.only(
+        left: 15.h,
+        right: 15.h,
+        top: kToolbarHeight.h,
       ),
     );
     snackBar.show(context);

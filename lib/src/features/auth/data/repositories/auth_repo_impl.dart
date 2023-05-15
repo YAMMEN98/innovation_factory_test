@@ -5,6 +5,7 @@ import 'package:innovation_factory_test/src/core/network/error/failures.dart';
 import 'package:innovation_factory_test/src/features/auth/domain/entities/auth_response_model.dart';
 import 'package:innovation_factory_test/src/features/auth/domain/repositories/auth_repository.dart';
 import 'package:innovation_factory_test/src/features/auth/domain/usecases/login_usecase.dart';
+import 'package:innovation_factory_test/src/features/auth/domain/usecases/logout_usecase.dart';
 import 'package:innovation_factory_test/src/features/auth/domain/usecases/register_usecase.dart';
 import 'package:innovation_factory_test/src/features/auth/domain/usecases/verification_code_usecase.dart';
 
@@ -47,6 +48,17 @@ class AuthRepositoryImpl extends AuthRepository {
     try {
       final result = await authApi.register(params);
 
+      return Right(result.data!);
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.message, e.statusCode));
+    }
+  }
+
+  /// Login Method Repository
+  @override
+  Future<Either<Failure, bool>> logout(LogoutParams params) async {
+    try {
+      final result = await authApi.logout(params);
       return Right(result.data!);
     } on ServerException catch (e) {
       return Left(ServerFailure(e.message, e.statusCode));

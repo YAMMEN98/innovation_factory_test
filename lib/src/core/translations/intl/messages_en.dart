@@ -81,6 +81,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "login_to_existing_user":
             MessageLookupByLibrary.simpleMessage("Login to Existing User"),
+        "logout": MessageLookupByLibrary.simpleMessage("Logout"),
+        "logout_successful": MessageLookupByLibrary.simpleMessage(
+            "User has Logged Out Successful"),
         "m": MessageLookupByLibrary.simpleMessage("m"),
         "one_way": MessageLookupByLibrary.simpleMessage("One Way"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),

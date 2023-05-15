@@ -2,11 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:innovation_factory_test/src/core/common_feature/domain/entities/language_enum.dart';
+import 'package:innovation_factory_test/src/core/common_feature/presentation/bloc/general/general_bloc.dart';
 import 'package:innovation_factory_test/src/core/common_feature/presentation/bloc/language/language_cubit.dart';
 import 'package:innovation_factory_test/src/core/common_feature/presentation/bloc/theme/theme_cubit.dart';
+import 'package:innovation_factory_test/src/core/common_feature/presentation/widgets/app_loader.dart';
+import 'package:innovation_factory_test/src/core/common_feature/presentation/widgets/app_snack_bar.dart';
+import 'package:innovation_factory_test/src/core/common_feature/presentation/widgets/button_widget.dart';
 import 'package:innovation_factory_test/src/core/styles/app_colors.dart';
 import 'package:innovation_factory_test/src/core/translations/l10n.dart';
 import 'package:innovation_factory_test/src/core/util/helper/helper.dart';
+import 'package:innovation_factory_test/src/core/util/helper/helper_ui.dart';
+import 'package:innovation_factory_test/src/core/util/router.dart';
 
 class AppDrawerPage extends StatefulWidget {
   const AppDrawerPage({Key? key}) : super(key: key);
@@ -16,6 +22,8 @@ class AppDrawerPage extends StatefulWidget {
 }
 
 class _AppDrawerPageState extends State<AppDrawerPage> {
+  GeneralBloc _bloc = GeneralBloc();
+
   LanguageEnum selectedLanguage = Helper.getLang();
 
   @override
@@ -38,7 +46,7 @@ class _AppDrawerPageState extends State<AppDrawerPage> {
           vertical: 10.h,
         ),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             SizedBox(
               height: kToolbarHeight,
@@ -117,6 +125,41 @@ class _AppDrawerPageState extends State<AppDrawerPage> {
                 ),
               ],
             ),
+
+            Spacer(),
+
+            // Logout Button
+            BlocConsumer<GeneralBloc, GeneralState>(
+              bloc: _bloc,
+              listener: (context, state) {
+                if (state is ErrorLogoutState) {
+                  HelperUi.showSnackBar(context, state.errorMessage,
+                      type: ToastTypeEnum.error);
+                } else if (state is SuccessLogoutState) {
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, AppPageRouteName.login.name, (route) => false);
+                  HelperUi.showSnackBar(
+                      context, S.of(context).logout_successful,
+                      type: ToastTypeEnum.success);
+                }
+              },
+              builder: (context, state) {
+                if(state is LoadingLogoutState){
+                  return AppLoader();
+                }
+                return ButtonWidget(
+                  text: S.of(context).logout,
+                  onPressed: () {
+                    _bloc.add(OnLogoutEvent());
+                  },
+                  backgroundColor: AppColors.red,
+                  textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.white,
+                      ),
+                );
+              },
+            )
           ],
         ),
       ),
