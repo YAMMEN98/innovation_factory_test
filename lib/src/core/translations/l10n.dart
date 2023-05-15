@@ -899,6 +899,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Booking Successful`
+  String get booking_successful {
+    return Intl.message(
+      'Booking Successful',
+      name: 'booking_successful',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We Will Send An Email With The Flight Information And Ticket.`
+  String get we_will_send_an_email {
+    return Intl.message(
+      'We Will Send An Email With The Flight Information And Ticket.',
+      name: 'we_will_send_an_email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Done`
+  String get done {
+    return Intl.message(
+      'Done',
+      name: 'done',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

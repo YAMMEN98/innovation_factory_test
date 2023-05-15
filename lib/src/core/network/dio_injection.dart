@@ -1,11 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:innovation_factory_test/src/core/network/interceptors/logger_interceptor.dart';
-import 'package:innovation_factory_test/src/core/network/interceptors/queue_interceptor.dart';
 import 'package:innovation_factory_test/src/core/util/constant/network_constant.dart';
 import 'package:innovation_factory_test/src/core/util/injections.dart';
 import 'package:innovation_factory_test/src/core/util/log/app_logger.dart';
 
-initDioInjection()async{
+initDioInjection() async {
   sl.registerSingletonAsync<Dio>(() async {
     final dio = Dio(
       BaseOptions(
@@ -36,7 +35,7 @@ initDioInjection()async{
       requestHeader: true,
     ));
 
-    dio.interceptors.add(AppInterceptor());
+    // dio.interceptors.add(AppInterceptor());
 
     return dio;
   });

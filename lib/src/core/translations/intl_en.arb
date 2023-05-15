@@ -83,6 +83,10 @@
   "dark_skin": "Dark Skin",
   "light_skin": "Light Skin",
   "logout": "Logout",
-  "logout_successful": "User has Logged Out Successful"
+  "logout_successful": "User has Logged Out Successful",
+  "booking_successful": "Booking Successful",
+  "we_will_send_an_email": "We Will Send An Email With The Flight Information And Ticket.",
+  "done": "Done"
+
 
 }

@@ -32,6 +32,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "best_packages": MessageLookupByLibrary.simpleMessage("Best Packages"),
         "best_place": MessageLookupByLibrary.simpleMessage("Best Places"),
         "book_now": MessageLookupByLibrary.simpleMessage("Book Now"),
+        "booking_successful":
+            MessageLookupByLibrary.simpleMessage("Booking Successful"),
         "business": MessageLookupByLibrary.simpleMessage("Business"),
         "car_rental": MessageLookupByLibrary.simpleMessage("Car Rental"),
         "cheap_price": MessageLookupByLibrary.simpleMessage("Cheap Price"),
@@ -50,6 +52,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Different\nReturn"),
         "do_not_have_an_account":
             MessageLookupByLibrary.simpleMessage("Don\'t Have An Account? "),
+        "done": MessageLookupByLibrary.simpleMessage("Done"),
         "drop_off_location":
             MessageLookupByLibrary.simpleMessage("Drop-off Location"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
@@ -138,6 +141,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "view_more": MessageLookupByLibrary.simpleMessage("View More"),
         "we_sent_an_otp": MessageLookupByLibrary.simpleMessage(
             "We sent an OTP code on your Email."),
+        "we_will_send_an_email": MessageLookupByLibrary.simpleMessage(
+            "We Will Send An Email With The Flight Information And Ticket."),
         "weak_password_message":
             MessageLookupByLibrary.simpleMessage("The password is weak"),
         "welcome": MessageLookupByLibrary.simpleMessage("Welcome"),

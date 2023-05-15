@@ -30,6 +30,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "best_packages": MessageLookupByLibrary.simpleMessage("أفضل الحزم"),
         "best_place": MessageLookupByLibrary.simpleMessage("أفضل الأماكن"),
         "book_now": MessageLookupByLibrary.simpleMessage("حجز الآن"),
+        "booking_successful":
+            MessageLookupByLibrary.simpleMessage("تمت عملية الحجز بنجاح"),
         "business": MessageLookupByLibrary.simpleMessage("عمل"),
         "car_rental": MessageLookupByLibrary.simpleMessage("تأجير السيارات"),
         "cheap_price": MessageLookupByLibrary.simpleMessage("سعر رخيص"),
@@ -46,6 +48,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "different_return": MessageLookupByLibrary.simpleMessage("عودة\nمختلف"),
         "do_not_have_an_account":
             MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
+        "done": MessageLookupByLibrary.simpleMessage("تم"),
         "drop_off_location":
             MessageLookupByLibrary.simpleMessage("موقع التسليم"),
         "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
@@ -131,6 +134,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "view_more": MessageLookupByLibrary.simpleMessage("عرض المزيد"),
         "we_sent_an_otp": MessageLookupByLibrary.simpleMessage(
             "لقد أرسلنا رمز OTP على بريدك الإلكتروني."),
+        "we_will_send_an_email": MessageLookupByLibrary.simpleMessage(
+            "سنرسل بريدًا إلكترونيًا يتضمن معلومات الرحلة والتذكرة."),
         "weak_password_message":
             MessageLookupByLibrary.simpleMessage("كلمة المرور ضعيفة"),
         "welcome": MessageLookupByLibrary.simpleMessage("أهلا بك"),

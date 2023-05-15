@@ -133,7 +133,7 @@ class _FlightsPageState extends State<FlightsPage>
                 return FilterWidget(
                   hasFlyingFilter: true,
                   hasFlyingFrom: true,
-                  haseFlyingTo: true,
+                  hasFlyingTo: true,
                   hasDeparture: true,
                   hasReturn: selectedFlightTypeIndex == 2,
                   hasTravelers: true,

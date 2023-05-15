@@ -5,6 +5,8 @@ import 'package:innovation_factory_test/src/core/common_feature/presentation/wid
 import 'package:innovation_factory_test/src/core/styles/app_colors.dart';
 import 'package:innovation_factory_test/src/core/translations/l10n.dart';
 import 'package:innovation_factory_test/src/core/util/helper/helper.dart';
+import 'package:innovation_factory_test/src/core/util/helper/helper_ui.dart';
+import 'package:innovation_factory_test/src/features/home/flights/presentation/widgets/booking_successful_widget.dart';
 import 'package:innovation_factory_test/src/features/home/general/presentation/widgets/tag_widget.dart';
 
 class LimitedOfferCardWidget extends StatefulWidget {
@@ -92,7 +94,6 @@ class _LimitedOfferCardWidgetState extends State<LimitedOfferCardWidget> {
                         crossAxisAlignment: WrapCrossAlignment.center,
                         alignment: WrapAlignment.center,
                         runSpacing: 5.sp,
-
                         children: [
                           // Code
                           Text(
@@ -152,6 +153,18 @@ class _LimitedOfferCardWidgetState extends State<LimitedOfferCardWidget> {
 
                         ButtonWidget(
                           text: S.of(context).book_now,
+                          onPressed: () {
+                            HelperUi.showCustomDialog(
+                              context,
+                              BookingSuccessfulWidget(
+                                contentPadding: EdgeInsets.only(
+                                    top: 30.h,
+                                    bottom: 21.h,
+                                    left: 21.w,
+                                    right: 21.w),
+                              ),
+                            );
+                          },
                           horizontalPadding: 10.sp,
                           verticalPadding: 3.sp,
                         )

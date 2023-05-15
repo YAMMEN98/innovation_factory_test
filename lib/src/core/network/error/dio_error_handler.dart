@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:innovation_factory_test/main.dart';
 import 'package:innovation_factory_test/src/core/translations/l10n.dart';
+import 'package:innovation_factory_test/src/core/util/constant/app_constants.dart';
 
 String handleDioError(DioError error) {
   String errorDescription = "";
@@ -26,48 +27,41 @@ String handleDioError(DioError error) {
         }
 
         /// From golex server response
-        if (error.response?.data['code'] != null &&
-            (error.response?.data['code'] ?? "0") != "0") {
-          errorDescription = error.response?.data['msg'];
+        if (error.response?.data['status'] != null &&
+            (error.response?.data['status'] ?? "0") != "0") {
+          errorDescription = error.response?.data['message'];
         } else {
           /// From our server response
           if (error.response?.statusCode == 200 &&
-              ("${(error.response?.data["statusCode"] ?? "0")}" != "0")) {
+              (error.response?.data['status'])) {
             if ((error.response?.data["message"] ?? "") != "") {
               errorDescription = (error.response?.data["message"] ?? "");
             } else {
-              errorDescription = "Unknown Error";
+              errorDescription = unknownError;
             }
           } else if (error.response?.statusCode == 422) {
-            errorDescription = (error.response?.data["data"] != null &&
-                    error.response?.data["data"]["validations"] != null)
-                ? error.response?.data["data"]["validations"].values.first[0]
-                : error.response?.data["errors"] == null
-                    ? error.response?.data["message"] ?? "Unknown Error"
-                    : error.response?.data["errors"].values.first[0] ??
-                        error.response?.data["message"] ??
-                        "Unknown Error";
+            errorDescription = error.response?.data["message"] ??unknownError;
           } else if (error.response?.statusCode == 413) {
             errorDescription = error.response!.statusMessage ?? "";
           } else if (error.response?.statusCode == 400) {
             errorDescription =
-                error.response?.data["message"] ?? "Unknown Error";
+                error.response?.data["message"] ?? unknownError;
           } else if (error.response?.statusCode == 401) {
             errorDescription =
-                error.response?.data["message"] ?? "Unknown Error";
+                error.response?.data["message"] ?? unknownError;
           } else if (error.response?.statusCode == 403) {
             errorDescription = error.response?.data is String
                 ? "403 Forbidden"
-                : error.response?.data["message"] ?? "Unknown Error";
+                : error.response?.data["message"] ?? unknownError;
           } else if (error.response?.statusCode == 404) {
             errorDescription = error.response?.data is String
-                ? "404 Unknown Error"
-                : error.response?.data["message"] ?? "Unknown Error";
+                ? "404 $unknownError"
+                : error.response?.data["message"] ?? unknownError;
           } else if (error.response?.statusCode == 409) {
             errorDescription = error.response?.data["message"] +
                     ",\n Minutes left to join: " +
                     error.response?.data["data"]["mins_to_join"].toString() ??
-                "Unknown Error";
+                unknownError;
           } else if (error.response?.statusCode == 429) {
             errorDescription = error.response?.data["message"];
           } else {
@@ -81,6 +75,15 @@ String handleDioError(DioError error) {
 
     case DioErrorType.sendTimeout:
       errorDescription = "Send timeout in connection with API server";
+      break;
+    case DioErrorType.badCertificate:
+      // TODO: Handle this case.
+      break;
+    case DioErrorType.connectionError:
+      // TODO: Handle this case.
+      break;
+    case DioErrorType.unknown:
+      // TODO: Handle this case.
       break;
   }
 

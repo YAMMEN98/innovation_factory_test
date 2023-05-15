@@ -80,7 +80,7 @@ class AppSnackBar {
       mainButton: TextButton(
         child: Text(
           "Back",
-          style: Theme.of(context).textTheme.subtitle2!.copyWith(
+          style: Theme.of(context).textTheme.titleSmall!.copyWith(
                 fontWeight: FontWeight.normal,
               ),
         ),

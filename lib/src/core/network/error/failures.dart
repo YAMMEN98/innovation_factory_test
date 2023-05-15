@@ -14,9 +14,7 @@ class ServerFailure extends Failure {
   final int? statusCode;
 
   const ServerFailure(String errorMessage, this.statusCode)
-      : super(
-          errorMessage,
-        );
+      : super(errorMessage);
 }
 
 class CacheFailure extends Failure {

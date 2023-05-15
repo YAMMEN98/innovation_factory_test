@@ -148,17 +148,18 @@ class _AppDrawerPageState extends State<AppDrawerPage> {
                 }
               },
               builder: (context, state) {
-                if(state is LoadingLogoutState){
+                if (state is LoadingLogoutState) {
                   return AppLoader();
                 }
 
-
                 return ButtonWidget(
-                  text:sl<AuthSharedPrefs>().getUser()==null?S.of(context).login: S.of(context).logout,
+                  text: sl<AuthSharedPrefs>().getUser() == null
+                      ? S.of(context).login
+                      : S.of(context).logout,
                   onPressed: () {
-                    if(sl<AuthSharedPrefs>().getUser()==null){
+                    if (sl<AuthSharedPrefs>().getUser() == null) {
                       Navigator.pushNamed(context, AppPageRouteName.login.name);
-                    }else{
+                    } else {
                       _bloc.add(OnLogoutEvent());
                     }
                   },

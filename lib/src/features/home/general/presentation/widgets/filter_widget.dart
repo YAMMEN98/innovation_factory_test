@@ -19,7 +19,7 @@ class FilterWidget extends StatefulWidget {
 
   // Variable Of Flights Filter
   final bool hasFlyingFrom;
-  final bool haseFlyingTo;
+  final bool hasFlyingTo;
   final bool hasDeparture;
   final bool hasTravelers;
   final bool hasReturn;
@@ -58,7 +58,7 @@ class FilterWidget extends StatefulWidget {
     this.hasHotelsFilter = false,
     this.hasCarRentalFilter = false,
     this.hasFlyingFrom = false,
-    this.haseFlyingTo = false,
+    this.hasFlyingTo = false,
     this.hasDeparture = false,
     this.hasTravelers = false,
     this.hasReturn = false,
@@ -107,7 +107,6 @@ class _FilterWidgetState extends State<FilterWidget> {
   final TextEditingController _travelersController = TextEditingController();
   bool _travelersValidator = true;
   final _travelersFormKey = GlobalKey<FormState>();
-
 
   bool viewMore = false;
 
@@ -170,19 +169,18 @@ class _FilterWidgetState extends State<FilterWidget> {
 
         // View more/less
         if (viewMore) ...{
-          if(widget.isLoading)...{
+          if (widget.isLoading) ...{
             AppLoader()
-          }else...{
+          } else ...{
             ButtonWidget(
               onPressed: () {
-
                 _callbackSearch();
               },
               text: S.of(context).search,
               textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                fontWeight: FontWeight.w600,
-                color: AppColors.white,
-              ),
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.white,
+                  ),
               icon: Icon(
                 Icons.search,
                 size: 20.sp,
@@ -268,11 +266,13 @@ class _FilterWidgetState extends State<FilterWidget> {
             onTap: () {
               FocusScope.of(context).unfocus();
 
-              DateTime selectedDateTime = HelperUi.formatNameStringToDate(_departureController.text.trim());
+              DateTime selectedDateTime = HelperUi.formatNameStringToDate(
+                  _departureController.text.trim());
 
               DateTime? maxDate;
-              if(widget.hasReturn){
-                maxDate = HelperUi.formatNameStringToDate(_returnController.text.trim());
+              if (widget.hasReturn) {
+                maxDate = HelperUi.formatNameStringToDate(
+                    _returnController.text.trim());
               }
 
               HelperUi.showDatePicker(
@@ -280,13 +280,14 @@ class _FilterWidgetState extends State<FilterWidget> {
                 initialSelectedDate: selectedDateTime,
                 maxDate: maxDate,
                 callback: (DateTime dateTime) {
-                  _departureController.text = HelperUi.formatNamedDate(dateTime);
+                  _departureController.text =
+                      HelperUi.formatNamedDate(dateTime);
 
                   // If There is No Return So Should Equal Or Greater Than Departure
-                  if(!widget.hasReturn){
+                  if (!widget.hasReturn) {
                     _returnController.text = HelperUi.formatNamedDate(dateTime);
                   }
-                  },
+                },
               );
             },
             child: TextFieldWidget(
@@ -329,8 +330,10 @@ class _FilterWidgetState extends State<FilterWidget> {
             onTap: () {
               FocusScope.of(context).unfocus();
 
-              DateTime selectedDateTime = HelperUi.formatNameStringToDate(_returnController.text.trim());
-              DateTime minDate  = HelperUi.formatNameStringToDate(_departureController.text.trim());
+              DateTime selectedDateTime = HelperUi.formatNameStringToDate(
+                  _returnController.text.trim());
+              DateTime minDate = HelperUi.formatNameStringToDate(
+                  _departureController.text.trim());
 
               HelperUi.showDatePicker(
                 context: context,
@@ -413,7 +416,7 @@ class _FilterWidgetState extends State<FilterWidget> {
         },
 
         // Flying To
-        if (widget.haseFlyingTo) ...{
+        if (widget.hasFlyingTo) ...{
           // Space
           SizedBox(
             width: 10.w,
@@ -447,7 +450,6 @@ class _FilterWidgetState extends State<FilterWidget> {
                     },
                     isUnderLineBorder: true,
                     hintText: "Sharjah (SHJ)",
-
                     contentPadding: EdgeInsets.zero,
                     prefixIcon: Padding(
                       padding: EdgeInsets.symmetric(horizontal: 5.w),
@@ -490,7 +492,6 @@ class _FilterWidgetState extends State<FilterWidget> {
                   controller: _pickupLocationController,
                   hintText: "Dubai (DXB)",
                   isUnderLineBorder: true,
-
                   contentPadding: EdgeInsets.zero,
                   prefixIcon: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 5.w),
@@ -530,7 +531,6 @@ class _FilterWidgetState extends State<FilterWidget> {
                   controller: _dropOffLocationController,
                   isUnderLineBorder: true,
                   hintText: "Sharjah (SHJ)",
-
                   contentPadding: EdgeInsets.zero,
                   prefixIcon: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 5.w),
@@ -571,7 +571,6 @@ class _FilterWidgetState extends State<FilterWidget> {
                   enabled: false,
                   hintText: "Ras Al-Khaima (RAK)",
                   isUnderLineBorder: true,
-
                   contentPadding: EdgeInsets.zero,
                   prefixIcon: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 5.w),
@@ -699,7 +698,6 @@ class _FilterWidgetState extends State<FilterWidget> {
               controller: _travelersController,
               hintText: S.of(context).travelers_hint,
               isUnderLineBorder: true,
-
               contentPadding: EdgeInsets.zero,
               prefixIcon: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 5.w),
@@ -741,7 +739,6 @@ class _FilterWidgetState extends State<FilterWidget> {
               enabled: false,
               hintText: S.of(context).search_for_place,
               isUnderLineBorder: true,
-
               contentPadding: EdgeInsets.zero,
               prefixIcon: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 5.w),
@@ -786,16 +783,18 @@ class _FilterWidgetState extends State<FilterWidget> {
                   onTap: () {
                     FocusScope.of(context).unfocus();
 
-                    DateTime selectedDateTime = HelperUi.formatNameStringToDate(_checkInController.text.trim());
-                    DateTime maxDate = HelperUi.formatNameStringToDate(_checkOutController.text.trim());
-
+                    DateTime selectedDateTime = HelperUi.formatNameStringToDate(
+                        _checkInController.text.trim());
+                    DateTime maxDate = HelperUi.formatNameStringToDate(
+                        _checkOutController.text.trim());
 
                     HelperUi.showDatePicker(
                       context: context,
                       initialSelectedDate: selectedDateTime,
                       maxDate: maxDate,
                       callback: (DateTime dateTime) {
-                        _checkInController.text = HelperUi.formatNamedDate(dateTime);
+                        _checkInController.text =
+                            HelperUi.formatNamedDate(dateTime);
                       },
                     );
                   },
@@ -804,7 +803,6 @@ class _FilterWidgetState extends State<FilterWidget> {
                     enabled: false,
                     hintText: HelperUi.formatNamedDate(DateTime.now()),
                     isUnderLineBorder: true,
-
                     contentPadding: EdgeInsets.zero,
                     prefixIcon: Padding(
                       padding: EdgeInsets.symmetric(horizontal: 5.w),
@@ -846,16 +844,18 @@ class _FilterWidgetState extends State<FilterWidget> {
                   onTap: () {
                     FocusScope.of(context).unfocus();
 
-                    DateTime selectedDateTime = HelperUi.formatNameStringToDate(_checkOutController.text.trim());
-                    DateTime minDate = HelperUi.formatNameStringToDate(_checkInController.text.trim());
-
+                    DateTime selectedDateTime = HelperUi.formatNameStringToDate(
+                        _checkOutController.text.trim());
+                    DateTime minDate = HelperUi.formatNameStringToDate(
+                        _checkInController.text.trim());
 
                     HelperUi.showDatePicker(
                       context: context,
                       initialSelectedDate: selectedDateTime,
                       minDate: minDate,
                       callback: (DateTime dateTime) {
-                        _checkOutController.text = HelperUi.formatNamedDate(dateTime);
+                        _checkOutController.text =
+                            HelperUi.formatNamedDate(dateTime);
                       },
                     );
                   },
@@ -864,7 +864,6 @@ class _FilterWidgetState extends State<FilterWidget> {
                     enabled: false,
                     isUnderLineBorder: true,
                     hintText: HelperUi.formatNamedDate(DateTime.now()),
-
                     contentPadding: EdgeInsets.zero,
                     prefixIcon: Padding(
                       padding: EdgeInsets.symmetric(horizontal: 5.w),
@@ -904,7 +903,6 @@ class _FilterWidgetState extends State<FilterWidget> {
             enabled: false,
             hintText: S.of(context).travelers_hint,
             isUnderLineBorder: true,
-
             contentPadding: EdgeInsets.zero,
             prefixIcon: Padding(
               padding: EdgeInsets.symmetric(horizontal: 5.w),
@@ -927,24 +925,28 @@ class _FilterWidgetState extends State<FilterWidget> {
 
   // Search Callback
   void _callbackSearch() {
-    if(widget.hasTravelers){
-      if(!_travelersFormKey.currentState!.validate()){
-        return;
-      }
+
+    if(!validateTravelers() || !validateFlyingFrom() || !validateFlyingTo()){
+      return;
     }
-
-
-
 
     final String flyingFrom = _flyingFromController.text.trim();
     final String flyingTo = _flyingToController.text.trim();
-    final String departure = HelperUi.formatToStandardDate(HelperUi.formatNameStringToDate(_departureController.text.trim())) ;
-    final String travelers = _travelersController.text.trim().isEmpty?"0":_travelersController.text.trim();
-    final String returnValue = HelperUi.formatToStandardDate(HelperUi.formatNameStringToDate(_returnController.text.trim())) ;
+    final String departure = HelperUi.formatToStandardDate(
+        HelperUi.formatNameStringToDate(_departureController.text.trim()));
+    final String travelers = _travelersController.text.trim().isEmpty
+        ? "0"
+        : _travelersController.text.trim();
+    final String returnValue = HelperUi.formatToStandardDate(
+        HelperUi.formatNameStringToDate(_returnController.text.trim()));
     final String whereAreYouGoing = _whereAreYouGoingController.text.trim();
-    final String checkIn = HelperUi.formatToStandardDate(HelperUi.formatNameStringToDate(_checkInController.text.trim())) ;
-    final String checkOut = HelperUi.formatToStandardDate(HelperUi.formatNameStringToDate(_checkOutController.text.trim())) ;
-    final String guests = _guestsController.text.trim().isEmpty?"0":_guestsController.text.trim();
+    final String checkIn = HelperUi.formatToStandardDate(
+        HelperUi.formatNameStringToDate(_checkInController.text.trim()));
+    final String checkOut = HelperUi.formatToStandardDate(
+        HelperUi.formatNameStringToDate(_checkOutController.text.trim()));
+    final String guests = _guestsController.text.trim().isEmpty
+        ? "0"
+        : _guestsController.text.trim();
     final String pickupLocation = _pickupLocationController.text.trim();
     final String dropOffLocation = _dropOffLocationController.text.trim();
     final String finalDestination = _finalDestinationController.text.trim();
@@ -962,5 +964,36 @@ class _FilterWidgetState extends State<FilterWidget> {
       dropOffLocation: dropOffLocation,
       finalDestination: finalDestination,
     );
+  }
+
+
+
+  // Validate Travelers
+  bool validateTravelers() {
+    if (!widget.hasTravelers) {
+      return true;
+    }
+
+    return widget.hasTravelers && _travelersFormKey.currentState!.validate();
+  }
+
+
+  // Validate Flying From
+  bool validateFlyingFrom() {
+    if (!widget.hasFlyingFrom) {
+      return true;
+    }
+
+    return widget.hasFlyingFrom && _flyingFromFormKey.currentState!.validate();
+  }
+
+
+  // Validate Flying To
+  bool validateFlyingTo() {
+    if (!widget.hasFlyingTo) {
+      return true;
+    }
+
+    return widget.hasFlyingTo && _flyingToFormKey.currentState!.validate();
   }
 }
