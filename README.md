@@ -1,4 +1,4 @@
-# Inovation Factory Test App
+# Innovation Factory Test App
 
 A new Flutter project with Clean Architecture Pattern That Help The Travelers To Get Flights, Hotels
  And Car Rental.

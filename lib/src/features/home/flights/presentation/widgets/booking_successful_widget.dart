@@ -37,9 +37,9 @@ class _BookingSuccessfulWidgetState extends State<BookingSuccessfulWidget> {
               children: [
                 // Verification Code Icon
                 SvgPicture.asset(
-                  Helper.getSvgPath("verification_code_icon.svg"),
-                  width: 80.h,
-                  height: 80.h,
+                  Helper.getSvgPath("booking_successful.svg"),
+                  width: 150.h,
+                  height: 150.h,
                 ),
 
                 // Space
