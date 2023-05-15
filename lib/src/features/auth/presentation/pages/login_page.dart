@@ -278,6 +278,10 @@ class _LoginPageState extends State<LoginPage> {
           ],
         ),
 
+        SizedBox(
+          width: 5.sp,
+        ),
+
         // Forget Password
         Flexible(
           child: Text(

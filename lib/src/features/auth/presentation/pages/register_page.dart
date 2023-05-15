@@ -379,47 +379,31 @@ class _RegisterPageState extends State<RegisterPage> {
 
   // Remember Me and Forget Password
   Widget _buildRememberMeAndForgetPassword() {
-    return Wrap(
-      spacing: 10,
-      runSpacing: 5,
+    return  Row(
       children: [
         // Remember Me
-        Row(
-          children: [
-            // Remember Me
-            CustomCheckboxWidget(
-              isChecked: _isAgreeChecked,
-              onChanged: (value) {
-                setState(() {
-                  _isAgreeChecked = value;
-                });
-              },
-            ),
-
-            // Space
-            SizedBox(
-              width: 14,
-            ),
-
-            Flexible(
-              child: Text(
-                S.of(context).i_agree_terms_and_conditions,
-                style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                      fontWeight: FontWeight.w400,
-                      color: AppColors.grayColor,
-                    ),
-              ),
-            )
-          ],
+        CustomCheckboxWidget(
+          isChecked: _isAgreeChecked,
+          onChanged: (value) {
+            setState(() {
+              _isAgreeChecked = value;
+            });
+          },
         ),
 
-        // Forget Password
-        Text(
-          S.of(context).forget_password,
-          style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                fontWeight: FontWeight.w500,
-                color: AppColors.primaryColor,
-              ),
+        // Space
+        SizedBox(
+          width: 14,
+        ),
+
+        Flexible(
+          child: Text(
+            S.of(context).i_agree_terms_and_conditions,
+            style: Theme.of(context).textTheme.titleMedium!.copyWith(
+              fontWeight: FontWeight.w400,
+              color: AppColors.grayColor,
+            ),
+          ),
         )
       ],
     );

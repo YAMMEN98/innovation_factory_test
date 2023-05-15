@@ -1,6 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:innovation_factory_test/src/core/util/helper/helper.dart';
-import 'package:innovation_factory_test/src/core/util/injections.dart';
 import 'package:logging/logging.dart';
 
 class LoggerInterceptor extends Interceptor {
@@ -37,12 +35,6 @@ class LoggerInterceptor extends Interceptor {
   @override
   Future onRequest(RequestOptions options, handler) async {
     logPrint('*** Request ***');
-
-    Map<String, dynamic> headers = Helper.getHeaders();
-
-    options.headers = headers;
-    sl<Dio>().options.headers = headers;
-
 
     _printKV('uri', options.uri);
 

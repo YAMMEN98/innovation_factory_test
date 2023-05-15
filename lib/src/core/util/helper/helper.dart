@@ -36,6 +36,10 @@ class Helper {
     }
 
     return {
+      "Content-Type":"application/json",
+      "Accept": "application/json",
+      "charset":"utf-8",
+      "Accept-Charset":"utf-8",
       "Authorization": token
     }..removeWhere((key, value) => value == null);
   }

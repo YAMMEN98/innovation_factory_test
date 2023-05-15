@@ -18,8 +18,9 @@ class AppInterceptor extends InterceptorsWrapper {
 
   @override
    onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    Map<String, dynamic> headers = Helper.getHeaders();
 
+    // Put Header Before Call Api
+    Map<String, dynamic> headers = Helper.getHeaders();
     options.headers = headers;
     sl<Dio>().options.headers = headers;
 
