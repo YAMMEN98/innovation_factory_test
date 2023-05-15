@@ -9,6 +9,6 @@ initFlightsInjections() {
   sl.registerFactory<FlightsApi>(() => FlightsApi(sl()));
   sl.registerFactory<FlightsSharedPrefs>(() => FlightsSharedPrefs(sl()));
   sl.registerFactory<FlightsRepository>(
-      () => FlightsRepositoryImpl(sl(), sl()));
+      () => FlightsRepositoryImpl(sl()));
   sl.registerFactory<FilteringFlightsUseCase>(() => FilteringFlightsUseCase(sl()));
 }

@@ -22,7 +22,7 @@ class FlightsApi extends GeneralFlightsApi {
       ApiResponse<FilteringFlightsResponseModel> response =
           ApiResponse.fromJson(
               result.data, FilteringFlightsResponseModel.fromJson);
-      if (response.status == null || response.status == false) {
+      if (response.status == null || response.status == false || response.data == null) {
         throw ServerException(
             response.message ?? S.of(navigatorKey.currentContext!).server_error,
             result.statusCode);

@@ -9,15 +9,17 @@ import 'package:innovation_factory_test/src/features/home/flights/domain/usecase
 
 class FlightsRepositoryImpl extends FlightsRepository {
   final FlightsApi flightsApi;
-  final FlightsSharedPrefs flightsPrefs;
 
-  FlightsRepositoryImpl(this.flightsApi, this.flightsPrefs);
+  FlightsRepositoryImpl(this.flightsApi);
 
   /// Flights method
   @override
   Future<Either<Failure, FilteringFlightsResponseModel>> flights(FlightsParams params) async {
     try {
       final result = await flightsApi.filteringFlights(params);
+      if(result.data ==null){
+        return Left(ServerFailure("Unknown Error", 400));
+      }
       return Right(result.data!);
     } on ServerException catch (e) {
       return Left(ServerFailure(e.message, e.statusCode));

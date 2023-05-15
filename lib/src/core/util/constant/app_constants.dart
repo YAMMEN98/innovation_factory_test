@@ -3,3 +3,4 @@ const String imagePath = "assets/images/";
 const String defaultStr = "-";
 const String emailHint = "example@gmail.com";
 const String passwordHint = "**************";
+const String unknownError = "Unknown Error";

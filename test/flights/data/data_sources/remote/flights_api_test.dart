@@ -7,8 +7,8 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
 import 'flights_api_test.mocks.dart';
-import 'mock_data/mock_flights_data.dart';
-import 'mock_data/mock_flights_json_data.dart';
+import 'mock_data/actual_flights_data.dart';
+import 'mock_data/excpected_flights_data.dart';
 
 @GenerateMocks([Dio, HttpClientAdapter])
 void main() {
@@ -39,72 +39,89 @@ void main() {
 
   RequestOptions requestOptions = RequestOptions();
 
-  group("Test flights_api", () {
-    test("Get All Flights Failed Case", () async {
-      when(
-        mockDio.post(
-          "flights",
-          data: params.toJson(),
-        ),
-      ).thenAnswer((realInvocation) async {
-        return Response(
-          requestOptions: requestOptions,
-          data: mockErrorFlightsJson,
-        );
-      });
-      var result;
-      try {
-        result = await flightsApi.filteringFlights(params);
-      } catch (e) {
-        result = e;
-      }
-      expect(result, ServerException("Unknown Error", null));
-    });
+  group(
+    "Test flights_api",
+    () {
+      test(
+        "Get All Flights Failed Case",
+        () async {
+          when(
+            mockDio.post(
+              "flights",
+              data: params.toJson(),
+            ),
+          ).thenAnswer((realInvocation) async {
+            return Response(
+              requestOptions: requestOptions,
+              data: actualErrorFlightsDataApi,
+            );
+          });
+          var result;
+          try {
+            result = await flightsApi.filteringFlights(params);
+          } catch (e) {
+            result = e;
+          }
+          expect(result, ServerException("Unknown Error", null));
+        },
+      );
 
-    test("Get All Flights Empty Case", () async {
-      when(
-        mockDio.post(
-          "flights",
-          data: params.toJson(),
-        ),
-      ).thenAnswer((realInvocation) async {
-        return Response(
-          requestOptions: requestOptions,
-          statusCode: 200,
-          data: mockEmptyFlightsJson,
-        );
-      });
-      var result;
-      try {
-        result = await flightsApi.filteringFlights(params);
-      } catch (e) {
-        result = e;
-      }
+      test(
+        "Get All Flights Empty Case",
+        () async {
+          when(
+            mockDio.post(
+              "flights",
+              data: params.toJson(),
+            ),
+          ).thenAnswer(
+            (realInvocation) async {
+              return Response(
+                requestOptions: requestOptions,
+                statusCode: 200,
+                data: actualEmptyFlightsDataApi,
+              );
+            },
+          );
+          var result;
+          try {
+            result = await flightsApi.filteringFlights(params);
+          } catch (e) {
+            result = e;
+          }
 
-      expect(result.data.flights.isEmpty, mockEmptyFlightsData.data!.flights.isEmpty);
-    });
+          expect(result.data.flights.isEmpty,
+              expectedEmptyFlightsDataApi.data!.flights.isEmpty);
+        },
+      );
 
-    test("Get All Flights Success Case", () async {
-      when(
-        mockDio.post(
-          "flights",
-          data: params.toJson(),
-        ),
-      ).thenAnswer((realInvocation) async {
-        return Response(
-          requestOptions: requestOptions,
-          statusCode: 200,
-          data: mockNyTimesListJson,
-        );
-      });
-      var result;
-      try {
-        result = await flightsApi.filteringFlights(params);
-      } catch (e) {
-        result = e;
-      }
+      test(
+        "Get All Flights Success Case",
+        () async {
+          when(
+            mockDio.post(
+              "flights",
+              data: params.toJson(),
+            ),
+          ).thenAnswer(
+            (realInvocation) async {
+              return Response(
+                requestOptions: requestOptions,
+                statusCode: 200,
+                data: actualSuccessFlightsDataApi,
+              );
+            },
+          );
+          var result;
+          try {
+            result = await flightsApi.filteringFlights(params);
+          } catch (e) {
+            result = e;
+          }
 
-      expect(result, mockSuccessFlightsData);
-    });
-  });
+          expect(result, expectedSuccessFlightsDataApi);
+        },
+      );
+    },
+  );
 }
