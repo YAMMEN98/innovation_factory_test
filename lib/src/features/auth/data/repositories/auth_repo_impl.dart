@@ -62,7 +62,7 @@ class AuthRepositoryImpl extends AuthRepository {
       final result = await authApi.logout(params);
 
       // Delete User From Local Storage
-      await sl<AuthSharedPrefs>().deleteUser();
+      await sl<AuthSharedPrefs>().logout();
 
       return Right(result.data!);
     } on ServerException catch (e) {

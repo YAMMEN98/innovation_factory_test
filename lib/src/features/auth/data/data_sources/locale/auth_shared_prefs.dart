@@ -26,9 +26,29 @@ class AuthSharedPrefs {
     await  _preferences.remove(userKey);
   }
 
+
+
+  /// __________ Token __________ ///
+  String? getToken() {
+    String? data = _preferences.getString(tokenKey);
+    if (data == null) {
+      return null;
+    }
+    return data;
+  }
+
+  Future<void> saveToken(String token) async {
+    await _preferences.setString(tokenKey, token);
+  }
+
+  Future<void> deleteToken() async {
+    await  _preferences.remove(tokenKey);
+  }
+
   /// __________ Logout __________ ///
   Future<void> logout() async {
     await deleteUser();
+    await deleteToken();
   }
 
   /// __________ Clear Storage __________ ///

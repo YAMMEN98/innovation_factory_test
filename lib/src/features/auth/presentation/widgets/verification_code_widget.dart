@@ -10,6 +10,7 @@ import 'package:innovation_factory_test/src/core/styles/app_colors.dart';
 import 'package:innovation_factory_test/src/core/translations/l10n.dart';
 import 'package:innovation_factory_test/src/core/util/helper/helper.dart';
 import 'package:innovation_factory_test/src/core/util/helper/helper_ui.dart';
+import 'package:innovation_factory_test/src/core/util/router.dart';
 import 'package:innovation_factory_test/src/features/auth/presentation/bloc/auth_bloc.dart';
 
 import 'pin_code_text_field_widget.dart';
@@ -160,7 +161,7 @@ class _VerificationCodeWidgetState extends State<VerificationCodeWidget> {
                           type: ToastTypeEnum.error);
                     } else if (state is SuccessVerificationCodeState) {
                       Navigator.pushNamedAndRemoveUntil(
-                          context, "/home_page", (route) => false);
+                          context, AppPageRouteName.home.name, (route) => false);
                       HelperUi.showSnackBar(
                           context, S.of(context).welcome_on_app,
                           type: ToastTypeEnum.success);

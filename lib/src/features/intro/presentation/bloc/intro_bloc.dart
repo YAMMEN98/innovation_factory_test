@@ -14,7 +14,7 @@ class IntroBloc extends Bloc<IntroEvent, IntroState> {
 
   // Check User Event
   _onCheckingUser(OnCheckUserEvent event, Emitter<IntroState> emitter) async {
-    UserModel? result = sl<AuthSharedPrefs>().getUser();
+    String? result = sl<AuthSharedPrefs>().getToken();
     if (result == null) {
       emitter(SuccessCheckUserStatusState(false));
     } else {

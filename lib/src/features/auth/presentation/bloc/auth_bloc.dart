@@ -59,9 +59,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     result.fold((l) {
       emitter(ErrorVerificationCodeState(l.errorMessage));
     }, (r) {
+      // Save User Information On Local Storage
+      sl<AuthSharedPrefs>().saveUser(r);
+
       if (event.isRememberMe) {
-        // Save User Information On Local Storage
-        sl<AuthSharedPrefs>().saveUser(r);
+        // Save Token To Check If User Logged In Or Not
+        sl<AuthSharedPrefs>().saveToken(r.token);
       }
 
       emitter(SuccessVerificationCodeState());

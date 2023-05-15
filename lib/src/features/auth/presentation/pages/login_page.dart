@@ -42,7 +42,7 @@ class _LoginPageState extends State<LoginPage> {
   // Form
   final _formKey = GlobalKey<FormState>();
 
-  bool _isRememberMeChecked = true;
+  bool _isRememberMeChecked = false;
 
   @override
   void initState() {
@@ -265,7 +265,7 @@ class _LoginPageState extends State<LoginPage> {
 
             // Space
             SizedBox(
-              width: 14.w,
+              width: 14.sp,
             ),
 
             Text(

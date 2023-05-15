@@ -31,7 +31,7 @@ class _HomeAppBarWidgetState extends State<HomeAppBarWidget> {
     return Container(
       padding: EdgeInsets.symmetric(
         horizontal: 30.w,
-        vertical: 24.h,
+        vertical: 20.h,
       ),
       color: Theme.of(context).scaffoldBackgroundColor,
       child: Row(
@@ -106,6 +106,23 @@ class _HomeAppBarWidgetState extends State<HomeAppBarWidget> {
                   width: 15.sp,
                   height: 15.sp,
                 ),
+                withBorder: true,
+                floatWidget: Container(
+                  padding: EdgeInsets.all(5),
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: AppColors.red,
+                  ),
+                  child: Text(
+                      "5",
+                      style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                          color: AppColors.white,
+                          fontSize: 10
+                      )
+                  ),
+                ),
+
               ),
 
               // Space
@@ -119,6 +136,8 @@ class _HomeAppBarWidgetState extends State<HomeAppBarWidget> {
                   FocusManager.instance.primaryFocus?.unfocus();
                   Scaffold.of(context).openDrawer();
                 },
+                withBorder: true,
+
                 child: SvgPicture.asset(
                   Helper.getSvgPath("drawer.svg"),
                   width: 15.sp,

@@ -8,8 +8,12 @@ class ActionButtonWidget extends StatefulWidget {
   final Color? backgroundColor;
   final double? borderRadius;
   final EdgeInsets? padding;
+  final Widget? floatWidget;
+  final bool withBorder;
 
-  const ActionButtonWidget({Key? key, required this.onTap, required this.child, this.backgroundColor, this.borderRadius, this.padding})
+  const ActionButtonWidget(
+
+      {Key? key, required this.onTap, required this.child, this.backgroundColor, this.borderRadius, this.padding, this.floatWidget, this.withBorder = false,})
       : super(key: key);
 
   @override
@@ -22,20 +26,42 @@ class _ActionButtonWidgetState extends State<ActionButtonWidget> {
     return GestureDetector(
       onTap: widget.onTap,
       child: Container(
-        padding: widget.padding??EdgeInsets.all(13.sp),
-        decoration: BoxDecoration(
-          color: widget.backgroundColor??AppColors.white,
-          borderRadius: BorderRadius.circular(widget.borderRadius??15.sp),
-          boxShadow: [
-            BoxShadow(
-              color: AppColors.shadowColor,
-              spreadRadius: 3,
-              blurRadius: 10,
-              offset: Offset(0, 5),
+        child: Stack(
+          children: [
+            Container(
+              margin: widget.floatWidget != null ? EdgeInsets.symmetric(
+                vertical: 5.sp
+              ) : null,
+              padding: widget.padding ?? EdgeInsets.all(13.sp),
+              decoration: BoxDecoration(
+                color: widget.backgroundColor ?? AppColors.white,
+                borderRadius: BorderRadius.circular(
+                    widget.borderRadius ?? 15.sp),
+                border: widget.withBorder?Border.all(
+                  color: AppColors.borderColor,
+                ):null,
+                boxShadow: [
+                  BoxShadow(
+                    color: AppColors.shadowColor,
+                    spreadRadius: 3,
+                    blurRadius: 10,
+                    offset: Offset(0, 5),
+                  ),
+                ],
+              ),
+              child: widget.child,
             ),
+
+
+            if(widget.floatWidget != null)...{
+              Positioned(
+                top: 0,
+                right: 0,
+                child: widget.floatWidget!,
+              )
+            }
           ],
         ),
-        child: widget.child,
       ),
     );
   }
