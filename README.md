@@ -20,23 +20,23 @@ A new Flutter project with Clean Architecture Pattern That Help The Travelers To
 
 ## Feature
 
-- Login Exist Account.
-- Register New Account.
-- Verification From Account.
-- Home Page With Offers, Best Place And Best Packages.
-- Search Flights.
-- Show All Flights.
-- Show Flight Details.
-- Filter Flights.
-- Apply Dark/Light theme.
-- UI is a portrait and landscape mode.
+- Build And Implementation Login Exist Account.
+- Build And Implementation Register New Account.
+- Build And ImplementationVerification From Account.
+- Build Home Page With Offers, Best Place And Best Packages.
+- Build Success Booking Dialog.
+- Build And Implement Date Picker Dialog.
+- Build And Implementation Filtering Flights Widget.
+- Build And Implementation Show All Flights.
+- Build And Implementation Show Flight Details.
+- Implement Dark/Light Theme.
+- Implement Localization en/ar Languages.
 - Add App Logo.
-- Apply localization en/ar languages.
-- Created a lane in ```.github/workflows/generate_apk.yaml``` to generate apk automatically when upload code to the main branch.
+- Created A Lane In ```.github/workflows/generate_apk.yaml``` To Generate Apk Automatically when Upload Code To The Main Branch.
 
-  ![Github Action](lane_url)
+  ![Github Action](https://github.com/YAMMEN98/innovation_factory_test/blob/main/workflow.png)
 
-- Apply Unit Testing .
+- Apply Unit Testing For ```Api Layer``` And ```Repository Layer```.
 
 ## Built With
 
@@ -61,7 +61,7 @@ report, follow these steps to run it:
       directory ```flutter test --coverage```,
     - Run the tool to generate report from lcov.info to the
       console ```flutter pub run test_cov_console```,
-      ![Text Coverage / Console](url of test)
+      ![Text Coverage / Console](https://github.com/YAMMEN98/innovation_factory_test/blob/main/unit_test_console.png)
 
     - You can follow and see more of parameters
       in [test_cov_console](https://pub.dev/packages/test_cov_console).
@@ -69,20 +69,20 @@ report, follow these steps to run it:
       by ```flutter pub run test_cov_console -c --output=coverage/test_coverage.csv```
     - Open CSV file by excel and you will see like this result:
 
-      ![Text Coverage / Excel](url of test excel)
+      ![Text Coverage / Excel](https://github.com/YAMMEN98/innovation_factory_test/blob/main/unit_test_excel.png)
 
 
 ## App on Phone
 
-![Text Coverage / Excel](phone)
+![Tablet Screenshot](https://github.com/YAMMEN98/innovation_factory_test/blob/main/mobile.png)
 
 ## App on Tablet
 
-![Text Coverage / Excel](tablet)
+![Tablet Screenshot](https://github.com/YAMMEN98/innovation_factory_test/blob/main/tablet.png)
 
 ## App on Web Browser
 
-![Text Coverage / Excel](web)
+![Tablet Screenshot](https://github.com/YAMMEN98/innovation_factory_test/blob/main/web.png)
 
 
 ## Note:
@@ -93,4 +93,4 @@ I had covered Api and Repository layer in Unit Test cause the time, of course I 
 
 ## Author
 
-Yamen Abdullrahman - Senior Flutter Developer;
+Yamen Abdulrahman - Senior Flutter Developer;
