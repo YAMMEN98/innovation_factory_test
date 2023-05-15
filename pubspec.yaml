@@ -121,6 +121,11 @@ dependencies:
   # Generate CSV file and get coverage report
   test_cov_console: ^0.2.2
 
+  # Country Picker
+  country_code_picker:
+    path: ./packages/CountryCodePicker-main
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

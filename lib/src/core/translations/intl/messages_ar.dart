@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "adult": MessageLookupByLibrary.simpleMessage("بالغ"),
         "adults": MessageLookupByLibrary.simpleMessage("الكبار"),
         "already_have_an_account":
             MessageLookupByLibrary.simpleMessage("هل لديك حساب؟ "),
@@ -29,7 +30,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "available": MessageLookupByLibrary.simpleMessage("متاحة"),
         "best_packages": MessageLookupByLibrary.simpleMessage("أفضل الحزم"),
         "best_place": MessageLookupByLibrary.simpleMessage("أفضل الأماكن"),
+        "birth_of_date": MessageLookupByLibrary.simpleMessage("تاريخ الميلاد"),
         "book_now": MessageLookupByLibrary.simpleMessage("حجز الآن"),
+        "booking_confirmation_will_be_sent":
+            MessageLookupByLibrary.simpleMessage(
+                "سيتم إرسال تأكيد الحجز إلى عنوان البريد الإلكتروني هذا."),
         "booking_successful":
             MessageLookupByLibrary.simpleMessage("تمت عملية الحجز بنجاح"),
         "business": MessageLookupByLibrary.simpleMessage("عمل"),
@@ -37,12 +42,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "cheap_price": MessageLookupByLibrary.simpleMessage("سعر رخيص"),
         "check_in": MessageLookupByLibrary.simpleMessage("تسجيل الوصول"),
         "check_out": MessageLookupByLibrary.simpleMessage("تسجيل المغادرة"),
+        "child": MessageLookupByLibrary.simpleMessage("طفل"),
         "children": MessageLookupByLibrary.simpleMessage("الأطفال"),
         "code": MessageLookupByLibrary.simpleMessage("الرمز"),
         "confirm": MessageLookupByLibrary.simpleMessage("تأكيد"),
         "confirm_password":
             MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور"),
         "create_account": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
+        "customize": MessageLookupByLibrary.simpleMessage("تخصيص"),
         "dark_skin": MessageLookupByLibrary.simpleMessage("المظهر الليلي"),
         "departure": MessageLookupByLibrary.simpleMessage("المغادرة"),
         "different_return": MessageLookupByLibrary.simpleMessage("عودة\nمختلف"),
@@ -53,14 +60,19 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("موقع التسليم"),
         "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
         "english": MessageLookupByLibrary.simpleMessage("English"),
+        "enter_your_email_address":
+            MessageLookupByLibrary.simpleMessage("ادخل بريدك الالكتروني"),
+        "female": MessageLookupByLibrary.simpleMessage("انثي"),
         "final_destination":
             MessageLookupByLibrary.simpleMessage("الوجهة النهائية"),
+        "first_name": MessageLookupByLibrary.simpleMessage("الاسم الأول"),
         "flights": MessageLookupByLibrary.simpleMessage("الرحلات الجوية"),
         "flying_from": MessageLookupByLibrary.simpleMessage("الطيران من"),
         "flying_to": MessageLookupByLibrary.simpleMessage("الطيران إلى"),
         "forget_password":
             MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور؟"),
         "full_name": MessageLookupByLibrary.simpleMessage("الاسم الكامل"),
+        "gender": MessageLookupByLibrary.simpleMessage("الجنس"),
         "guests": MessageLookupByLibrary.simpleMessage("الضيوف"),
         "h": MessageLookupByLibrary.simpleMessage("س"),
         "hide_details": MessageLookupByLibrary.simpleMessage("إخفاء التفاصيل"),
@@ -74,6 +86,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "invalid_email_address": MessageLookupByLibrary.simpleMessage(
             "تم إدخال عنوان بريد إلكتروني غير صالح. يرجى التحقق من عنوان البريد الإلكتروني وحاول مرة أخرى."),
         "language": MessageLookupByLibrary.simpleMessage("اللغة"),
+        "last_name": MessageLookupByLibrary.simpleMessage("الاسم الثاني"),
         "light_skin": MessageLookupByLibrary.simpleMessage("المظهر النهاري"),
         "limited_offers": MessageLookupByLibrary.simpleMessage("عروض محدودة"),
         "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
@@ -83,7 +96,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "logout_successful": MessageLookupByLibrary.simpleMessage(
             "تم تسجيل خروج المستخدم بنجاح"),
         "m": MessageLookupByLibrary.simpleMessage("د"),
+        "male": MessageLookupByLibrary.simpleMessage("ذكر"),
+        "mobile": MessageLookupByLibrary.simpleMessage("رقم الموبايل"),
+        "nationality": MessageLookupByLibrary.simpleMessage("الجنسية"),
         "one_way": MessageLookupByLibrary.simpleMessage("اتجاه واحد"),
+        "passenger_info":
+            MessageLookupByLibrary.simpleMessage("معلومات المسافر"),
+        "passport_details":
+            MessageLookupByLibrary.simpleMessage("تفاصيل الجواز"),
+        "passport_number": MessageLookupByLibrary.simpleMessage("رقم الجواز"),
         "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
         "password_does_not_match":
             MessageLookupByLibrary.simpleMessage("كلمة السر غير متطابقة"),
@@ -104,10 +125,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "password_should_contain_at_least_one_uppercase_letter":
             MessageLookupByLibrary.simpleMessage(
                 ". يجب أن تحتوي كلمة المرور على حرف واحد كبير على الأقل\n"),
+        "payment": MessageLookupByLibrary.simpleMessage("الدفع"),
         "people": MessageLookupByLibrary.simpleMessage("الناس"),
         "phone": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
         "pick_uo_location":
             MessageLookupByLibrary.simpleMessage("موقع الالتقاء"),
+        "please_enter_details_exactly": MessageLookupByLibrary.simpleMessage(
+            "الرجاء إدخال التفاصيل تمامًا كما تظهر في جواز السفر / وثيقة السفر"),
         "register": MessageLookupByLibrary.simpleMessage("التسجيل"),
         "register_for_new_user":
             MessageLookupByLibrary.simpleMessage("التسجيل لمستخدم جديد"),
@@ -124,6 +148,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "show_details": MessageLookupByLibrary.simpleMessage("عرض التفاصيل"),
         "stop_include": MessageLookupByLibrary.simpleMessage("إيقاف التضمين"),
         "travel_time": MessageLookupByLibrary.simpleMessage("وقت الرحلة"),
+        "traveler": MessageLookupByLibrary.simpleMessage("المسافر"),
         "travelers": MessageLookupByLibrary.simpleMessage("المسافرون"),
         "travelers_hint":
             MessageLookupByLibrary.simpleMessage("2 بالغون 3 أطفال"),
@@ -142,6 +167,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "welcome_on_app":
             MessageLookupByLibrary.simpleMessage("مرحباً بك في تطبيقك"),
         "where_next":
-            MessageLookupByLibrary.simpleMessage("أين\nوجهتك التالية؟")
+            MessageLookupByLibrary.simpleMessage("أين\nوجهتك التالية؟"),
+        "your_flight_booking":
+            MessageLookupByLibrary.simpleMessage("حجز رحلتك"),
+        "your_passport_number":
+            MessageLookupByLibrary.simpleMessage("رقم جواز السفر الخالص بك")
       };
 }

@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "adult": MessageLookupByLibrary.simpleMessage("Adult"),
         "adults": MessageLookupByLibrary.simpleMessage("Adults"),
         "already_have_an_account":
             MessageLookupByLibrary.simpleMessage("Already Have An Account? "),
@@ -31,7 +32,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "available": MessageLookupByLibrary.simpleMessage("Available"),
         "best_packages": MessageLookupByLibrary.simpleMessage("Best Packages"),
         "best_place": MessageLookupByLibrary.simpleMessage("Best Places"),
+        "birth_of_date": MessageLookupByLibrary.simpleMessage("Birth Of Date"),
         "book_now": MessageLookupByLibrary.simpleMessage("Book Now"),
+        "booking_confirmation_will_be_sent":
+            MessageLookupByLibrary.simpleMessage(
+                "Booking Confirmation Will Be Sent To This Email Address."),
         "booking_successful":
             MessageLookupByLibrary.simpleMessage("Booking Successful"),
         "business": MessageLookupByLibrary.simpleMessage("Business"),
@@ -39,6 +44,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "cheap_price": MessageLookupByLibrary.simpleMessage("Cheap Price"),
         "check_in": MessageLookupByLibrary.simpleMessage("Check In"),
         "check_out": MessageLookupByLibrary.simpleMessage("Check Out"),
+        "child": MessageLookupByLibrary.simpleMessage("Child"),
         "children": MessageLookupByLibrary.simpleMessage("Children"),
         "code": MessageLookupByLibrary.simpleMessage("Code"),
         "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
@@ -46,6 +52,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Confirm Password"),
         "create_account":
             MessageLookupByLibrary.simpleMessage("Create Account"),
+        "customize": MessageLookupByLibrary.simpleMessage("Customize"),
         "dark_skin": MessageLookupByLibrary.simpleMessage("Dark Skin"),
         "departure": MessageLookupByLibrary.simpleMessage("Departure"),
         "different_return":
@@ -57,14 +64,19 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Drop-off Location"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "english": MessageLookupByLibrary.simpleMessage("English"),
+        "enter_your_email_address":
+            MessageLookupByLibrary.simpleMessage("Enter Your Email Address"),
+        "female": MessageLookupByLibrary.simpleMessage("Female"),
         "final_destination":
             MessageLookupByLibrary.simpleMessage("Final Destination"),
+        "first_name": MessageLookupByLibrary.simpleMessage("First Name"),
         "flights": MessageLookupByLibrary.simpleMessage("Flights"),
         "flying_from": MessageLookupByLibrary.simpleMessage("Flying From"),
         "flying_to": MessageLookupByLibrary.simpleMessage("Flying To"),
         "forget_password":
             MessageLookupByLibrary.simpleMessage("Forget Password?"),
         "full_name": MessageLookupByLibrary.simpleMessage("Full Name"),
+        "gender": MessageLookupByLibrary.simpleMessage("Gender"),
         "guests": MessageLookupByLibrary.simpleMessage("Guests"),
         "h": MessageLookupByLibrary.simpleMessage("h"),
         "hide_details": MessageLookupByLibrary.simpleMessage("Hide Details"),
@@ -78,6 +90,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "invalid_email_address": MessageLookupByLibrary.simpleMessage(
             "Invalid email address entered. Please check the email address and try again."),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
+        "last_name": MessageLookupByLibrary.simpleMessage("Last Name"),
         "light_skin": MessageLookupByLibrary.simpleMessage("Light Skin"),
         "limited_offers":
             MessageLookupByLibrary.simpleMessage("Limited Offers"),
@@ -88,7 +101,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "logout_successful": MessageLookupByLibrary.simpleMessage(
             "User has Logged Out Successful"),
         "m": MessageLookupByLibrary.simpleMessage("m"),
+        "male": MessageLookupByLibrary.simpleMessage("Male"),
+        "mobile": MessageLookupByLibrary.simpleMessage("Mobile"),
+        "nationality": MessageLookupByLibrary.simpleMessage("Nationality"),
         "one_way": MessageLookupByLibrary.simpleMessage("One Way"),
+        "passenger_info":
+            MessageLookupByLibrary.simpleMessage("Passenger Info"),
+        "passport_details":
+            MessageLookupByLibrary.simpleMessage("Passport Details"),
+        "passport_number":
+            MessageLookupByLibrary.simpleMessage("Passport Number"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "password_does_not_match":
             MessageLookupByLibrary.simpleMessage("Password does not match"),
@@ -109,10 +131,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "password_should_contain_at_least_one_uppercase_letter":
             MessageLookupByLibrary.simpleMessage(
                 ". Password should contain at least one uppercase letter\n"),
+        "payment": MessageLookupByLibrary.simpleMessage("Payment"),
         "people": MessageLookupByLibrary.simpleMessage("People"),
         "phone": MessageLookupByLibrary.simpleMessage("Phone Number"),
         "pick_uo_location":
             MessageLookupByLibrary.simpleMessage("Pickup Location"),
+        "please_enter_details_exactly": MessageLookupByLibrary.simpleMessage(
+            "Please Enter Details Exactly As They Appear On Your Passport/Travel Document"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
         "register_for_new_user":
             MessageLookupByLibrary.simpleMessage("Register For New User"),
@@ -131,6 +156,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "show_details": MessageLookupByLibrary.simpleMessage("Show Details"),
         "stop_include": MessageLookupByLibrary.simpleMessage("Stop Include"),
         "travel_time": MessageLookupByLibrary.simpleMessage("Travel Time"),
+        "traveler": MessageLookupByLibrary.simpleMessage("Traveler"),
         "travelers": MessageLookupByLibrary.simpleMessage("Travelers"),
         "travelers_hint":
             MessageLookupByLibrary.simpleMessage("2 Adults, 3Children"),
@@ -149,6 +175,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "welcome_on_app":
             MessageLookupByLibrary.simpleMessage("Hello In Your App"),
         "where_next": MessageLookupByLibrary.simpleMessage(
-            "Where’s Your\nNext Destination?")
+            "Where’s Your\nNext Destination?"),
+        "your_flight_booking":
+            MessageLookupByLibrary.simpleMessage("Your Flight Booking"),
+        "your_passport_number":
+            MessageLookupByLibrary.simpleMessage("Your Passport Number")
       };
 }

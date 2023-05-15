@@ -929,6 +929,216 @@ class S {
       args: [],
     );
   }
+
+  /// `Your Flight Booking`
+  String get your_flight_booking {
+    return Intl.message(
+      'Your Flight Booking',
+      name: 'your_flight_booking',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Customize`
+  String get customize {
+    return Intl.message(
+      'Customize',
+      name: 'customize',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Passenger Info`
+  String get passenger_info {
+    return Intl.message(
+      'Passenger Info',
+      name: 'passenger_info',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Payment`
+  String get payment {
+    return Intl.message(
+      'Payment',
+      name: 'payment',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Traveler`
+  String get traveler {
+    return Intl.message(
+      'Traveler',
+      name: 'traveler',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Adult`
+  String get adult {
+    return Intl.message(
+      'Adult',
+      name: 'adult',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Child`
+  String get child {
+    return Intl.message(
+      'Child',
+      name: 'child',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `First Name`
+  String get first_name {
+    return Intl.message(
+      'First Name',
+      name: 'first_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Last Name`
+  String get last_name {
+    return Intl.message(
+      'Last Name',
+      name: 'last_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Gender`
+  String get gender {
+    return Intl.message(
+      'Gender',
+      name: 'gender',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Birth Of Date`
+  String get birth_of_date {
+    return Intl.message(
+      'Birth Of Date',
+      name: 'birth_of_date',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Male`
+  String get male {
+    return Intl.message(
+      'Male',
+      name: 'male',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Female`
+  String get female {
+    return Intl.message(
+      'Female',
+      name: 'female',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Nationality`
+  String get nationality {
+    return Intl.message(
+      'Nationality',
+      name: 'nationality',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mobile`
+  String get mobile {
+    return Intl.message(
+      'Mobile',
+      name: 'mobile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter Your Email Address`
+  String get enter_your_email_address {
+    return Intl.message(
+      'Enter Your Email Address',
+      name: 'enter_your_email_address',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Booking Confirmation Will Be Sent To This Email Address.`
+  String get booking_confirmation_will_be_sent {
+    return Intl.message(
+      'Booking Confirmation Will Be Sent To This Email Address.',
+      name: 'booking_confirmation_will_be_sent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Passport Details`
+  String get passport_details {
+    return Intl.message(
+      'Passport Details',
+      name: 'passport_details',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please Enter Details Exactly As They Appear On Your Passport/Travel Document`
+  String get please_enter_details_exactly {
+    return Intl.message(
+      'Please Enter Details Exactly As They Appear On Your Passport/Travel Document',
+      name: 'please_enter_details_exactly',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Passport Number`
+  String get passport_number {
+    return Intl.message(
+      'Passport Number',
+      name: 'passport_number',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your Passport Number`
+  String get your_passport_number {
+    return Intl.message(
+      'Your Passport Number',
+      name: 'your_passport_number',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

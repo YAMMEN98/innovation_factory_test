@@ -86,7 +86,26 @@
   "logout_successful": "User has Logged Out Successful",
   "booking_successful": "Booking Successful",
   "we_will_send_an_email": "We Will Send An Email With The Flight Information And Ticket.",
-  "done": "Done"
-
-
+  "done": "Done",
+  "your_flight_booking": "Your Flight Booking",
+  "customize": "Customize",
+  "passenger_info": "Passenger Info",
+  "payment": "Payment",
+  "traveler": "Traveler",
+  "adult": "Adult",
+  "child": "Child",
+  "first_name": "First Name",
+  "last_name": "Last Name",
+  "gender": "Gender",
+  "birth_of_date": "Birth Of Date",
+  "male": "Male",
+  "female": "Female",
+  "nationality": "Nationality",
+  "mobile": "Mobile",
+  "enter_your_email_address": "Enter Your Email Address",
+  "booking_confirmation_will_be_sent": "Booking Confirmation Will Be Sent To This Email Address.",
+  "passport_details": "Passport Details",
+  "please_enter_details_exactly": "Please Enter Details Exactly As They Appear On Your Passport/Travel Document",
+  "passport_number": "Passport Number",
+  "your_passport_number": "Your Passport Number"
 }

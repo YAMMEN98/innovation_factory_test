@@ -1,3 +1,4 @@
+import 'package:country_code_picker/country_code_picker.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +15,7 @@ import 'package:innovation_factory_test/src/core/translations/l10n.dart';
 import 'package:innovation_factory_test/src/core/util/injections.dart';
 import 'package:innovation_factory_test/src/core/util/log/log_controller.dart';
 import 'package:innovation_factory_test/src/core/util/router.dart';
+import 'package:innovation_factory_test/src/features/booking_flight/presentation/pages/flight_booking_page.dart';
 import 'package:innovation_factory_test/src/features/intro/presentation/pages/intro_page.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();
@@ -100,6 +102,7 @@ class _AppState extends State<App> with WidgetsBindingObserver {
                       GlobalMaterialLocalizations.delegate,
                       GlobalWidgetsLocalizations.delegate,
                       GlobalCupertinoLocalizations.delegate,
+                      CountryLocalizations.delegate,
                     ],
                     navigatorKey: navigatorKey,
                     supportedLocales: const [
@@ -115,7 +118,8 @@ class _AppState extends State<App> with WidgetsBindingObserver {
           ),
         );
       },
-      child: const IntroPage(),
+      // child: const IntroPage(),
+      child:  FlightBookingPage(adults: 1,children: 0),
       // child: const SearchFlightsPage(),
     );
   }

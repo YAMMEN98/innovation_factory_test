@@ -5,7 +5,7 @@ import 'package:innovation_factory_test/src/core/network/error/exceptions.dart';
 import 'package:innovation_factory_test/src/features/search_flights/data/data_sources/remote/general_search_flights_api.dart';
 import 'package:innovation_factory_test/src/features/search_flights/domain/usecases/search_flights_usecase.dart';
 
-class SearchFlightsApi extends GeneralSearchFlightsApi {
+class SearchFlightsApi extends GeneralSearchFlightApi {
   SearchFlightsApi(super.dio);
 
   /// Search Flights Method

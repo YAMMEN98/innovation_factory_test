@@ -297,7 +297,7 @@ class _FilterWidgetState extends State<FilterWidget> {
               isUnderLineBorder: true,
               contentPadding: EdgeInsets.zero,
               prefixIcon: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 5.w),
+                padding: EdgeInsets.symmetric(horizontal: 5.sp),
                 child: SvgPicture.asset(
                   Helper.getSvgPath("calendar.svg"),
                   width: 13.sp,
@@ -351,7 +351,7 @@ class _FilterWidgetState extends State<FilterWidget> {
               hintText: HelperUi.formatNamedDate(DateTime.now()),
               contentPadding: EdgeInsets.zero,
               prefixIcon: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 5.w),
+                padding: EdgeInsets.symmetric(horizontal: 5.sp),
                 child: SvgPicture.asset(
                   Helper.getSvgPath("calendar.svg"),
                   width: 13.sp,
@@ -401,7 +401,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                     isUnderLineBorder: true,
                     contentPadding: EdgeInsets.zero,
                     prefixIcon: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 5.w),
+                      padding: EdgeInsets.symmetric(horizontal: 5.sp),
                       child: Icon(
                         Icons.flight_takeoff_outlined,
                         color: AppColors.primaryColor,
@@ -452,7 +452,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                     hintText: "Sharjah (SHJ)",
                     contentPadding: EdgeInsets.zero,
                     prefixIcon: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 5.w),
+                      padding: EdgeInsets.symmetric(horizontal: 5.sp),
                       child: Icon(
                         Icons.flight_land_outlined,
                         color: AppColors.primaryColor,
@@ -494,7 +494,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                   isUnderLineBorder: true,
                   contentPadding: EdgeInsets.zero,
                   prefixIcon: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 5.w),
+                    padding: EdgeInsets.symmetric(horizontal: 5.sp),
                     child: Image.asset(
                       Helper.getImagePath("car.png"),
                       width: 20.sp,
@@ -533,7 +533,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                   hintText: "Sharjah (SHJ)",
                   contentPadding: EdgeInsets.zero,
                   prefixIcon: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 5.w),
+                    padding: EdgeInsets.symmetric(horizontal: 5.sp),
                     child: Image.asset(
                       Helper.getImagePath("car.png"),
                       width: 20.sp,
@@ -573,7 +573,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                   isUnderLineBorder: true,
                   contentPadding: EdgeInsets.zero,
                   prefixIcon: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 5.w),
+                    padding: EdgeInsets.symmetric(horizontal: 5.sp),
                     child: SvgPicture.asset(
                       Helper.getSvgPath("calendar.svg"),
                       width: 13.sp,
@@ -700,7 +700,7 @@ class _FilterWidgetState extends State<FilterWidget> {
               isUnderLineBorder: true,
               contentPadding: EdgeInsets.zero,
               prefixIcon: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 5.w),
+                  padding: EdgeInsets.symmetric(horizontal: 5.sp),
                   child: Icon(
                     Icons.people,
                     size: 20.sp,
@@ -741,7 +741,7 @@ class _FilterWidgetState extends State<FilterWidget> {
               isUnderLineBorder: true,
               contentPadding: EdgeInsets.zero,
               prefixIcon: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 5.w),
+                  padding: EdgeInsets.symmetric(horizontal: 5.sp),
                   child: Icon(
                     Icons.pin_drop,
                     size: 20.sp,
@@ -805,7 +805,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                     isUnderLineBorder: true,
                     contentPadding: EdgeInsets.zero,
                     prefixIcon: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 5.w),
+                      padding: EdgeInsets.symmetric(horizontal: 5.sp),
                       child: SvgPicture.asset(
                         Helper.getSvgPath("calendar.svg"),
                         width: 13.sp,
@@ -866,7 +866,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                     hintText: HelperUi.formatNamedDate(DateTime.now()),
                     contentPadding: EdgeInsets.zero,
                     prefixIcon: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 5.w),
+                      padding: EdgeInsets.symmetric(horizontal: 5.sp),
                       child: SvgPicture.asset(
                         Helper.getSvgPath("calendar.svg"),
                         width: 13.sp,
@@ -905,7 +905,7 @@ class _FilterWidgetState extends State<FilterWidget> {
             isUnderLineBorder: true,
             contentPadding: EdgeInsets.zero,
             prefixIcon: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 5.w),
+              padding: EdgeInsets.symmetric(horizontal: 5.sp),
               child: Icon(
                 Icons.people,
                 size: 20.sp,

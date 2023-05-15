@@ -2,11 +2,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:innovation_factory_test/src/features/auth/presentation/pages/login_page.dart';
 import 'package:innovation_factory_test/src/features/auth/presentation/pages/register_page.dart';
+import 'package:innovation_factory_test/src/features/booking_flight/presentation/pages/flight_booking_page.dart';
 import 'package:innovation_factory_test/src/features/home/general/presentation/pages/home_page.dart';
 import 'package:innovation_factory_test/src/features/search_flights/domain/entities/filtering_flights_page_params.dart';
 import 'package:innovation_factory_test/src/features/search_flights/presentation/pages/search_flights_page.dart';
 
-enum AppPageRouteName { login, register, home, searchFlights }
+enum AppPageRouteName {
+  login,
+  register,
+  home,
+  searchFlights,
+  flightBooking,
+}
 
 extension PageRouteNameExtension on AppPageRouteName {
   String get name {
@@ -25,6 +32,9 @@ extension PageRouteNameExtension on AppPageRouteName {
 
       case AppPageRouteName.searchFlights:
         return "/search_flights_page";
+
+      case AppPageRouteName.flightBooking:
+        return "/flight_booking_page";
 
       default:
         return "/login_page";
@@ -70,6 +80,16 @@ class AppRouter {
               params: pageParams,
             );
           },
+        );
+
+      // Flight Booking Page
+      case '/flight_booking_page':
+        return CupertinoPageRoute(
+          settings: RouteSettings(name: settings.name),
+          builder: (_) => const FlightBookingPage(
+            adults: 2,
+            children: 1,
+          ),
         );
 
       default:

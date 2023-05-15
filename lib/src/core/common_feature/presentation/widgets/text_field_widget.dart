@@ -23,6 +23,7 @@ class TextFieldWidget extends StatefulWidget {
   final EdgeInsets? contentPadding;
   final double? height;
   final Widget? prefixIcon;
+  final Widget? suffixIcon;
   final bool isUnderLineBorder;
   final bool enabled;
 
@@ -47,6 +48,7 @@ class TextFieldWidget extends StatefulWidget {
     this.contentPadding,
     this.height,
     this.prefixIcon,
+    this.suffixIcon,
     this.isUnderLineBorder = false,
     this.enabled = true,
   }) : super(key: key);
@@ -83,6 +85,8 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
         decoration: InputDecoration(
           prefixIcon: widget.prefixIcon,
           prefixIconConstraints: BoxConstraints(),
+          suffixIcon: widget.suffixIcon,
+          suffixIconConstraints: BoxConstraints(),
           contentPadding: widget.contentPadding,
           hintText: widget.hintText,
           hintStyle: widget.hintStyle ?? hintStyle,

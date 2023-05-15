@@ -6,6 +6,7 @@ import 'package:innovation_factory_test/src/core/util/log/app_logger.dart';
 import 'package:innovation_factory_test/src/core/util/log/log_controller.dart';
 import 'package:innovation_factory_test/src/core/util/log/log_controller_injection.dart';
 import 'package:innovation_factory_test/src/features/auth/auth_injections.dart';
+import 'package:innovation_factory_test/src/features/booking_flight/flight_booking_injections.dart';
 import 'package:innovation_factory_test/src/features/home/car_rental/car_rental_injections.dart';
 import 'package:innovation_factory_test/src/features/home/flights/flights_injections.dart';
 import 'package:innovation_factory_test/src/features/home/general/home_injections.dart';
@@ -28,6 +29,7 @@ Future<void> initInjections() async {
   await initHotelsInjections();
   await initCarRentalInjections();
   await initSearchFlightsInjections();
+  await initFlightBookingInjections();
 }
 
 // Shared Preference

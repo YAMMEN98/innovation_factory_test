@@ -86,6 +86,29 @@
   "logout_successful": "تم تسجيل خروج المستخدم بنجاح",
   "booking_successful": "تمت عملية الحجز بنجاح",
   "we_will_send_an_email": "سنرسل بريدًا إلكترونيًا يتضمن معلومات الرحلة والتذكرة.",
-  "done": "تم"
+  "done": "تم",
+  "your_flight_booking": "حجز رحلتك",
+  "customize": "تخصيص",
+  "passenger_info": "معلومات المسافر",
+  "payment": "الدفع",
+  "traveler": "المسافر",
+  "adult": "بالغ",
+  "child": "طفل",
+  "first_name": "الاسم الأول",
+  "last_name": "الاسم الثاني",
+  "gender": "الجنس",
+  "birth_of_date": "تاريخ الميلاد",
+  "male": "ذكر",
+  "female": "انثي",
+  "nationality": "الجنسية",
+  "mobile": "رقم الموبايل",
+  "enter_your_email_address": "ادخل بريدك الالكتروني",
+  "booking_confirmation_will_be_sent": "سيتم إرسال تأكيد الحجز إلى عنوان البريد الإلكتروني هذا.",
+  "passport_details": "تفاصيل الجواز",
+  "please_enter_details_exactly": "الرجاء إدخال التفاصيل تمامًا كما تظهر في جواز السفر / وثيقة السفر",
+  "passport_number": "رقم الجواز",
+  "your_passport_number": "رقم جواز السفر الخالص بك"
+
+
 
 }
