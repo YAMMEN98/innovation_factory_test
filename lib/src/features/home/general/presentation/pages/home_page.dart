@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -77,15 +78,20 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           // Where next title
-                          Text(
-                            S.of(context).where_next,
-                            style: Theme.of(context)
-                                .textTheme
-                                .headlineLarge!
-                                .copyWith(
-                                  fontWeight: FontWeight.w700,
-                                  color: AppColors.white,
-                                ),
+                          Flexible(
+                            child: AutoSizeText(
+                              S.of(context).where_next,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headlineLarge!
+                                  .copyWith(
+                                    fontWeight: FontWeight.w700,
+                                    color: AppColors.white,
+                                  ),
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              softWrap: true,
+                            ),
                           ),
 
                           // Tab Bar

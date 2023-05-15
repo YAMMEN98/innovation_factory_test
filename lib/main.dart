@@ -28,7 +28,7 @@ void main() async {
   AppSnackBar.init();
   runApp(
     DevicePreview(
-      enabled: kReleaseMode,
+      enabled: !kReleaseMode,
       builder: (context) => App(), // Wrap your app
     ),
   );
@@ -77,7 +77,6 @@ class _AppState extends State<App> with WidgetsBindingObserver {
               return BlocBuilder<ThemeCubit, bool>(
                 builder: (context, isDarkTheme) {
                   return MaterialApp(
-                    useInheritedMediaQuery: false,
                     locale: Locale(lang.local),
                     title: "Travel App",
                     onGenerateRoute: AppRouter.generateRoute,
