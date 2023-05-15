@@ -91,6 +91,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Invalid email address entered. Please check the email address and try again."),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
         "last_name": MessageLookupByLibrary.simpleMessage("Last Name"),
+        "lead": MessageLookupByLibrary.simpleMessage("Lead"),
         "light_skin": MessageLookupByLibrary.simpleMessage("Light Skin"),
         "limited_offers":
             MessageLookupByLibrary.simpleMessage("Limited Offers"),

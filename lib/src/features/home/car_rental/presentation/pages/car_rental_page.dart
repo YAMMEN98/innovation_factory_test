@@ -164,7 +164,8 @@ class _CarRentalPageState extends State<CarRentalPage>
                         required String guests,
                         required String pickupLocation,
                         required String returnValue,
-                        required String travelers,
+                        required String adults,
+                        required String children,
                         required String whereAreYouGoing,
                       }) {
                         Navigator.pushNamed(context, AppPageRouteName.searchFlights.name,);

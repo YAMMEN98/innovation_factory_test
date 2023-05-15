@@ -21,7 +21,8 @@ class FilterWidget extends StatefulWidget {
   final bool hasFlyingFrom;
   final bool hasFlyingTo;
   final bool hasDeparture;
-  final bool hasTravelers;
+  final bool hasAdults;
+  final bool hasChildren;
   final bool hasReturn;
 
   // Variable Of Hotels Filter
@@ -41,7 +42,8 @@ class FilterWidget extends StatefulWidget {
     required String flyingFrom,
     required String flyingTo,
     required String departure,
-    required String travelers,
+    required String adults,
+    required String children,
     required String returnValue,
     required String whereAreYouGoing,
     required String checkIn,
@@ -60,7 +62,8 @@ class FilterWidget extends StatefulWidget {
     this.hasFlyingFrom = false,
     this.hasFlyingTo = false,
     this.hasDeparture = false,
-    this.hasTravelers = false,
+    this.hasAdults = false,
+    this.hasChildren = false,
     this.hasReturn = false,
     this.hasWhereAreYouGoing = false,
     this.hasCheckIn = false,
@@ -103,10 +106,15 @@ class _FilterWidgetState extends State<FilterWidget> {
   bool _flyingToValidator = true;
   final _flyingToFormKey = GlobalKey<FormState>();
 
-  // Travelers
-  final TextEditingController _travelersController = TextEditingController();
-  bool _travelersValidator = true;
-  final _travelersFormKey = GlobalKey<FormState>();
+  // Adults
+  final TextEditingController _adultsController = TextEditingController();
+  bool _adultsValidator = true;
+  final _adultsFormKey = GlobalKey<FormState>();
+
+  // Children
+  final TextEditingController _childrenController = TextEditingController();
+  bool _childrenValidator = true;
+  final _childrenFormKey = GlobalKey<FormState>();
 
   bool viewMore = false;
 
@@ -149,7 +157,7 @@ class _FilterWidgetState extends State<FilterWidget> {
         ),
 
         // Travelers
-        _buildTravelersFilter(),
+        _buildAdultsAndChildrenFilter(),
 
         // Where Are You Going
         Column(
@@ -419,7 +427,7 @@ class _FilterWidgetState extends State<FilterWidget> {
         if (widget.hasFlyingTo) ...{
           // Space
           SizedBox(
-            width: 10.w,
+            width: 15.sp,
           ),
 
           // Flying To
@@ -511,7 +519,7 @@ class _FilterWidgetState extends State<FilterWidget> {
         if (widget.hasDropOffLocation) ...{
           // Space
           SizedBox(
-            width: 10.w,
+            width: 15.sp,
           ),
 
           Expanded(
@@ -629,7 +637,7 @@ class _FilterWidgetState extends State<FilterWidget> {
               if (widget.hasReturn) ...{
                 // Space
                 SizedBox(
-                  width: 10.w,
+                  width: 15.sp,
                 ),
 
                 _buildReturnFilter(),
@@ -638,7 +646,7 @@ class _FilterWidgetState extends State<FilterWidget> {
               if (widget.hasReturn && viewMore) ...{
                 // Space
                 SizedBox(
-                  width: 10.w,
+                  width: 15.sp,
                 ),
 
                 _buildReturnFilter(),
@@ -648,7 +656,7 @@ class _FilterWidgetState extends State<FilterWidget> {
             if (widget.hasReturn) ...{
               // Space
               SizedBox(
-                width: 10.w,
+                width: 15.sp,
               ),
 
               _buildReturnFilter(),
@@ -658,7 +666,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           if (widget.hasReturn) ...{
             // Space
             SizedBox(
-              width: 10.w,
+              width: 15.sp,
             ),
 
             _buildReturnFilter(),
@@ -669,44 +677,105 @@ class _FilterWidgetState extends State<FilterWidget> {
   }
 
   // Build Travelers Filter
-  Widget _buildTravelersFilter() {
-    if (widget.hasTravelers && viewMore) {
+  Widget _buildAdultsAndChildrenFilter() {
+    if (widget.hasAdults && widget.hasChildren && viewMore) {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Text(
-            S.of(context).travelers,
-            style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                  fontWeight: FontWeight.w500,
+          // Adults And Children
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Adults
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Text(
+                      S.of(context).adults,
+                      style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                            fontWeight: FontWeight.w500,
+                          ),
+                    ),
+                    SizedBox(
+                      height: 2.h,
+                    ),
+                    Form(
+                      key: _adultsFormKey,
+                      child: TextFieldWidget(
+                        validator: (value) {
+                          return BaseValidator.validateValue(
+                            context,
+                            value!,
+                            [RequiredValidator()],
+                            _adultsValidator,
+                          );
+                        },
+                        keyboardType: TextInputType.number,
+                        controller: _adultsController,
+                        hintText: "1",
+                        isUnderLineBorder: true,
+                        contentPadding: EdgeInsets.zero,
+                        prefixIcon: Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 5.sp),
+                            child: Icon(
+                              Icons.people,
+                              size: 20.sp,
+                              color: AppColors.primaryColor,
+                            )),
+                      ),
+                    ),
+                  ],
                 ),
-          ),
-          SizedBox(
-            height: 2.h,
-          ),
-          Form(
-            key: _travelersFormKey,
-            child: TextFieldWidget(
-              validator: (value) {
-                return BaseValidator.validateValue(
-                  context,
-                  value!,
-                  [RequiredValidator()],
-                  _travelersValidator,
-                );
-              },
-              keyboardType: TextInputType.number,
-              controller: _travelersController,
-              hintText: S.of(context).travelers_hint,
-              isUnderLineBorder: true,
-              contentPadding: EdgeInsets.zero,
-              prefixIcon: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 5.sp),
-                  child: Icon(
-                    Icons.people,
-                    size: 20.sp,
-                    color: AppColors.primaryColor,
-                  )),
-            ),
+              ),
+
+              // Space
+              SizedBox(
+                width: 15.w,
+              ),
+
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Text(
+                      S.of(context).children,
+                      style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                            fontWeight: FontWeight.w500,
+                          ),
+                    ),
+                    SizedBox(
+                      height: 2.h,
+                    ),
+                    Form(
+                      key: _childrenFormKey,
+                      child: TextFieldWidget(
+                        validator: (value) {
+                          return BaseValidator.validateValue(
+                            context,
+                            value!,
+                            [RequiredValidator()],
+                            _childrenValidator,
+                          );
+                        },
+                        keyboardType: TextInputType.number,
+                        controller: _childrenController,
+                        hintText: "1",
+                        isUnderLineBorder: true,
+                        contentPadding: EdgeInsets.zero,
+                        prefixIcon: Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 5.sp),
+                            child: Icon(
+                              Icons.people,
+                              size: 20.sp,
+                              color: AppColors.primaryColor,
+                            )),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
           // Space
           SizedBox(
@@ -925,8 +994,14 @@ class _FilterWidgetState extends State<FilterWidget> {
 
   // Search Callback
   void _callbackSearch() {
-
-    if(!validateTravelers() || !validateFlyingFrom() || !validateFlyingTo()){
+    bool isAdultsValid = validateAdults();
+    bool isChildrenValid = validateChildren();
+    bool isFlyingFromValid = validateFlyingFrom();
+    bool isFlyingToValid = validateFlyingTo();
+    if (!isAdultsValid ||
+        !isChildrenValid ||
+        !isFlyingFromValid ||
+        !isFlyingToValid) {
       return;
     }
 
@@ -934,9 +1009,13 @@ class _FilterWidgetState extends State<FilterWidget> {
     final String flyingTo = _flyingToController.text.trim();
     final String departure = HelperUi.formatToStandardDate(
         HelperUi.formatNameStringToDate(_departureController.text.trim()));
-    final String travelers = _travelersController.text.trim().isEmpty
+    final String adults = _adultsController.text.trim().isEmpty
         ? "0"
-        : _travelersController.text.trim();
+        : _adultsController.text.trim();
+
+    final String children = _childrenController.text.trim().isEmpty
+        ? "0"
+        : _childrenController.text.trim();
     final String returnValue = HelperUi.formatToStandardDate(
         HelperUi.formatNameStringToDate(_returnController.text.trim()));
     final String whereAreYouGoing = _whereAreYouGoingController.text.trim();
@@ -954,7 +1033,8 @@ class _FilterWidgetState extends State<FilterWidget> {
       flyingFrom: flyingFrom,
       flyingTo: flyingTo,
       departure: departure,
-      travelers: travelers,
+      adults: adults,
+      children: children,
       returnValue: returnValue,
       whereAreYouGoing: whereAreYouGoing,
       checkIn: checkIn,
@@ -966,17 +1046,23 @@ class _FilterWidgetState extends State<FilterWidget> {
     );
   }
 
-
-
-  // Validate Travelers
-  bool validateTravelers() {
-    if (!widget.hasTravelers) {
+  // Validate Adults
+  bool validateAdults() {
+    if (!widget.hasAdults) {
       return true;
     }
 
-    return widget.hasTravelers && _travelersFormKey.currentState!.validate();
+    return widget.hasAdults && _adultsFormKey.currentState!.validate();
   }
 
+  // Validate Travelers
+  bool validateChildren() {
+    if (!widget.hasChildren) {
+      return true;
+    }
+
+    return widget.hasChildren && _childrenFormKey.currentState!.validate();
+  }
 
   // Validate Flying From
   bool validateFlyingFrom() {
@@ -986,7 +1072,6 @@ class _FilterWidgetState extends State<FilterWidget> {
 
     return widget.hasFlyingFrom && _flyingFromFormKey.currentState!.validate();
   }
-
 
   // Validate Flying To
   bool validateFlyingTo() {

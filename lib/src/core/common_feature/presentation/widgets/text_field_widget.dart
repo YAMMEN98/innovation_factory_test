@@ -92,6 +92,21 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
           contentPadding: widget.contentPadding,
           hintText: widget.hintText,
           hintStyle: widget.hintStyle ?? hintStyle,
+          disabledBorder:  widget.isUnderLineBorder
+              ? UnderlineInputBorder(
+            borderSide: BorderSide(
+              color: widget.borderColor ?? defaultColor,
+              width: widget.borderWidth ?? defaultBorderWidth,
+            ),
+          )
+              : OutlineInputBorder(
+            borderRadius: BorderRadius.circular(
+                widget.borderRadius ?? defaultBorderRadius),
+            borderSide: BorderSide(
+              color: widget.borderColor ?? defaultColor,
+              width: widget.borderWidth ?? defaultBorderWidth,
+            ),
+          ),
           border: widget.isUnderLineBorder
               ? UnderlineInputBorder(
                   borderSide: BorderSide(

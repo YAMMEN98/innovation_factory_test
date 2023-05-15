@@ -136,7 +136,8 @@ class _FlightsPageState extends State<FlightsPage>
                   hasFlyingTo: true,
                   hasDeparture: true,
                   hasReturn: selectedFlightTypeIndex == 2,
-                  hasTravelers: true,
+                  hasAdults: true,
+                  hasChildren: true,
                   isLoading: state is LoadingFilteringFlightsState,
                   searchCallback: ({
                     required String checkIn,
@@ -149,16 +150,17 @@ class _FlightsPageState extends State<FlightsPage>
                     required String guests,
                     required String pickupLocation,
                     required String returnValue,
-                    required String travelers,
+                    required String adults,
+                    required String children,
                     required String whereAreYouGoing,
                   }) {
                     _bloc.add(
                       OnFilteringFlightsEvent(
                         type: "Return",
                         classString: "Economy",
-                        adults: int.tryParse(travelers)??0,
-                        children: int.tryParse(travelers)??0,
-                        infants: int.tryParse(travelers)??0,
+                        adults: int.tryParse(adults)??0,
+                        children: int.tryParse(children)??0,
+                        infants: int.tryParse(children)??0,
                         departureDate: departure,
                         returnDate: returnValue,
                         airportOriginCode: flyingFrom,

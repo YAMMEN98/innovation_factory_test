@@ -87,6 +87,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "تم إدخال عنوان بريد إلكتروني غير صالح. يرجى التحقق من عنوان البريد الإلكتروني وحاول مرة أخرى."),
         "language": MessageLookupByLibrary.simpleMessage("اللغة"),
         "last_name": MessageLookupByLibrary.simpleMessage("الاسم الثاني"),
+        "lead": MessageLookupByLibrary.simpleMessage("القائد"),
         "light_skin": MessageLookupByLibrary.simpleMessage("المظهر النهاري"),
         "limited_offers": MessageLookupByLibrary.simpleMessage("عروض محدودة"),
         "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),

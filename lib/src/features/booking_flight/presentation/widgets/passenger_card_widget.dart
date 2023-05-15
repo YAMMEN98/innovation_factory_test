@@ -10,6 +10,9 @@ import 'package:innovation_factory_test/src/core/styles/app_colors.dart';
 import 'package:innovation_factory_test/src/core/translations/l10n.dart';
 import 'package:innovation_factory_test/src/core/util/helper/helper.dart';
 import 'package:innovation_factory_test/src/core/util/helper/helper_ui.dart';
+import 'package:innovation_factory_test/src/core/util/validators/base_validator.dart';
+import 'package:innovation_factory_test/src/core/util/validators/email_validator1.dart';
+import 'package:innovation_factory_test/src/core/util/validators/required_validator.dart';
 
 class PassengerCardWidget extends StatefulWidget {
   final int index;
@@ -32,17 +35,22 @@ class _PassengerCardWidgetState extends State<PassengerCardWidget> {
   final TextEditingController _lastNameController = TextEditingController();
   final TextEditingController _genderController = TextEditingController();
   final TextEditingController _birthOfDateController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
+
   final TextEditingController _passportNumberController =
       TextEditingController();
   final TextEditingController _passportBirthOfDateController =
       TextEditingController();
 
+  // Email
+  final TextEditingController _emailController = TextEditingController();
+  bool _emailValidator = true;
+
+
   // Nationality
   CountryCode _countryCode = CountryCode();
 
   // Mobile Country Code
-  String _mophoneCountryCode = "+971";
+  String _mobileCountryCode = "+971";
 
   @override
   void initState() {
@@ -63,7 +71,7 @@ class _PassengerCardWidgetState extends State<PassengerCardWidget> {
         color: AppColors.white,
         boxShadow: [
           BoxShadow(
-            color: AppColors.shadowColor,
+            color: AppColors.black.withOpacity(0.05),
             spreadRadius: 3,
             blurRadius: 15,
             offset: Offset(0, 10),
@@ -235,6 +243,8 @@ class _PassengerCardWidgetState extends State<PassengerCardWidget> {
                     ),
                     GestureDetector(
                       onTap: () {
+                        FocusScope.of(context).unfocus();
+
                         HelperUi.showDatePicker(
                           context: context,
                           callback: (dateTime) {
@@ -288,7 +298,7 @@ class _PassengerCardWidgetState extends State<PassengerCardWidget> {
           PhoneWidget(
             callback: (countryCode, phone) {
               if (countryCode != null) {
-                _mophoneCountryCode = countryCode;
+                _mobileCountryCode = countryCode;
               }
             },
           ),
@@ -310,8 +320,16 @@ class _PassengerCardWidgetState extends State<PassengerCardWidget> {
               ),
               TextFieldWidget(
                 controller: _emailController,
-                enabled: false,
                 hintText: S.of(context).enter_your_email_address,
+                keyboardType: TextInputType.emailAddress,
+                validator: (value) {
+                  return BaseValidator.validateValue(
+                    context,
+                    value!,
+                    [RequiredValidator(), EmailValidator()],
+                    _emailValidator,
+                  );
+                },
                 isUnderLineBorder: true,
                 contentPadding: EdgeInsets.zero,
               ),
@@ -375,7 +393,6 @@ class _PassengerCardWidgetState extends State<PassengerCardWidget> {
                     ),
                     TextFieldWidget(
                       controller: _passportNumberController,
-                      enabled: false,
                       hintText: S.of(context).your_passport_number,
                       isUnderLineBorder: true,
                       contentPadding: EdgeInsets.zero,
@@ -402,6 +419,8 @@ class _PassengerCardWidgetState extends State<PassengerCardWidget> {
                     ),
                     GestureDetector(
                       onTap: () {
+                        FocusScope.of(context).unfocus();
+
                         HelperUi.showDatePicker(
                           context: context,
                           callback: (dateTime) {
@@ -447,7 +466,7 @@ class _PassengerCardWidgetState extends State<PassengerCardWidget> {
     }
 
     if (widget.isLead) {
-      passengerType += " (${S.of(context).adult})";
+      passengerType += " (${S.of(context).lead})";
     }
 
     return passengerType;

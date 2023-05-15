@@ -67,21 +67,40 @@ class _FlightBookingPageState extends State<FlightBookingPage>
               child: Column(
                 children: [
 
+                  // Adults
                   for(int i=0;i<widget.adults; i++)...{
-                    PassengerCardWidget(
-                      index: i+1,
-                      isAdult: true,
-                      isLead: i==0,
-                    ),
+                    Column(
+                       children: [
+                         PassengerCardWidget(
+                           index: i+1,
+                           isAdult: true,
+                           isLead: i==0,
+                         ),
+
+                         // Space
+                         SizedBox(
+                           height: 30.sp,
+                         ),
+                       ],
+                    )
                   },
 
-
+                  // Children
                   for(int i=0;i<widget.children; i++)...{
-                    PassengerCardWidget(
-                      index: i+1,
-                      isAdult: false,
-                      isLead: false,
-                    ),
+                    Column(
+                      children: [
+                        PassengerCardWidget(
+                          index: i+1,
+                          isAdult: false,
+                          isLead: false,
+                        ),
+
+                        // Space
+                        SizedBox(
+                          height: 30.sp,
+                        ),
+                      ],
+                    )
                   },
                 ],
               ),

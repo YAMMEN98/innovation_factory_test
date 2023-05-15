@@ -1,6 +1,7 @@
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:innovation_factory_test/src/core/common_feature/presentation/widgets/country_code_picker_widget.dart';
 import 'package:innovation_factory_test/src/core/styles/app_colors.dart';
 import 'package:innovation_factory_test/src/core/translations/l10n.dart';
 
@@ -37,19 +38,13 @@ class _CountryPickerWidgetState extends State<CountryPickerWidget> {
           Row(
             children: [
               Expanded(
-                child: CountryCodePicker(
-                  onChanged: widget.callback,
-                  showCountryOnly: true,
+                child: CountryCodePickerWidget(
+                  showOnlyCountryOnDialog: true,
                   showOnlyCountryWhenClosed: true,
-                  alignLeft: true,
-                  padding: EdgeInsets.zero,
-                  flagDecoration: BoxDecoration(
-                      shape: BoxShape.circle
-                  ),
-                  textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
-                    fontWeight: FontWeight.w500,
-                    color: AppColors.grayColor,
-                  ),
+                  onInit: (value) {
+                    FocusScope.of(context).unfocus();
+                  },
+                  onChanged: widget.callback,
                 ),
               ),
 
