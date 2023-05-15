@@ -13,9 +13,12 @@ FilteringFlightsResponseModel _$FilteringFlightsResponseModelFromJson(
       flights: (json['flights'] as List<dynamic>)
           .map((e) => FlightModel.fromJson(e))
           .toList(),
-      paginationDetails:
-          PaginationDetailsModel.fromJson(json['pagination_details']),
-      filterCategories: FilterCategoryModel.fromJson(json['filterCategories']),
+      paginationDetails: json['pagination_details'] == null
+          ? null
+          : PaginationDetailsModel.fromJson(json['pagination_details']),
+      filterCategories: json['filterCategories'] == null
+          ? null
+          : FilterCategoryModel.fromJson(json['filterCategories']),
     );
 
 Map<String, dynamic> _$FilteringFlightsResponseModelToJson(

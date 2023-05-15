@@ -49,4 +49,11 @@ class FlightModel {
   static List<FlightModel> fromJsonList(List json) {
     return json.map((e) => FlightModel.fromJson(e)).toList();
   }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is FlightModel && other.sourceCode == sourceCode;
+  }
 }

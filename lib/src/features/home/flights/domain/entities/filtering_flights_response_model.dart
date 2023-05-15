@@ -10,16 +10,16 @@ class FilteringFlightsResponseModel {
   FilteringFlightsResponseModel({
     required this.sessionId,
     required this.flights,
-    required this.paginationDetails,
-    required this.filterCategories,
+     this.paginationDetails,
+     this.filterCategories,
   });
   
    final String sessionId;
    final List<FlightModel> flights;
-   final PaginationDetailsModel paginationDetails;
+   final PaginationDetailsModel? paginationDetails;
 
    @JsonKey(name: "filterCategories")
-   final FilterCategoryModel filterCategories;
+   final FilterCategoryModel? filterCategories;
 
   factory FilteringFlightsResponseModel.fromJson(json) => _$FilteringFlightsResponseModelFromJson(json);
 
@@ -28,4 +28,13 @@ class FilteringFlightsResponseModel {
   static List<FilteringFlightsResponseModel> fromJsonList(List json) {
     return json.map((e) => FilteringFlightsResponseModel.fromJson(e)).toList();
   }
+
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is FilteringFlightsResponseModel && other.sessionId == sessionId;
+  }
+
 }
