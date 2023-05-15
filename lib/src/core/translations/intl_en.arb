@@ -109,5 +109,6 @@
   "passport_number": "Passport Number",
   "your_passport_number": "Your Passport Number",
   "your_mobile_number": "Your Mobile Number",
-  "lead": "Lead"
+  "lead": "Lead",
+  "paste": "Paste"
 }

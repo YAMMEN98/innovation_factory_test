@@ -23,6 +23,14 @@ class CountryCodePickerWidget extends StatefulWidget {
 }
 
 class _CountryCodePickerWidgetState extends State<CountryCodePickerWidget> {
+  final defaultBorder = OutlineInputBorder(
+    borderRadius: BorderRadius.circular(15),
+    borderSide: BorderSide(
+      color: AppColors.borderColor,
+      width: 1,
+    ),
+  );
+
   @override
   Widget build(BuildContext context) {
     return CountryCodePicker(
@@ -38,6 +46,10 @@ class _CountryCodePickerWidgetState extends State<CountryCodePickerWidget> {
         hintStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
               fontWeight: FontWeight.w500,
             ),
+        border: defaultBorder,
+        enabledBorder: defaultBorder,
+        focusedBorder: defaultBorder,
+        disabledBorder:defaultBorder,
       ),
       flagDecoration: BoxDecoration(shape: BoxShape.circle),
       textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(

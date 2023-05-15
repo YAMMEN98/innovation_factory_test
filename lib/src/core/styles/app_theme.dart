@@ -50,53 +50,7 @@ final ThemeData appTheme = ThemeData(
     contentPadding: EdgeInsets.symmetric(
       horizontal: 10.sp,
     ),
-    border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(15),
-      borderSide: BorderSide(
-        color: AppColors.borderColor,
-        width: 1,
-      ),
-    ),
-    enabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(15),
-      borderSide: BorderSide(
-        color: AppColors.borderColor,
-        width: 1,
-      ),
-    ),
-    focusedBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(15),
-      borderSide: BorderSide(
-        color: AppColors.borderColor,
-        width: 1,
-      ),
-    ),
-    errorBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(15),
-      borderSide: BorderSide(
-        color: AppColors.red,
-        width: 1,
-      ),
-    ),
-    focusedErrorBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(15),
-      borderSide: BorderSide(
-        color: AppColors.borderColor,
-        width: 1,
-      ),
-    ),
-    disabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(15),
-      borderSide: BorderSide(
-        color: AppColors.borderColor,
-        width: 1,
-      ),
-    ),
-    errorMaxLines: 10,
-    errorStyle: AppTextStyle.textStyleBlack13.copyWith(
-      color: AppColors.red,
-      fontWeight: FontWeight.normal,
-    ),
+
   ),
 );
 
@@ -147,48 +101,7 @@ final ThemeData darkAppTheme = ThemeData(
     contentPadding: EdgeInsets.symmetric(
       horizontal: 10.sp,
     ),
-    border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(15),
-      borderSide: BorderSide(
-        color: AppColors.borderColor,
-        width: 1,
-      ),
-    ),
-    enabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(15),
-      borderSide: BorderSide(
-        color: AppColors.borderColor,
-        width: 1,
-      ),
-    ),
-    focusedBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(15),
-      borderSide: BorderSide(
-        color: AppColors.borderColor,
-        width: 1,
-      ),
-    ),
-    errorBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(15),
-      borderSide: BorderSide(
-        color: AppColors.red,
-        width: 1,
-      ),
-    ),
-    focusedErrorBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(15),
-      borderSide: BorderSide(
-        color: AppColors.borderColor,
-        width: 1,
-      ),
-    ),
-    disabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(15),
-      borderSide: BorderSide(
-        color: AppColors.borderColor,
-        width: 1,
-      ),
-    ),
+    border: OutlineInputBorder(),
     errorMaxLines: 10,
     errorStyle: AppTextStyle.textStyleBlack13.copyWith(
       color: AppColors.red,

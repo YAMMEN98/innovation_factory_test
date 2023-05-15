@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -34,7 +35,7 @@ class VerificationCodeWidget extends StatefulWidget {
 class _VerificationCodeWidgetState extends State<VerificationCodeWidget> {
   AuthBloc _bloc = AuthBloc();
 
-  TextEditingController pinCodeController = TextEditingController();
+  TextEditingController _pinCodeController = TextEditingController();
   bool _isValidPin = true;
 
   @override
@@ -49,6 +50,26 @@ class _VerificationCodeWidgetState extends State<VerificationCodeWidget> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
+
+                // Close Icon
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    IconButton(
+                      constraints: const BoxConstraints(),
+                      padding: EdgeInsets.zero,
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      icon: Icon(
+                        Icons.close,
+                        size: 20.sp,
+                        color: AppColors.grayColor,
+                      ),
+                    ),
+                  ],
+                ),
+
                 // Verification Code Icon
                 SvgPicture.asset(
                   Helper.getSvgPath("verification_code_icon.svg"),
@@ -92,7 +113,7 @@ class _VerificationCodeWidgetState extends State<VerificationCodeWidget> {
 
                 // Content
                 PinCodeTextFieldWidget(
-                  pinCodeController: pinCodeController,
+                  pinCodeController: _pinCodeController,
                   onChange: (value) {
                     setState(() {
                       if (value.isNotEmpty && value.length == 6) {
@@ -102,6 +123,26 @@ class _VerificationCodeWidgetState extends State<VerificationCodeWidget> {
                       }
                     });
                   },
+                ),
+
+                // Space
+                SizedBox(
+                  height: HelperUi.getVerticalSpace(),
+                ),
+
+                InkWell(
+                  onTap: () async {
+                    ClipboardData? data = await Clipboard.getData('text/plain');
+                    if (data != null) {
+                      setState(() {
+                        _pinCodeController.text = data.text ?? "";
+                      });
+                    }
+                  },
+                  child: Text(
+                    S.of(context).paste,
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
                 ),
 
                 // Space
@@ -141,7 +182,7 @@ class _VerificationCodeWidgetState extends State<VerificationCodeWidget> {
                         if (_isValidPin) {
                           _bloc.add(OnVerificationEvent(
                             userId: widget.userId,
-                            otp: int.tryParse(pinCodeController.text.trim()) ??
+                            otp: int.tryParse(_pinCodeController.text.trim()) ??
                                 0,
                             deviceType: Helper.getDeviceType().name,
                             app: Helper.getAppName(),

@@ -1159,6 +1159,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Paste`
+  String get paste {
+    return Intl.message(
+      'Paste',
+      name: 'paste',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

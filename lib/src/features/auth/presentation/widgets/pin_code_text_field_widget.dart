@@ -25,6 +25,7 @@ class _PinCodeTextFieldWidgetState extends State<PinCodeTextFieldWidget> {
   @override
   Widget build(BuildContext context) {
     return PinCodeTextField(
+
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       appContext: context,
       length: 6,
@@ -51,6 +52,7 @@ class _PinCodeTextFieldWidgetState extends State<PinCodeTextFieldWidget> {
       },
 
       backgroundColor: AppColors.transparent,
+
       pinTheme: PinTheme(
         shape: PinCodeFieldShape.box,
         borderRadius: BorderRadius.circular(5),
@@ -64,7 +66,6 @@ class _PinCodeTextFieldWidgetState extends State<PinCodeTextFieldWidget> {
       ),
       animationDuration: const Duration(milliseconds: 300),
       enableActiveFill: true,
-
       controller: widget.pinCodeController,
       onCompleted: (v) {
         if (kDebugMode) {

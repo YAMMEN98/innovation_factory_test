@@ -126,6 +126,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "password_should_contain_at_least_one_uppercase_letter":
             MessageLookupByLibrary.simpleMessage(
                 ". يجب أن تحتوي كلمة المرور على حرف واحد كبير على الأقل\n"),
+        "paste": MessageLookupByLibrary.simpleMessage("لصق"),
         "payment": MessageLookupByLibrary.simpleMessage("الدفع"),
         "people": MessageLookupByLibrary.simpleMessage("الناس"),
         "phone": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
