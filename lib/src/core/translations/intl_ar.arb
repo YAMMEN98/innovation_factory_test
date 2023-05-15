@@ -77,6 +77,7 @@
   "available": "متاحة",
   "adults": "الكبار",
   "children": "الأطفال",
+  "infants": "الرضّع",
   "h": "س",
   "m": "د",
   "language": "اللغة",
@@ -94,6 +95,7 @@
   "traveler": "المسافر",
   "adult": "بالغ",
   "child": "طفل",
+  "infant": "رضيع",
   "first_name": "الاسم الأول",
   "last_name": "الاسم الثاني",
   "gender": "الجنس",
@@ -110,6 +112,8 @@
   "your_passport_number": "رقم جواز السفر الخاص بك",
   "your_mobile_number": "رقم الموبايل الخاص بك",
   "lead": "القائد",
-  "paste": "لصق"
+  "paste": "لصق",
+  "error_validation_adults_and_children": "لا يمكن أن يزيد عدد الركاب (الكبار + الأطفال) عن تسعة (9)"
+
 
 }

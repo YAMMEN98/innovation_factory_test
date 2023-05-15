@@ -46,7 +46,7 @@
   "departure": "Departure",
   "return_flying": "Return",
   "travelers": "Travelers",
-  "travelers_hint": "2 Adults, 3Children",
+  "travelers_hint": "2 Adults, 3 Children",
   "view_more": "View More",
   "view_less": "View Less",
   "search": "Search",
@@ -77,6 +77,7 @@
   "available": "Available",
   "adults": "Adults",
   "children": "Children",
+  "infants": "Infants",
   "h": "h",
   "m": "m",
   "language": "Language",
@@ -94,6 +95,7 @@
   "traveler": "Traveler",
   "adult": "Adult",
   "child": "Child",
+  "infant": "Infant",
   "first_name": "First Name",
   "last_name": "Last Name",
   "gender": "Gender",
@@ -110,5 +112,6 @@
   "your_passport_number": "Your Passport Number",
   "your_mobile_number": "Your Mobile Number",
   "lead": "Lead",
-  "paste": "Paste"
+  "paste": "Paste",
+  "error_validation_adults_and_children": "Total number of passenger (Adults+Children) count can not be more than Nine(9)"
 }

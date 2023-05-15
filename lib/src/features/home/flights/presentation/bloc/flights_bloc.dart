@@ -59,6 +59,7 @@ class FlightsBloc extends Bloc<FlightsEvent, FlightsState> {
             flyingTo: event.airportDestinationCode,
             children: event.children.toString(),
             adults: event.adults.toString(),
+            infants: event.infants.toString(),
           ),
         ),
       );

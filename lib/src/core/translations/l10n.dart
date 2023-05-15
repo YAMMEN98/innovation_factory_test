@@ -520,10 +520,10 @@ class S {
     );
   }
 
-  /// `2 Adults, 3Children`
+  /// `2 Adults, 3 Children`
   String get travelers_hint {
     return Intl.message(
-      '2 Adults, 3Children',
+      '2 Adults, 3 Children',
       name: 'travelers_hint',
       desc: '',
       args: [],
@@ -830,6 +830,16 @@ class S {
     );
   }
 
+  /// `Infants`
+  String get infants {
+    return Intl.message(
+      'Infants',
+      name: 'infants',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `h`
   String get h {
     return Intl.message(
@@ -1000,6 +1010,16 @@ class S {
     );
   }
 
+  /// `Infant`
+  String get infant {
+    return Intl.message(
+      'Infant',
+      name: 'infant',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `First Name`
   String get first_name {
     return Intl.message(
@@ -1165,6 +1185,16 @@ class S {
     return Intl.message(
       'Paste',
       name: 'paste',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total number of passenger (Adults+Children) count can not be more than Nine(9)`
+  String get error_validation_adults_and_children {
+    return Intl.message(
+      'Total number of passenger (Adults+Children) count can not be more than Nine(9)',
+      name: 'error_validation_adults_and_children',
       desc: '',
       args: [],
     );

@@ -66,6 +66,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "english": MessageLookupByLibrary.simpleMessage("English"),
         "enter_your_email_address":
             MessageLookupByLibrary.simpleMessage("Enter Your Email Address"),
+        "error_validation_adults_and_children":
+            MessageLookupByLibrary.simpleMessage(
+                "Total number of passenger (Adults+Children) count can not be more than Nine(9)"),
         "female": MessageLookupByLibrary.simpleMessage("Female"),
         "final_destination":
             MessageLookupByLibrary.simpleMessage("Final Destination"),
@@ -85,6 +88,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "I Agree To The Terms Of Service And Privacy Policy"),
         "incorrect_phone_number":
             MessageLookupByLibrary.simpleMessage("Incorrect Phone Number"),
+        "infant": MessageLookupByLibrary.simpleMessage("Infant"),
+        "infants": MessageLookupByLibrary.simpleMessage("Infants"),
         "internal_server_error":
             MessageLookupByLibrary.simpleMessage("Internal Server Error"),
         "invalid_email_address": MessageLookupByLibrary.simpleMessage(
@@ -161,7 +166,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "traveler": MessageLookupByLibrary.simpleMessage("Traveler"),
         "travelers": MessageLookupByLibrary.simpleMessage("Travelers"),
         "travelers_hint":
-            MessageLookupByLibrary.simpleMessage("2 Adults, 3Children"),
+            MessageLookupByLibrary.simpleMessage("2 Adults, 3 Children"),
         "validate": MessageLookupByLibrary.simpleMessage("Validate"),
         "verify_code": MessageLookupByLibrary.simpleMessage("Verify Code"),
         "view_all": MessageLookupByLibrary.simpleMessage("View All"),

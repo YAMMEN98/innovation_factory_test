@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:innovation_factory_test/src/core/common_feature/domain/entities/gender_enum.dart';
+import 'package:innovation_factory_test/src/core/common_feature/domain/entities/passenger_type_enum.dart';
 import 'package:innovation_factory_test/src/core/common_feature/presentation/widgets/country_picker_widget.dart';
 import 'package:innovation_factory_test/src/core/common_feature/presentation/widgets/phone_widget.dart';
 import 'package:innovation_factory_test/src/core/common_feature/presentation/widgets/text_field_widget.dart';
@@ -16,12 +17,12 @@ import 'package:innovation_factory_test/src/core/util/validators/required_valida
 
 class PassengerCardWidget extends StatefulWidget {
   final int index;
-  final bool isAdult;
+  final PassengerTypeEnum passengerType;
   final bool isLead;
 
   const PassengerCardWidget(
       {Key? key,
-      required this.isAdult,
+      required this.passengerType,
       required this.isLead,
       required this.index})
       : super(key: key);
@@ -44,7 +45,6 @@ class _PassengerCardWidgetState extends State<PassengerCardWidget> {
   // Email
   final TextEditingController _emailController = TextEditingController();
   bool _emailValidator = true;
-
 
   // Nationality
   CountryCode _countryCode = CountryCode();
@@ -357,7 +357,7 @@ class _PassengerCardWidgetState extends State<PassengerCardWidget> {
             S.of(context).passport_details,
             style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                   fontWeight: FontWeight.w600,
-              color: AppColors.primaryColor,
+                  color: AppColors.primaryColor,
                 ),
           ),
 
@@ -369,7 +369,7 @@ class _PassengerCardWidgetState extends State<PassengerCardWidget> {
             S.of(context).please_enter_details_exactly,
             style: Theme.of(context).textTheme.titleSmall!.copyWith(
                   fontWeight: FontWeight.w400,
-              color: AppColors.grayColor,
+                  color: AppColors.grayColor,
                 ),
           ),
 
@@ -404,7 +404,6 @@ class _PassengerCardWidgetState extends State<PassengerCardWidget> {
               SizedBox(
                 width: 15.sp,
               ),
-
 
               // Date Of Birth
               Expanded(
@@ -457,18 +456,24 @@ class _PassengerCardWidgetState extends State<PassengerCardWidget> {
 
   // Build Passenger Type
   _buildPassengerType() {
-    String passengerType = "${S.of(context).traveler} ${widget.index}: ";
+    String passengerTypeTitle = "${S.of(context).traveler} ${widget.index}: ";
 
-    if (widget.isAdult) {
-      passengerType += S.of(context).adult;
+    print(widget.passengerType.type.toString());
+    print(widget.passengerType.type.toString());
+    print(widget.passengerType.type.toString());
+    print(widget.passengerType.type.toString());
+    if (widget.passengerType.type == 1) {
+      passengerTypeTitle += S.of(context).adult;
+    } else if (widget.passengerType.type == 2) {
+      passengerTypeTitle += S.of(context).child;
     } else {
-      passengerType += S.of(context).child;
+      passengerTypeTitle += S.of(context).infant;
     }
 
     if (widget.isLead) {
-      passengerType += " (${S.of(context).lead})";
+      passengerTypeTitle += " (${S.of(context).lead})";
     }
 
-    return passengerType;
+    return passengerTypeTitle;
   }
 }

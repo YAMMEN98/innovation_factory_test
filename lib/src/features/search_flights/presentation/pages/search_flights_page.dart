@@ -175,6 +175,7 @@ class _SearchFlightsPageState extends State<SearchFlightsPage>
                           flightModel: widget.params.flights[index],
                           adults: widget.params.adults,
                           children: widget.params.children,
+                          infants: widget.params.infants,
                         );
                       },
                       separatorBuilder: (context, index) {

@@ -152,6 +152,7 @@ class _FlightsPageState extends State<FlightsPage>
                     required String returnValue,
                     required String adults,
                     required String children,
+                    required String infants,
                     required String whereAreYouGoing,
                   }) {
                     _bloc.add(
@@ -160,7 +161,7 @@ class _FlightsPageState extends State<FlightsPage>
                         classString: "Economy",
                         adults: int.tryParse(adults)??0,
                         children: int.tryParse(children)??0,
-                        infants: int.tryParse(children)??0,
+                        infants: int.tryParse(infants)??0,
                         departureDate: departure,
                         returnDate: returnValue,
                         airportOriginCode: flyingFrom,

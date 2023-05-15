@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:innovation_factory_test/src/core/common_feature/domain/entities/passenger_type_enum.dart';
 import 'package:innovation_factory_test/src/core/common_feature/presentation/pages/background_page.dart';
 import 'package:innovation_factory_test/src/core/translations/l10n.dart';
 import 'package:innovation_factory_test/src/features/booking_flight/presentation/bloc/flight_booking_bloc.dart';
@@ -10,10 +11,14 @@ import 'package:innovation_factory_test/src/features/booking_flight/presentation
 class FlightBookingPage extends StatefulWidget {
   final int adults;
   final int children;
+  final int infants;
 
-  const FlightBookingPage(
-      {Key? key, required this.adults, required this.children})
-      : super(key: key);
+  const FlightBookingPage({
+    Key? key,
+    required this.adults,
+    required this.children,
+    required this.infants,
+  }) : super(key: key);
 
   @override
   State<FlightBookingPage> createState() => _FlightBookingPageState();
@@ -43,9 +48,7 @@ class _FlightBookingPageState extends State<FlightBookingPage>
         children: [
           // Flight Booking App Bar
           FlightBookingAppBarWidget(
-            title: S
-                .of(context)
-                .your_flight_booking,
+            title: S.of(context).your_flight_booking,
           ),
 
           // Steps
@@ -66,32 +69,49 @@ class _FlightBookingPageState extends State<FlightBookingPage>
               ),
               child: Column(
                 children: [
-
                   // Adults
-                  for(int i=0;i<widget.adults; i++)...{
+                  for (int i = 0; i < widget.adults; i++) ...{
                     Column(
-                       children: [
-                         PassengerCardWidget(
-                           index: i+1,
-                           isAdult: true,
-                           isLead: i==0,
-                         ),
+                      children: [
+                        PassengerCardWidget(
+                          index: i + 1,
+                          passengerType: PassengerTypeEnum.adult,
+                          isLead: i == 0,
+                        ),
 
-                         // Space
-                         SizedBox(
-                           height: 30.sp,
-                         ),
-                       ],
+                        // Space
+                        SizedBox(
+                          height: 30.sp,
+                        ),
+                      ],
                     )
                   },
 
                   // Children
-                  for(int i=0;i<widget.children; i++)...{
+                  for (int i = 0; i < widget.children; i++) ...{
                     Column(
                       children: [
                         PassengerCardWidget(
-                          index: i+1,
-                          isAdult: false,
+                          index: i + 1,
+                          passengerType: PassengerTypeEnum.child,
+                          isLead: false,
+                        ),
+
+                        // Space
+                        SizedBox(
+                          height: 30.sp,
+                        ),
+                      ],
+                    )
+                  },
+
+                  // Infants
+                  for (int i = 0; i < widget.infants; i++) ...{
+                    Column(
+                      children: [
+                        PassengerCardWidget(
+                          index: i + 1,
+                          passengerType: PassengerTypeEnum.infant,
                           isLead: false,
                         ),
 

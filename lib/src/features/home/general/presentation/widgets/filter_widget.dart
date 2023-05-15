@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:innovation_factory_test/src/core/common_feature/presentation/widgets/app_loader.dart';
+import 'package:innovation_factory_test/src/core/common_feature/presentation/widgets/app_snack_bar.dart';
 import 'package:innovation_factory_test/src/core/common_feature/presentation/widgets/button_widget.dart';
 import 'package:innovation_factory_test/src/core/common_feature/presentation/widgets/text_field_widget.dart';
 import 'package:innovation_factory_test/src/core/styles/app_colors.dart';
@@ -44,6 +45,7 @@ class FilterWidget extends StatefulWidget {
     required String departure,
     required String adults,
     required String children,
+    required String infants,
     required String returnValue,
     required String whereAreYouGoing,
     required String checkIn,
@@ -108,13 +110,12 @@ class _FilterWidgetState extends State<FilterWidget> {
 
   // Adults
   final TextEditingController _adultsController = TextEditingController();
-  bool _adultsValidator = true;
-  final _adultsFormKey = GlobalKey<FormState>();
 
   // Children
   final TextEditingController _childrenController = TextEditingController();
-  bool _childrenValidator = true;
-  final _childrenFormKey = GlobalKey<FormState>();
+
+  // Infants
+  final TextEditingController _infantsController = TextEditingController();
 
   bool viewMore = false;
 
@@ -124,6 +125,9 @@ class _FilterWidgetState extends State<FilterWidget> {
     _returnController.text = HelperUi.formatNamedDate(DateTime.now());
     _checkInController.text = HelperUi.formatNamedDate(DateTime.now());
     _checkOutController.text = HelperUi.formatNamedDate(DateTime.now());
+    _adultsController.text = "1";
+    _childrenController.text = "1";
+    _infantsController.text = "1";
     super.initState();
   }
 
@@ -453,7 +457,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                         context,
                         value!,
                         [RequiredValidator()],
-                        _flyingFromValidator,
+                        _flyingToValidator,
                       );
                     },
                     isUnderLineBorder: true,
@@ -700,17 +704,29 @@ class _FilterWidgetState extends State<FilterWidget> {
                     SizedBox(
                       height: 2.h,
                     ),
-                    Form(
-                      key: _adultsFormKey,
-                      child: TextFieldWidget(
-                        validator: (value) {
-                          return BaseValidator.validateValue(
-                            context,
-                            value!,
-                            [RequiredValidator()],
-                            _adultsValidator,
+                    PopupMenuButton(
+                      itemBuilder: (BuildContext context) {
+                        return List.generate(9, (index) {
+                          return PopupMenuItem<int>(
+                            value: index+1,
+                            onTap: (){
+                              _adultsController.text = (index+1).toString();
+                              _infantsController.text = "1";
+                            },
+                            child: Text(
+                              (index+1).toString(),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleSmall!
+                                  .copyWith(
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
                           );
-                        },
+                        });
+                      },
+                      child: TextFieldWidget(
+                        enabled: false,
                         keyboardType: TextInputType.number,
                         controller: _adultsController,
                         hintText: "1",
@@ -734,6 +750,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                 width: 15.w,
               ),
 
+              // Children
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -741,23 +758,35 @@ class _FilterWidgetState extends State<FilterWidget> {
                     Text(
                       S.of(context).children,
                       style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                            fontWeight: FontWeight.w500,
-                          ),
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                     SizedBox(
                       height: 2.h,
                     ),
-                    Form(
-                      key: _childrenFormKey,
-                      child: TextFieldWidget(
-                        validator: (value) {
-                          return BaseValidator.validateValue(
-                            context,
-                            value!,
-                            [RequiredValidator()],
-                            _childrenValidator,
+
+                    PopupMenuButton(
+                      itemBuilder: (BuildContext context) {
+                        return List.generate(6, (index) {
+                          return PopupMenuItem<int>(
+                            value: index+1,
+                            onTap: (){
+                              _childrenController.text = (index+1).toString();
+                            },
+                            child: Text(
+                              (index+1).toString(),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleSmall!
+                                  .copyWith(
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
                           );
-                        },
+                        });
+                      },
+                      child:  TextFieldWidget(
+                        enabled: false,
                         keyboardType: TextInputType.number,
                         controller: _childrenController,
                         hintText: "1",
@@ -772,9 +801,76 @@ class _FilterWidgetState extends State<FilterWidget> {
                             )),
                       ),
                     ),
+
+
                   ],
                 ),
               ),
+
+              // Space
+              SizedBox(
+                width: 15.w,
+              ),
+
+              // Infants
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Text(
+                      S.of(context).infants,
+                      style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 2.h,
+                    ),
+
+                    PopupMenuButton(
+                      itemBuilder: (BuildContext context) {
+                        return List.generate(int.parse(_adultsController.text.trim()), (index) {
+                          return PopupMenuItem<int>(
+                            value: index+1,
+                            onTap: (){
+                              _infantsController.text = (index+1).toString();
+                            },
+                            child: Text(
+                              (index+1).toString(),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleSmall!
+                                  .copyWith(
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          );
+                        });
+                      },
+                      child:  TextFieldWidget(
+                        enabled: false,
+                        keyboardType: TextInputType.number,
+                        controller: _infantsController,
+                        hintText: "1",
+                        isUnderLineBorder: true,
+                        contentPadding: EdgeInsets.zero,
+                        prefixIcon: Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 5.sp),
+                            child: Icon(
+                              Icons.people,
+                              size: 20.sp,
+                              color: AppColors.primaryColor,
+                            )),
+                      ),
+                    ),
+
+
+                  ],
+                ),
+              ),
+
+
+
             ],
           ),
           // Space
@@ -994,15 +1090,19 @@ class _FilterWidgetState extends State<FilterWidget> {
 
   // Search Callback
   void _callbackSearch() {
-    bool isAdultsValid = validateAdults();
-    bool isChildrenValid = validateChildren();
     bool isFlyingFromValid = validateFlyingFrom();
     bool isFlyingToValid = validateFlyingTo();
-    if (!isAdultsValid ||
-        !isChildrenValid ||
+    bool isAdultsAndChildrenValid = validateAdultsAndChildren();
+    if (
         !isFlyingFromValid ||
         !isFlyingToValid) {
+
       return;
+    }else{
+      if(!isAdultsAndChildrenValid){
+        HelperUi.showSnackBar(context, S.of(context).error_validation_adults_and_children,type: ToastTypeEnum.error);
+     return;
+      }
     }
 
     final String flyingFrom = _flyingFromController.text.trim();
@@ -1016,6 +1116,11 @@ class _FilterWidgetState extends State<FilterWidget> {
     final String children = _childrenController.text.trim().isEmpty
         ? "0"
         : _childrenController.text.trim();
+
+    final String infants = _infantsController.text.trim().isEmpty
+        ? "0"
+        : _infantsController.text.trim();
+
     final String returnValue = HelperUi.formatToStandardDate(
         HelperUi.formatNameStringToDate(_returnController.text.trim()));
     final String whereAreYouGoing = _whereAreYouGoingController.text.trim();
@@ -1035,6 +1140,7 @@ class _FilterWidgetState extends State<FilterWidget> {
       departure: departure,
       adults: adults,
       children: children,
+      infants: infants,
       returnValue: returnValue,
       whereAreYouGoing: whereAreYouGoing,
       checkIn: checkIn,
@@ -1046,23 +1152,16 @@ class _FilterWidgetState extends State<FilterWidget> {
     );
   }
 
-  // Validate Adults
-  bool validateAdults() {
-    if (!widget.hasAdults) {
-      return true;
-    }
 
-    return widget.hasAdults && _adultsFormKey.currentState!.validate();
+
+  // Validate Adults And Children Drop Down
+  bool validateAdultsAndChildren() {
+   int adults = int.tryParse(_adultsController.text.trim())??0;
+   int children = int.tryParse(_childrenController.text.trim())??0;
+  if(adults + children > 9)return false;
+  return true;
   }
 
-  // Validate Travelers
-  bool validateChildren() {
-    if (!widget.hasChildren) {
-      return true;
-    }
-
-    return widget.hasChildren && _childrenFormKey.currentState!.validate();
-  }
 
   // Validate Flying From
   bool validateFlyingFrom() {

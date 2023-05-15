@@ -62,6 +62,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "english": MessageLookupByLibrary.simpleMessage("English"),
         "enter_your_email_address":
             MessageLookupByLibrary.simpleMessage("ادخل بريدك الالكتروني"),
+        "error_validation_adults_and_children":
+            MessageLookupByLibrary.simpleMessage(
+                "لا يمكن أن يزيد عدد الركاب (الكبار + الأطفال) عن تسعة (9)"),
         "female": MessageLookupByLibrary.simpleMessage("انثي"),
         "final_destination":
             MessageLookupByLibrary.simpleMessage("الوجهة النهائية"),
@@ -81,6 +84,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "أوافق على شروط الخدمة وسياسة الخصوصية"),
         "incorrect_phone_number":
             MessageLookupByLibrary.simpleMessage("رقم الهاتف غير صحيح"),
+        "infant": MessageLookupByLibrary.simpleMessage("رضيع"),
+        "infants": MessageLookupByLibrary.simpleMessage("الرضّع"),
         "internal_server_error":
             MessageLookupByLibrary.simpleMessage("خطأ في الخادم الداخلي"),
         "invalid_email_address": MessageLookupByLibrary.simpleMessage(

@@ -93,6 +93,7 @@ class AppRouter {
             return FlightBookingPage(
               adults: int.tryParse(pageParams.adults) ?? 0,
               children: int.tryParse(pageParams.children) ?? 0,
+              infants: int.tryParse(pageParams.infants) ?? 0,
             );
           },
         );

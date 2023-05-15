@@ -18,8 +18,9 @@ class CardTripWidget extends StatefulWidget {
   final FlightModel flightModel;
   final String adults;
   final String children;
+  final String infants;
 
-  const CardTripWidget({super.key, required this.flightModel, required this.adults, required this.children});
+  const CardTripWidget({super.key, required this.flightModel, required this.adults, required this.children, required this.infants});
 
   @override
   State<CardTripWidget> createState() => _CardTripWidgetState();
@@ -272,6 +273,7 @@ class _CardTripWidgetState extends State<CardTripWidget>
                   arguments: FlightBookingPageParams(
                     adults: widget.adults,
                     children: widget.children,
+                    infants: widget.infants,
                   ),
                 );
               },

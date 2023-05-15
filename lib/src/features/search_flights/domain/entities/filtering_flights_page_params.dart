@@ -8,6 +8,7 @@ class FilteringFlightsPageParams {
   final String returnDate;
   final String adults;
   final String children;
+  final String infants;
 
   FilteringFlightsPageParams({
     required this.flights,
@@ -17,5 +18,6 @@ class FilteringFlightsPageParams {
     required this.returnDate,
     required this.adults,
     required this.children,
+    required this.infants,
   });
 }

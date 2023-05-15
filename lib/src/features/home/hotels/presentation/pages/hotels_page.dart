@@ -60,9 +60,9 @@ class _HotelsPageState extends State<HotelsPage> with TickerProviderStateMixin {
                     required String returnValue,
                     required String adults,
                     required String children,
+                    required String infants,
                     required String whereAreYouGoing,
                   }) {
-                    Navigator.pushNamed(context, AppPageRouteName.searchFlights.name,);
                   },
                 ),
               ),
