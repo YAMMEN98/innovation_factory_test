@@ -23,6 +23,8 @@ class CircleStepWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
           padding: EdgeInsets.all(10.sp),
@@ -39,12 +41,12 @@ class CircleStepWidget extends StatelessWidget {
           child: child,
         ),
         SizedBox(
-          height: 5.sp,
+          height: 10.sp,
         ),
         Text(
           title,
           style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                fontWeight: FontWeight.w400,
+                fontWeight: FontWeight.w500,
             color: titleColor??AppColors.darkFontColor,
               ),
         )

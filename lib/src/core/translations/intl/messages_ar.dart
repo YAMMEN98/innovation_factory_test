@@ -170,7 +170,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("أين\nوجهتك التالية؟"),
         "your_flight_booking":
             MessageLookupByLibrary.simpleMessage("حجز رحلتك"),
+        "your_mobile_number":
+            MessageLookupByLibrary.simpleMessage("رقم الموبايل الخاص بك"),
         "your_passport_number":
-            MessageLookupByLibrary.simpleMessage("رقم جواز السفر الخالص بك")
+            MessageLookupByLibrary.simpleMessage("رقم جواز السفر الخاص بك")
       };
 }

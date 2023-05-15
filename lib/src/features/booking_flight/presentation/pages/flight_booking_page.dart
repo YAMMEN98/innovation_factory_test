@@ -52,40 +52,38 @@ class _FlightBookingPageState extends State<FlightBookingPage>
           Padding(
             padding: EdgeInsets.symmetric(
               horizontal: 30.w,
-              vertical: 20.sp,
+              vertical: 10.sp,
             ),
             child: FlightBookingStepsWidget(),
           ),
 
           // List Of Passengers
           Expanded(
-            child: Padding(
+            child: SingleChildScrollView(
               padding: EdgeInsets.symmetric(
                 horizontal: 30.w,
                 vertical: 20.sp,
               ),
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
+              child: Column(
+                children: [
 
-                    for(int i=0;i<widget.adults; i++)...{
-                      PassengerCardWidget(
-                        index: i+1,
-                        isAdult: true,
-                        isLead: i==0,
-                      ),
-                    },
+                  for(int i=0;i<widget.adults; i++)...{
+                    PassengerCardWidget(
+                      index: i+1,
+                      isAdult: true,
+                      isLead: i==0,
+                    ),
+                  },
 
 
-                    for(int i=0;i<widget.children; i++)...{
-                      PassengerCardWidget(
-                        index: i+1,
-                        isAdult: false,
-                        isLead: false,
-                      ),
-                    },
-                  ],
-                ),
+                  for(int i=0;i<widget.children; i++)...{
+                    PassengerCardWidget(
+                      index: i+1,
+                      isAdult: false,
+                      isLead: false,
+                    ),
+                  },
+                ],
               ),
             ),
           ),

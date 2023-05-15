@@ -107,5 +107,6 @@
   "passport_details": "Passport Details",
   "please_enter_details_exactly": "Please Enter Details Exactly As They Appear On Your Passport/Travel Document",
   "passport_number": "Passport Number",
-  "your_passport_number": "Your Passport Number"
+  "your_passport_number": "Your Passport Number",
+  "your_mobile_number": "Your Mobile Number"
 }

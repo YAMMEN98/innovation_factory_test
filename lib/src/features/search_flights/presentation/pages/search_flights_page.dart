@@ -173,6 +173,8 @@ class _SearchFlightsPageState extends State<SearchFlightsPage>
                       itemBuilder: (context, index) {
                         return CardTripWidget(
                           flightModel: widget.params.flights[index],
+                          adults: widget.params.adults,
+                          children: widget.params.children,
                         );
                       },
                       separatorBuilder: (context, index) {

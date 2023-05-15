@@ -6,6 +6,8 @@ import 'package:innovation_factory_test/src/core/common_feature/presentation/wid
 import 'package:innovation_factory_test/src/core/styles/app_colors.dart';
 import 'package:innovation_factory_test/src/core/translations/l10n.dart';
 import 'package:innovation_factory_test/src/core/util/helper/helper.dart';
+import 'package:innovation_factory_test/src/core/util/router.dart';
+import 'package:innovation_factory_test/src/features/booking_flight/domain/entities/flight_booking_page_params.dart';
 import 'package:innovation_factory_test/src/features/home/flights/domain/entities/flight_model.dart';
 import 'package:innovation_factory_test/src/features/home/general/presentation/widgets/tag_widget.dart';
 import 'package:innovation_factory_test/src/features/search_flights/presentation/widgets/flight_details_widget.dart';
@@ -14,8 +16,10 @@ import 'plane_observer_widget.dart';
 
 class CardTripWidget extends StatefulWidget {
   final FlightModel flightModel;
+  final String adults;
+  final String children;
 
-  const CardTripWidget({super.key, required this.flightModel});
+  const CardTripWidget({super.key, required this.flightModel, required this.adults, required this.children});
 
   @override
   State<CardTripWidget> createState() => _CardTripWidgetState();
@@ -261,6 +265,16 @@ class _CardTripWidgetState extends State<CardTripWidget>
             // Select flight Button
             ButtonWidget(
               text: S.of(context).select_flight,
+              onPressed: () {
+                Navigator.pushNamed(
+                  context,
+                  AppPageRouteName.flightBooking.name,
+                  arguments: FlightBookingPageParams(
+                    adults: widget.adults,
+                    children: widget.children,
+                  ),
+                );
+              },
               textStyle: Theme.of(context).textTheme.titleSmall!.copyWith(
                     fontWeight: FontWeight.w600,
                     color: AppColors.white,

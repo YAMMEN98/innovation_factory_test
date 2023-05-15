@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:innovation_factory_test/src/features/auth/presentation/pages/login_page.dart';
 import 'package:innovation_factory_test/src/features/auth/presentation/pages/register_page.dart';
+import 'package:innovation_factory_test/src/features/booking_flight/domain/entities/flight_booking_page_params.dart';
 import 'package:innovation_factory_test/src/features/booking_flight/presentation/pages/flight_booking_page.dart';
 import 'package:innovation_factory_test/src/features/home/general/presentation/pages/home_page.dart';
 import 'package:innovation_factory_test/src/features/search_flights/domain/entities/filtering_flights_page_params.dart';
@@ -86,10 +87,14 @@ class AppRouter {
       case '/flight_booking_page':
         return CupertinoPageRoute(
           settings: RouteSettings(name: settings.name),
-          builder: (_) => const FlightBookingPage(
-            adults: 2,
-            children: 1,
-          ),
+          builder: (_) {
+            final FlightBookingPageParams pageParams =
+                settings.arguments as FlightBookingPageParams;
+            return FlightBookingPage(
+              adults: int.tryParse(pageParams.adults) ?? 0,
+              children: int.tryParse(pageParams.children) ?? 0,
+            );
+          },
         );
 
       default:

@@ -63,7 +63,9 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
     double defaultBorderWidth = 1;
     double defaultBorderRadius = 15;
     Color defaultColor = AppColors.borderColor;
-    TextStyle hintStyle = Theme.of(context).textTheme.titleLarge!;
+    TextStyle hintStyle = Theme.of(context).textTheme.titleLarge!.copyWith(
+      fontWeight: FontWeight.w500,
+    );
     TextStyle textStyle = Theme.of(context).textTheme.titleLarge!.copyWith(
           color: AppColors.darkFontColor,
         );

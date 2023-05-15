@@ -118,8 +118,7 @@ class _AppState extends State<App> with WidgetsBindingObserver {
           ),
         );
       },
-      // child: const IntroPage(),
-      child:  FlightBookingPage(adults: 1,children: 0),
+      child: const IntroPage(),
       // child: const SearchFlightsPage(),
     );
   }

@@ -46,6 +46,10 @@ class _CountryPickerWidgetState extends State<CountryPickerWidget> {
                   flagDecoration: BoxDecoration(
                       shape: BoxShape.circle
                   ),
+                  textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
+                    fontWeight: FontWeight.w500,
+                    color: AppColors.grayColor,
+                  ),
                 ),
               ),
 

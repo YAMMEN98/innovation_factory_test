@@ -178,6 +178,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Where’s Your\nNext Destination?"),
         "your_flight_booking":
             MessageLookupByLibrary.simpleMessage("Your Flight Booking"),
+        "your_mobile_number":
+            MessageLookupByLibrary.simpleMessage("Your Mobile Number"),
         "your_passport_number":
             MessageLookupByLibrary.simpleMessage("Your Passport Number")
       };

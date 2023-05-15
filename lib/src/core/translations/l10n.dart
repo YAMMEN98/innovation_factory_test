@@ -1139,6 +1139,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Your Mobile Number`
+  String get your_mobile_number {
+    return Intl.message(
+      'Your Mobile Number',
+      name: 'your_mobile_number',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

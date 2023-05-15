@@ -6,16 +6,16 @@ import 'package:innovation_factory_test/src/core/styles/app_colors.dart';
 import 'package:innovation_factory_test/src/core/translations/l10n.dart';
 import 'package:innovation_factory_test/src/core/util/constant/app_constants.dart';
 
-class MobileWidget extends StatefulWidget {
+class PhoneWidget extends StatefulWidget {
   final Function(String? countryCode, String mobile) callback;
 
-  const MobileWidget({Key? key, required this.callback}) : super(key: key);
+  const PhoneWidget({Key? key, required this.callback}) : super(key: key);
 
   @override
-  State<MobileWidget> createState() => _MobileWidgetState();
+  State<PhoneWidget> createState() => _PhoneWidgetState();
 }
 
-class _MobileWidgetState extends State<MobileWidget> {
+class _PhoneWidgetState extends State<PhoneWidget> {
   final _mobileController = TextEditingController();
   String selectedCountryCode = "+971";
 
@@ -61,6 +61,10 @@ class _MobileWidgetState extends State<MobileWidget> {
 
                   flagDecoration: BoxDecoration(
                     shape: BoxShape.circle
+                  ),
+                  textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
+                    fontWeight: FontWeight.w500,
+                    color: AppColors.grayColor,
                   ),
                 ),
               ),

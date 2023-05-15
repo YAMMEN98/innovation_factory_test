@@ -31,9 +31,19 @@ class _FlightBookingStepsWidgetState extends State<FlightBookingStepsWidget> {
         ),
 
 
+        // Divider
         Expanded(
-          child: Divider(
-            color: AppColors.primaryColor,
+          child: Column(
+            children: [
+              Divider(
+                color: AppColors.primaryColor,
+              ),
+
+              SizedBox(
+                height: 5.sp,
+              ),
+
+            ],
           ),
         ),
 
@@ -48,9 +58,19 @@ class _FlightBookingStepsWidgetState extends State<FlightBookingStepsWidget> {
         ),
 
 
+        // Divider
         Expanded(
-          child: Divider(
-            color: AppColors.primaryColor,
+          child: Column(
+            children: [
+              Divider(
+                color: AppColors.primaryColor,
+              ),
+
+              SizedBox(
+                height: 5.sp,
+              ),
+
+            ],
           ),
         ),
 

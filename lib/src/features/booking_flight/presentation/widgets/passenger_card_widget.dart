@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:innovation_factory_test/src/core/common_feature/domain/entities/gender_enum.dart';
 import 'package:innovation_factory_test/src/core/common_feature/presentation/widgets/country_picker_widget.dart';
-import 'package:innovation_factory_test/src/core/common_feature/presentation/widgets/mobile_widget.dart';
+import 'package:innovation_factory_test/src/core/common_feature/presentation/widgets/phone_widget.dart';
 import 'package:innovation_factory_test/src/core/common_feature/presentation/widgets/text_field_widget.dart';
 import 'package:innovation_factory_test/src/core/styles/app_colors.dart';
 import 'package:innovation_factory_test/src/core/translations/l10n.dart';
@@ -33,15 +33,16 @@ class _PassengerCardWidgetState extends State<PassengerCardWidget> {
   final TextEditingController _genderController = TextEditingController();
   final TextEditingController _birthOfDateController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passportNumberController = TextEditingController();
-  final TextEditingController _passportBirthOfDateController = TextEditingController();
+  final TextEditingController _passportNumberController =
+      TextEditingController();
+  final TextEditingController _passportBirthOfDateController =
+      TextEditingController();
 
   // Nationality
   CountryCode _countryCode = CountryCode();
 
-
   // Mobile Country Code
-  String _mobileCountryCode = "+971";
+  String _mophoneCountryCode = "+971";
 
   @override
   void initState() {
@@ -55,7 +56,7 @@ class _PassengerCardWidgetState extends State<PassengerCardWidget> {
     return Container(
       padding: EdgeInsets.symmetric(
         horizontal: 20.sp,
-        vertical: 25.sp,
+        vertical: 35.sp,
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20.sp),
@@ -75,23 +76,23 @@ class _PassengerCardWidgetState extends State<PassengerCardWidget> {
           // Traveler Type
           Text(
             _buildPassengerType(),
-            style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+            style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                   fontWeight: FontWeight.w600,
                 ),
           ),
 
           // Space
           SizedBox(
-            height: 10.sp,
+            height: 20.sp,
           ),
 
           Divider(
-            color: AppColors.lightGrayColor,
+            color: AppColors.borderColor,
           ),
 
           // Space
           SizedBox(
-            height: 10.sp,
+            height: 20.sp,
           ),
 
           // Full Name And Last Name
@@ -105,7 +106,7 @@ class _PassengerCardWidgetState extends State<PassengerCardWidget> {
                     Text(
                       "${S.of(context).first_name} *",
                       style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                            fontWeight: FontWeight.w600,
+                            fontWeight: FontWeight.w500,
                           ),
                     ),
                     TextFieldWidget(
@@ -119,7 +120,7 @@ class _PassengerCardWidgetState extends State<PassengerCardWidget> {
               ),
 
               SizedBox(
-                width: 10.sp,
+                width: 15.sp,
               ),
 
               // Last Name
@@ -130,7 +131,7 @@ class _PassengerCardWidgetState extends State<PassengerCardWidget> {
                     Text(
                       "${S.of(context).last_name} *",
                       style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                            fontWeight: FontWeight.w600,
+                            fontWeight: FontWeight.w500,
                           ),
                     ),
                     TextFieldWidget(
@@ -161,7 +162,7 @@ class _PassengerCardWidgetState extends State<PassengerCardWidget> {
                     Text(
                       S.of(context).gender,
                       style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                            fontWeight: FontWeight.w600,
+                            fontWeight: FontWeight.w500,
                           ),
                     ),
                     PopupMenuButton(
@@ -200,6 +201,10 @@ class _PassengerCardWidgetState extends State<PassengerCardWidget> {
                         controller: _genderController,
                         enabled: false,
                         hintText: S.of(context).male,
+                        textStyle:
+                            Theme.of(context).textTheme.titleLarge!.copyWith(
+                                  fontWeight: FontWeight.w500,
+                                ),
                         isUnderLineBorder: true,
                         contentPadding: EdgeInsets.zero,
                         suffixIcon: Icon(
@@ -214,7 +219,7 @@ class _PassengerCardWidgetState extends State<PassengerCardWidget> {
               ),
 
               SizedBox(
-                width: 5.sp,
+                width: 15.sp,
               ),
 
               // Date Of Birth
@@ -225,7 +230,7 @@ class _PassengerCardWidgetState extends State<PassengerCardWidget> {
                     Text(
                       S.of(context).birth_of_date,
                       style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                            fontWeight: FontWeight.w600,
+                            fontWeight: FontWeight.w500,
                           ),
                     ),
                     GestureDetector(
@@ -268,7 +273,7 @@ class _PassengerCardWidgetState extends State<PassengerCardWidget> {
           // Nationality
           CountryPickerWidget(
             callback: (countryCode) {
-              if(countryCode != null){
+              if (countryCode != null) {
                 _countryCode = countryCode;
               }
             },
@@ -279,11 +284,11 @@ class _PassengerCardWidgetState extends State<PassengerCardWidget> {
             height: 20.sp,
           ),
 
-          // Mobile
-          MobileWidget(
-            callback: (countryCode, mobile) {
-              if(countryCode != null){
-                _mobileCountryCode = countryCode;
+          // Phone
+          PhoneWidget(
+            callback: (countryCode, phone) {
+              if (countryCode != null) {
+                _mophoneCountryCode = countryCode;
               }
             },
           ),
@@ -300,8 +305,8 @@ class _PassengerCardWidgetState extends State<PassengerCardWidget> {
               Text(
                 "${S.of(context).email} *",
                 style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                  fontWeight: FontWeight.w600,
-                ),
+                      fontWeight: FontWeight.w500,
+                    ),
               ),
               TextFieldWidget(
                 controller: _emailController,
@@ -314,27 +319,28 @@ class _PassengerCardWidgetState extends State<PassengerCardWidget> {
           ),
 
           SizedBox(
-            height: 5.sp,
+            height: 10.sp,
           ),
 
           // Booking Confirmation title
           Text(
             S.of(context).booking_confirmation_will_be_sent,
             style: Theme.of(context).textTheme.titleSmall!.copyWith(
-              fontWeight: FontWeight.w500,
-              color: AppColors.lightGrayColor,
-            ),
+                  fontWeight: FontWeight.w400,
+                  color: AppColors.lightGrayColor,
+                ),
           ),
 
           SizedBox(
-            height: 15.sp,
+            height: 20.sp,
           ),
 
           Text(
             S.of(context).passport_details,
             style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-              fontWeight: FontWeight.w600,
-            ),
+                  fontWeight: FontWeight.w600,
+              color: AppColors.primaryColor,
+                ),
           ),
 
           SizedBox(
@@ -344,12 +350,13 @@ class _PassengerCardWidgetState extends State<PassengerCardWidget> {
           Text(
             S.of(context).please_enter_details_exactly,
             style: Theme.of(context).textTheme.titleSmall!.copyWith(
-              fontWeight: FontWeight.w600,
-            ),
+                  fontWeight: FontWeight.w400,
+              color: AppColors.grayColor,
+                ),
           ),
 
           SizedBox(
-            height: 10.sp,
+            height: 20.sp,
           ),
 
           // Passport Number And Date Of Birth
@@ -363,8 +370,8 @@ class _PassengerCardWidgetState extends State<PassengerCardWidget> {
                     Text(
                       "${S.of(context).passport_number} *",
                       style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                        fontWeight: FontWeight.w600,
-                      ),
+                            fontWeight: FontWeight.w500,
+                          ),
                     ),
                     TextFieldWidget(
                       controller: _passportNumberController,
@@ -378,8 +385,9 @@ class _PassengerCardWidgetState extends State<PassengerCardWidget> {
               ),
 
               SizedBox(
-                width: 5.sp,
+                width: 15.sp,
               ),
+
 
               // Date Of Birth
               Expanded(
@@ -389,8 +397,8 @@ class _PassengerCardWidgetState extends State<PassengerCardWidget> {
                     Text(
                       S.of(context).birth_of_date,
                       style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                        fontWeight: FontWeight.w600,
-                      ),
+                            fontWeight: FontWeight.w500,
+                          ),
                     ),
                     GestureDetector(
                       onTap: () {
@@ -423,8 +431,6 @@ class _PassengerCardWidgetState extends State<PassengerCardWidget> {
               ),
             ],
           ),
-
-
         ],
       ),
     );

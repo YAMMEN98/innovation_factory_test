@@ -43,13 +43,24 @@ class _FlightBookingAppBarWidgetState extends State<FlightBookingAppBarWidget> {
 
                 ),
 
+                SizedBox(
+                  width: 5.sp,
+                ),
+
                 // Title
-                Text(
-                  widget.title,
-                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                        fontWeight: FontWeight.w500,
-                    color: AppColors.white,
-                      ),
+                Flexible(
+                  child: Text(
+                    widget.title,
+                    style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                          fontWeight: FontWeight.w500,
+                      color: AppColors.white,
+                        ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+
+                SizedBox(
+                  width: 5.sp,
                 ),
 
                 // Profile Image
