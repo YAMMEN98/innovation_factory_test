@@ -15,7 +15,7 @@ class ApiResponse<T> {
     return ApiResponse<T>(
       status: json['status'],
       message: json['message'],
-      data: json['data'] == null || tFromJson==null? null : tFromJson(json['data']),
+      data: (tFromJson is! Function?) ? (tFromJson):(json['data'] == null || tFromJson==null? null : tFromJson(json['data'])),
     );
   }
 

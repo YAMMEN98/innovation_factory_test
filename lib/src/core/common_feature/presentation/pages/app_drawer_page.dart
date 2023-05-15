@@ -12,7 +12,9 @@ import 'package:innovation_factory_test/src/core/styles/app_colors.dart';
 import 'package:innovation_factory_test/src/core/translations/l10n.dart';
 import 'package:innovation_factory_test/src/core/util/helper/helper.dart';
 import 'package:innovation_factory_test/src/core/util/helper/helper_ui.dart';
+import 'package:innovation_factory_test/src/core/util/injections.dart';
 import 'package:innovation_factory_test/src/core/util/router.dart';
+import 'package:innovation_factory_test/src/features/auth/data/data_sources/locale/auth_shared_prefs.dart';
 
 class AppDrawerPage extends StatefulWidget {
   const AppDrawerPage({Key? key}) : super(key: key);
@@ -128,11 +130,13 @@ class _AppDrawerPageState extends State<AppDrawerPage> {
 
             Spacer(),
 
-            // Logout Button
+            // Login/Logout Button
             BlocConsumer<GeneralBloc, GeneralState>(
               bloc: _bloc,
               listener: (context, state) {
                 if (state is ErrorLogoutState) {
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, AppPageRouteName.login.name, (route) => false);
                   HelperUi.showSnackBar(context, state.errorMessage,
                       type: ToastTypeEnum.error);
                 } else if (state is SuccessLogoutState) {
@@ -147,10 +151,16 @@ class _AppDrawerPageState extends State<AppDrawerPage> {
                 if(state is LoadingLogoutState){
                   return AppLoader();
                 }
+
+
                 return ButtonWidget(
-                  text: S.of(context).logout,
+                  text:sl<AuthSharedPrefs>().getUser()==null?S.of(context).login: S.of(context).logout,
                   onPressed: () {
-                    _bloc.add(OnLogoutEvent());
+                    if(sl<AuthSharedPrefs>().getUser()==null){
+                      Navigator.pushNamed(context, AppPageRouteName.login.name);
+                    }else{
+                      _bloc.add(OnLogoutEvent());
+                    }
                   },
                   backgroundColor: AppColors.red,
                   textStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(

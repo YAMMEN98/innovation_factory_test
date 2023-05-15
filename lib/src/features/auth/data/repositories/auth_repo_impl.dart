@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:innovation_factory_test/src/core/common_feature/domain/entities/user_model.dart';
 import 'package:innovation_factory_test/src/core/network/error/exceptions.dart';
 import 'package:innovation_factory_test/src/core/network/error/failures.dart';
+import 'package:innovation_factory_test/src/core/util/injections.dart';
 import 'package:innovation_factory_test/src/features/auth/domain/entities/auth_response_model.dart';
 import 'package:innovation_factory_test/src/features/auth/domain/repositories/auth_repository.dart';
 import 'package:innovation_factory_test/src/features/auth/domain/usecases/login_usecase.dart';
@@ -59,6 +60,10 @@ class AuthRepositoryImpl extends AuthRepository {
   Future<Either<Failure, bool>> logout(LogoutParams params) async {
     try {
       final result = await authApi.logout(params);
+
+      // Delete User From Local Storage
+      await sl<AuthSharedPrefs>().deleteUser();
+
       return Right(result.data!);
     } on ServerException catch (e) {
       return Left(ServerFailure(e.message, e.statusCode));

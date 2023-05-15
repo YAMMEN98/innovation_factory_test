@@ -27,8 +27,7 @@ class GeneralBloc extends Bloc<GeneralEvent, GeneralState> {
     result.fold((l) {
       emitter(ErrorLogoutState(l.errorMessage));
     }, (r) {
-      // Delete User From Local Storage
-      sl<AuthSharedPrefs>().deleteUser();
+
       emitter(SuccessLogoutState());
     });
   }

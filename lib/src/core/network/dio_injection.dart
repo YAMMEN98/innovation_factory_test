@@ -36,7 +36,7 @@ initDioInjection()async{
       requestHeader: true,
     ));
 
-    // dio.interceptors.add(QueueInterceptor());
+    dio.interceptors.add(AppInterceptor());
 
     return dio;
   });

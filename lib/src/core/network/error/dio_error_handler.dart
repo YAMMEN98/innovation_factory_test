@@ -1,4 +1,6 @@
 import 'package:dio/dio.dart';
+import 'package:innovation_factory_test/main.dart';
+import 'package:innovation_factory_test/src/core/translations/l10n.dart';
 
 String handleDioError(DioError error) {
   String errorDescription = "";
@@ -18,6 +20,11 @@ String handleDioError(DioError error) {
       break;
     case DioErrorType.badResponse:
       {
+        if(error.response?.data is! Map){
+          errorDescription = S.of(navigatorKey.currentContext!).server_error;
+          return errorDescription;
+        }
+
         /// From golex server response
         if (error.response?.data['code'] != null &&
             (error.response?.data['code'] ?? "0") != "0") {

@@ -100,13 +100,14 @@ class AuthApi extends GeneralAuthApi {
         "logout",
         data: params.toJson(),
       ));
-      ApiResponse<bool> response = ApiResponse.fromJson(result.data, null);
+      ApiResponse<bool> response = ApiResponse.fromJson(result.data, result.data["status"]);
       if (response.status == null || response.status == false) {
         throw ServerException(
             response.message ?? S.of(navigatorKey.currentContext!).server_error,
             result.statusCode);
       }
-      return response;
+
+    return response;
     } on DioError catch (e) {
       throw ServerException(handleDioError(e), e.response?.statusCode);
     } on ServerException {

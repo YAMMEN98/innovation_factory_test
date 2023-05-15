@@ -4,7 +4,9 @@ import 'package:flutter/foundation.dart';
 import 'package:innovation_factory_test/src/core/common_feature/data/data_sources/app_shared_prefs.dart';
 import 'package:innovation_factory_test/src/core/common_feature/domain/entities/app_enum.dart';
 import 'package:innovation_factory_test/src/core/common_feature/domain/entities/language_enum.dart';
+import 'package:innovation_factory_test/src/core/common_feature/domain/entities/user_model.dart';
 import 'package:innovation_factory_test/src/core/util/injections.dart';
+import 'package:innovation_factory_test/src/features/auth/data/data_sources/locale/auth_shared_prefs.dart';
 
 class Helper {
   /// Get language
@@ -27,7 +29,14 @@ class Helper {
 
   /// Get Dio Header
   static Map<String, dynamic> getHeaders() {
+    UserModel? user = sl<AuthSharedPrefs>().getUser();
+    String? token;
+    if(user!=null){
+      token = "Bearer ${user.token}";
+    }
+
     return {
+      "Authorization": token
     }..removeWhere((key, value) => value == null);
   }
 
